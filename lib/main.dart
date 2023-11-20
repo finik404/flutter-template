@@ -14,22 +14,6 @@ void main() {
     initialState: AppState.initialState(),
   );
 
-  ErrorWidget.builder = (FlutterErrorDetails details) {
-    bool inDebug = false;
-    assert(() {
-      inDebug = true;
-      return true;
-    }());
-    // Если приложение в режиме отладки, показываем красный экран ошибки.
-    if (inDebug) {
-      return ErrorWidget(details.exception);
-    }
-    // В продакшене показываем свой экран ошибки.
-    return CustomErrorScreen(
-      errorDetails: details,
-    );
-  };
-
   runApp(LetMeTalk(store: store));
 }
 
@@ -37,14 +21,9 @@ class LetMeTalk extends StatelessWidget {
   final Store<AppState> store;
 
   LetMeTalk({required this.store, super.key}) {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: AppColors.bg,
-        statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: Colors.white,
-        systemNavigationBarIconBrightness: Brightness.dark,
-      ),
-    );
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: AppColors.white,
+        systemNavigationBarColor: AppColors.white));
   }
 
   @override
@@ -84,32 +63,5 @@ class LetMeTalk extends StatelessWidget {
                 ],
               );
             }));
-  }
-}
-
-class CustomErrorScreen extends StatelessWidget {
-  final FlutterErrorDetails errorDetails;
-
-  const CustomErrorScreen({Key? key, required this.errorDetails})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text('Упс! Произошла ошибка.', style: TextStyle(fontSize: 24)),
-          Text('Error: ${errorDetails.exceptionAsString()}'),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: Text('Вернуться назад'),
-          ),
-        ],
-      ),
-    );
   }
 }

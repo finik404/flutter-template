@@ -24,12 +24,13 @@ class AuthLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             const CText(
-              'LetMeTalk',
+              'Template',
               size: 46,
               weight: FontWeight.bold,
               color: AppColors.blue,

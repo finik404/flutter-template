@@ -6,10 +6,10 @@ import 'package:flutter_letmetalk/components/UI/Input.dart';
 import 'package:flutter_letmetalk/components/UI/Text.dart';
 import 'package:flutter_letmetalk/components/UI/TextLink.dart';
 import 'package:flutter_letmetalk/constants/colors.dart';
-import 'package:flutter_letmetalk/generated/l10n.dart';
 import 'package:flutter_letmetalk/hooks/Api.dart';
 import 'package:flutter_letmetalk/hooks/Validator.dart';
 import 'package:flutter_letmetalk/layouts/auth.dart';
+import 'package:flutter_letmetalk/pages/loading.dart';
 import 'package:flutter_letmetalk/store/slices/account.dart';
 import 'package:flutter_letmetalk/store/store.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -130,14 +130,9 @@ class RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     // Если загрузка
     if (isLoading) {
-      return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(
-            color: AppColors.blue,
-          ),
-        ),
-      );
+      return const LoadingScreen();
     }
+
     // Если нет загрузки
     else {
       return AuthLayout(
