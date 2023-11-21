@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_letmetalk/components/UI/IconBtn.dart';
-import 'package:flutter_letmetalk/constants/colors.dart';
+import 'package:template/components/UI/IconBtn.dart';
+import 'package:template/constants/colors.dart';
 
 enum InputType { password, search }
 

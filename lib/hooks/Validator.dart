@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_letmetalk/generated/l10n.dart';
+import 'package:template/generated/l10n.dart';
 
 /*
   Хук для валидации значений ----------------

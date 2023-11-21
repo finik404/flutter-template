@@ -1,4 +1,4 @@
-import 'package:flutter_letmetalk/store/slices/account.dart';
+import 'package:template/store/slices/account.dart';
 
 /*
   Store ----------------

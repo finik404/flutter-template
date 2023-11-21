@@ -1,26 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_letmetalk/constants/colors.dart';
-import 'package:flutter_letmetalk/pages/register.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:template/constants/colors.dart';
+import 'package:template/pages/home.dart';
+import 'package:template/pages/register.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_letmetalk/store/store.dart';
+import 'package:template/store/store.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
 
-void main() {
+void main() async {
+  // Подключаем хранилище (redux)
   final store = Store<AppState>(
     appReducer,
     initialState: AppState.initialState(),
   );
 
-  runApp(LetMeTalk(store: store));
+  // Подключаем поддержку env
+  await dotenv.load(fileName: ".env");
+
+  // Запуcк приложения
+  runApp(TemplateProject(store: store));
 }
 
-class LetMeTalk extends StatelessWidget {
+/*
+  TemplateProject ----------------
+ */
+class TemplateProject extends StatelessWidget {
   final Store<AppState> store;
 
-  LetMeTalk({required this.store, super.key}) {
+  TemplateProject({required this.store, super.key}) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: AppColors.white,
         systemNavigationBarColor: AppColors.white));
@@ -46,6 +56,7 @@ class LetMeTalk extends StatelessWidget {
                 // Список роутов
                 routes: {
                   '/register': (context) => RegisterScreen(),
+                  '/home': (context) => HomeScreen(),
                 },
 
                 // Локализация (языки)

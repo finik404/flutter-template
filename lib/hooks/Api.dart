@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_letmetalk/generated/l10n.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:template/generated/l10n.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
  */
 class Api {
   // Variables ----------------
-  final String baseUrl = "https://api.lmt.app.itl.systems";
+  String baseUrl = dotenv.env['API_URL']!;
 
   // Функция для выполнения запроса
   Future<dynamic> fetch(String url,

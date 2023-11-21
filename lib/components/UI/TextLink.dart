@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_letmetalk/components/UI/Text.dart';
-import 'package:flutter_letmetalk/constants/colors.dart';
+import 'package:template/components/UI/Text.dart';
+import 'package:template/constants/colors.dart';
 
 /*
   TextLink Component ----------------
