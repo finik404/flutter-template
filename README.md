@@ -1,16 +1,12 @@
-# flutter_letmetalk
+# FLUTTER TEMPLATE 🧷
+This project is a ready-made template for mobile applications on Flutter. It includes a ready-made structure and functionality that can be used for rapid development and deployment of a mobile application.
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## The template includes 🛠:
+- Various UI components
+- Hook for queries
+- Hook for validation
+- Redux (storage)
+- Various hooks
+- Localization of the application
+- All the necessary dependencies
+- Ready-made project structure
