@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:template/components/UI/Text.dart';
 import 'package:template/constants/colors.dart';
+import 'package:template/layouts/main.dart';
 
 /*
   Auth Layout ----------------
@@ -20,29 +21,23 @@ class AuthLayout extends StatelessWidget {
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const CText(
-              'Template',
-              size: 46,
-              weight: FontWeight.bold,
-              color: AppColors.blue,
-            ),
-            const SizedBox(height: 10),
-
-            // Text Content
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: text),
-            const SizedBox(height: 25),
-
-            // Child --------------
-            Container(child: child),
-          ]),
+    return MainLayout(
+      Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        const CText(
+          'Template',
+          size: 46,
+          weight: FontWeight.bold,
+          color: AppColors.blue,
         ),
-      ),
+        const SizedBox(height: 10),
+
+        // Text Content
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: text),
+        const SizedBox(height: 25),
+
+        // Child --------------
+        Container(child: child),
+      ]),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:template/components/UI/Text.dart';
+import 'package:template/layouts/main.dart';
 
 /*
   Home Screen ----------------
@@ -17,8 +18,8 @@ class HomeScreenState extends State<HomeScreen> {
 
   // Builder ----------------
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return MainLayout(
+      Center(
         child: CText('Home Screen'),
       ),
     );
