@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:template/components/UI/Icon.dart';
 import 'package:template/components/UI/IconBtn.dart';
 import 'package:template/constants/colors.dart';
 
@@ -15,6 +16,7 @@ class Input extends StatefulWidget {
   final InputType? type;
   final String? Function(String?)? validator;
   final Function(String)? onChange;
+  final bool? isPlaceholder;
 
   // Props ----------------
   const Input(
@@ -25,6 +27,7 @@ class Input extends StatefulWidget {
     this.type,
     this.validator,
     this.onChange,
+    this.isPlaceholder,
   }) : super(key: key);
 
   // Builder ----------------
@@ -41,6 +44,7 @@ class InputState extends State<Input> {
   late FocusNode isFocus = FocusNode();
 
   // Builder ----------------
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.value,
@@ -50,7 +54,14 @@ class InputState extends State<Input> {
       onChanged: widget.onChange,
       style: const TextStyle(fontSize: 16),
       decoration: InputDecoration(
-        hintText: widget.text,
+        labelText: widget.isPlaceholder == true ? null : widget.text,
+        hintText: widget.isPlaceholder == true ? widget.text : null,
+        labelStyle: const TextStyle(color: AppColors.blue),
+        floatingLabelStyle:
+            const TextStyle(color: AppColors.blue, fontSize: 18),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        hintStyle: const TextStyle(fontSize: 16, color: AppColors.blue),
         suffixIcon:
             // Если это пароль
             widget.type == InputType.password
@@ -62,15 +73,13 @@ class InputState extends State<Input> {
                       });
                     },
                     // Иконка
-                    icon: Icon(isShowPassword
-                        ? Icons.visibility_outlined
-                        : Icons.visibility_off_outlined),
+                    icon: CIcon(isShowPassword ? 'f06e' : 'f070'),
                     color: Theme.of(context).primaryColor)
                 :
                 // Если это поиск
                 widget.type == InputType.search
                     ? IconBtn(
-                        Icons.close,
+                        'f00d',
                         func: () {
                           // Очистить поле
                           widget.value.clear();
@@ -78,20 +87,25 @@ class InputState extends State<Input> {
                       )
                     : null,
         prefixIcon: widget.type == InputType.search
-            ? const Icon(Icons.search, color: AppColors.blue)
+            ? const CIcon('f002', color: AppColors.blue)
             : null,
         filled: true,
-        fillColor: Colors.white,
+        fillColor: AppColors.white,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(4),
           borderSide: const BorderSide(
             width: 1,
-            color: AppColors.grayDark,
+            color: AppColors.blue,
           ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(width: 1, color: AppColors.blue),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(width: 1, color: AppColors.blue),
+        ),
+        errorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(width: 1, color: AppColors.red),
+        ),
+        focusedErrorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(width: 1, color: AppColors.red),
         ),
       ),
     );

@@ -51,11 +51,11 @@ class TemplateProject extends StatelessWidget {
                 theme: ThemeData(primaryColor: AppColors.blue),
 
                 // Основной экран
-                home: RegisterScreen(),
+                home: const RegisterScreen(),
 
                 // Список роутов
                 routes: {
-                  '/register': (context) => RegisterScreen(),
+                  '/register': (context) => const RegisterScreen(),
                   '/home': (context) => HomeScreen(),
                 },
 
