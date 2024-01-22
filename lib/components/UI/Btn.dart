@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:template/components/UI/Text.dart';
+import 'package:template/components/UI/Text/index.dart';
 import 'package:template/constants/colors.dart';
 
 /*

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:template/components/UI/Icon.dart';
 
 /*
   IconBtn Component ----------------
  */
 class IconBtn extends StatelessWidget {
   // Variables ----------------
-  final IconData icon;
+  final String icon;
   final Function()? func;
   final String? link;
   final double? size;
@@ -34,10 +35,6 @@ class IconBtn extends StatelessWidget {
         style: const ButtonStyle(
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         ),
-        iconSize: size,
-        icon: Icon(
-          icon,
-          color: color,
-        ));
+        icon: CIcon(icon, color: color, size: size));
   }
 }

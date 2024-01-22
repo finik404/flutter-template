@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:template/components/UI/Btn.dart';
 import 'package:template/components/UI/Input.dart';
-import 'package:template/components/UI/Text.dart';
+import 'package:template/components/UI/Text/index.dart';
 import 'package:template/components/UI/TextLink.dart';
 import 'package:template/constants/colors.dart';
 import 'package:template/hooks/useFetch.dart';
@@ -19,6 +19,8 @@ import 'package:shared_preferences/shared_preferences.dart';
   Register Screen ----------------
  */
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
   RegisterScreenState createState() => RegisterScreenState();
 }
@@ -168,7 +170,7 @@ class RegisterScreenState extends State<RegisterScreen> {
                   type: InputType.password,
                   validator: (value) => Validator.min(context, value, 6),
                 ),
-                TextLink('У меня уже есть аккаунт', '/login'),
+                const TextLink('У меня уже есть аккаунт', link: '/login'),
                 const SizedBox(height: 25),
                 Btn('Зарегистрироваться', () => onRegister(context)),
               ],

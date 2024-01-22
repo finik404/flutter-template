@@ -12,17 +12,18 @@ class CText extends StatelessWidget {
   final Color? color;
   final TextStyle? style;
   final TextOverflow? overflow;
+  final TextAlign? align;
 
   // Props ----------------
-  const CText(
-    this.text, {
-    Key? key,
-    this.size = 16,
-    this.weight = FontWeight.normal,
-    this.color = AppColors.black,
-    this.style,
-    this.overflow,
-  }) : super(key: key);
+  const CText(this.text,
+      {Key? key,
+        this.size = 16,
+        this.weight = FontWeight.normal,
+        this.color = AppColors.black,
+        this.style,
+        this.overflow,
+        this.align})
+      : super(key: key);
 
   // Builder ----------------
   @override
@@ -30,8 +31,12 @@ class CText extends StatelessWidget {
     return Text(
       text,
       overflow: overflow,
-      style: TextStyle(fontSize: size, fontWeight: weight, color: color)
-          .merge(style),
+      textAlign: align,
+      style: TextStyle(
+        fontSize: size,
+        fontWeight: weight,
+        color: color,
+      ).merge(style),
     );
   }
 }
