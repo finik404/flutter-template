@@ -34,11 +34,8 @@ dependencies:
   flutter_redux: ^0.9.0
   # Выбор картинок из галереи или камеры
   image_picker: ^0.8.5+3
-  # Google авторизация
-  google_sign_in: ^6.1.6
-  # Firebase
-  firebase_core: ^2.22.0
-  firebase_auth: ^4.14.0
+  # Font Awesome Иконки
+  font_awesome_flutter: ^10.6.0
 
 # --------------------------------------
 # Dev зависимости для проекта
@@ -59,5 +56,21 @@ flutter:
 
   # Пути к ресурсам, которые должны быть включены в проект
   assets:
-     - assets/img/
-     - .env
+    - assets/img/
+    - assets/icons/
+    - .env
+
+  # Шрифты
+  fonts:
+    - family: FontAwesomePro
+      fonts:
+        - asset: assets/fonts/fa-regular-400.ttf
+
+    - family: Circe
+      fonts:
+        - asset: assets/fonts/Circe-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Circe-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Circe-Bold.ttf
+          weight: 700
