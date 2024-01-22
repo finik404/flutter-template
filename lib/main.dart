@@ -13,7 +13,7 @@ import 'generated/l10n.dart';
 void main() async {
   // Подключаем хранилище (redux)
   final store = Store<AppState>(
-    appReducer,
+    appReducers,
     initialState: AppState.initialState(),
   );
 

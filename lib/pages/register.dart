@@ -6,7 +6,7 @@ import 'package:template/components/UI/Input.dart';
 import 'package:template/components/UI/Text.dart';
 import 'package:template/components/UI/TextLink.dart';
 import 'package:template/constants/colors.dart';
-import 'package:template/hooks/Api.dart';
+import 'package:template/hooks/useFetch.dart';
 import 'package:template/hooks/Validator.dart';
 import 'package:template/layouts/auth.dart';
 import 'package:template/pages/loading.dart';
@@ -32,7 +32,6 @@ class RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController emailValue = TextEditingController();
   final TextEditingController passwordValue = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final Api api = Api();
   String error = '';
   bool isLoading = true;
 
@@ -52,7 +51,7 @@ class RegisterScreenState extends State<RegisterScreen> {
     final store = StoreProvider.of<AppState>(context);
 
     // Проверка аунтефикации пользователя
-    final data = await api.fetch('/account');
+    final data = await useFetch('/account');
 
     // Проверка настроек приложения
     final lang = prefs.getString('lang');
@@ -103,7 +102,7 @@ class RegisterScreenState extends State<RegisterScreen> {
 
       try {
         // Отправляем запрос
-        final data = await api.fetch('/account/register',
+        final data = await useFetch('/account/register',
             method: 'POST', body: dto, context: context);
 
         // Сохраняем токен авторизации

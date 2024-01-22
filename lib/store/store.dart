@@ -4,29 +4,22 @@ import 'package:template/store/slices/account.dart';
   Store ----------------
  */
 class AppState {
-  // Slices ----------------
   final AccountState accountState;
 
-  AppState({required this.accountState});
+  AppState(this.accountState);
 
-  AppState.initialState() : accountState = AccountState();
-
-  // State ----------------
-  AppState copyWith({
-    AccountState? accountState,
-  }) {
+  factory AppState.initialState() {
     return AppState(
-      accountState: accountState ?? this.accountState,
+      AccountState(),
     );
   }
 }
 
-
 /*
   Redusers ----------------
  */
-AppState appReducer(AppState state, action) {
+AppState appReducers(AppState state, action) {
   return AppState(
-    accountState: accountReducers(state.accountState, action),
+    accountReducers(state.accountState, action),
   );
 }
