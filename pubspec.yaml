@@ -11,6 +11,7 @@ publish_to: 'none' # Удалить, если надо чтобы этот пр�
 environment:
   sdk: '>=3.1.3 <4.0.0'
 
+
 # --------------------------------------
 # Зависимости для проекта
 # --------------------------------------
@@ -28,25 +29,42 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   # Локальное хранилище
-  shared_preferences: any
+  shared_preferences: ^2.2.2
   # Глобальное хранилище
   redux: ^5.0.0
   flutter_redux: ^0.9.0
+  # Разрешения приложения
+  permission_handler: ^11.2.0
+  # Открывать ссылки в браузере
+  url_launcher: ^6.2.4
   # Выбор картинок из галереи или камеры
   image_picker: ^0.8.5+3
-  # Font Awesome Иконки
-  font_awesome_flutter: ^10.6.0
+  # Кеширование картинок
+  cached_network_image: ^3.3.1
+  flutter_cache_manager: ^3.3.1
+
 
 # --------------------------------------
 # Dev зависимости для проекта
 # --------------------------------------
 dev_dependencies:
+  # Генерация иконок
+  flutter_launcher_icons: ^0.11.0
   # Переключение по ссылкам в коде
   flutter_lints: ^2.0.0
 
+
 # --------------------------------------
-# Настройки flutter
+# Настройки
 # --------------------------------------
+# Настройки генерации иконок
+flutter_icons:
+  android: "lc_launcher"
+  ios: true
+  image_path: "assets/img/icon.png"
+  min_sdk_android: 21
+
+# Настройки Flutter
 flutter:
   # Автоматическая генерирация кода (для локализации)
   generate: true
@@ -62,10 +80,12 @@ flutter:
 
   # Шрифты
   fonts:
+    # Иконки FontAwesomePro
     - family: FontAwesomePro
       fonts:
-        - asset: assets/fonts/fa-regular-400.ttf
+        - asset: assets/fonts/FontAwesome-Regular.ttf
 
+    # Стандартный шрифт
     - family: Circe
       fonts:
         - asset: assets/fonts/Circe-Light.ttf

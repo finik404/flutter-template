@@ -8,7 +8,7 @@ import 'package:template/generated/l10n.dart';
 /*
   Хук для запросов ----------------
  */
-Future<dynamic> useFetch(String url,
+Future<dynamic> fetchData(String url,
     {Map<String, dynamic>? query,
       Map<String, dynamic>? body,
       Map<String, String>? form,

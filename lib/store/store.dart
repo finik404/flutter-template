@@ -1,4 +1,6 @@
-import 'package:template/store/slices/account.dart';
+import 'package:template/store/slices/account/redusers.dart';
+import 'package:template/store/slices/account/state.dart';
+import 'package:template/store/slices/items/redusers.dart';
 
 import 'slices/items/state.dart';
 

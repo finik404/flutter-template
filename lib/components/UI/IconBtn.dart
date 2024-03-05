@@ -11,6 +11,7 @@ class IconBtn extends StatelessWidget {
   final String? link;
   final double? size;
   final Color? color;
+  final bool? noSplash;
 
   // Props ----------------
   const IconBtn(
@@ -19,6 +20,7 @@ class IconBtn extends StatelessWidget {
     this.link,
     this.size,
     this.color,
+    this.noSplash,
     Key? key,
   }) : super(key: key);
 
@@ -35,6 +37,7 @@ class IconBtn extends StatelessWidget {
         style: const ButtonStyle(
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         ),
+        highlightColor: noSplash == true ? Colors.transparent : null,
         icon: CIcon(icon, color: color, size: size));
   }
 }

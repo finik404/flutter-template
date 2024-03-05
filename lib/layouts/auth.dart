@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:template/components/UI/Text/index.dart';
 import 'package:template/constants/colors.dart';
-import 'package:template/layouts/main.dart';
+import 'package:template/layouts/base.dart';
 
 /*
   Auth Layout ----------------
@@ -21,14 +21,10 @@ class AuthLayout extends StatelessWidget {
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
-    return MainLayout(
-      Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        const CText(
-          'Template',
-          size: 46,
-          weight: FontWeight.bold,
-          color: AppColors.blue,
-        ),
+    return BaseLayout(
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        const CText('Template',
+            size: 46, weight: FontWeight.bold, color: AppColors.blue),
         const SizedBox(height: 10),
 
         // Text Content

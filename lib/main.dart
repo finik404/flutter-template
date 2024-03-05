@@ -11,6 +11,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
 
 void main() async {
+  // Только в вертикальном положении
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
   // Подключаем хранилище (redux)
   final store = Store<AppState>(
     appReducers,
@@ -31,13 +37,16 @@ class TemplateProject extends StatelessWidget {
   final Store<AppState> store;
 
   TemplateProject({required this.store, super.key}) {
+    // Стилизация statusBar и navigationBar
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: AppColors.white,
         systemNavigationBarColor: AppColors.white));
   }
 
+  // Builder ----------------
   @override
   Widget build(BuildContext context) {
+    // Следим за изменениями lang
     return StoreProvider<AppState>(
         store: store,
         child: StoreConnector<AppState, Locale>(
@@ -53,7 +62,7 @@ class TemplateProject extends StatelessWidget {
                 // Основной экран
                 home: const RegisterScreen(),
 
-                // Список роутов
+                // Список маршрутов
                 routes: {
                   '/register': (context) => const RegisterScreen(),
                   '/home': (context) => HomeScreen(),

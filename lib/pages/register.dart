@@ -1,19 +1,17 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:template/components/UI/Btn.dart';
 import 'package:template/components/UI/Input.dart';
 import 'package:template/components/UI/Text/index.dart';
 import 'package:template/components/UI/TextLink.dart';
 import 'package:template/constants/colors.dart';
-import 'package:template/hooks/useFetch.dart';
-import 'package:template/hooks/Validator.dart';
+import 'package:template/extensions/store.dart';
+import 'package:template/hooks/fetchData.dart';
+import 'package:template/hooks/classes/Validator.dart';
 import 'package:template/layouts/auth.dart';
-import 'package:template/pages/loading.dart';
-import 'package:template/store/slices/account.dart';
-import 'package:template/store/store.dart';
-import 'package:flutter_redux/flutter_redux.dart';
+import 'package:template/layouts/loading.dart';
+import 'package:template/store/slices/account/actions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:template/utils/functions/checkAuth.dart';
 
 /*
   Register Screen ----------------
@@ -41,57 +39,16 @@ class RegisterScreenState extends State<RegisterScreen> {
   void initState() {
     super.initState();
 
-    checkAuth();
+    checkAuth(context, (value) {
+      setState(() {
+        isLoading = value;
+      });
+    });
   }
 
   /*
     Methods ----------------
    */
-  // Проверка аутенцикации пользователя
-  void checkAuth() async {
-    final prefs = await SharedPreferences.getInstance();
-    final store = StoreProvider.of<AppState>(context);
-
-    // Проверка аунтефикации пользователя
-    final data = await useFetch('/account');
-
-    // Проверка настроек приложения
-    final lang = prefs.getString('lang');
-
-    // Установить настройки приложения
-    if (lang != null) {
-      store.dispatch(ChangeLang(lang == 'ru' ? Locale('ru') : Locale('en')));
-    }
-
-    // Если пользователь в первый раз, то получить язык системы
-    if (lang == null) {
-      String systemLanguage = Platform.localeName;
-
-      systemLanguage == 'ru_RU'
-          ? store.dispatch(ChangeLang(Locale('ru')))
-          : store.dispatch(ChangeLang(Locale('en')));
-    }
-
-    if (data != null) {
-      // Убрать загрузку
-      setState(() {
-        isLoading = false;
-      });
-
-      // Сохранить данные пользователя в хранилище
-      store.dispatch(AddUserData(data));
-
-      // Перенаправить пользователя
-      await Navigator.pushNamed(context, '/home');
-    } else {
-      // Убрать загрузку
-      setState(() {
-        isLoading = false;
-      });
-    }
-  }
-
-  // Регистрация пользователя
   void onRegister(BuildContext context) async {
     // Проверка валидации формы
     if (formKey.currentState!.validate()) {
@@ -104,16 +61,18 @@ class RegisterScreenState extends State<RegisterScreen> {
 
       try {
         // Отправляем запрос
-        final data = await useFetch('/account/register',
-            method: 'POST', body: dto, context: context);
+        final data = await fetchData(
+          '/account/register',
+          method: 'POST',
+          body: dto,
+        );
 
         // Сохраняем токен авторизации
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('auth_token', data['token']);
 
         // Сохраняем данные пользователя в хранилище
-        final store = StoreProvider.of<AppState>(context);
-        store.dispatch(AddUserData(data));
+        context.store.dispatch(AddUserData(data));
 
         // Перенаправляем пользователя
         Navigator.pushNamed(context, '/home');
@@ -131,7 +90,7 @@ class RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     // Если загрузка
     if (isLoading) {
-      return const LoadingScreen();
+      return const LoadingLayout();
     }
 
     // Если нет загрузки
@@ -144,15 +103,14 @@ class RegisterScreenState extends State<RegisterScreen> {
                 // Ошибки запроса
                 if (error.isNotEmpty)
                   Transform.translate(
-                    offset: Offset(0, -20),
-                    child: CText(
-                      error,
-                      size: 14,
-                      color: AppColors.red,
-                    ),
+                    offset: const Offset(0, -20),
+                    child: CText(error, size: 14, color: AppColors.red),
                   ),
-                Input('Имя', nameValue,
-                    validator: (value) => Validator.required(context, value)),
+                Input(
+                  'Имя',
+                  nameValue,
+                  validator: (value) => Validator.required(context, value),
+                ),
                 const SizedBox(height: 15),
                 Input(
                   'E-mail',
@@ -164,24 +122,16 @@ class RegisterScreenState extends State<RegisterScreen> {
                   ]),
                 ),
                 const SizedBox(height: 15),
-                Input(
-                  'Пароль',
-                  passwordValue,
-                  type: InputType.password,
-                  validator: (value) => Validator.min(context, value, 6),
-                ),
+                Input('Пароль', passwordValue,
+                    type: InputType.password,
+                    validator: (value) => Validator.min(context, value, 6)),
                 const TextLink('У меня уже есть аккаунт', link: '/login'),
                 const SizedBox(height: 25),
                 Btn('Зарегистрироваться', () => onRegister(context)),
               ],
             ),
           ),
-          text: const [
-            CText(
-              'Создать аккаунт',
-              size: 20,
-            )
-          ]);
+          text: const [CText('Создать аккаунт', size: 20)]);
     }
   }
 
