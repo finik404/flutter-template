@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:template/hooks/fetchData.dart';
+import 'generated/l10n.dart';
+import 'package:template/store/store.dart';
 import 'package:template/constants/colors.dart';
 import 'package:template/pages/home.dart';
-import 'package:template/pages/register.dart';
-import 'package:flutter/services.dart';
-import 'package:template/store/store.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'generated/l10n.dart';
 
+/*
+  main() ----------------
+ */
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   // Только в вертикальном положении
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+
+  // Инициализация dio
+  initDio();
 
   // Подключаем хранилище (redux)
   final store = Store<AppState>(
@@ -27,20 +35,22 @@ void main() async {
   await dotenv.load(fileName: ".env");
 
   // Запуcк приложения
-  runApp(TemplateProject(store: store));
+  runApp(App(store: store));
 }
 
 /*
-  TemplateProject ----------------
+  App ----------------
  */
-class TemplateProject extends StatelessWidget {
+class App extends StatelessWidget {
   final Store<AppState> store;
 
-  TemplateProject({required this.store, super.key}) {
+  App({required this.store, super.key}) {
     // Стилизация statusBar и navigationBar
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: AppColors.white,
-        systemNavigationBarColor: AppColors.white));
+      statusBarIconBrightness: Brightness.dark,
+      statusBarColor: AppColors.white,
+      systemNavigationBarColor: AppColors.white,
+    ));
   }
 
   // Builder ----------------
@@ -57,15 +67,17 @@ class TemplateProject extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
 
                 // Тема
-                theme: ThemeData(primaryColor: AppColors.blue),
+                theme: ThemeData(
+                  primaryColor: AppColors.blue,
+                  fontFamily: 'Circe',
+                ),
 
                 // Основной экран
-                home: const RegisterScreen(),
+                home: const HomeScreen(),
 
                 // Список маршрутов
                 routes: {
-                  '/register': (context) => const RegisterScreen(),
-                  '/home': (context) => HomeScreen(),
+                  '/home': (context) => const HomeScreen(),
                 },
 
                 // Локализация (языки)

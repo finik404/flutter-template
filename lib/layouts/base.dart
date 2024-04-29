@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:template/constants/colors.dart';
 
 /*
-  Main Layout ----------------
+  Base Layout ----------------
  */
 class BaseLayout extends StatelessWidget {
   // Variables ----------------
@@ -11,16 +11,18 @@ class BaseLayout extends StatelessWidget {
   final Color? bg;
   final EdgeInsets? padding;
   final bool? isScrollable;
+  final bool? noSafeArea;
 
   // Props ----------------
   const BaseLayout({
     this.child,
     this.children,
-    this.bg = AppColors.bg,
-    this.padding = EdgeInsets.zero,
-    this.isScrollable = false,
-    Key? key,
-  }) : super(key: key);
+    this.bg,
+    this.padding,
+    this.isScrollable,
+    this.noSafeArea,
+    super.key,
+  });
 
   // Builder ----------------
   @override
@@ -43,9 +45,10 @@ class BaseLayout extends StatelessWidget {
       content = SingleChildScrollView(child: content);
     }
 
-    return Scaffold(
-      backgroundColor: bg,
-      body: SafeArea(child: content),
-    );
+    return noSafeArea == true
+        ? content
+        : Scaffold(
+            backgroundColor: bg ?? AppColors.bg,
+            body: SafeArea(child: content));
   }
 }

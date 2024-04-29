@@ -12,7 +12,7 @@ class Debouncer {
 
   // Функция задержки ----------------
   void run(void Function() action, int milliseconds) {
-    _timer?.cancel(); // Отменяет существующий таймер, если он есть
+    _timer?.cancel(); // Отменяет существующий таймер
     _timer = Timer(Duration(milliseconds: milliseconds), action);
   }
 }

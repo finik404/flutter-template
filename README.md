@@ -6,7 +6,8 @@ This project is a ready-made template for mobile applications on Flutter. It inc
 - Hook for queries
 - Hook for validation
 - Redux (storage)
-- Various hooks
+- Extensions
+- Various hooks and functions
 - Localization of the application
 - All the necessary dependencies
 - Ready-made project structure

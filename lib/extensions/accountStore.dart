@@ -4,9 +4,9 @@ import 'package:template/store/slices/account/state.dart';
 import 'package:template/store/store.dart';
 
 /*
-  AppStore Extension ----------------
+  AccountStore Extension ----------------
  */
-extension AppStoreExtension on BuildContext {
+extension AccountStoreExtension on BuildContext {
   AccountState get accountStore =>
       StoreProvider.of<AppState>(this).state.accountState;
 
