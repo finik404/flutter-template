@@ -11,31 +11,37 @@ class CText extends StatelessWidget {
   final FontWeight? weight;
   final Color? color;
   final TextStyle? style;
-  final TextOverflow? overflow;
+  final int? lines;
   final TextAlign? align;
+  final double? height;
 
   // Props ----------------
-  const CText(this.text,
-      {Key? key,
-        this.size = 16,
-        this.weight = FontWeight.normal,
-        this.color = AppColors.black,
-        this.style,
-        this.overflow,
-        this.align})
-      : super(key: key);
+  const CText(
+    this.text, {
+    this.size = 16,
+    this.weight = FontWeight.normal,
+    this.color = AppColors.black,
+    this.style,
+    this.align,
+    this.lines,
+    this.height,
+    super.key,
+  });
 
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      overflow: overflow,
+      maxLines: lines,
+      overflow: lines != null ? TextOverflow.ellipsis : null,
       textAlign: align,
       style: TextStyle(
         fontSize: size,
         fontWeight: weight,
         color: color,
+        decorationColor: color,
+        height: height,
       ).merge(style),
     );
   }

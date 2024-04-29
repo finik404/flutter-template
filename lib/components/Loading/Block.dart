@@ -3,78 +3,50 @@ import 'package:flutter/material.dart';
 /*
   LoadingBlock Component ----------------
  */
-class LoadingBlock extends StatefulWidget {
+class LoadingBlock extends StatelessWidget {
   // Variables ----------------
   final double? height;
-  final double? width;
-  final double? borderRadius;
+  final dynamic width;
+  final double? radius;
 
   // Props ----------------
   const LoadingBlock({
-    Key? key,
     this.height,
     this.width,
-    this.borderRadius,
-  }) : super(key: key);
-
-  @override
-  LoadingBlockState createState() => LoadingBlockState();
-}
-
-/*
-  State----------------
- */
-class LoadingBlockState extends State<LoadingBlock>
-    with SingleTickerProviderStateMixin {
-  // Variables ----------------
-  late AnimationController _controller;
-  late Animation<double> _animation;
-
-  // InitState ----------------
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    );
-
-    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.linear,
-      ),
-    );
-
-    _controller.repeat(reverse: true);
-  }
+    this.radius,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _animation,
-      builder: (context, child) {
-        return Container(
-          width: widget.width,
-          height: widget.height ?? 56,
-          decoration: BoxDecoration(
-              color: Colors.grey[350],
-              borderRadius: BorderRadius.circular(widget.borderRadius ?? 4)),
-          child: Opacity(
-            opacity: 0.3 + (_animation.value * 0.7),
-            child: Container(
-              color: Colors.white,
-            ),
-          ),
-        );
-      },
-    );
+    // Если width является строкой и содержит '%', используем LayoutBuilder
+    if (width is String && width.contains('%')) {
+      return LayoutBuilder(
+        builder: (context, constraints) {
+          final widthPercentage =
+              double.tryParse(width.replaceAll('%', '')) ?? 100;
+          final calculatedWidth =
+              constraints.maxWidth * (widthPercentage / 100);
+          return buildContainer(calculatedWidth);
+        },
+      );
+    }
+
+    // Если width является double или int, просто строим контейнер
+    double? calculatedWidth =
+        width is double || width is int ? width.toDouble() : null;
+    return buildContainer(calculatedWidth);
   }
 
-  // Dispose ----------------
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  // Строим контайнер
+  Widget buildContainer(double? width) {
+    return Container(
+      width: width,
+      height: height ?? 18,
+      decoration: BoxDecoration(
+        color: Colors.grey[350],
+        borderRadius: BorderRadius.circular(radius ?? 6),
+      ),
+    );
   }
 }

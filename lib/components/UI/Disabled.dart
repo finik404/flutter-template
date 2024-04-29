@@ -6,22 +6,28 @@ import 'package:flutter/material.dart';
 class Disabled extends StatelessWidget {
   // Variables ----------------
   final Widget child;
-  final bool disabled;
+  final bool isDisabled;
+  final bool? noOpacity;
 
   // Props ----------------
   const Disabled({
-    required this.disabled,
+    required this.isDisabled,
     required this.child,
-    Key? key,
-  }) : super(key: key);
+    this.noOpacity,
+    super.key,
+  });
 
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
     return Opacity(
-        opacity: disabled ? 0.5 : 1.0,
+        opacity: noOpacity == true
+            ? 1.0
+            : isDisabled
+                ? 0.5
+                : 1.0,
         child: IgnorePointer(
-          ignoring: disabled,
+          ignoring: isDisabled,
           child: child,
         ));
   }

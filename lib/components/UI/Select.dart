@@ -21,8 +21,8 @@ class Select extends StatefulWidget {
     required this.items,
     required this.labelPopup,
     this.empty,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   SelectState createState() => SelectState();
@@ -58,7 +58,7 @@ class SelectState extends State<Select> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CText(activeItem != null
-                      ? widget.items.length != 0
+                      ? widget.items.isNotEmpty
                           ? widget.items[activeItem].label
                           : ''
                       : widget.empty ?? ''),

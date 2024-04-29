@@ -12,6 +12,8 @@ class CList extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final Axis? direction;
   final bool? noScroll;
+  final double? separatorWidth;
+  final Function(BuildContext)? separator;
 
   // Props ----------------
   const CList({
@@ -20,15 +22,17 @@ class CList extends StatelessWidget {
     this.child,
     this.controller,
     this.padding,
-    this.direction,
+    this.direction = Axis.horizontal,
     this.noScroll,
-    Key? key,
-  }) : super(key: key);
+    this.separatorWidth = 12,
+    this.separator,
+    super.key,
+  });
 
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
         itemCount: length,
         controller: controller,
         scrollDirection: direction ?? Axis.vertical,
@@ -37,6 +41,16 @@ class CList extends StatelessWidget {
         physics: noScroll ?? false
             ? const NeverScrollableScrollPhysics()
             : const AlwaysScrollableScrollPhysics(),
+        separatorBuilder: (context, index) {
+          if (separator != null) {
+            return separator!(context);
+          } else {
+            return SizedBox(
+              width: direction == Axis.horizontal ? separatorWidth ?? 0 : 0,
+              height: direction == Axis.vertical ? separatorWidth ?? 0 : 0,
+            );
+          }
+        },
         itemBuilder: (context, index) {
           if (builder != null) {
             return builder!(context, index);

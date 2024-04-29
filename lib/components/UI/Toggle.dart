@@ -10,10 +10,11 @@ class Toggle extends StatefulWidget {
   final bool? isSwitch;
 
   // Props ----------------
-  const Toggle(this.func, {
+  const Toggle(
+    this.func, {
     this.isSwitch,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   // Builder ----------------
   @override
@@ -32,7 +33,6 @@ class ToggleState extends State<Toggle> {
   void initState() {
     super.initState();
     isSwitched = widget.isSwitch ?? false;
-    print('widget.isSwitch ${widget.isSwitch}');
   }
 
   // Builder ----------------
@@ -47,39 +47,31 @@ class ToggleState extends State<Toggle> {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        height: 24.0,
-        width: 48.0,
+        height: 24,
+        width: 48,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
-          color:
-          isSwitched ? AppColors.yellow : AppColors.yellow.withOpacity(0.4),
-        ),
+            borderRadius: BorderRadius.circular(20),
+            color: isSwitched
+                ? AppColors.orange
+                : AppColors.orange.withOpacity(0.4)),
         child: Stack(
           children: [
             AnimatedPositioned(
               curve: Curves.easeIn,
               duration: const Duration(milliseconds: 200),
-              left: isSwitched ? 25.0 : 0.0,
-              right: isSwitched ? 0.0 : 25.0,
+              left: isSwitched ? 25 : 0,
+              right: isSwitched ? 0 : 25,
               top: 4.5,
               child: Container(
                 height: 15,
                 width: 15,
                 decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.white,
-                ),
+                    shape: BoxShape.circle, color: AppColors.white),
               ),
             ),
           ],
         ),
       ),
     );
-  }
-
-  // Dispose ----------------
-  @override
-  void dispose() {
-    super.dispose();
   }
 }

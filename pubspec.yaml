@@ -87,6 +87,7 @@ flutter:
     - assets/img/
     - assets/icons/
     - .env
+    - lib/constants/
 
   # Шрифты
   fonts:

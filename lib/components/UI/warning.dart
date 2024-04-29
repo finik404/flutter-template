@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /*
-  Функция для показа предупреждающего окна ----------------
+  Функция (предупреждающее окно) ----------------
  */
 void warning(BuildContext context, String text) {
   ScaffoldMessenger.of(context).showSnackBar(

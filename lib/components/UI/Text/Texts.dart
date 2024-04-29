@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:template/constants/colors.dart';
 
@@ -10,6 +11,7 @@ class Texts extends StatelessWidget {
   final double? size;
   final FontWeight? weight;
   final Color? color;
+  final Color? linkColor;
 
   // Props ----------------
   const Texts(
@@ -17,15 +19,18 @@ class Texts extends StatelessWidget {
     this.size = 16,
     this.weight = FontWeight.normal,
     this.color = AppColors.black,
-    Key? key,
-  }) : super(key: key);
+    this.linkColor = AppColors.blue,
+    super.key,
+  });
 
-  // Styles for tenge symbol
-  TextStyle tengeStyles(BuildContext context,
-      {double? childSize,
-      Color? childColor,
-      FontWeight? childWeight,
-      double? childHeight}) {
+  // Styles for currency symbol
+  TextStyle currencyStyles(
+    BuildContext context, {
+    double? childSize,
+    Color? childColor,
+    FontWeight? childWeight,
+    double? childHeight,
+  }) {
     return TextStyle(
       fontSize: childSize ?? size,
       color: childColor ?? color,
@@ -47,7 +52,7 @@ class Texts extends StatelessWidget {
         if (child.trim() == 'tenge' || child.trim() == '₸') {
           textSpans.add(TextSpan(
             text: ' ₸',
-            style: tengeStyles(context),
+            style: currencyStyles(context),
           ));
         } else {
           textSpans.add(TextSpan(text: child));
@@ -62,27 +67,47 @@ class Texts extends StatelessWidget {
         Color? childColor = child['color'];
         FontWeight? childWeight = child['weight'];
         double? childHeight = child['height'];
-
-        if (text.trim() == 'tenge' || text.trim() == '₸') {
-          textSpans.add(TextSpan(
-            text: ' ₸',
-            style: tengeStyles(context,
-                childSize: childSize,
-                childColor: childColor,
-                childWeight: childWeight,
-                childHeight: childHeight),
-          ));
-        } else {
-          textSpans.add(TextSpan(
-            text: text,
-            style: TextStyle(
-              fontSize: childSize ?? size,
-              color: childColor ?? color,
-              fontWeight: childWeight ?? weight,
-              height: childHeight,
-              fontFamily: 'Circe',
+        String? link = child['link'];
+        if (link != null) {
+          // если есть ссылка, делаем текст кликабельным
+          textSpans.add(
+            TextSpan(
+              text: text,
+              style: TextStyle(
+                fontSize: childSize ?? size,
+                color: linkColor ?? AppColors.blue,
+                fontWeight: childWeight ?? weight,
+                height: childHeight,
+                fontFamily: 'Circe',
+              ),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  Navigator.pushNamed(context, link);
+                },
             ),
-          ));
+          );
+        } else {
+          if (text.trim() == 'tenge' || text.trim() == '₸') {
+            textSpans.add(TextSpan(
+              text: ' ₸',
+              style: currencyStyles(context,
+                  childSize: childSize,
+                  childColor: childColor,
+                  childWeight: childWeight,
+                  childHeight: childHeight),
+            ));
+          } else {
+            textSpans.add(TextSpan(
+              text: text,
+              style: TextStyle(
+                fontSize: childSize ?? size,
+                color: childColor ?? color,
+                fontWeight: childWeight ?? weight,
+                height: childHeight,
+                fontFamily: 'Circe',
+              ),
+            ));
+          }
         }
       }
     }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:template/components/UI/Refresh.dart';
 import 'package:template/constants/colors.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 /*
   CGrid Component ----------------
@@ -17,6 +19,7 @@ class CGrid extends StatelessWidget {
   final int? crossCount;
   final double? crossSpacing;
   final double? mainSpacing;
+  final bool? isCustom;
 
   // Props ----------------
   const CGrid({
@@ -31,16 +34,16 @@ class CGrid extends StatelessWidget {
     this.crossCount = 2,
     this.crossSpacing = 0,
     this.mainSpacing = 5,
-    Key? key,
-  }) : super(key: key);
+    this.isCustom,
+    super.key,
+  });
 
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
     if (onRefresh != null) {
-      return RefreshIndicator(
-        onRefresh: onRefresh!,
-        color: AppColors.blue,
+      return Refresh(
+        onRefresh: () => onRefresh!,
         child: buildListView(),
       );
     } else {
@@ -48,33 +51,60 @@ class CGrid extends StatelessWidget {
     }
   }
 
-  GridView buildListView() {
-    return GridView.builder(
-      itemCount: length,
-      controller: controller,
-      padding: padding,
-      shrinkWrap: noScroll ?? false,
-      physics: noScroll ?? false
-          ? const NeverScrollableScrollPhysics()
-          : const AlwaysScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+  dynamic buildListView() {
+    if (isCustom == true) {
+      return AlignedGridView.count(
+        itemCount: length,
+        controller: controller,
+        padding: padding,
+        shrinkWrap: noScroll ?? false,
+        physics: noScroll ?? false
+            ? const NeverScrollableScrollPhysics()
+            : const AlwaysScrollableScrollPhysics(),
         crossAxisCount: crossCount!,
-        childAspectRatio: aspect!,
         crossAxisSpacing: crossSpacing!,
         mainAxisSpacing: mainSpacing!,
-      ),
-      itemBuilder: (context, index) {
-        if (builder != null) {
-          return builder!(context, index);
-        } else if (child != null) {
-          if (child is Widget Function(int)) {
-            return child(index);
-          } else {
-            return child;
+        itemBuilder: (context, index) {
+          if (builder != null) {
+            return builder!(context, index);
+          } else if (child != null) {
+            if (child is Widget Function(int)) {
+              return child(index);
+            } else {
+              return child;
+            }
           }
-        }
-        return Container();
-      },
-    );
+          return Container();
+        },
+      );
+    } else {
+      return GridView.builder(
+        itemCount: length,
+        controller: controller,
+        padding: padding,
+        shrinkWrap: noScroll ?? false,
+        physics: noScroll ?? false
+            ? const NeverScrollableScrollPhysics()
+            : const AlwaysScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: crossCount!,
+          childAspectRatio: aspect!,
+          crossAxisSpacing: crossSpacing!,
+          mainAxisSpacing: mainSpacing!,
+        ),
+        itemBuilder: (context, index) {
+          if (builder != null) {
+            return builder!(context, index);
+          } else if (child != null) {
+            if (child is Widget Function(int)) {
+              return child(index);
+            } else {
+              return child;
+            }
+          }
+          return Container();
+        },
+      );
+    }
   }
 }
