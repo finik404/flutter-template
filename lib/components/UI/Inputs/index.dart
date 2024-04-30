@@ -45,6 +45,10 @@ class Input extends StatefulWidget {
   final double? borderWidth;
   final bool? noBorder;
   final Function()? clearCallback;
+  final int? minLines;
+  final int? maxLines;
+  final bool? isTextArea;
+  final bool? enabled;
 
   // Props ----------------
   const Input(
@@ -81,6 +85,10 @@ class Input extends StatefulWidget {
     this.borderWidth,
     this.noBorder,
     this.clearCallback,
+    this.minLines,
+    this.maxLines,
+    this.isTextArea,
+    this.enabled,
     super.key,
   });
 
@@ -112,7 +120,10 @@ class InputState extends State<Input> {
       obscureText: isPassword && !isShowPassword,
       validator: widget.validator,
       onChanged: widget.onChange,
-      style: TextStyle(fontSize: widget.textSize ?? 16),
+      enabled: widget.enabled,
+      style: TextStyle(fontSize: widget.textSize ?? 16, height: 1),
+      minLines: widget.minLines ?? 1,
+      maxLines: widget.isTextArea == true ? null : widget.maxLines ?? 1,
       decoration: InputDecoration(
         isDense: false,
         labelText: widget.isPlaceholder == true ? null : widget.text,
@@ -124,7 +135,10 @@ class InputState extends State<Input> {
             const TextStyle(color: AppColors.blue, fontSize: 18),
         contentPadding: widget.padding ??
             const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
-        hintStyle: const TextStyle(fontSize: 16, color: AppColors.blue),
+        hintStyle: TextStyle(
+            fontSize: widget.textSize ?? 16,
+            color: widget.placeholderColor ?? AppColors.blue,
+            height: 1),
         prefixIcon: widget.iconStart != null
             ? CIcon(widget.iconStart!,
                 color: widget.iconStartColor ?? widget.iconColor,
@@ -163,6 +177,16 @@ class InputState extends State<Input> {
         filled: true,
         fillColor: widget.bg ?? AppColors.white,
         enabledBorder: OutlineInputBorder(
+          borderRadius:
+              widget.borderRadius ?? BorderRadius.circular(widget.radius ?? 6),
+          borderSide: BorderSide(
+            width: widget.noBorder == true ? 0 : 2,
+            color: widget.noBorder == true
+                ? Colors.transparent
+                : AppColors.blue.withOpacity(0.3),
+          ),
+        ),
+        disabledBorder: OutlineInputBorder(
           borderRadius:
               widget.borderRadius ?? BorderRadius.circular(widget.radius ?? 6),
           borderSide: BorderSide(

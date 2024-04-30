@@ -7,7 +7,7 @@ import 'package:template/hooks/fetchData.dart';
 import 'generated/l10n.dart';
 import 'package:template/store/store.dart';
 import 'package:template/constants/colors.dart';
-import 'package:template/pages/home.dart';
+import 'package:template/screens/home.dart';
 import 'package:redux/redux.dart';
 
 /*
