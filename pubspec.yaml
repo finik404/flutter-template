@@ -1,101 +1,70 @@
-# Имя проекта
-name: template
-# Описание проекта
-description: "Description"
-# Версия проекта
-version: 1.0.0+1
+name: tproject
+description: "Template for project"
+version: 1.0.0
 publish_to: 'none'
-# Версия SDK
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: ^3.5.2
 
 
+# --------------- PACKAGES --------------- #
 
-# --------------------------------------
-# Зависимости для проекта
-# --------------------------------------
 dependencies:
-  # Flutter
   flutter:
     sdk: flutter
-  # Http запросы
-  dio: ^5.4.2+1
-  # Поддержка env
-  flutter_dotenv: ^5.0.2
-  # Локализация приложения
-  flutter_localizations:
-    sdk: flutter
-  # Локальное хранилище
-  shared_preferences: ^2.2.2
-  # Глобальное хранилище
-  redux: ^5.0.0
-  flutter_redux: ^0.10.0
-  # Подержка svg
+
+  # API
+  dio: ^5.7.0
+
+  # Local storage
+  shared_preferences: ^2.3.2
+
+  # State management
+  flutter_bloc: ^8.1.6
+
+  # Svg
   flutter_svg: ^2.0.10+1
-  # Разрешения приложения
-  permission_handler: ^11.2.0
-  # Открывать ссылки в браузере
-  url_launcher: ^6.2.4
-  # Выбор картинок из галереи или камеры
-  image_picker: ^1.1.0
-  # Кеширование картинок
-  cached_network_image: ^3.3.1
-  flutter_cache_manager: ^3.3.1
-  # Html to Text
-  flutter_widget_from_html_core: ^0.14.11
-  # Маска у input
-  mask_text_input_formatter: ^2.9.0
-  # Динамичная высота у элементов в grid
+
+  # Permissions
+  permission_handler: ^11.3.1
+
+  # Web links
+  url_launcher: ^6.3.0
+
+  # Dynamic height elements in grid
   flutter_staggered_grid_view: ^0.7.0
-  # Возможность поделиться
-  share_plus: ^9.0.0
+
+  # Image caching
+  cached_network_image: ^3.4.0
+
+  # Firebase and notifications
+  firebase_core: ^3.4.0
+  firebase_messaging: ^15.1.0
+
+  logger: ^2.4.0
+  intl: ^0.19.0
+  get_storage: ^2.1.1
 
 
+# --------------- DEV PACKAGES --------------- #
 
-# --------------------------------------
-# Dev зависимости для проекта
-# --------------------------------------
 dev_dependencies:
-  # Генерация иконок
+  flutter_lints: ^4.0.0
   flutter_launcher_icons: ^0.13.1
-  # Переключение по ссылкам в коде
-  flutter_lints: ^3.0.2
 
 
-
-# --------------------------------------
-# Настройки
-# --------------------------------------
-# Генерации иконок (dart run flutter_launcher_icons)
-flutter_icons:
-  android: "lc_launcher"
-  ios: true
-  image_path: "assets/icon.png"
-  min_sdk_android: 21
-
-# Настройки Flutter
 flutter:
-  # Автоматическая генерирация кода (для локализации)
-  generate: true
-
-  # Набор виджетов
   uses-material-design: true
 
-  # Пути к ресурсам, которые должны быть включены в проект
+  # --------------- ASSETS --------------- #
   assets:
     - assets/
     - assets/img/
     - assets/icons/
-    - .env
 
-  # Шрифты
+
+    # --------------- FONTS --------------- #
   fonts:
-    # Иконки FontAwesome
-    - family: FontAwesome
-      fonts:
-        - asset: assets/fonts/FontAwesome.ttf
-
-    # Стандартный шрифт
+    # Base font
     - family: Circe
       fonts:
         - asset: assets/fonts/Circe-Light.ttf
@@ -104,3 +73,19 @@ flutter:
           weight: 400
         - asset: assets/fonts/Circe-Bold.ttf
           weight: 700
+
+    # Icons fontAwesome
+    - family: FontAwesome
+      fonts:
+        - asset: assets/fonts/FontAwesome-Regular.ttf
+          weight: 400
+
+
+# --------------- APP ICONS SETTINGS --------------- #
+
+flutter_icons:
+  android: "lc_launcher"
+  ios: true
+  image_path: "assets/icon.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true
