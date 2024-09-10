@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class TDeviceUtils {
@@ -11,21 +12,16 @@ class TDeviceUtils {
   }
 
   static Future<void> setStatusBarColor(Color color) async {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: color))
-    ,
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: color));
   }
 
   static bool isLandscapeOrientation(BuildContext context) {
-    final viewInsets = View
-        .of(context)
-        .viewInsets;
+    final viewInsets = View.of(context).viewInsets;
     return viewInsets.bottom == 0;
   }
 
   static bool isPortraitOrientation(BuildContext context) {
-    final viewInsets = View
-        .of(context)
-        .viewInsets;
+    final viewInsets = View.of(context).viewInsets;
     return viewInsets.bottom != 0;
   }
 
@@ -34,30 +30,19 @@ class TDeviceUtils {
   }
 
   static double getScreenHeight() {
-    return MediaQuery
-        .of(Get.context!)
-        .size
-        .height;
+    return MediaQuery.of(Get.context!).size.height;
   }
 
   static double getScreenWidth() {
-    return MediaQuery
-        .of(Get.context!)
-        .size
-        .width;
+    return MediaQuery.of(Get.context!).size.width;
   }
 
   static double getPixelRatio() {
-    return MediaQuery
-        .of(Get.context!)
-        .devicePixelRatio;
+    return MediaQuery.of(Get.context!).devicePixelRatio;
   }
 
   static double getStatusBarHeight() {
-    return MediaQuery
-        .of(Get.context!)
-        .padding
-        .top;
+    return MediaQuery.of(Get.context!).padding.top;
   }
 
   static double getBottomNavigationBarHeight() {
@@ -69,16 +54,12 @@ class TDeviceUtils {
   }
 
   static double getKeyboardHeight() {
-    final viewInsets = MediaQuery
-        .of(Get.context!)
-        .viewInsets;
+    final viewInsets = MediaQuery.of(Get.context!).viewInsets;
     return viewInsets.bottom;
   }
 
   static Future<bool> isKeyboardVisible() async {
-    final viewInsets = View
-        .of(Get.context!)
-        .viewInsets;
+    final viewInsets = View.of(Get.context!).viewInsets;
     return viewInsets.bottom > 0;
   }
 
@@ -107,8 +88,7 @@ class TDeviceUtils {
     try {
       final result = await InternetAddress.lookup('example.com');
       return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
-    }
-    on SocketException catch (_) {
+    } on SocketException catch (_) {
       return false;
     }
   }

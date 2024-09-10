@@ -1,8 +1,8 @@
 /*
-  Sized ----------------
+  Sizes ----------------
  */
-class TSized {
-  TSized._();
+class Sizes {
+  Sizes._();
 
   // Padding
   static const double xs = 4.0;

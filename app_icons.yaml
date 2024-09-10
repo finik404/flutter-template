@@ -1,0 +1,10 @@
+# App icons options
+flutter_icons:
+  android: "lc_launcher"
+  ios: true
+  image_path: "assets/icon.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true
+
+
+# fr flutter_launcher_icons --path=app_icons.yaml

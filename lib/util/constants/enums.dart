@@ -1,6 +1,1 @@
-
-/*
-  Enums ----------------
- */
-
-enum TextSizes { small, medium, large }
+enum Sizes { small, medium, large }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 /*
   App ----------------
@@ -10,29 +10,14 @@ class App extends StatelessWidget {
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      // Providers
-      providers: [
-        BlocProvider(create: (context) => AccountBloc()),
-      ],
+    return GetMaterialApp(
+      // No debug banner
+      debugShowCheckedModeBanner: false,
+      // No Stretch effect on scroll
+      scrollBehavior: CustomScrollBehavior(),
 
-      // Settings
-      child: Builder(
-        builder: (context) {
-          return MaterialApp(
-            // No debug banner
-            debugShowCheckedModeBanner: false,
-            // No Stretch Effect on Scroll
-            scrollBehavior: CustomScrollBehavior(),
-            // Theme Settings
-            theme: theme(context),
-
-            // RouterConfig
-            initialRoute: '/',
-            routes: routes,
-          );
-        },
-      ),
+      // Theme settings
+      theme: ,
     );
   }
 }

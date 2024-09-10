@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class THelperFunctions {
@@ -24,7 +25,7 @@ class THelperFunctions {
     );
   }
 
-  static void navigateToScreen(BuildContext context, Widget screen) {
+  static void navigate(BuildContext context, Widget screen) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
   }
 

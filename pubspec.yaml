@@ -16,13 +16,16 @@ dependencies:
   dio: ^5.7.0
 
   # Local storage
-  shared_preferences: ^2.3.2
+  get_storage: ^2.1.1
 
   # State management
-  flutter_bloc: ^8.1.6
+  get: ^4.6.6
 
   # Svg
   flutter_svg: ^2.0.10+1
+
+  # Formating
+  intl: ^0.19.0
 
   # Permissions
   permission_handler: ^11.3.1
@@ -40,9 +43,11 @@ dependencies:
   firebase_core: ^3.4.0
   firebase_messaging: ^15.1.0
 
+  # Logging
   logger: ^2.4.0
-  intl: ^0.19.0
-  get_storage: ^2.1.1
+
+  # Splash screen
+  flutter_native_splash: ^2.4.1
 
 
 # --------------- DEV PACKAGES --------------- #
@@ -58,34 +63,20 @@ flutter:
   # --------------- ASSETS --------------- #
   assets:
     - assets/
-    - assets/img/
     - assets/icons/
+    - assets/img/
 
-
-    # --------------- FONTS --------------- #
+  # --------------- FONTS --------------- #
   fonts:
-    # Base font
-    - family: Circe
+    - family: Circe-Bold
+      fonts:
+        - asset: assets/fonts/Circe-Bold.ttf
+    - family: Circe-Light
       fonts:
         - asset: assets/fonts/Circe-Light.ttf
-          weight: 300
+    - family: Circe-Regular
+      fonts:
         - asset: assets/fonts/Circe-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Circe-Bold.ttf
-          weight: 700
-
-    # Icons fontAwesome
-    - family: FontAwesome
+    - family: FontAwesome-Regular
       fonts:
         - asset: assets/fonts/FontAwesome-Regular.ttf
-          weight: 400
-
-
-# --------------- APP ICONS SETTINGS --------------- #
-
-flutter_icons:
-  android: "lc_launcher"
-  ios: true
-  image_path: "assets/icon.png"
-  min_sdk_android: 21
-  remove_alpha_ios: true
