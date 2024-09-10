@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:tproject/util/theme/theme.dart';
 
-/*
-  App ----------------
- */
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -17,7 +15,8 @@ class App extends StatelessWidget {
       scrollBehavior: CustomScrollBehavior(),
 
       // Theme settings
-      theme: ,
+      themeMode: ThemeMode.light,
+      theme: AppTheme.lightTheme,
     );
   }
 }

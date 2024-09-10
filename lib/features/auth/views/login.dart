@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import 'package:wordwise/core/_exports.dart';
-import 'package:wordwise/features/auth/layouts/login.dart';
-import 'package:wordwise/features/auth/views/reset/_index.dart';
-import 'package:wordwise/features/main/views/tabs.dart';
-import 'package:wordwise/hooks/Validator.dart';
 
 /*
   Login Screen ----------------

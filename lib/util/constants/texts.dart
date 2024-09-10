@@ -1,6 +1,6 @@
 class Texts {
   Texts._();
 
-  // Logos
-  static const String title = 'test title';
+  // Validation
+  static const String error = 'test title';
 }

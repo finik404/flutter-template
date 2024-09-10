@@ -1,74 +1,45 @@
 /*
   Sizes ----------------
  */
+import 'package:flutter/material.dart';
+
 class Sizes {
   Sizes._();
 
-  // Padding
-  static const double xs = 4.0;
-  static const double sm = 4.0;
-  static const double md = 4.0;
-  static const double ld = 4.0;
-  static const double xl = 4.0;
-
-  // Icon
-  static const double iconXs = 4.0;
-  static const double iconSm = 4.0;
-  static const double iconMd = 4.0;
-  static const double iconLg = 4.0;
-
-  // Font
-  static const double fontSizeSm = 4.0;
-  static const double fontSizeMd = 4.0;
-  static const double fontSizeLg = 4.0;
-
-  // Button
-  static const double buttonHeight = 4.0;
-  static const double buttonRadius = 4.0;
-  static const double buttonWidth = 4.0;
-  static const double buttonElevation = 4.0;
-
-  // AppBar
-  static const double appThumbHeight = 4.0;
-
-  // Image sizes
-  static const double imageThumbSize = 4.0;
-
   // Spacing between
-  static const double defaultSpace = 4.0;
-  static const double spaceBtwItems = 4.0;
-  static const double spaceBtwSections = 4.0;
+  static const double spaceXs = 8.0;
+  static const double spaceSm = 16.0;
+  static const double spaceMd = 24.0;
+  static const double spaceLg = 32.0;
 
-  // Border radius
-  static const double borderRadiusSm = 4.0;
-  static const double borderRadiusMd = 4.0;
-  static const double borderRadiusLg = 4.0;
-
-  // Divider
-  static const double dividerHEight = 4.0;
-
-  // Product item dimensions
-  static const double productImageSize = 4.0;
-  static const double productImageRadius = 4.0;
-  static const double productItemHeight = 4.0;
-
-  // Input
-  static const double inputFieldRadius = 4.0;
-  static const double spaceBtwInputField = 4.0;
-
-  // Card
-  static const double cardRadiusLg = 4.0;
-  static const double cardRadiusMd = 4.0;
-  static const double cardRadiusSm = 4.0;
-  static const double cardRadiusXs = 4.0;
-  static const double cardElevation = 4.0;
-
-  // Image carousel
-  static const double imageCarouselHeight = 4.0;
-
-  // Loading
-  static const double loadingIndicatorSize = 4.0;
+  // BorderRadius
+  static const double radius = 6.0;
 
   // Grid
-  static const double gridViewSpacing = 4.0;
+  static const int gridCount = 2;
+  static const double gridAspect = 1 / 1.3;
+  static const double gridSpacing = 0.0;
+  static const double gridBottomSpacing = 0.0;
+
+  // Divider
+  static const double divider = 1.0;
+
+  // Loading
+  static const double loading = 76.0;
+
+  // AppBar
+  static const double appBar = 56.0;
+
+  // BottomSheet
+  static const double bottomSheet = 84.0 - kBottomNavigationBarHeight;
+  static const double bottomSheet2 = 104.0 - kBottomNavigationBarHeight;
+
+  // Icon
+  static const double iconSm = 16.0;
+  static const double iconMd = 18.0;
+  static const double iconLg = 20.0;
+
+  // Image
+  static const double imageIcon = 45.0;
+  static const double imageLogoHeight = 24.0;
 }
