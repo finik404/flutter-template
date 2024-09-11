@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:tproject/util/constants/options.dart';
 
-class ClickArea extends StatelessWidget {
-  const ClickArea({
+class UIClickArea extends StatelessWidget {
+  const UIClickArea({
     super.key,
     required this.onTap,
-    this.onLongPress,
     required this.child,
+    this.onLongTap,
     this.borderRadius,
     this.radius,
     this.color,
     this.padding,
-    this.isTextPadding,
-    this.noMaterial,
   });
 
   final Function() onTap;
@@ -20,21 +19,19 @@ class ClickArea extends StatelessWidget {
   final double? radius;
   final Color? color;
   final EdgeInsets? padding;
-  final bool? isTextPadding;
-  final bool? noMaterial;
-  final Function()? onLongPress;
+  final Function()? onLongTap;
 
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 10),
-      splashColor: color ?? context.theme.primary.withOpacity(0.1),
-      highlightColor: color ?? context.theme.primary.withOpacity(0.1),
       onTap: onTap,
-      onLongPress: onLongPress,
+      onLongPress: onLongTap,
+      borderRadius: borderRadius ?? BorderRadius.circular(radius ?? WidgetsOptions.clickAreaRadius),
+      splashColor: color ?? WidgetsOptions.clickAreaColor,
+      highlightColor: color ?? WidgetsOptions.clickAreaColor,
       child: Padding(
-        padding: isTextPadding == true ? const EdgeInsets.symmetric(horizontal: 3) : padding ?? const EdgeInsets.all(0),
+        padding: padding ?? WidgetsOptions.clickAreaPadding,
         child: child,
       ),
     );

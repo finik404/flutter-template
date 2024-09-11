@@ -56,7 +56,8 @@ class UIGrid extends StatelessWidget {
     return onRefresh != null
         ? RefreshIndicator(
             onRefresh: onRefresh!,
-            color: Theme.of(context).primaryColor,
+            color: WidgetsOptions.refreshColor,
+            backgroundColor: WidgetsOptions.refreshBackground,
             child: grid,
           )
         : grid;

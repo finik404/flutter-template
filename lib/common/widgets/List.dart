@@ -13,6 +13,7 @@ class UIList extends StatelessWidget {
     this.separator,
     this.height = WidgetsOptions.listHeight,
     this.controller,
+    this.onRefresh,
   });
 
   final int length;
@@ -24,6 +25,7 @@ class UIList extends StatelessWidget {
   final double spaceBetween;
   final double? height;
   final ScrollController? controller;
+  final Future<void> Function()? onRefresh;
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +65,16 @@ class UIList extends StatelessWidget {
       },
     );
 
-    return height != null ? SizedBox(height: height, child: list) : list;
+    list = height != null ? SizedBox(height: height, child: list) : list;
+
+    // List with refresh indicator
+    return onRefresh != null
+        ? RefreshIndicator(
+            onRefresh: onRefresh!,
+            color: WidgetsOptions.refreshColor,
+            backgroundColor: WidgetsOptions.refreshBackground,
+            child: list,
+          )
+        : list;
   }
 }

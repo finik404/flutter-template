@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tproject/util/constants/options.dart';
 
 export 'package:tproject/util/constants/icons.dart';
 
@@ -19,7 +20,7 @@ class UIIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Default styles
-    IconThemeData defaultStyles = Theme.of(context).iconTheme;
+    IconThemeData defaultStyles = WidgetsOptions.iconStyles;
 
     // Icon weight
     double? customWeight;

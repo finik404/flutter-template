@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tproject/util/constants/options.dart';
 
 class UIText extends StatelessWidget {
   const UIText(
@@ -29,7 +30,7 @@ class UIText extends StatelessWidget {
     bool isCropped = isOverflow == true || lines != null;
 
     // Default styles
-    TextStyle defaultStyles = Theme.of(context).textTheme.bodyMedium!;
+    TextStyle defaultStyles = WidgetsOptions.textStyles;
 
     // Styles
     TextStyle textStyle = defaultStyles.copyWith(

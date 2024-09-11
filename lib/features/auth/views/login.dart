@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tproject/common/widgets/Icon/IconButton.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
+import 'package:tproject/common/widgets/Toggle.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
 
 /*
@@ -20,6 +23,7 @@ class LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailInput = TextEditingController();
   final TextEditingController passwordInput = TextEditingController();
+  bool value = false;
 
   // Builder ----------------
   @override
@@ -51,10 +55,7 @@ class LoginScreenState extends State<LoginScreen> {
               // // Btn
               // Btn(S.of(context).sign_in, () => login(context)),
 
-               TextButton(
-                onPressed: () => null,
-                child: Text('Disabled'),
-              ),
+              UIToggle(value, onChange: () => setState(() => value = !value))
 
             ]),
           )
