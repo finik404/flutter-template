@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/constants/colors.dart';
 
-class ThemeButtons {
-  ThemeButtons._();
+class ThemeButton {
+  ThemeButton._();
 
   // Btn primary theme
   static ElevatedButtonThemeData btnPrimaryTheme = ElevatedButtonThemeData(

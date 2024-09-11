@@ -3,6 +3,7 @@ import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/theme/custom/btn.dart';
 import 'package:tproject/util/theme/custom/icon.dart';
 import 'package:tproject/util/theme/custom/text.dart';
+import 'package:tproject/util/theme/custom/textLink.dart';
 
 class AppTheme {
   AppTheme._();
@@ -14,8 +15,10 @@ class AppTheme {
     brightness: Brightness.light,
     primaryColor: AppColors.primary,
     scaffoldBackgroundColor: AppColors.bg,
-    textTheme: ThemeTexts.textsTheme,
-    elevatedButtonTheme: ThemeButtons.btnPrimaryTheme,
-    iconTheme: ThemeIcons.iconsMdTheme,
+    textTheme: ThemeText.textTheme,
+    iconTheme: ThemeIcon.iconMdTheme,
+    textButtonTheme: ThemeLink.linkTheme,
+    elevatedButtonTheme: ThemeButton.btnPrimaryTheme,
+
   );
 }

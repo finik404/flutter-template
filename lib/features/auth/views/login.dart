@@ -51,7 +51,11 @@ class LoginScreenState extends State<LoginScreen> {
               // // Btn
               // Btn(S.of(context).sign_in, () => login(context)),
 
-              // UIText('text', styles: ThemeText.textLightTheme.bodyLarge),
+               TextButton(
+                onPressed: () => null,
+                child: Text('Disabled'),
+              ),
+
             ]),
           )
         ]);

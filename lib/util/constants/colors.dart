@@ -54,7 +54,7 @@ class AppColors {
   static Color lightenWarning = warning.withOpacity(0.1);
 
   // Other
-  static const Color black = Color(0xFF5468FE);
+  static const Color black = Color(0xFF333333);
   static Color grey = black.withOpacity(0.5);
   static Color darkenGrey = black.withOpacity(0.7);
   static const Color white = Color(0xFFFFFFFF);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class THelperFunctions {
   static void showSnackBar(String message) {
@@ -68,5 +69,13 @@ class THelperFunctions {
       wrapperList.add(Row(children: rowChildren));
     }
     return wrapperList;
+  }
+
+  static void launchUrl(String url) async {
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
