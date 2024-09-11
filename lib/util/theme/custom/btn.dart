@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tproject/common/styles/styles.dart';
+import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/constants/colors.dart';
 
-class ThemeButton {
-  ThemeButton._();
+class ThemeButtons {
+  ThemeButtons._();
 
-  // Btn primary light theme
-  static ElevatedButtonThemeData btnPrimaryLightTheme = ElevatedButtonThemeData(
+  // Btn primary theme
+  static ElevatedButtonThemeData btnPrimaryTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
       padding: const EdgeInsets.all(15),
@@ -17,7 +17,7 @@ class ThemeButton {
   );
 
   // Btn secondary
-  static ElevatedButtonThemeData btnSecondary = ElevatedButtonThemeData(
+  static ElevatedButtonThemeData btnSecondaryTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
       padding: const EdgeInsets.all(11),

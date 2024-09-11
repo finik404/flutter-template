@@ -1,107 +1,64 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:talktime/core/extensions/theme.dart';
+import 'package:tproject/util/constants/options.dart';
 
-/*
-  CGrid Component ----------------
- */
-class CGrid extends StatelessWidget {
-  // Variables ----------------
-  final int length;
-  final Function(BuildContext, int)? builder;
-  final dynamic child;
-  final ScrollController? controller;
-  final bool? noScroll;
-  final Future<void> Function()? onRefresh;
-  final EdgeInsetsGeometry? padding;
-  final double? aspect;
-  final int? crossCount;
-  final double? crossSpacing;
-  final double? mainSpacing;
-  final bool? isCustom;
-
-  // Props ----------------
-  const CGrid({
+class UIGrid extends StatelessWidget {
+  const UIGrid({
     super.key,
     required this.length,
-    this.builder,
-    this.child,
+    required this.child,
+    this.crossCount = WidgetsOptions.gridCrossCount,
+    this.spaceBetween = WidgetsOptions.gridSpaceBetween,
+    this.spaceBottom = WidgetsOptions.gridSpaceBottom,
+    this.hasScroll = WidgetsOptions.gridHasScroll,
+    this.padding = WidgetsOptions.gridPadding,
     this.controller,
     this.onRefresh,
-    this.noScroll = true,
-    this.padding,
-    this.aspect = 1 / 1.3,
-    this.crossCount = 2,
-    this.crossSpacing = 0,
-    this.mainSpacing = 5,
-    this.isCustom,
   });
 
-  // Builder ----------------
+  final int length;
+  final dynamic child;
+  final int crossCount;
+  final double spaceBetween, spaceBottom;
+  final bool hasScroll;
+  final EdgeInsetsGeometry padding;
+  final ScrollController? controller;
+  final Future<void> Function()? onRefresh;
+
   @override
   Widget build(BuildContext context) {
-    if (onRefresh != null) {
-      return RefreshIndicator(
-        onRefresh: onRefresh!,
-        color: context.primaryColor,
-        child: buildListView(context),
-      );
-    } else {
-      return buildListView(context);
-    }
-  }
+    // With dynamic height elements
+    Widget grid = AlignedGridView.count(
+      itemCount: length,
+      controller: controller,
+      padding: padding,
 
-  dynamic buildListView(BuildContext context) {
-    return MediaQuery.removePadding(
-        context: context,
-        removeTop: true,
-        child: isCustom == true
-            ? AlignedGridView.count(
-                itemCount: length,
-                controller: controller,
-                padding: padding,
-                shrinkWrap: noScroll ?? false,
-                physics: noScroll ?? false ? const NeverScrollableScrollPhysics() : const AlwaysScrollableScrollPhysics(),
-                crossAxisCount: crossCount!,
-                crossAxisSpacing: crossSpacing!,
-                mainAxisSpacing: mainSpacing!,
-                itemBuilder: (context, index) {
-                  if (builder != null) {
-                    return builder!(context, index);
-                  } else if (child != null) {
-                    if (child is Widget Function(int)) {
-                      return child(index);
-                    } else {
-                      return child;
-                    }
-                  }
-                  return Container();
-                },
-              )
-            : GridView.builder(
-                itemCount: length,
-                controller: controller,
-                padding: padding,
-                shrinkWrap: noScroll ?? false,
-                physics: noScroll ?? false ? const NeverScrollableScrollPhysics() : const AlwaysScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: crossCount!,
-                  childAspectRatio: aspect!,
-                  crossAxisSpacing: crossSpacing!,
-                  mainAxisSpacing: mainSpacing!,
-                ),
-                itemBuilder: (context, index) {
-                  if (builder != null) {
-                    return builder!(context, index);
-                  } else if (child != null) {
-                    if (child is Widget Function(int)) {
-                      return child(index);
-                    } else {
-                      return child;
-                    }
-                  }
-                  return Container();
-                },
-              ));
+      // Options grid
+      crossAxisCount: crossCount,
+      crossAxisSpacing: spaceBetween,
+      mainAxisSpacing: spaceBottom,
+
+      // No scroll
+      shrinkWrap: !hasScroll,
+      physics: !hasScroll ? const NeverScrollableScrollPhysics() : const AlwaysScrollableScrollPhysics(),
+
+      // Items
+      itemBuilder: (context, index) {
+        if (child is Widget Function(int)) {
+          return child(index);
+        } else {
+          return child;
+        }
+      },
+    );
+
+    // Grid with refresh indicator
+    return onRefresh != null
+        ? RefreshIndicator(
+            onRefresh: onRefresh!,
+            color: Theme.of(context).primaryColor,
+            child: grid,
+          )
+        : grid;
   }
 }

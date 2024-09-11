@@ -15,12 +15,6 @@ class Sizes {
   // BorderRadius
   static const double radius = 6.0;
 
-  // Grid
-  static const int gridCount = 2;
-  static const double gridAspect = 1 / 1.3;
-  static const double gridSpacing = 0.0;
-  static const double gridBottomSpacing = 0.0;
-
   // Divider
   static const double divider = 1.0;
 

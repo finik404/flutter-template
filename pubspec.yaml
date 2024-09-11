@@ -68,15 +68,22 @@ flutter:
 
   # --------------- FONTS --------------- #
   fonts:
-    - family: Circe-Bold
-      fonts:
-        - asset: assets/fonts/Circe-Bold.ttf
-    - family: Circe-Light
+    # Base font
+    - family: Circe
       fonts:
         - asset: assets/fonts/Circe-Light.ttf
-    - family: Circe-Regular
-      fonts:
+          weight: 300
         - asset: assets/fonts/Circe-Regular.ttf
-    - family: FontAwesome-Regular
+          weight: 400
+        - asset: assets/fonts/Circe-Bold.ttf
+          weight: 700
+
+    # Icons fontAwesome
+    - family: FontAwesome
       fonts:
+        - asset: assets/fonts/FontAwesome-Light.ttf
+          weight: 300
         - asset: assets/fonts/FontAwesome-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/FontAwesome-Bold.ttf
+          weight: 700

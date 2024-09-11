@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 
-/*
-  Disabled Component ----------------
- */
-class Disabled extends StatelessWidget {
-  // Variables ----------------
-  final Widget child;
-  final bool isDisabled;
-  final bool? noOpacity;
-
-  // Props ----------------
-  const Disabled({
+class UIDisabled extends StatelessWidget {
+  const UIDisabled({
     super.key,
     required this.isDisabled,
     required this.child,
     this.noOpacity,
   });
 
-  // Builder ----------------
+  final Widget child;
+  final bool isDisabled;
+  final bool? noOpacity;
+
   @override
   Widget build(BuildContext context) {
     return Opacity(

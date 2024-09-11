@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/util/constants/colors.dart';
 
-class ThemeText {
-  ThemeText._();
+class ThemeTexts {
+  ThemeTexts._();
 
   // Base styles
   static TextStyle baseTextStyles(double size, {FontWeight? weight}) {
     return const TextStyle().copyWith(fontSize: size, fontWeight: weight ?? FontWeight.normal, color: AppColors.text);
   }
 
-  // Text light theme
-  static TextTheme textLightTheme = TextTheme(
+  // Texts theme
+  static TextTheme textsTheme = TextTheme(
     // Text
     bodySmall: baseTextStyles(14),
     bodyMedium: baseTextStyles(16),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:tproject/features/auth/views/login.dart';
 import 'package:tproject/util/theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -11,12 +12,13 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       // No debug banner
       debugShowCheckedModeBanner: false,
-      // No Stretch effect on scroll
-      scrollBehavior: CustomScrollBehavior(),
 
       // Theme settings
       themeMode: ThemeMode.light,
       theme: AppTheme.lightTheme,
+
+      // Home screen
+      home: const LoginScreen(),
     );
   }
 }

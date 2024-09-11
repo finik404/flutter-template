@@ -1,76 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:talktime/config/constants/styles.dart';
+import 'package:tproject/util/constants/options.dart';
 
-/*
-  CList Component ----------------
- */
-class CList extends StatelessWidget {
-  // Variables ----------------
-  final int length;
-  final Function(BuildContext, int)? builder;
-  final dynamic child;
-  final ScrollController? controller;
-  final EdgeInsetsGeometry? padding;
-  final Axis? direction;
-  final bool? noScroll;
-  final double? separatorWidth;
-  final Function(BuildContext)? separator;
-  final bool? hasPad;
-  final double? height;
-
-  // Props ----------------
-  const CList({
+class UIList extends StatelessWidget {
+  const UIList({
     super.key,
     required this.length,
-    this.builder,
-    this.child,
-    this.controller,
-    this.padding,
-    this.direction = Axis.vertical,
-    this.noScroll = true,
-    this.separatorWidth,
+    required this.child,
+    this.direction = WidgetsOptions.listDirection,
+    this.hasScroll = WidgetsOptions.listHasScroll,
+    this.padding = WidgetsOptions.listPadding,
+    this.spaceBetween = WidgetsOptions.listSpaceBetween,
     this.separator,
-    this.hasPad,
-    this.height,
+    this.height = WidgetsOptions.listHeight,
+    this.controller,
   });
 
-  // Builder ----------------
+  final int length;
+  final dynamic child;
+  final Axis direction;
+  final bool hasScroll;
+  final EdgeInsetsGeometry padding;
+  final Function(BuildContext)? separator;
+  final double spaceBetween;
+  final double? height;
+  final ScrollController? controller;
+
   @override
   Widget build(BuildContext context) {
-    final list = MediaQuery.removePadding(
-        context: context,
-        removeTop: true,
-        child: ListView.separated(
-        itemCount: length,
-        controller: controller,
-        scrollDirection: direction ?? Axis.vertical,
-        padding: hasPad == true ? Styles.pad : padding,
-        shrinkWrap: noScroll ?? false,
-        physics: noScroll ?? false
-            ? const NeverScrollableScrollPhysics()
-            : const AlwaysScrollableScrollPhysics(),
-        separatorBuilder: (context, index) {
-          if (separator != null) {
-            return separator!(context);
+    Widget list = ListView.separated(
+      itemCount: length,
+      controller: controller,
+      padding: padding,
+
+      // Scroll options
+      scrollDirection: direction,
+      shrinkWrap: !hasScroll,
+      physics: !hasScroll ? const NeverScrollableScrollPhysics() : const AlwaysScrollableScrollPhysics(),
+
+      // Separator
+      separatorBuilder: (context, index) {
+        if (separator != null) {
+          // Custom separator
+          return separator!(context);
+        } else {
+          // Spacing
+          return SizedBox(
+            width: direction == Axis.horizontal ? spaceBetween : 0,
+            height: direction == Axis.vertical ? spaceBetween : 0,
+          );
+        }
+      },
+
+      // Items
+      itemBuilder: (context, index) {
+        if (child != null) {
+          if (child is Widget Function(int)) {
+            return child(index);
           } else {
-            return SizedBox(
-              width: direction == Axis.horizontal ? separatorWidth ?? 0 : 0,
-              height: direction == Axis.vertical ? separatorWidth ?? 0 : 0,
-            );
+            return child;
           }
-        },
-        itemBuilder: (context, index) {
-          if (builder != null) {
-            return builder!(context, index);
-          } else if (child != null) {
-            if (child is Widget Function(int)) {
-              return child(index);
-            } else {
-              return child;
-            }
-          }
-          return Container();
-        }));
+        }
+      },
+    );
 
     return height != null ? SizedBox(height: height, child: list) : list;
   }
