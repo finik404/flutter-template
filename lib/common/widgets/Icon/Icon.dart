@@ -23,23 +23,22 @@ class UIIcon extends StatelessWidget {
     IconThemeData defaultStyles = WidgetsOptions.iconStyles;
 
     // Icon weight
-    double? customWeight;
-    switch (weight) {
+    String? fontFamily;
+    switch (weight ?? defaultStyles.weight) {
       case FontWeight.w300:
-        customWeight = 300;
+        fontFamily = 'FontAwesomeLight';
         break;
       case FontWeight.bold:
-        customWeight = 700;
+        fontFamily = 'FontAwesomeBold';
         break;
       default:
-        customWeight = null;
+        fontFamily = 'FontAwesomeRegular';
     }
 
     return Icon(
-      IconData(int.parse('0x$code'), fontFamily: 'FontAwesome'),
+      IconData(int.parse('0x$code'), fontFamily: fontFamily),
       size: size ?? defaultStyles.size,
       color: color ?? defaultStyles.color,
-      weight: customWeight ?? defaultStyles.weight,
     );
   }
 }

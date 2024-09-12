@@ -18,6 +18,7 @@ class UIImage extends StatelessWidget {
     this.letterColor,
     this.letterWeight,
     this.icon,
+    this.decoration,
   });
 
   final String? image, label;
@@ -30,14 +31,23 @@ class UIImage extends StatelessWidget {
   final Color? letterColor;
   final FontWeight? letterWeight;
   final String? icon;
+  final BoxDecoration? decoration;
 
   @override
   Widget build(BuildContext context) {
     TextStyle letterStyles = WidgetsOptions.imageLetterStyles;
     String? placeholderIcon = WidgetsOptions.imagePlaceholderIcon;
+    BoxDecoration imageDecoration = decoration ?? WidgetsOptions.imageDecoration;
 
-    return ClipRRect(
-      borderRadius: borderRadius ?? WidgetsOptions.imageRadius,
+    return Container(
+      width: width,
+      height: height ?? width,
+      decoration: BoxDecoration(
+        color: bg ?? WidgetsOptions.imagePlaceholderBg,
+        borderRadius: borderRadius ?? WidgetsOptions.imageRadius,
+        boxShadow: imageDecoration.boxShadow,
+        border: imageDecoration.border,
+      ),
       child: image != null
           // Cached image
           ? Stack(
@@ -46,38 +56,31 @@ class UIImage extends StatelessWidget {
                 CachedNetworkImage(
                   imageUrl: image!,
                   fit: fit,
-                  width: width,
-                  height: height ?? width,
                   maxHeightDiskCache: 300,
                   maxWidthDiskCache: 300,
                   fadeInCurve: Curves.easeIn,
                   fadeInDuration: const Duration(milliseconds: 150),
                   fadeOutCurve: Curves.easeOut,
                   fadeOutDuration: const Duration(milliseconds: 200),
-                )
+                ),
               ],
             )
 
           // Placeholder
-          : Container(
-              width: width,
-              height: width,
-              decoration: BoxDecoration(color: bg ?? WidgetsOptions.imagePlaceholderBg, borderRadius: borderRadius ?? WidgetsOptions.imageRadius),
-              child: Center(
-                child: label != null && placeholderIcon == null
-                    ? UIText(
-                        label!.substring(0, 1).toUpperCase(),
-                        size: letterSize ?? letterStyles.fontSize,
-                        color: letterColor ?? letterStyles.color,
-                        weight: letterWeight ?? letterStyles.fontWeight,
-                      )
-                    : UIIcon(
-                        placeholderIcon ?? CIcons.camera,
-                        size: letterSize ?? letterStyles.fontSize,
-                        color: letterColor ?? letterStyles.color,
-                        weight: letterWeight ?? letterStyles.fontWeight,
-                      ),
-              ),
+          : Center(
+              child: label != null && placeholderIcon == null
+                  ? UIText(
+                      label!.substring(0, 1).toUpperCase(),
+                      size: letterSize ?? letterStyles.fontSize,
+                      color: letterColor ?? letterStyles.color,
+                      weight: letterWeight ?? letterStyles.fontWeight,
+                    )
+                  : UIIcon(
+                      placeholderIcon ?? CIcons.camera,
+                      size: letterSize ?? letterStyles.fontSize,
+                      color: letterColor ?? letterStyles.color,
+                      weight: letterWeight ?? letterStyles.fontWeight,
+                    ),
             ),
     );
   }

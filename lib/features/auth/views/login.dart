@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tproject/common/widgets/Checkbox.dart';
 import 'package:tproject/common/widgets/Icon/IconButton.dart';
+import 'package:tproject/common/widgets/Image.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/common/widgets/Toggle.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
+import 'package:tproject/util/theme/custom/btn.dart';
+
 
 /*
   Login Screen ----------------
@@ -52,11 +56,6 @@ class LoginScreenState extends State<LoginScreen> {
               // ]),
               // const SizedBox(height: 30),
               //
-              // // Btn
-              // Btn(S.of(context).sign_in, () => login(context)),
-
-              UIToggle(value, onChange: () => setState(() => value = !value))
-
             ]),
           )
         ]);

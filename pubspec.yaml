@@ -78,11 +78,15 @@ flutter:
           weight: 700
 
     # Icons fontAwesome
-    - family: FontAwesome
+    - family: FontAwesomeLight
       fonts:
         - asset: assets/fonts/FontAwesome-Light.ttf
           weight: 300
+    - family: FontAwesomeRegular
+      fonts:
         - asset: assets/fonts/FontAwesome-Regular.ttf
           weight: 400
+    - family: FontAwesomeBold
+      fonts:
         - asset: assets/fonts/FontAwesome-Bold.ttf
           weight: 700

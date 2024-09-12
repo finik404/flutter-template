@@ -4,7 +4,7 @@ import 'package:tproject/util/constants/options.dart';
 class UIClickArea extends StatelessWidget {
   const UIClickArea({
     super.key,
-    required this.onTap,
+    this.onTap,
     required this.child,
     this.onLongTap,
     this.borderRadius,
@@ -13,7 +13,7 @@ class UIClickArea extends StatelessWidget {
     this.padding,
   });
 
-  final Function() onTap;
+  final Function()? onTap;
   final Widget child;
   final BorderRadius? borderRadius;
   final double? radius;

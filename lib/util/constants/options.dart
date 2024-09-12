@@ -16,7 +16,12 @@ class WidgetsOptions {
   static IconThemeData iconStyles = Theme.of(Get.context!).iconTheme;
 
   // Button
-  static const int Button = 2;
+  static ButtonStyle buttonStyles = Theme.of(Get.context!).elevatedButtonTheme.style!;
+  static TextStyle buttonIconStyles =
+      const TextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary);
+  static const double buttonSpaceBetween = Sizes.spaceSm;
+  static const bool buttonIsRightIcon = false;
+  static const bool buttonIsFullWidth = true;
 
   // Grid
   static const int gridCrossCount = 2;
@@ -55,7 +60,7 @@ class WidgetsOptions {
 
   // IconButton
   static const double iconButtonRadius = 50;
-  static const EdgeInsets iconButtonPadding = EdgeInsets.all(10);
+  static EdgeInsets iconButtonPadding = Styles.pdClick;
 
   // Image
   static const BoxFit imageFit = BoxFit.cover;
@@ -65,14 +70,33 @@ class WidgetsOptions {
   static Color imageBg = Theme.of(Get.context!).scaffoldBackgroundColor;
   static Color imagePlaceholderBg = Theme.of(Get.context!).scaffoldBackgroundColor;
   static String? imagePlaceholderIcon = CIcons.camera;
+  static const BoxDecoration imageDecoration = BoxDecoration();
 
   // Toggle
   static Color toggleColor = Theme.of(Get.context!).colorScheme.primary.withOpacity(0.4);
   static Color toggleActiveColor = Theme.of(Get.context!).primaryColor;
   static const double toggleWidth = 48;
   static const double toggleHeight = 24;
-  static const double toggleThumbSize = 25;
+  static const double toggleThumbSize = 20;
+  static const double toggleThumbSideBetween = 2;
   static Color toggleThumbColor = Theme.of(Get.context!).scaffoldBackgroundColor;
   static Color toggleThumbActiveColor = Theme.of(Get.context!).scaffoldBackgroundColor;
   static const int toggleDuration = 200;
+  static const BoxDecoration toggleDecoration = BoxDecoration();
+  static const BoxDecoration toggleThumbDecoration = BoxDecoration();
+
+  // CheckBox
+  static const double checkBoxSize = 20;
+  static const double checkBoxRadius = 3;
+  static const double checkBoxIconSize = 0.5;
+  static TextStyle checkBoxIconStyles = const TextStyle().copyWith(fontWeight: FontWeight.bold, color: Theme.of(Get.context!).primaryColor);
+  static EdgeInsets checkBoxClickPadding = Styles.pdClick;
+  static const double checkBoxClickRadius = 20;
+  static String checkBoxIcon = CIcons.check;
+  static BoxDecoration Function(bool) checkBoxDecoration = (bool value) {
+    return BoxDecoration(
+      borderRadius: BorderRadius.circular(checkBoxRadius),
+      border: Border.all(color: value ? Theme.of(Get.context!).primaryColor : Theme.of(Get.context!).primaryColor.withOpacity(0.5), width: 2),
+    );
+  };
 }

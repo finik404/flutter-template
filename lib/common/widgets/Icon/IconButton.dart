@@ -14,7 +14,7 @@ class UIIconButton extends StatelessWidget {
     this.color,
     this.weight,
     this.onLongTap,
-    this.padding = WidgetsOptions.iconButtonPadding,
+    this.padding,
     this.radius = WidgetsOptions.iconButtonRadius,
     this.borderRadius,
     this.splashColor,
@@ -36,7 +36,7 @@ class UIIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return UIClickArea(
       // ClickArea options
-      padding: padding,
+      padding: padding ?? WidgetsOptions.iconButtonPadding,
       borderRadius: borderRadius,
       radius: radius,
 

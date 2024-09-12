@@ -1,38 +1,28 @@
 // import 'package:flutter/gestures.dart';
 // import 'package:flutter/material.dart';
-// import 'package:talktime/config/constants/colors.dart';
-// import 'package:url_launcher/url_launcher.dart';
 //
-// /*
-//   Texts Component ----------------
-//  */
-// class Texts extends StatelessWidget {
-//   // Variables ----------------
-//   final List<dynamic> children;
-//   final double? size;
-//   final FontWeight? weight;
-//   final Color? color;
-//   final Color? linkColor;
-//   final TextAlign? align;
-//   final double? height;
-//
-//   // Props ----------------
-//   const Texts(
+// class UITexts extends StatelessWidget {
+//   const UITexts(
 //     this.children, {
 //     super.key,
-//     this.size = 16,
-//     this.weight = FontWeight.normal,
+//     this.size,
 //     this.color,
+//     this.weight,
 //     this.linkColor,
+//     this.lineHeight,
 //     this.align,
-//     this.height,
 //   });
+//
+//   final List<dynamic> children;
+//   final double? size, lineHeight;
+//   final FontWeight? weight;
+//   final Color? color, linkColor;
+//   final TextAlign? align;
 //
 //   // Builder ----------------
 //   @override
 //   Widget build(BuildContext context) {
 //     List<InlineSpan> textSpans = [];
-//     Color customColor = color ?? AppColors.black;
 //
 //     for (var child in children) {
 //       if (child is String) {
@@ -83,10 +73,11 @@
 //       }
 //     }
 //
+//     // Texts
 //     return RichText(
 //       textAlign: align ?? TextAlign.start,
 //       text: TextSpan(
-//         style: TextStyle(fontSize: size, color: customColor, fontWeight: weight, height: height),
+//         style: TextStyle(fontSize: size, color: color, fontWeight: weight, height: lineHeight),
 //         children: textSpans,
 //       ),
 //     );
