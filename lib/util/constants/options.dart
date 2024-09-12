@@ -9,13 +9,13 @@ import 'package:tproject/util/constants/styles.dart';
 class WidgetsOptions {
   WidgetsOptions._();
 
-  // Text
+  // --------------- TEXT --------------- //
   static TextStyle textStyles = Theme.of(Get.context!).textTheme.bodyMedium!;
 
-  // Icon
+  // --------------- ICON --------------- //
   static IconThemeData iconStyles = Theme.of(Get.context!).iconTheme;
 
-  // Button
+  // --------------- BUTTON --------------- //
   static ButtonStyle buttonStyles = Theme.of(Get.context!).elevatedButtonTheme.style!;
   static TextStyle buttonIconStyles =
       const TextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary);
@@ -23,21 +23,15 @@ class WidgetsOptions {
   static const bool buttonIsRightIcon = false;
   static const bool buttonIsFullWidth = true;
 
-  // Grid
-  static const int gridCrossCount = 2;
-  static const double gridSpaceBetween = Sizes.spaceSm;
-  static const double gridSpaceBottom = Sizes.spaceSm;
-  static const bool gridHasScroll = false;
-  static const EdgeInsets gridPadding = EdgeInsets.all(0);
+  // --------------- INPUT --------------- //
 
-  // List
-  static const Axis listDirection = Axis.vertical;
-  static const bool listHasScroll = false;
-  static const EdgeInsets listPadding = EdgeInsets.symmetric(horizontal: Sizes.spaceSm);
-  static const double listSpaceBetween = Sizes.spaceSm;
-  static const double? listHeight = null;
+  // --------------- SELECT --------------- //
 
-  // TextLink
+  // --------------- ICONBUTTON --------------- //
+  static const double iconButtonRadius = 50;
+  static EdgeInsets iconButtonPadding = Styles.pdClick;
+
+  // --------------- TEXTLINK --------------- //
   static Color textLinkColor = Theme.of(Get.context!).primaryColor;
   static TextStyle textLinkStyles = Theme.of(Get.context!).textTheme.bodyMedium!;
   static Color textLinkIconColor = Theme.of(Get.context!).primaryColor;
@@ -49,20 +43,32 @@ class WidgetsOptions {
   static const double textLinkClickRadius = 5;
   static const EdgeInsets textLinkClickPadding = EdgeInsets.symmetric(horizontal: 5);
 
-  // Refresh indicator
+  // --------------- TEXTS --------------- //
+
+  // --------------- LIST --------------- //
+  static const Axis listDirection = Axis.vertical;
+  static const bool listHasScroll = false;
+  static const EdgeInsets listPadding = EdgeInsets.symmetric(horizontal: Sizes.spaceSm);
+  static const double listSpaceBetween = Sizes.spaceSm;
+  static const double? listHeight = null;
+
+  // --------------- GRID --------------- //
+  static const int gridCrossCount = 2;
+  static const double gridSpaceBetween = Sizes.spaceSm;
+  static const double gridSpaceBottom = Sizes.spaceSm;
+  static const bool gridHasScroll = false;
+  static const EdgeInsets gridPadding = EdgeInsets.all(0);
+
+  // --------------- REFRESH --------------- //
   static Color refreshColor = Theme.of(Get.context!).primaryColor;
   static Color refreshBackground = Theme.of(Get.context!).scaffoldBackgroundColor;
 
-  // ClickArea
+  // --------------- CLICKAREA --------------- //
   static Color clickAreaColor = AppColors.black.withOpacity(0.1);
   static const double clickAreaRadius = Sizes.radius;
   static EdgeInsets clickAreaPadding = Styles.noPd;
 
-  // IconButton
-  static const double iconButtonRadius = 50;
-  static EdgeInsets iconButtonPadding = Styles.pdClick;
-
-  // Image
+  // --------------- IMAGE --------------- //
   static const BoxFit imageFit = BoxFit.cover;
   static BorderRadiusGeometry imageRadius = Styles.br;
   static TextStyle imageLetterStyles =
@@ -72,7 +78,7 @@ class WidgetsOptions {
   static String? imagePlaceholderIcon = CIcons.camera;
   static const BoxDecoration imageDecoration = BoxDecoration();
 
-  // Toggle
+  // --------------- TOGGLE --------------- //
   static Color toggleColor = Theme.of(Get.context!).colorScheme.primary.withOpacity(0.4);
   static Color toggleActiveColor = Theme.of(Get.context!).primaryColor;
   static const double toggleWidth = 48;
@@ -85,7 +91,7 @@ class WidgetsOptions {
   static const BoxDecoration toggleDecoration = BoxDecoration();
   static const BoxDecoration toggleThumbDecoration = BoxDecoration();
 
-  // CheckBox
+  // --------------- CHECKBOX --------------- //
   static const double checkBoxSize = 20;
   static const double checkBoxRadius = 3;
   static const double checkBoxIconSize = 0.5;
@@ -99,4 +105,16 @@ class WidgetsOptions {
       border: Border.all(color: value ? Theme.of(Get.context!).primaryColor : Theme.of(Get.context!).primaryColor.withOpacity(0.5), width: 2),
     );
   };
+
+// --------------- RADIOBUTTON --------------- //
+
+// --------------- TOAST --------------- //
+
+// --------------- ALERT --------------- //
+
+// --------------- ACTIONMENU --------------- //
+
+// --------------- SKELETON --------------- //
+
+// --------------- HTMLTOTEXT --------------- //
 }
