@@ -12,14 +12,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # API
+  # Http
   dio: ^5.7.0
-
-  # Local storage
-  get_storage: ^2.1.1
 
   # State management
   get: ^4.6.6
+
+  # Local storage
+  get_storage: ^2.1.1
 
   # Svg
   flutter_svg: ^2.0.10+1
@@ -36,6 +36,9 @@ dependencies:
   # Web links
   url_launcher: ^6.3.0
 
+  # Loading effect
+  shimmer: ^3.0.0
+
   # Dynamic height elements in grid
   flutter_staggered_grid_view: ^0.7.0
 
@@ -46,8 +49,9 @@ dependencies:
   firebase_core: ^3.4.0
   firebase_messaging: 15.1.1
 
-
-  shimmer: ^3.0.0
+  # Html to text
+  flutter_widget_from_html_core: ^0.15.2
+  html: ^0.15.4
 
 
 # --------------- DEV PACKAGES --------------- #

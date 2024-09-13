@@ -4,6 +4,7 @@ import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/constants/icons.dart';
 import 'package:tproject/util/constants/sizes.dart';
 import 'package:tproject/util/constants/styles.dart';
+import 'package:tproject/util/theme/themes.dart';
 
 // Default options for UI widgets
 class TOptions {
@@ -24,6 +25,7 @@ class TOptions {
   static const bool buttonIsFullWidth = true;
 
   // --------------- INPUT --------------- //
+  static InputDecorationTheme inputStyles = Themes.inputTheme;
 
   // --------------- SELECT --------------- //
 
@@ -114,7 +116,11 @@ class TOptions {
 
 // --------------- ACTIONMENU --------------- //
 
-// --------------- SKELETON --------------- //
+  // --------------- SKELETON --------------- //
+  static Color skeletonColor1 = Colors.grey[300]!;
+  static Color skeletonColor2 = Colors.grey[100]!;
+  static const double skeletonHeight = 18;
+  static const double skeletonRadius = TSizes.radius;
 
 // --------------- HTMLTOTEXT --------------- //
 }

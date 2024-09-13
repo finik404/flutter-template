@@ -1,48 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:tproject/util/constants/options.dart';
 
-/*
-  SkeletonBlock Component ----------------
- */
-class SkeletonBlock extends StatelessWidget {
-  // Variables ----------------
-  final double? height;
-  final dynamic width;
-  final double? radius;
-
-  // Props ----------------
-  const SkeletonBlock({
+class UISkeleton extends StatelessWidget {
+  const UISkeleton({
     super.key,
-    this.height,
-    this.width,
-    this.radius,
+    required this.width,
+    this.height = TOptions.skeletonHeight,
+    this.radius = TOptions.skeletonRadius,
   });
+
+  final double width;
+  final double height;
+  final double radius;
 
   @override
   Widget build(BuildContext context) {
-    // Width is %
-    if (width is String && width.contains('%')) {
-      return LayoutBuilder(
-        builder: (context, constraints) {
-          final widthPercentage = double.tryParse(width.replaceAll('%', '')) ?? 100;
-          final calculatedWidth = constraints.maxWidth * (widthPercentage / 100);
-          return buildContainer(calculatedWidth);
-        },
-      );
-    }
-
-    // Width is int
-    double? calculatedWidth = width is double || width is int ? width.toDouble() : null;
-    return buildContainer(calculatedWidth);
-  }
-
-  // Container
-  Widget buildContainer(double? width) {
-    return Container(
-      width: width,
-      height: height ?? 18,
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(radius ?? 10),
+    return Shimmer.fromColors(
+      baseColor: TOptions.skeletonColor1,
+      highlightColor: TOptions.skeletonColor2,
+      child: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          borderRadius: BorderRadius.circular(radius),
+        ),
       ),
     );
   }

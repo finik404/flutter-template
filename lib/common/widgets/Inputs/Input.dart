@@ -8,14 +8,15 @@ class UIInput extends StatefulWidget {
     this.label,
     this.value, {
     super.key,
-    this.isPlaceholder,
-    this.padding,
-    this.bg,
-    this.autofocus,
     this.validate,
+    this.isPlaceholder,
+    this.autofocus,
+    this.bg,
+    this.padding,
+    this.onSubmit,
+    this.onChange,
 
     // this.type,
-    // this.validator,
     // this.onChange,
     // this.iconStart,
     // this.iconEnd,
@@ -49,19 +50,18 @@ class UIInput extends StatefulWidget {
     // this.maxLines,
     // this.focusNode,
     // this.maxLength,
-    // this.onSubmit,
   });
 
   final String label;
   final TextEditingController value;
-  final EdgeInsets? padding;
+  final List<Function(String?)?>? validate;
   final bool? autofocus, isPlaceholder;
   final Color? bg;
-  final List<Function(String?)?>? validate;
+  final EdgeInsets? padding;
+  final Function()? onSubmit;
+  final Function(String)? onChange;
 
   // final InputTypes? type;
-  // final String? Function(String?)? validator;
-  // final Function(String)? onChange;
   // final bool? isPlaceholder;
   // final bool? hasClear;
   // final String? iconStart;
@@ -95,7 +95,6 @@ class UIInput extends StatefulWidget {
   // final int? maxLines;
   // final FocusNode? focusNode;
   // final int? maxLength;
-  // final Function()? onSubmit;
 
   // Builder ----------------
   @override
@@ -148,10 +147,16 @@ class UIInputState extends State<UIInput> {
 
     return TextFormField(
       controller: widget.value,
-      autofocus: widget.autofocus ?? false,
 
       // Validation
       validator: (value) => TValidator.validate(value, widget.validate),
+
+      // onChange
+      onChanged: widget.onChange,
+      // onSubmit
+      onFieldSubmitted: widget.onSubmit != null ? (value) => widget.onSubmit!() : null,
+      // Autofocus
+      autofocus: widget.autofocus ?? false,
 
       // Styles
       decoration: InputDecoration(
@@ -167,7 +172,6 @@ class UIInputState extends State<UIInput> {
         // Background
         filled: widget.bg != null,
         fillColor: widget.bg ?? Colors.transparent,
-
 
         // counterText: '',
         // errorStyle: const TextStyle(color: TColors.red),
@@ -204,6 +208,8 @@ class UIInputState extends State<UIInput> {
         //                 },
         //               )
         //             : null,
+
+        // Borders
         // enabledBorder: OutlineInputBorder(
         //   borderRadius: borderRadius,
         //   borderSide: commonBorderSide,
@@ -225,18 +231,8 @@ class UIInputState extends State<UIInput> {
         //   borderSide: commonBorderSide,
         // ),
       ),
-      // enabled: widget.enabled,
       // keyboardType: textType,
       // obscureText: widget.type == InputTypes.password && !isShowPassword,
-      // onFieldSubmitted: widget.onSubmit != null ? (value) => widget.onSubmit!() : null,
-      // validator: (value) {
-      //   final error = widget.validator?.call(value);
-      //   setState(() {
-      //     hasError = error != null;
-      //   });
-      //   return error;
-      // },
-      // onChanged: widget.onChange,
       // focusNode: widget.focusNode,
       // maxLength: widget.maxLength,
       // minLines: widget.minLines ?? 1,
