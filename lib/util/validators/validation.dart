@@ -1,71 +1,59 @@
 class TValidator {
-  // Схема для проверки значения
-  static String? required(String? value) {
-    if (value == null || value.isEmpty) {
-      return "Вы не выбрали изображение";
+  TValidator._();
+
+  // Validate ---------------
+  static String? validate(String? value, List<Function(String?)?>? rules) {
+    if (rules == null || rules.isEmpty) {
+      return null;
+    }
+
+    for (var rule in rules) {
+      final result = rule!(value);
+      if (result != null) {
+        return result;
+      }
     }
     return null;
   }
 
-  // Схема для проверки значения не меньше заданного
-  static String? min(String? value, int length) {
+  // --------------- RULES --------------- //
+
+  // Required
+  static String? required(String? value) {
     if (value == null || value.isEmpty) {
       return "Это поле не может быть пустым";
     }
     return null;
   }
 
-  // Схема для проверки значения не больше заданного
-  static String? max(String? value, int length) {
-    if (value != null && value.length > length) {
-      return "Не может быть более ${length} символов";
-    }
-    return null;
+  // Min
+  static Function(String?) min(int length) {
+    return (String? value) {
+      if (value != null && value.length < length) {
+        return "Поле должно быть не менее $length символов";
+      }
+      return null;
+    };
   }
 
-  // Схема для проверки значения на валидность email
+  // Max
+  static Function(String?) max(int length) {
+    return (String? value) {
+      if (value != null && value.length > length) {
+        return "Поле не может быть более $length символов";
+      }
+      return null;
+    };
+  }
+
+  // Email
   static String? email(String? value) {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = RegExp(pattern.toString());
     if (value == null || !regex.hasMatch(value)) {
-      return "Введите корректный адрес электронной почты";
+      return "Некорректный адрес электронной почты";
     }
-    return null;
-  }
-
-  // Схема для проверки значения на валидность email
-  static String? address(String? value) {
-    Pattern pattern = r'^(http|https):\/\/[^\s$.?#].[^\s]*$';
-    RegExp regex = RegExp(pattern.toString());
-    if (value == null || !regex.hasMatch(value)) {
-      return 'Неверный адресс';
-    }
-    return null;
-  }
-
-  // Схема для проверки значения на валидность email или нескольких email через запятую
-  static String? emails(String? value) {
-    if (value == null || value.isEmpty) {
-      return "Это поле не может быть пустым";
-    }
-
-    // Разбиваем введенные значения по запятой
-    List<String> emailsList = value.split(',');
-
-    // Проверяем каждый email в списке
-    for (var email in emailsList) {
-      email = email.trim(); // Удаляем возможные пробелы
-      Pattern pattern =
-          r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-      RegExp regex = RegExp(pattern.toString());
-
-      // Если хотя бы один email невалиден, возвращаем ошибку
-      if (!regex.hasMatch(email)) {
-        return "Введите действительный адрес электронной почты";
-      }
-    }
-
     return null;
   }
 }

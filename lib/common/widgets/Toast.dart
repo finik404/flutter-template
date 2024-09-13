@@ -106,17 +106,17 @@
 //       constraints: BoxConstraints(maxWidth: context.screenWidth * 0.8),
 //       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
 //       decoration: BoxDecoration(
-//         color: AppColors.white,
+//         color: TColors.white,
 //         borderRadius: BorderRadius.circular(30),
-//         border: Border.all(color: AppColors.grayLight),
+//         border: Border.all(color: TColors.grayLight),
 //       ),
 //       child: Row(mainAxisSize: MainAxisSize.min, children: [
-//         CIcon(isWarning == true ? CIcons.info_circle : CIcons.check,
+//         CIcon(isWarning == true ? TIcons.info_circle : TIcons.check,
 //             color: isWarning == true ? const Color(0xfffF37A7A) : Colors.green, size: 18),
 //         const SizedBox(width: 15),
 //         Flexible(
 //             child: Wrap(children: [
-//           CText(message, color: AppColors.black, size: 12),
+//           CText(message, color: TColors.black, size: 12),
 //         ])),
 //       ]),
 //     );

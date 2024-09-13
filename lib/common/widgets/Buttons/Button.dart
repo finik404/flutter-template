@@ -20,9 +20,9 @@ class UIButton extends StatelessWidget {
     this.iconSize,
     this.iconColor,
     this.iconWeight,
-    this.spaceBetween = WidgetsOptions.buttonSpaceBetween,
-    this.isRightIcon = WidgetsOptions.buttonIsRightIcon,
-    this.isFullWidth = WidgetsOptions.buttonIsFullWidth,
+    this.spaceBetween = TOptions.buttonSpaceBetween,
+    this.isRightIcon = TOptions.buttonIsRightIcon,
+    this.isFullWidth = TOptions.buttonIsFullWidth,
   });
 
   final String label;
@@ -40,8 +40,8 @@ class UIButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ButtonStyle buttonStyles = WidgetsOptions.buttonStyles;
-    TextStyle iconStyles = WidgetsOptions.buttonIconStyles;
+    ButtonStyle buttonStyles = TOptions.buttonStyles;
+    TextStyle iconStyles = TOptions.buttonIconStyles;
 
     Widget button = ElevatedButton(
       // onTap

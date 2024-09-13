@@ -6,12 +6,12 @@ class UIList extends StatelessWidget {
     super.key,
     required this.length,
     required this.child,
-    this.direction = WidgetsOptions.listDirection,
-    this.hasScroll = WidgetsOptions.listHasScroll,
-    this.padding = WidgetsOptions.listPadding,
-    this.spaceBetween = WidgetsOptions.listSpaceBetween,
+    this.direction = TOptions.listDirection,
+    this.hasScroll = TOptions.listHasScroll,
+    this.padding = TOptions.listPadding,
+    this.spaceBetween = TOptions.listSpaceBetween,
     this.separator,
-    this.height = WidgetsOptions.listHeight,
+    this.height = TOptions.listHeight,
     this.controller,
     this.onRefresh,
   });
@@ -71,8 +71,8 @@ class UIList extends StatelessWidget {
     return onRefresh != null
         ? RefreshIndicator(
             onRefresh: onRefresh!,
-            color: WidgetsOptions.refreshColor,
-            backgroundColor: WidgetsOptions.refreshBackground,
+            color: TOptions.refreshColor,
+            backgroundColor: TOptions.refreshBackground,
             child: list,
           )
         : list;

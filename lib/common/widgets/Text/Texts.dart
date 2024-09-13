@@ -48,7 +48,7 @@
 //               text: text,
 //               style: TextStyle(
 //                 fontSize: childSize ?? size,
-//                 color: childColor ?? linkColor ?? AppColors.blue,
+//                 color: childColor ?? linkColor ?? TColors.blue,
 //                 fontWeight: childWeight ?? weight,
 //                 height: childHeight,
 //               ),

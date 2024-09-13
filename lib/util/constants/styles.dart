@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/util/constants/sizes.dart';
 
-class Styles {
-  Styles._();
+class TStyles {
+  TStyles._();
 
   // BorderRadius
-  static BorderRadius br = BorderRadius.circular(Sizes.radius);
+  static BorderRadius br = BorderRadius.circular(TSizes.radius);
 
   // Padding
   static EdgeInsets pd = const EdgeInsets.symmetric(vertical: 16, horizontal: 27);

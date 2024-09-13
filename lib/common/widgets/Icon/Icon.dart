@@ -20,7 +20,7 @@ class UIIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Default styles
-    IconThemeData defaultStyles = WidgetsOptions.iconStyles;
+    IconThemeData defaultStyles = TOptions.iconStyles;
 
     // Icon weight
     String? fontFamily;

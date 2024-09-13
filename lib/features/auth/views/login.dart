@@ -1,70 +1,58 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tproject/common/widgets/Checkbox.dart';
-import 'package:tproject/common/widgets/Icon/IconButton.dart';
-import 'package:tproject/common/widgets/Image.dart';
-import 'package:tproject/common/widgets/Text/Text.dart';
-import 'package:tproject/common/widgets/Toggle.dart';
+import 'package:get/get.dart';
+import 'package:tproject/common/widgets/Buttons/Button.dart';
+import 'package:tproject/common/widgets/Inputs/Input.dart';
+import 'package:tproject/features/auth/controllers/login.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
-import 'package:tproject/util/theme/custom/btn.dart';
+import 'package:tproject/util/validators/validation.dart';
 
-
-/*
-  Login Screen ----------------
- */
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
-  LoginScreenState createState() => LoginScreenState();
-}
-
-/*
-  State Component ----------------
- */
-class LoginScreenState extends State<LoginScreen> {
-  // Variables ----------------
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final TextEditingController emailInput = TextEditingController();
-  final TextEditingController passwordInput = TextEditingController();
-  bool value = false;
-
-  // Builder ----------------
-  @override
   Widget build(BuildContext context) {
-    return AuthLayout(
-        label: 'S.of(context).login',
+    final controller = Get.put(LoginController());
 
-        // Content
-        children: [
-          Form(
-            key: formKey,
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              // E-mail input
-              // Input(S.of(context).email, emailInput,
-              //     type: InputTypes.email, validator: Validator.validate(context, [Validator.required, Validator.email])),
-              // const SizedBox(height: 20),
-              //
-              // // Password input
-              // Input(S.of(context).password, passwordInput, type: InputTypes.password, validator: Validator.validate(context, [Validator.required])),
-              // const SizedBox(height: 12),
-              //
+    return AuthLayout(
+      label: 'Авторизация',
+
+      // Content
+      children: [
+        Form(
+          key: controller.formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Email input
+              UIInput(
+                'Email',
+                controller.emailInput,
+                validate: const [TValidator.required, TValidator.email],
+              ),
+              const SizedBox(height: 20),
+
+              // Password input
+              UIInput(
+                'Пароль',
+                controller.passwordInput,
+                validate: [TValidator.required, TValidator.min(6), TValidator.max(60)],
+              ),
+              const SizedBox(height: 12),
+
               // // Forgot password
               // Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               //   const SizedBox(),
-              //   TextLink(S.of(context).forgot_password, size: 14, color: context.theme.secondary, onTap: () => navigate(context, const ResetScreen())),
+              //   TextLink(S.of(context).forgot_password,
+              //       size: 14, color: context.theme.secondary, onTap: () => navigate(context, const ResetScreen())),
               // ]),
               // const SizedBox(height: 30),
-              //
-            ]),
-          )
-        ]);
-  }
 
-// // Methods ----------------
-// Future<void> login(BuildContext context) async {
-//   if (formKey.currentState!.validate()) {
-//     pushReplacementWithoutNavBar(context, FadeRoute(const Tabs()));
-//   }
-// }
+              // Submit button
+              UIButton('submit', () => controller.onLogin())
+            ],
+          ),
+        ),
+      ],
+    );
+  }
 }

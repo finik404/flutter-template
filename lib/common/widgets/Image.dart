@@ -11,7 +11,7 @@ class UIImage extends StatelessWidget {
     this.label,
     required this.width,
     this.height,
-    this.fit = WidgetsOptions.imageFit,
+    this.fit = TOptions.imageFit,
     this.borderRadius,
     this.bg,
     this.letterSize,
@@ -35,16 +35,16 @@ class UIImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle letterStyles = WidgetsOptions.imageLetterStyles;
-    String? placeholderIcon = WidgetsOptions.imagePlaceholderIcon;
-    BoxDecoration imageDecoration = decoration ?? WidgetsOptions.imageDecoration;
+    TextStyle letterStyles = TOptions.imageLetterStyles;
+    String? placeholderIcon = TOptions.imagePlaceholderIcon;
+    BoxDecoration imageDecoration = decoration ?? TOptions.imageDecoration;
 
     return Container(
       width: width,
       height: height ?? width,
       decoration: BoxDecoration(
-        color: bg ?? WidgetsOptions.imagePlaceholderBg,
-        borderRadius: borderRadius ?? WidgetsOptions.imageRadius,
+        color: bg ?? TOptions.imagePlaceholderBg,
+        borderRadius: borderRadius ?? TOptions.imageRadius,
         boxShadow: imageDecoration.boxShadow,
         border: imageDecoration.border,
       ),
@@ -52,7 +52,7 @@ class UIImage extends StatelessWidget {
           // Cached image
           ? Stack(
               children: [
-                Container(width: width, height: width, color: WidgetsOptions.imageBg),
+                Container(width: width, height: width, color: TOptions.imageBg),
                 CachedNetworkImage(
                   imageUrl: image!,
                   fit: fit,
@@ -76,7 +76,7 @@ class UIImage extends StatelessWidget {
                       weight: letterWeight ?? letterStyles.fontWeight,
                     )
                   : UIIcon(
-                      placeholderIcon ?? CIcons.camera,
+                      placeholderIcon ?? TIcons.camera,
                       size: letterSize ?? letterStyles.fontSize,
                       color: letterColor ?? letterStyles.color,
                       weight: letterWeight ?? letterStyles.fontWeight,

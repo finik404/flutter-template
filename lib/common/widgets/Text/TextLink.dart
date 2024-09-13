@@ -21,10 +21,10 @@ class UITextLink extends StatelessWidget {
     this.iconColor,
     this.iconSize,
     this.iconWeight,
-    this.spaceBetween = WidgetsOptions.textLinkSpaceBetween,
-    this.isRightIcon = WidgetsOptions.textLinkIsRightIcon,
-    this.radius = WidgetsOptions.textLinkClickRadius,
-    this.padding = WidgetsOptions.textLinkClickPadding,
+    this.spaceBetween = TOptions.textLinkSpaceBetween,
+    this.isRightIcon = TOptions.textLinkIsRightIcon,
+    this.radius = TOptions.textLinkClickRadius,
+    this.padding = TOptions.textLinkClickPadding,
   });
 
   final String text;
@@ -43,7 +43,7 @@ class UITextLink extends StatelessWidget {
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
-    TextStyle defaultTextStyles = WidgetsOptions.textLinkStyles;
+    TextStyle defaultTextStyles = TOptions.textLinkStyles;
 
     return UIClickArea(
       radius: radius,
@@ -53,7 +53,7 @@ class UITextLink extends StatelessWidget {
       onTap: () {
         if (screen != null) Get.to(screen);
         if (onTap != null) onTap!();
-        if (webLink != null) THelperFunctions.launchUrl(webLink!);
+        if (webLink != null) THelper.launchUrl(webLink!);
       },
 
       // Content
@@ -67,15 +67,15 @@ class UITextLink extends StatelessWidget {
               margin: EdgeInsets.only(right: spaceBetween),
               child: UIIcon(
                 icon!,
-                color: iconColor ?? WidgetsOptions.textLinkIconColor,
-                size: iconSize ?? WidgetsOptions.textLinkIconSize,
-                weight: iconWeight ?? WidgetsOptions.textLinkIconWeight,
+                color: iconColor ?? TOptions.textLinkIconColor,
+                size: iconSize ?? TOptions.textLinkIconSize,
+                weight: iconWeight ?? TOptions.textLinkIconWeight,
               ),
             ),
 
           // Text
           UIText(text,
-              color: color ?? WidgetsOptions.textLinkColor,
+              color: color ?? TOptions.textLinkColor,
               size: size ?? defaultTextStyles.fontSize,
               weight: weight ?? defaultTextStyles.fontWeight,
               styles: styles),
@@ -86,9 +86,9 @@ class UITextLink extends StatelessWidget {
               margin: EdgeInsets.only(left: spaceBetween),
               child: UIIcon(
                 icon!,
-                color: iconColor ?? WidgetsOptions.textLinkIconColor,
-                size: iconSize ?? WidgetsOptions.textLinkIconSize,
-                weight: iconWeight ?? WidgetsOptions.textLinkIconWeight,
+                color: iconColor ?? TOptions.textLinkIconColor,
+                size: iconSize ?? TOptions.textLinkIconSize,
+                weight: iconWeight ?? TOptions.textLinkIconWeight,
               ),
             ),
         ],

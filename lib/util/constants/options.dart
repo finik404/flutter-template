@@ -6,8 +6,8 @@ import 'package:tproject/util/constants/sizes.dart';
 import 'package:tproject/util/constants/styles.dart';
 
 // Default options for UI widgets
-class WidgetsOptions {
-  WidgetsOptions._();
+class TOptions {
+  TOptions._();
 
   // --------------- TEXT --------------- //
   static TextStyle textStyles = Theme.of(Get.context!).textTheme.bodyMedium!;
@@ -19,7 +19,7 @@ class WidgetsOptions {
   static ButtonStyle buttonStyles = Theme.of(Get.context!).elevatedButtonTheme.style!;
   static TextStyle buttonIconStyles =
       const TextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary);
-  static const double buttonSpaceBetween = Sizes.spaceSm;
+  static const double buttonSpaceBetween = TSizes.spaceSm;
   static const bool buttonIsRightIcon = false;
   static const bool buttonIsFullWidth = true;
 
@@ -29,7 +29,7 @@ class WidgetsOptions {
 
   // --------------- ICONBUTTON --------------- //
   static const double iconButtonRadius = 50;
-  static EdgeInsets iconButtonPadding = Styles.pdClick;
+  static EdgeInsets iconButtonPadding = TStyles.pdClick;
 
   // --------------- TEXTLINK --------------- //
   static Color textLinkColor = Theme.of(Get.context!).primaryColor;
@@ -39,7 +39,7 @@ class WidgetsOptions {
   static const FontWeight textLinkIconWeight = FontWeight.normal;
   static IconThemeData textLinkIconStyles = Theme.of(Get.context!).iconTheme;
   static const bool textLinkIsRightIcon = false;
-  static const double textLinkSpaceBetween = Sizes.spaceSm;
+  static const double textLinkSpaceBetween = TSizes.spaceSm;
   static const double textLinkClickRadius = 5;
   static const EdgeInsets textLinkClickPadding = EdgeInsets.symmetric(horizontal: 5);
 
@@ -48,14 +48,14 @@ class WidgetsOptions {
   // --------------- LIST --------------- //
   static const Axis listDirection = Axis.vertical;
   static const bool listHasScroll = false;
-  static const EdgeInsets listPadding = EdgeInsets.symmetric(horizontal: Sizes.spaceSm);
-  static const double listSpaceBetween = Sizes.spaceSm;
+  static const EdgeInsets listPadding = EdgeInsets.symmetric(horizontal: TSizes.spaceSm);
+  static const double listSpaceBetween = TSizes.spaceSm;
   static const double? listHeight = null;
 
   // --------------- GRID --------------- //
   static const int gridCrossCount = 2;
-  static const double gridSpaceBetween = Sizes.spaceSm;
-  static const double gridSpaceBottom = Sizes.spaceSm;
+  static const double gridSpaceBetween = TSizes.spaceSm;
+  static const double gridSpaceBottom = TSizes.spaceSm;
   static const bool gridHasScroll = false;
   static const EdgeInsets gridPadding = EdgeInsets.all(0);
 
@@ -64,18 +64,18 @@ class WidgetsOptions {
   static Color refreshBackground = Theme.of(Get.context!).scaffoldBackgroundColor;
 
   // --------------- CLICKAREA --------------- //
-  static Color clickAreaColor = AppColors.black.withOpacity(0.1);
-  static const double clickAreaRadius = Sizes.radius;
-  static EdgeInsets clickAreaPadding = Styles.noPd;
+  static Color clickAreaColor = TColors.black.withOpacity(0.1);
+  static const double clickAreaRadius = TSizes.radius;
+  static EdgeInsets clickAreaPadding = TStyles.noPd;
 
   // --------------- IMAGE --------------- //
   static const BoxFit imageFit = BoxFit.cover;
-  static BorderRadiusGeometry imageRadius = Styles.br;
+  static BorderRadiusGeometry imageRadius = TStyles.br;
   static TextStyle imageLetterStyles =
       const TextStyle().copyWith(fontSize: 40, fontWeight: FontWeight.bold, color: Theme.of(Get.context!).colorScheme.primary);
   static Color imageBg = Theme.of(Get.context!).scaffoldBackgroundColor;
   static Color imagePlaceholderBg = Theme.of(Get.context!).scaffoldBackgroundColor;
-  static String? imagePlaceholderIcon = CIcons.camera;
+  static String? imagePlaceholderIcon = TIcons.camera;
   static const BoxDecoration imageDecoration = BoxDecoration();
 
   // --------------- TOGGLE --------------- //
@@ -96,9 +96,9 @@ class WidgetsOptions {
   static const double checkBoxRadius = 3;
   static const double checkBoxIconSize = 0.5;
   static TextStyle checkBoxIconStyles = const TextStyle().copyWith(fontWeight: FontWeight.bold, color: Theme.of(Get.context!).primaryColor);
-  static EdgeInsets checkBoxClickPadding = Styles.pdClick;
+  static EdgeInsets checkBoxClickPadding = TStyles.pdClick;
   static const double checkBoxClickRadius = 20;
-  static String checkBoxIcon = CIcons.check;
+  static String checkBoxIcon = TIcons.check;
   static BoxDecoration Function(bool) checkBoxDecoration = (bool value) {
     return BoxDecoration(
       borderRadius: BorderRadius.circular(checkBoxRadius),

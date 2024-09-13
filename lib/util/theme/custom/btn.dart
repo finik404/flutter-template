@@ -10,9 +10,9 @@ class ThemeButton {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       padding: const EdgeInsets.all(15),
-      backgroundColor: AppColors.btn,
-      shape: RoundedRectangleBorder(borderRadius: Styles.br),
-      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: AppColors.btnText),
+      backgroundColor: TColors.btn,
+      shape: RoundedRectangleBorder(borderRadius: TStyles.br),
+      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.btnText),
     ),
   );
 
@@ -21,9 +21,9 @@ class ThemeButton {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       padding: const EdgeInsets.all(11),
-      backgroundColor: AppColors.btnSecondary,
-      shape: RoundedRectangleBorder(borderRadius: Styles.br),
-      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: AppColors.btnSecondaryText),
+      backgroundColor: TColors.btnSecondary,
+      shape: RoundedRectangleBorder(borderRadius: TStyles.br),
+      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.btnSecondaryText),
     ),
   );
 }

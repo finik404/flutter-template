@@ -9,13 +9,13 @@ class UICheckbox extends StatelessWidget {
     this.value, {
     super.key,
     this.onChange,
-    this.activeColor = AppColors.primary,
-    this.checkColor = AppColors.primary,
-    this.borderColor = AppColors.primary,
-    this.radius = WidgetsOptions.checkBoxRadius,
-    this.size = WidgetsOptions.checkBoxSize,
+    this.activeColor = TColors.primary,
+    this.checkColor = TColors.primary,
+    this.borderColor = TColors.primary,
+    this.radius = TOptions.checkBoxRadius,
+    this.size = TOptions.checkBoxSize,
     this.paddingClick,
-    this.radiusClick = WidgetsOptions.checkBoxClickRadius,
+    this.radiusClick = TOptions.checkBoxClickRadius,
     this.icon,
   });
 
@@ -35,23 +35,23 @@ class UICheckbox extends StatelessWidget {
       onTap: onChange != null ? () => onChange!(!value) : null,
 
       // Click options
-      padding: paddingClick ?? WidgetsOptions.checkBoxClickPadding,
+      padding: paddingClick ?? TOptions.checkBoxClickPadding,
       radius: radiusClick,
 
       // Container
       child: Container(
-        width: WidgetsOptions.checkBoxSize,
-        height: WidgetsOptions.checkBoxSize,
-        decoration: WidgetsOptions.checkBoxDecoration(value),
+        width: TOptions.checkBoxSize,
+        height: TOptions.checkBoxSize,
+        decoration: TOptions.checkBoxDecoration(value),
 
         // Check icon
         child: Center(
           child: value
               ? UIIcon(
-                  icon ?? WidgetsOptions.checkBoxIcon,
-                  color: WidgetsOptions.checkBoxIconStyles.color,
-                  weight: WidgetsOptions.checkBoxIconStyles.fontWeight,
-                  size: WidgetsOptions.checkBoxSize * WidgetsOptions.checkBoxIconSize,
+                  icon ?? TOptions.checkBoxIcon,
+                  color: TOptions.checkBoxIconStyles.color,
+                  weight: TOptions.checkBoxIconStyles.fontWeight,
+                  size: TOptions.checkBoxSize * TOptions.checkBoxIconSize,
                 )
               : null,
         ),

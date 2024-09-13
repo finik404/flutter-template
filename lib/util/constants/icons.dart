@@ -1,5 +1,5 @@
-class CIcons {
-  CIcons._();
+class TIcons {
+  TIcons._();
 
   static String password = 'f06e';
   static String passwordHide = 'f070';

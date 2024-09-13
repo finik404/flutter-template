@@ -30,7 +30,7 @@ class UIText extends StatelessWidget {
     bool isCropped = isOverflow == true || lines != null;
 
     // Default styles
-    TextStyle defaultStyles = WidgetsOptions.textStyles;
+    TextStyle defaultStyles = TOptions.textStyles;
 
     // Styles
     TextStyle textStyle = defaultStyles.copyWith(

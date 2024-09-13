@@ -1,10 +1,7 @@
-/*
-  Sizes ----------------
- */
 import 'package:flutter/material.dart';
 
-class Sizes {
-  Sizes._();
+class TSizes {
+  TSizes._();
 
   // Spacing between
   static const double spaceXs = 8.0;

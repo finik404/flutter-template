@@ -7,11 +7,11 @@ class UIGrid extends StatelessWidget {
     super.key,
     required this.length,
     required this.child,
-    this.crossCount = WidgetsOptions.gridCrossCount,
-    this.spaceBetween = WidgetsOptions.gridSpaceBetween,
-    this.spaceBottom = WidgetsOptions.gridSpaceBottom,
-    this.hasScroll = WidgetsOptions.gridHasScroll,
-    this.padding = WidgetsOptions.gridPadding,
+    this.crossCount = TOptions.gridCrossCount,
+    this.spaceBetween = TOptions.gridSpaceBetween,
+    this.spaceBottom = TOptions.gridSpaceBottom,
+    this.hasScroll = TOptions.gridHasScroll,
+    this.padding = TOptions.gridPadding,
     this.controller,
     this.onRefresh,
   });
@@ -56,8 +56,8 @@ class UIGrid extends StatelessWidget {
     return onRefresh != null
         ? RefreshIndicator(
             onRefresh: onRefresh!,
-            color: WidgetsOptions.refreshColor,
-            backgroundColor: WidgetsOptions.refreshBackground,
+            color: TOptions.refreshColor,
+            backgroundColor: TOptions.refreshBackground,
             child: grid,
           )
         : grid;

@@ -30,13 +30,13 @@
 //           Container(
 //               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
 //               decoration: BoxDecoration(
-//                   borderRadius: Styles.br,
-//                   border: Border.all(width: 1, color: AppColors.main.withOpacity(0.3))),
+//                   borderRadius: TStyles.br,
+//                   border: Border.all(width: 1, color: TColors.main.withOpacity(0.3))),
 //               child: Row(
 //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //                 children: [
 //                   CText(value.label),
-//                   CIcon(CIcons.down, color: AppColors.main, size: 16)
+//                   CIcon(TIcons.down, color: TColors.main, size: 16)
 //                 ],
 //               )),
 //           Positioned(
@@ -44,10 +44,10 @@
 //             left: 15,
 //             child: Container(
 //                 padding: const EdgeInsets.symmetric(horizontal: 5),
-//                 color: AppColors.white,
+//                 color: TColors.white,
 //                 child: CText(
 //                   label,
-//                   color: AppColors.main.withOpacity(0.5),
+//                   color: TColors.main.withOpacity(0.5),
 //                   size: 14,
 //                 )),
 //           )

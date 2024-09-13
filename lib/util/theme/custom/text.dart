@@ -6,7 +6,7 @@ class ThemeText {
 
   // Base styles
   static TextStyle baseTextStyles(double size, {FontWeight? weight}) {
-    return const TextStyle().copyWith(fontSize: size, fontWeight: weight ?? FontWeight.normal, color: AppColors.text);
+    return const TextStyle().copyWith(fontSize: size, fontWeight: weight ?? FontWeight.normal, color: TColors.text);
   }
 
   // Text theme

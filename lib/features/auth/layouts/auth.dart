@@ -59,7 +59,7 @@ class AuthLayout extends StatelessWidget {
             // Other screens layout
             : Stack(
                 children: [
-                  // Positioned(top: 12, child: IconBtn(CIcons.left_long, onTap: () => Navigator.pop(context))),
+                  // Positioned(top: 12, child: IconBtn(TIcons.left_long, onTap: () => Navigator.pop(context))),
                   Center(child: Padding(padding: const EdgeInsets.only(top: 50), child: SingleChildScrollView(child: content)))
                 ],
               ),

@@ -27,11 +27,11 @@ class UIClickArea extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       onLongPress: onLongTap,
-      borderRadius: borderRadius ?? BorderRadius.circular(radius ?? WidgetsOptions.clickAreaRadius),
-      splashColor: color ?? WidgetsOptions.clickAreaColor,
-      highlightColor: color ?? WidgetsOptions.clickAreaColor,
+      borderRadius: borderRadius ?? BorderRadius.circular(radius ?? TOptions.clickAreaRadius),
+      splashColor: color ?? TOptions.clickAreaColor,
+      highlightColor: color ?? TOptions.clickAreaColor,
       child: Padding(
-        padding: padding ?? WidgetsOptions.clickAreaPadding,
+        padding: padding ?? TOptions.clickAreaPadding,
         child: child,
       ),
     );
