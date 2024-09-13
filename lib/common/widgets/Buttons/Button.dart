@@ -13,13 +13,8 @@ class UIButton extends StatelessWidget {
     this.onLongTap,
     this.isDisabled,
     this.textStyles,
-    this.textSize,
-    this.textColor,
-    this.textWeight,
     this.icon,
-    this.iconSize,
-    this.iconColor,
-    this.iconWeight,
+    this.iconStyles,
     this.spaceBetween = TOptions.buttonSpaceBetween,
     this.isRightIcon = TOptions.buttonIsRightIcon,
     this.isFullWidth = TOptions.buttonIsFullWidth,
@@ -29,11 +24,8 @@ class UIButton extends StatelessWidget {
   final Function() onTap;
   final Function()? onLongTap;
   final ButtonStyle? styles;
-  final TextStyle? textStyles;
+  final TextStyle? textStyles, iconStyles;
   final String? icon;
-  final double? textSize, iconSize;
-  final Color? textColor, iconColor;
-  final FontWeight? textWeight, iconWeight;
   final double spaceBetween;
   final bool isRightIcon, isFullWidth;
   final bool? isDisabled;
@@ -41,7 +33,7 @@ class UIButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ButtonStyle buttonStyles = TOptions.buttonStyles;
-    TextStyle iconStyles = TOptions.buttonIconStyles;
+    TextStyle customIconStyles = TOptions.buttonIconStyles;
 
     Widget button = ElevatedButton(
       // onTap
@@ -62,18 +54,18 @@ class UIButton extends StatelessWidget {
               margin: EdgeInsets.only(right: spaceBetween),
               child: UIIcon(
                 icon!,
-                color: iconColor ?? iconStyles.color,
-                size: iconSize ?? iconStyles.fontSize,
-                weight: iconWeight ?? iconStyles.fontWeight,
+                color: customIconStyles.color,
+                size: customIconStyles.fontSize,
+                weight: customIconStyles.fontWeight,
               ),
             ),
 
           // Text
           UIText(
             label,
-            color: textColor ?? buttonStyles.textStyle?.resolve({})?.color,
-            size: textSize ?? buttonStyles.textStyle?.resolve({})?.fontSize,
-            weight: textWeight ?? buttonStyles.textStyle?.resolve({})?.fontWeight,
+            color: textStyles?.color ?? buttonStyles.textStyle?.resolve({})?.color,
+            size: textStyles?.fontSize ?? buttonStyles.textStyle?.resolve({})?.fontSize,
+            weight: textStyles?.fontWeight ?? buttonStyles.textStyle?.resolve({})?.fontWeight,
             styles: textStyles,
           ),
 
@@ -83,9 +75,9 @@ class UIButton extends StatelessWidget {
               margin: EdgeInsets.only(left: spaceBetween),
               child: UIIcon(
                 icon!,
-                color: iconColor ?? iconStyles.color,
-                size: iconSize ?? iconStyles.fontSize,
-                weight: iconWeight ?? iconStyles.fontWeight,
+                color: customIconStyles.color,
+                size: customIconStyles.fontSize,
+                weight: customIconStyles.fontWeight,
               ),
             ),
         ],

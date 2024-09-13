@@ -155,7 +155,7 @@ class UIInputState extends State<UIInput> {
       onChanged: widget.onChange,
       // onSubmit
       onFieldSubmitted: widget.onSubmit != null ? (value) => widget.onSubmit!() : null,
-      // Autofocus
+      // autofocus
       autofocus: widget.autofocus ?? false,
 
       // Styles
@@ -173,63 +173,63 @@ class UIInputState extends State<UIInput> {
         filled: widget.bg != null,
         fillColor: widget.bg ?? Colors.transparent,
 
-        // counterText: '',
-        // errorStyle: const TextStyle(color: TColors.red),
-        // hintStyle: TextStyle(
-        //     fontSize: widget.textSize ?? 16, color: widget.placeholderColor ?? const Color(0xfff909090), height: 1.3, fontWeight: FontWeight.normal),
-        // prefixIcon: widget.iconStart != null
-        //     ? CIcon(widget.iconStart!, color: widget.iconStartColor ?? widget.iconColor, size: widget.iconStartSize ?? widget.iconSize ?? 16)
-        //     : null,
-        // suffixIcon: widget.iconEnd != null
-        //     ? CIcon(widget.iconEnd!, color: widget.iconEndColor ?? widget.iconColor, size: widget.iconEndSize ?? widget.iconSize ?? 16)
-        //     :
-        //     // Password type
-        //     widget.type == InputTypes.password && isTextNotEmpty
-        //         ? Container(
-        //             margin: const EdgeInsets.only(right: 5),
-        //             child: IconBtn(
-        //               isShowPassword ? TIcons.password_no : TIcons.password,
-        //               // Toggle show password
-        //               onTap: () => setState(() => isShowPassword = !isShowPassword),
-        //               size: 18,
-        //               color: TColors.black,
-        //             ))
-        //         :
-        //         // Search type
-        //         widget.hasClear == true && widget.clearCallback != null
-        //             ? IconBtn(
-        //                 TIcons.close,
-        //                 color: TColors.gray,
-        //                 margin: const EdgeInsets.only(right: 5),
-        //                 onTap: () {
-        //                   // Clear input
-        //                   widget.value.clear();
-        //                   widget.clearCallback!();
-        //                 },
-        //               )
-        //             : null,
+        counterText: '',
+        errorStyle: const TextStyle(color: TColors.red),
+        hintStyle: TextStyle(
+            fontSize: widget.textSize ?? 16, color: widget.placeholderColor ?? const Color(0xfff909090), height: 1.3, fontWeight: FontWeight.normal),
+        prefixIcon: widget.iconStart != null
+            ? CIcon(widget.iconStart!, color: widget.iconStartColor ?? widget.iconColor, size: widget.iconStartSize ?? widget.iconSize ?? 16)
+            : null,
+        suffixIcon: widget.iconEnd != null
+            ? CIcon(widget.iconEnd!, color: widget.iconEndColor ?? widget.iconColor, size: widget.iconEndSize ?? widget.iconSize ?? 16)
+            :
+            // Password type
+            widget.type == InputTypes.password && isTextNotEmpty
+                ? Container(
+                    margin: const EdgeInsets.only(right: 5),
+                    child: IconBtn(
+                      isShowPassword ? TIcons.password_no : TIcons.password,
+                      // Toggle show password
+                      onTap: () => setState(() => isShowPassword = !isShowPassword),
+                      size: 18,
+                      color: TColors.black,
+                    ))
+                :
+                // Search type
+                widget.hasClear == true && widget.clearCallback != null
+                    ? IconBtn(
+                        TIcons.close,
+                        color: TColors.gray,
+                        margin: const EdgeInsets.only(right: 5),
+                        onTap: () {
+                          // Clear input
+                          widget.value.clear();
+                          widget.clearCallback!();
+                        },
+                      )
+                    : null,
 
-        // Borders
-        // enabledBorder: OutlineInputBorder(
-        //   borderRadius: borderRadius,
-        //   borderSide: commonBorderSide,
-        // ),
-        // disabledBorder: OutlineInputBorder(
-        //   borderRadius: borderRadius,
-        //   borderSide: disabledBorderSide,
-        // ),
-        // focusedBorder: OutlineInputBorder(
-        //   borderRadius: borderRadius,
-        //   borderSide: commonBorderSide,
-        // ),
-        // errorBorder: OutlineInputBorder(
-        //   borderRadius: borderRadius,
-        //   borderSide: commonBorderSide,
-        // ),
-        // focusedErrorBorder: OutlineInputBorder(
-        //   borderRadius: borderRadius,
-        //   borderSide: commonBorderSide,
-        // ),
+        Borders
+        enabledBorder: OutlineInputBorder(
+          borderRadius: borderRadius,
+          borderSide: commonBorderSide,
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: borderRadius,
+          borderSide: disabledBorderSide,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: borderRadius,
+          borderSide: commonBorderSide,
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: borderRadius,
+          borderSide: commonBorderSide,
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: borderRadius,
+          borderSide: commonBorderSide,
+        ),
       ),
       // keyboardType: textType,
       // obscureText: widget.type == InputTypes.password && !isShowPassword,

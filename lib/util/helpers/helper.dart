@@ -54,7 +54,7 @@ class THelper {
     return phoneNumber;
   }
 
-  static String truncateText(String text, int maxLength) {
+  static String cropText(String text, int maxLength) {
     if (text.length <= maxLength) {
       return text;
     } else {

@@ -11,15 +11,14 @@ class TOptions {
   TOptions._();
 
   // --------------- TEXT --------------- //
-  static TextStyle textStyles = Theme.of(Get.context!).textTheme.bodyMedium!;
+  static TextStyle textStyles = Themes.textTheme.bodyMedium!;
 
   // --------------- ICON --------------- //
-  static IconThemeData iconStyles = Theme.of(Get.context!).iconTheme;
+  static IconThemeData iconStyles = Themes.iconMdTheme;
 
   // --------------- BUTTON --------------- //
-  static ButtonStyle buttonStyles = Theme.of(Get.context!).elevatedButtonTheme.style!;
-  static TextStyle buttonIconStyles =
-      const TextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary);
+  static ButtonStyle buttonStyles = Themes.buttonTheme.style!;
+  static TextStyle buttonIconStyles =Themes.textTheme.bodyMedium!;
   static const double buttonSpaceBetween = TSizes.spaceSm;
   static const bool buttonIsRightIcon = false;
   static const bool buttonIsFullWidth = true;
@@ -34,12 +33,8 @@ class TOptions {
   static EdgeInsets iconButtonPadding = TStyles.pdClick;
 
   // --------------- TEXTLINK --------------- //
-  static Color textLinkColor = Theme.of(Get.context!).primaryColor;
-  static TextStyle textLinkStyles = Theme.of(Get.context!).textTheme.bodyMedium!;
-  static Color textLinkIconColor = Theme.of(Get.context!).primaryColor;
-  static double textLinkIconSize = Theme.of(Get.context!).iconTheme.size!;
-  static const FontWeight textLinkIconWeight = FontWeight.normal;
-  static IconThemeData textLinkIconStyles = Theme.of(Get.context!).iconTheme;
+  static TextStyle textLinkStyles = Themes.textLinkTheme;
+  static TextStyle textLinkIconStyles = Themes.textLinkIconTheme;
   static const bool textLinkIsRightIcon = false;
   static const double textLinkSpaceBetween = TSizes.spaceSm;
   static const double textLinkClickRadius = 5;

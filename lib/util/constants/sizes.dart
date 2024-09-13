@@ -23,14 +23,9 @@ class TSizes {
 
   // BottomSheet
   static const double bottomSheet = 84.0 - kBottomNavigationBarHeight;
-  static const double bottomSheet2 = 104.0 - kBottomNavigationBarHeight;
 
   // Icon
   static const double iconSm = 16.0;
   static const double iconMd = 18.0;
   static const double iconLg = 20.0;
-
-  // Image
-  static const double imageIcon = 45.0;
-  static const double imageLogoHeight = 24.0;
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/constants/colors.dart';
 
@@ -7,19 +8,18 @@ class Themes {
 
   // --------------- TEXT --------------- //
   static TextTheme textTheme = TextTheme(
-    bodySmall: const TextStyle().copyWith(fontSize: 14, fontWeight: FontWeight.normal, color: TColors.text),
-    bodyMedium: const TextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.text),
-    bodyLarge: const TextStyle().copyWith(fontSize: 18, fontWeight: FontWeight.normal, color: TColors.text),
-    titleSmall: const TextStyle().copyWith(fontSize: 18, fontWeight: FontWeight.bold, color: TColors.text),
-    titleMedium: const TextStyle().copyWith(fontSize: 24, fontWeight: FontWeight.normal, color: TColors.text),
-    labelMedium: const TextStyle().copyWith(fontSize: 12, fontWeight: FontWeight.normal, color: TColors.text),
+    bodySmall: const TextStyle().copyWith(fontSize: 12, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary),
+    bodyMedium: const TextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary),
+    bodyLarge: const TextStyle().copyWith(fontSize: 18, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary),
+    titleSmall: const TextStyle().copyWith(fontSize: 18, fontWeight: FontWeight.bold, color: Theme.of(Get.context!).colorScheme.primary),
+    titleMedium: const TextStyle().copyWith(fontSize: 24, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary),
   );
 
   // --------------- ICONS --------------- //
-  static IconThemeData iconSmTheme = const IconThemeData(size: 16, weight: 400, color: TColors.black);
-  static IconThemeData iconMdTheme = const IconThemeData(size: 18, weight: 400, color: TColors.black);
-  static IconThemeData iconLgTheme = const IconThemeData(size: 20, weight: 400, color: TColors.black);
-  static IconThemeData iconXlTheme = const IconThemeData(size: 30, weight: 400, color: TColors.black);
+  static IconThemeData iconSmTheme = IconThemeData(size: 16, weight: 400, color: Theme.of(Get.context!).colorScheme.primary);
+  static IconThemeData iconMdTheme = IconThemeData(size: 18, weight: 400, color: Theme.of(Get.context!).colorScheme.primary);
+  static IconThemeData iconLgTheme = IconThemeData(size: 20, weight: 400, color: Theme.of(Get.context!).colorScheme.primary);
+  static IconThemeData iconXlTheme = IconThemeData(size: 30, weight: 400, color: Theme.of(Get.context!).colorScheme.primary);
 
   // --------------- BUTTONS --------------- //
   static ElevatedButtonThemeData buttonTheme = ElevatedButtonThemeData(
@@ -42,7 +42,7 @@ class Themes {
     ),
   );
 
-// --------------- INPUTS --------------- //
+  // --------------- INPUTS --------------- //
   static InputDecorationTheme inputTheme = InputDecorationTheme(
     border: OutlineInputBorder(
       borderRadius: TStyles.br,
@@ -58,5 +58,9 @@ class Themes {
     ),
   );
 
-// --------------- TEXTLINKS --------------- //
+  // --------------- TEXTLINKS --------------- //
+  static TextStyle textLinkTheme =
+      const TextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).primaryColor);
+  static TextStyle textLinkIconTheme =
+      const TextStyle().copyWith(fontSize: 18, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).primaryColor);
 }
