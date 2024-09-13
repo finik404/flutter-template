@@ -1,33 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:tproject/util/constants/options.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class THelper {
-  static void showSnackBar(String message) {
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(content: Text(message)));
+  static void launchUrl(String url) async {
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
-  static void showAlert(String title, String message) {
-    showDialog(
-      context: Get.context!,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(title),
-          content: Text(message),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
+  static String formatDate(String date, {String? format}) {
+    DateTime dateTime = DateTime.parse(date);
+    return DateFormat(format ?? TOptions.dateFormat).format(dateTime);
   }
 
-  static void navigate(BuildContext context, Widget screen) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
+  static String formatPhoneNumber(String phoneNumber, {bool replace7 = false, bool replace8 = false}) {
+    String cleanedNumber = phoneNumber.replaceAll(' ', '');
+
+    // Replace +7
+    if (replace7 && cleanedNumber.startsWith('+7')) {
+      cleanedNumber = '8${cleanedNumber.substring(2)}';
+    }
+
+    // Replace 8
+    if (replace8 && cleanedNumber.startsWith('8')) {
+      cleanedNumber = '+7${phoneNumber.substring(1)}';
+    }
+
+    return cleanedNumber;
+  }
+
+  static String unFormatPhoneNumber(String phoneNumber, {bool replace7 = false, bool replace8 = false}) {
+    // Replace +7
+    if (replace7 && phoneNumber.startsWith('+7')) {
+      phoneNumber = '8${phoneNumber.substring(2)}';
+    }
+
+    // Replace 8
+    if (replace8 && phoneNumber.startsWith('8')) {
+      phoneNumber = '+7${phoneNumber.substring(1)}';
+    }
+
+    // Format phone
+    final regex = RegExp(r'^(\+7|8)(\d{3})(\d{3})(\d{2})(\d{2})$');
+    final match = regex.firstMatch(phoneNumber);
+    if (match != null) {
+      return '${match.group(1)} ${match.group(2)} ${match.group(3)} ${match.group(4)} ${match.group(5)}';
+    }
+
+    return phoneNumber;
   }
 
   static String truncateText(String text, int maxLength) {
@@ -35,47 +59,6 @@ class THelper {
       return text;
     } else {
       return '${text.substring(0, maxLength)}...';
-    }
-  }
-
-  static bool isDartMode(BuildContext context) {
-    return Theme.of(context).brightness == Brightness.dark;
-  }
-
-  static Size screenSize() {
-    return MediaQuery.of(Get.context!).size;
-  }
-
-  static double screenHeight() {
-    return MediaQuery.of(Get.context!).size.height;
-  }
-
-  static double screenWidth() {
-    return MediaQuery.of(Get.context!).size.width;
-  }
-
-  static String getFormattedDate(DateTime date, {String format = 'dd MMM yyyy'}) {
-    return DateFormat(format).format(date);
-  }
-
-  static List<T> removeDuplicates<T>(List<T> list) {
-    return list.toSet().toList();
-  }
-
-  static List<Widget> wrapWidget(List<Widget> widgets, int rowSize) {
-    final wrapperList = <Widget>[];
-    for (var i = 0; i < widgets.length; i += rowSize) {
-      final rowChildren = widgets.sublist(i, i + rowSize > widgets.length ? widgets.length : i + rowSize);
-      wrapperList.add(Row(children: rowChildren));
-    }
-    return wrapperList;
-  }
-
-  static void launchUrl(String url) async {
-    if (await canLaunchUrlString(url)) {
-      await launchUrlString(url);
-    } else {
-      throw 'Could not launch $url';
     }
   }
 }

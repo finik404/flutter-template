@@ -123,4 +123,6 @@ class TOptions {
   static const double skeletonRadius = TSizes.radius;
 
 // --------------- HTMLTOTEXT --------------- //
+
+  static const String dateFormat = 'dd.MM.yyyy';
 }

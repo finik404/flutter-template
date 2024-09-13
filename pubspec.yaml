@@ -49,9 +49,18 @@ dependencies:
   firebase_core: ^3.4.0
   firebase_messaging: 15.1.1
 
-  # Html to text
+  # Parse Html
   flutter_widget_from_html_core: ^0.15.2
   html: ^0.15.4
+
+  # Share content
+  share_plus: ^10.0.2
+
+  # App info
+  package_info_plus: ^8.0.2
+
+  # Device info
+  device_info_plus: ^10.1.2
 
 
 # --------------- DEV PACKAGES --------------- #

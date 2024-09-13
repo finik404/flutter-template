@@ -1,18 +1,26 @@
 import 'dart:io';
-
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
-class TDeviceUtils {
-  static void hideKeyboard(BuildContext context) {
-    FocusScope.of(context).requestFocus(FocusNode());
+class TDevice {
+  static double screenHeight() {
+    return MediaQuery.of(Get.context!).size.height;
   }
 
-  static Future<void> setStatusBarColor(Color color) async {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: color));
+  static double screenWidth() {
+    return MediaQuery.of(Get.context!).size.width;
+  }
+
+  static double statusBarHeight() {
+    return MediaQuery.of(Get.context!).padding.top;
+  }
+
+  static double bottomNavigationBarHeight() {
+    return kBottomNavigationBarHeight;
   }
 
   static bool isLandscapeOrientation(BuildContext context) {
@@ -25,35 +33,52 @@ class TDeviceUtils {
     return viewInsets.bottom != 0;
   }
 
-  static void setFullScreen(bool enable) {
-    SystemChrome.setEnabledSystemUIMode(enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
+  static bool isIOS() {
+    return Platform.isIOS;
   }
 
-  static double getScreenHeight() {
-    return MediaQuery.of(Get.context!).size.height;
+  static bool isAndroid() {
+    return Platform.isAndroid;
   }
 
-  static double getScreenWidth() {
-    return MediaQuery.of(Get.context!).size.width;
+  static Future<String> androidVersion() async {
+    final deviceInfo = DeviceInfoPlugin();
+    final androidInfo = await deviceInfo.androidInfo;
+    return androidInfo.version.release;
   }
 
-  static double getPixelRatio() {
-    return MediaQuery.of(Get.context!).devicePixelRatio;
+  static Future<String> iOSVersion() async {
+    final deviceInfo = DeviceInfoPlugin();
+    final iosInfo = await deviceInfo.iosInfo;
+    return iosInfo.systemVersion;
   }
 
-  static double getStatusBarHeight() {
-    return MediaQuery.of(Get.context!).padding.top;
+  static Future<String> versionApp() async {
+    final info = await PackageInfo.fromPlatform();
+    return info.version;
   }
 
-  static double getBottomNavigationBarHeight() {
-    return kBottomNavigationBarHeight;
+  static void hideKeyboard(BuildContext context) {
+    FocusScope.of(context).requestFocus(FocusNode());
   }
 
-  static double getAppBarHeight() {
-    return kToolbarHeight;
+  static bool isDartMode(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark;
   }
 
-  static double getKeyboardHeight() {
+  static Future<void> setStatusBarBrightness(Brightness value) async {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarBrightness: value));
+  }
+
+  static Future<void> setStatusBarColor(Color color) async {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: color));
+  }
+
+  static Future<void> setBottomNavigationColor(Color color) async {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(systemNavigationBarColor: color));
+  }
+
+  static double keyboardHeight() {
     final viewInsets = MediaQuery.of(Get.context!).viewInsets;
     return viewInsets.bottom;
   }
@@ -72,10 +97,6 @@ class TDeviceUtils {
     Future.delayed(duration, () => HapticFeedback.vibrate());
   }
 
-  static Future<void> setPreferredOrientations(List<DeviceOrientation> orientations) async {
-    await SystemChrome.setPreferredOrientations(orientations);
-  }
-
   static void hideStatusBar() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   }
@@ -91,13 +112,5 @@ class TDeviceUtils {
     } on SocketException catch (_) {
       return false;
     }
-  }
-
-  static bool isIOS() {
-    return Platform.isIOS;
-  }
-
-  static bool isAndroid() {
-    return Platform.isAndroid;
   }
 }
