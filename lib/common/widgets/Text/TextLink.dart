@@ -44,6 +44,7 @@ class UITextLink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle defaultTextStyles = TOptions.textLinkStyles;
+    TextStyle defaultIconStyles = TOptions.textLinkIconStyles;
 
     return UIClickArea(
       radius: radius,
@@ -67,18 +68,20 @@ class UITextLink extends StatelessWidget {
               margin: EdgeInsets.only(right: spaceBetween),
               child: UIIcon(
                 icon!,
-                color: iconColor ?? TOptions.textLinkIconColor,
-                size: iconSize ?? TOptions.textLinkIconSize,
-                weight: iconWeight ?? TOptions.textLinkIconWeight,
+                color: iconColor ?? defaultTextStyles.color,
+                size: iconSize ?? defaultTextStyles.fontSize,
+                weight: iconWeight ?? defaultTextStyles.fontWeight,
               ),
             ),
 
           // Text
-          UIText(text,
-              color: color ?? TOptions.textLinkColor,
-              size: size ?? defaultTextStyles.fontSize,
-              weight: weight ?? defaultTextStyles.fontWeight,
-              styles: styles),
+          UIText(
+            text,
+            color: color ?? defaultTextStyles.color,
+            size: size ?? defaultTextStyles.fontSize,
+            weight: weight ?? defaultTextStyles.fontWeight,
+            styles: styles,
+          ),
 
           // Right icon
           if (icon != null && isRightIcon)
@@ -86,9 +89,9 @@ class UITextLink extends StatelessWidget {
               margin: EdgeInsets.only(left: spaceBetween),
               child: UIIcon(
                 icon!,
-                color: iconColor ?? TOptions.textLinkIconColor,
-                size: iconSize ?? TOptions.textLinkIconSize,
-                weight: iconWeight ?? TOptions.textLinkIconWeight,
+                color: iconColor ?? defaultTextStyles.color,
+                size: iconSize ?? defaultTextStyles.fontSize,
+                weight: iconWeight ?? defaultTextStyles.fontWeight,
               ),
             ),
         ],

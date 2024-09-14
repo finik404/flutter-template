@@ -10,5 +10,9 @@ class LoginController extends GetxController {
   final TextEditingController passwordInput = TextEditingController();
 
   // Methods ----------------
-  Future<void> onLogin() async {}
+  Future<void> onLogin() async {
+    if (formKey.currentState!.validate()) {
+        
+     }
+  }
 }

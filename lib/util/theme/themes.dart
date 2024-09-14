@@ -26,9 +26,9 @@ class Themes {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       padding: const EdgeInsets.all(15),
-      backgroundColor: TColors.btn,
+      backgroundColor: TColors.secondary,
       shape: RoundedRectangleBorder(borderRadius: TStyles.br),
-      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.btnText),
+      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.black),
     ),
   );
 
@@ -36,27 +36,31 @@ class Themes {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       padding: const EdgeInsets.all(11),
-      backgroundColor: TColors.btnSecondary,
+      backgroundColor: TColors.primary.withOpacity(0.08),
       shape: RoundedRectangleBorder(borderRadius: TStyles.br),
-      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.btnSecondaryText),
+      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.primary),
     ),
   );
 
   // --------------- INPUTS --------------- //
-  static InputDecorationTheme inputTheme = InputDecorationTheme(
-    border: OutlineInputBorder(
-      borderRadius: TStyles.br,
-      borderSide: BorderSide(color: TColors.inputBorder),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: TStyles.br,
-      borderSide: BorderSide(color: TColors.inputBorderActive),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: TStyles.br,
-      borderSide: BorderSide(color: TColors.inputBorderError),
-    ),
-  );
+  static InputDecorationTheme Function(bool) inputTheme = (hasError) {
+    return InputDecorationTheme(
+      fillColor: Colors.transparent,
+      labelStyle: TextStyle(fontSize: 14, color: hasError ? TColors.error.withOpacity(0.5) : TColors.primary.withOpacity(0.5)),
+      floatingLabelStyle: TextStyle(fontSize: 18, color: hasError ? TColors.error : TColors.primary.withOpacity(0.5)),
+      // labelStyle.fontSize +4
+      hintStyle: TextStyle(fontSize: 14, color: hasError ? TColors.error.withOpacity(0.5) : TColors.primary.withOpacity(0.5)),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: TStyles.br,
+        borderSide: BorderSide(width: 1, color: hasError ? TColors.lightenError : TColors.primary2.withOpacity(0.2)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: TStyles.br,
+        borderSide: BorderSide(width: 1, color: hasError ? TColors.error : TColors.primary2),
+      ),
+      errorStyle: const TextStyle(fontSize: 12, color: TColors.error),
+    );
+  };
 
   // --------------- TEXTLINKS --------------- //
   static TextStyle textLinkTheme =

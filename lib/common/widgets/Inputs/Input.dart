@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tproject/common/widgets/Text/Text.dart';
+import 'package:tproject/util/constants/colors.dart';
+import 'package:tproject/util/theme/themes.dart';
 import 'package:tproject/util/validators/validation.dart';
 
 enum InputTypes { password, email, phone, address, textArea, number }
@@ -9,9 +12,8 @@ class UIInput extends StatefulWidget {
     this.value, {
     super.key,
     this.validate,
-    this.isPlaceholder,
-    this.autofocus,
-    this.bg,
+    this.isPlaceholder = false,
+    this.autofocus = false,
     this.padding,
     this.onSubmit,
     this.onChange,
@@ -55,8 +57,7 @@ class UIInput extends StatefulWidget {
   final String label;
   final TextEditingController value;
   final List<Function(String?)?>? validate;
-  final bool? autofocus, isPlaceholder;
-  final Color? bg;
+  final bool autofocus, isPlaceholder;
   final EdgeInsets? padding;
   final Function()? onSubmit;
   final Function(String)? onChange;
@@ -96,12 +97,6 @@ class UIInput extends StatefulWidget {
   // final FocusNode? focusNode;
   // final int? maxLength;
 
-  // Builder ----------------
-  @override
-  UIInputState createState() => UIInputState();
-}
-
-class UIInputState extends State<UIInput> {
   // Variables ----------------
   // bool isShowPassword = false;
   // bool hasError = false;
@@ -120,7 +115,16 @@ class UIInputState extends State<UIInput> {
   //   });
   // }
 
-  // Builder ----------------
+  @override
+  UIInputState createState() => UIInputState();
+}
+
+/*
+      State Component ----------------
+     */
+class UIInputState extends State<UIInput> {
+  String error = '';
+
   @override
   Widget build(BuildContext context) {
     // TextInputType textType = TextInputType.text;
@@ -145,100 +149,99 @@ class UIInputState extends State<UIInput> {
     //   color: widget.noBorder == true ? Colors.transparent : context.primaryColor.withOpacity(0.55),
     // );
 
-    return TextFormField(
-      controller: widget.value,
+    InputDecorationTheme inputStyles = Themes.inputTheme(error.isNotEmpty);
 
-      // Validation
-      validator: (value) => TValidator.validate(value, widget.validate),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextFormField(
+          controller: widget.value,
 
-      // onChange
-      onChanged: widget.onChange,
-      // onSubmit
-      onFieldSubmitted: widget.onSubmit != null ? (value) => widget.onSubmit!() : null,
-      // autofocus
-      autofocus: widget.autofocus ?? false,
+          // Validation
+          validator: (value) {
+            String? errors = TValidator.validate(value, widget.validate);
+            setState(() => error = errors ?? '');
+          },
 
-      // Styles
-      decoration: InputDecoration(
-        isDense: true,
+          // onChange
+          onChanged: widget.onChange,
+          // onSubmit
+          onFieldSubmitted: widget.onSubmit != null ? (value) => widget.onSubmit!() : null,
+          // autofocus
+          autofocus: widget.autofocus,
 
-        // Label
-        labelText: widget.isPlaceholder == true ? null : widget.label,
-        hintText: widget.isPlaceholder == true ? widget.label : null,
+          // Styles
+          decoration: InputDecoration(
+            isDense: true,
 
-        // Padding
-        contentPadding: widget.padding ?? const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+            // Label
+            labelText: widget.isPlaceholder ? null : widget.label,
+            hintText: widget.isPlaceholder ? widget.label : null,
 
-        // Background
-        filled: widget.bg != null,
-        fillColor: widget.bg ?? Colors.transparent,
+            // Padding
+            contentPadding: widget.padding ?? const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
 
-        counterText: '',
-        errorStyle: const TextStyle(color: TColors.red),
-        hintStyle: TextStyle(
-            fontSize: widget.textSize ?? 16, color: widget.placeholderColor ?? const Color(0xfff909090), height: 1.3, fontWeight: FontWeight.normal),
-        prefixIcon: widget.iconStart != null
-            ? CIcon(widget.iconStart!, color: widget.iconStartColor ?? widget.iconColor, size: widget.iconStartSize ?? widget.iconSize ?? 16)
-            : null,
-        suffixIcon: widget.iconEnd != null
-            ? CIcon(widget.iconEnd!, color: widget.iconEndColor ?? widget.iconColor, size: widget.iconEndSize ?? widget.iconSize ?? 16)
-            :
-            // Password type
-            widget.type == InputTypes.password && isTextNotEmpty
-                ? Container(
-                    margin: const EdgeInsets.only(right: 5),
-                    child: IconBtn(
-                      isShowPassword ? TIcons.password_no : TIcons.password,
-                      // Toggle show password
-                      onTap: () => setState(() => isShowPassword = !isShowPassword),
-                      size: 18,
-                      color: TColors.black,
-                    ))
-                :
-                // Search type
-                widget.hasClear == true && widget.clearCallback != null
-                    ? IconBtn(
-                        TIcons.close,
-                        color: TColors.gray,
-                        margin: const EdgeInsets.only(right: 5),
-                        onTap: () {
-                          // Clear input
-                          widget.value.clear();
-                          widget.clearCallback!();
-                        },
-                      )
-                    : null,
+            // Background
+            filled: true,
+            fillColor: inputStyles.fillColor,
 
-        Borders
-        enabledBorder: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: commonBorderSide,
+            // Label styles
+            labelStyle: inputStyles.labelStyle,
+            floatingLabelStyle: inputStyles.floatingLabelStyle,
+
+            // Placeholder styles
+            hintStyle: inputStyles.hintStyle,
+
+            // Borders
+            enabledBorder: inputStyles.enabledBorder,
+            focusedBorder: inputStyles.focusedBorder,
+
+            // Errors styles
+            errorStyle: inputStyles.errorStyle,
+
+            // counterText: '',
+            // suffixIcon: widget.iconEnd != null
+            //     ? CIcon(widget.iconEnd!, color: widget.iconEndColor ?? widget.iconColor, size: widget.iconEndSize ?? widget.iconSize ?? 16)
+            //     :
+            //     // Password type
+            //     widget.type == InputTypes.password && isTextNotEmpty
+            //         ? Container(
+            //             margin: const EdgeInsets.only(right: 5),
+            //             child: IconBtn(
+            //               isShowPassword ? TIcons.password_no : TIcons.password,
+            //               // Toggle show password
+            //               onTap: () => setState(() => isShowPassword = !isShowPassword),
+            //               size: 18,
+            //               color: TColors.black,
+            //             ))
+            //         :
+            //         // Search type
+            //         widget.hasClear == true && widget.clearCallback != null
+            //             ? IconBtn(
+            //                 TIcons.close,
+            //                 color: TColors.gray,
+            //                 margin: const EdgeInsets.only(right: 5),
+            //                 onTap: () {
+            //                   // Clear input
+            //                   widget.value.clear();
+            //                   widget.clearCallback!();
+            //                 },
+            //               )
+            //             : null,
+          ),
+          // keyboardType: textType,
+          // obscureText: widget.type == InputTypes.password && !isShowPassword,
+          // focusNode: widget.focusNode,
+          // maxLength: widget.maxLength,
+          // minLines: widget.minLines ?? 1,
+          // maxLines: widget.type == InputTypes.textArea ? null : widget.maxLines ?? 1,
+          // style: TextStyle(
+          //     fontFamily: Variables.apiUrl, fontSize: widget.textSize ?? 16, height: 1.3, color: TColors.black, fontWeight: FontWeight.normal),
         ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: disabledBorderSide,
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: commonBorderSide,
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: commonBorderSide,
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: commonBorderSide,
-        ),
-      ),
-      // keyboardType: textType,
-      // obscureText: widget.type == InputTypes.password && !isShowPassword,
-      // focusNode: widget.focusNode,
-      // maxLength: widget.maxLength,
-      // minLines: widget.minLines ?? 1,
-      // maxLines: widget.type == InputTypes.textArea ? null : widget.maxLines ?? 1,
-      // style: TextStyle(
-      //     fontFamily: Variables.apiUrl, fontSize: widget.textSize ?? 16, height: 1.3, color: TColors.black, fontWeight: FontWeight.normal),
+
+        // Errors
+        if (error.isNotEmpty) UIText(error, styles: inputStyles.errorStyle, lineHeight: 2.5),
+      ],
     );
   }
 }

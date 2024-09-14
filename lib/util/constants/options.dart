@@ -24,7 +24,7 @@ class TOptions {
   static const bool buttonIsFullWidth = true;
 
   // --------------- INPUT --------------- //
-  static InputDecorationTheme inputStyles = Themes.inputTheme;
+  // static InputDecorationTheme inputStyles = Themes.inputTheme;
 
   // --------------- SELECT --------------- //
 
