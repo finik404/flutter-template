@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/theme/themes.dart';
-import 'package:tproject/util/validators/validation.dart';
+import 'package:tproject/util/validators/validator.dart';
 
-enum InputTypes { password, email, phone, address, textArea, number }
+enum InputType { password, email, phone, address, textArea, number }
 
 class UIInput extends StatefulWidget {
   const UIInput(
@@ -17,6 +17,7 @@ class UIInput extends StatefulWidget {
     this.padding,
     this.onSubmit,
     this.onChange,
+    this.type,
 
     // this.type,
     // this.onChange,
@@ -61,6 +62,7 @@ class UIInput extends StatefulWidget {
   final EdgeInsets? padding;
   final Function()? onSubmit;
   final Function(String)? onChange;
+  final InputType? type;
 
   // final InputTypes? type;
   // final bool? isPlaceholder;
@@ -119,38 +121,28 @@ class UIInput extends StatefulWidget {
   UIInputState createState() => UIInputState();
 }
 
-/*
-      State Component ----------------
-     */
 class UIInputState extends State<UIInput> {
   String error = '';
 
   @override
   Widget build(BuildContext context) {
-    // TextInputType textType = TextInputType.text;
+    TextInputType type = TextInputType.text;
 
     // Type
-    // if (widget.type == InputTypes.email) {
-    //   textType = TextInputType.emailAddress;
-    // } else if (widget.type == InputTypes.phone) {
-    //   textType == TextInputType.phone;
-    // } else if (widget.type == InputTypes.address) {
-    //   textType = TextInputType.streetAddress;
-    // } else if (widget.type == InputTypes.number) {
-    //   textType = TextInputType.number;
-    // }
+    if (widget.type == InputType.email) {
+      type = TextInputType.emailAddress;
+    } else if (widget.type == InputType.phone) {
+      type == TextInputType.phone;
+    } else if (widget.type == InputType.address) {
+      type = TextInputType.streetAddress;
+    } else if (widget.type == InputType.number) {
+      type = TextInputType.number;
+    }
 
-    // Border
-    // BorderRadius borderRadius = widget.borderRadius ?? BorderRadius.circular(widget.radius ?? 10);
-    // BorderSide? commonBorderSide =
-    //     widget.noBorder == true ? const BorderSide(width: 0, color: Colors.transparent) : const BorderSide(width: 1, color: TColors.grayLight);
-    // BorderSide disabledBorderSide = BorderSide(
-    //   width: widget.noBorder == true ? 0 : 2,
-    //   color: widget.noBorder == true ? Colors.transparent : context.primaryColor.withOpacity(0.55),
-    // );
-
+    // Default styles
     InputDecorationTheme inputStyles = Themes.inputTheme(error.isNotEmpty);
 
+    // Input ----------------
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -169,6 +161,9 @@ class UIInputState extends State<UIInput> {
           onFieldSubmitted: widget.onSubmit != null ? (value) => widget.onSubmit!() : null,
           // autofocus
           autofocus: widget.autofocus,
+
+          // Type
+          keyboardType: type,
 
           // Styles
           decoration: InputDecoration(
@@ -229,14 +224,10 @@ class UIInputState extends State<UIInput> {
             //               )
             //             : null,
           ),
-          // keyboardType: textType,
-          // obscureText: widget.type == InputTypes.password && !isShowPassword,
           // focusNode: widget.focusNode,
           // maxLength: widget.maxLength,
           // minLines: widget.minLines ?? 1,
           // maxLines: widget.type == InputTypes.textArea ? null : widget.maxLines ?? 1,
-          // style: TextStyle(
-          //     fontFamily: Variables.apiUrl, fontSize: widget.textSize ?? 16, height: 1.3, color: TColors.black, fontWeight: FontWeight.normal),
         ),
 
         // Errors

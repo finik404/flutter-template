@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tproject/util/constants/options.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:share_plus/share_plus.dart';
 
 class THelper {
   static void launchUrl(String url) async {
@@ -60,5 +61,13 @@ class THelper {
     } else {
       return '${text.substring(0, maxLength)}...';
     }
+  }
+
+  static void share(String url) {
+    Share.shareUri(Uri.parse(url));
+  }
+
+  static Future<void> getPermission() async {
+    // var status = await Permission.camera.request();
   }
 }

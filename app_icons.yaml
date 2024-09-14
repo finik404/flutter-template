@@ -1,5 +1,5 @@
 # App icons options
-flutter_icons:
+flutter_launcher_icons:
   android: "lc_launcher"
   ios: true
   image_path: "assets/icon.png"
@@ -7,4 +7,4 @@ flutter_icons:
   remove_alpha_ios: true
 
 
-# fr flutter_launcher_icons --path=app_icons.yaml
+# fr flutter_launcher_icons -f app_icons.yaml
