@@ -10,6 +10,7 @@ class UIIconButton extends StatelessWidget {
     this.icon,
     this.onTap, {
     super.key,
+    this.styles,
     this.size,
     this.color,
     this.weight,
@@ -22,6 +23,7 @@ class UIIconButton extends StatelessWidget {
 
   final String icon;
   final Function() onTap;
+  final TextStyle? styles;
   final double? size;
   final Color? color;
   final FontWeight? weight;
@@ -49,6 +51,7 @@ class UIIconButton extends StatelessWidget {
       child: IntrinsicWidth(
         child: UIIcon(
           icon,
+          styles: styles,
           color: color,
           size: size,
           weight: weight,

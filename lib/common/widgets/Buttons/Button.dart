@@ -14,6 +14,7 @@ class UIButton extends StatelessWidget {
     this.isDisabled,
     this.textStyles,
     this.icon,
+    this.customIcon,
     this.iconStyles,
     this.spaceBetween = TOptions.buttonSpaceBetween,
     this.isRightIcon = TOptions.buttonIsRightIcon,
@@ -26,6 +27,7 @@ class UIButton extends StatelessWidget {
   final ButtonStyle? styles;
   final TextStyle? textStyles, iconStyles;
   final String? icon;
+  final Widget? customIcon;
   final double spaceBetween;
   final bool isRightIcon, isFullWidth;
   final bool? isDisabled;
@@ -52,7 +54,7 @@ class UIButton extends StatelessWidget {
           if (icon != null && !isRightIcon)
             Container(
               margin: EdgeInsets.only(right: spaceBetween),
-              child: UIIcon(
+              child: customIcon ?? UIIcon(
                 icon!,
                 color: customIconStyles.color,
                 size: customIconStyles.fontSize,
@@ -73,7 +75,7 @@ class UIButton extends StatelessWidget {
           if (icon != null && isRightIcon)
             Container(
               margin: EdgeInsets.only(left: spaceBetween),
-              child: UIIcon(
+              child: customIcon ?? UIIcon(
                 icon!,
                 color: customIconStyles.color,
                 size: customIconStyles.fontSize,

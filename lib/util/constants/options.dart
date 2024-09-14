@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/util/constants/colors.dart';
+import 'package:tproject/util/constants/enums.dart';
 import 'package:tproject/util/constants/icons.dart';
 import 'package:tproject/util/constants/sizes.dart';
 import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/theme/themes.dart';
 
-// Default options for UI widgets
 class TOptions {
   TOptions._();
 
@@ -14,7 +14,7 @@ class TOptions {
   static TextStyle textStyles = Themes.textTheme.bodyMedium!;
 
   // --------------- ICON --------------- //
-  static IconThemeData iconStyles = Themes.iconMdTheme;
+  static TextStyle iconStyles = Themes.iconMdTheme;
 
   // --------------- BUTTON --------------- //
   static ButtonStyle buttonStyles = Themes.buttonTheme.style!;
@@ -25,6 +25,8 @@ class TOptions {
 
   // --------------- INPUT --------------- //
   // static InputDecorationTheme inputStyles = Themes.inputTheme;
+  static const InputCounterOptions inputHasCounter = InputCounterOptions.show;
+  static TextStyle inputCounterStyles = const TextStyle(fontSize: 12);
 
   // --------------- SELECT --------------- //
 
@@ -119,5 +121,6 @@ class TOptions {
 
 // --------------- HTMLTOTEXT --------------- //
 
+  // --------------- OTHERS --------------- //
   static const String dateFormat = 'dd.MM.yyyy';
 }

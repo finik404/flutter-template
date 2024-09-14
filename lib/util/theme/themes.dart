@@ -16,10 +16,10 @@ class Themes {
   );
 
   // --------------- ICONS --------------- //
-  static IconThemeData iconSmTheme = IconThemeData(size: 16, weight: 400, color: Theme.of(Get.context!).colorScheme.primary);
-  static IconThemeData iconMdTheme = IconThemeData(size: 18, weight: 400, color: Theme.of(Get.context!).colorScheme.primary);
-  static IconThemeData iconLgTheme = IconThemeData(size: 20, weight: 400, color: Theme.of(Get.context!).colorScheme.primary);
-  static IconThemeData iconXlTheme = IconThemeData(size: 30, weight: 400, color: Theme.of(Get.context!).colorScheme.primary);
+  static TextStyle iconSmTheme = TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary);
+  static TextStyle iconMdTheme = TextStyle(fontSize: 18, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary);
+  static TextStyle iconLgTheme = TextStyle(fontSize: 20, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary);
+  static TextStyle iconXlTheme = TextStyle(fontSize: 30, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary);
 
   // --------------- BUTTONS --------------- //
   static ElevatedButtonThemeData buttonTheme = ElevatedButtonThemeData(
@@ -28,7 +28,7 @@ class Themes {
       padding: const EdgeInsets.all(15),
       backgroundColor: TColors.secondary,
       shape: RoundedRectangleBorder(borderRadius: TStyles.br),
-      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.black),
+      textStyle: textTheme.bodyMedium,
     ),
   );
 
@@ -38,7 +38,7 @@ class Themes {
       padding: const EdgeInsets.all(11),
       backgroundColor: TColors.primary.withOpacity(0.08),
       shape: RoundedRectangleBorder(borderRadius: TStyles.br),
-      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.primary),
+      textStyle: textTheme.bodyMedium,
     ),
   );
 

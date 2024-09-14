@@ -5,14 +5,16 @@ export 'package:tproject/util/constants/icons.dart';
 
 class UIIcon extends StatelessWidget {
   const UIIcon(
-    this.code, {
+    this.icon, {
     super.key,
+    this.styles,
     this.size,
     this.color,
     this.weight,
   });
 
-  final String code;
+  final String icon;
+  final TextStyle? styles;
   final double? size;
   final Color? color;
   final FontWeight? weight;
@@ -20,11 +22,11 @@ class UIIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Default styles
-    IconThemeData defaultStyles = TOptions.iconStyles;
+    TextStyle defaultStyles = styles ?? TOptions.iconStyles;
 
     // Icon weight
     String? fontFamily;
-    switch (weight ?? defaultStyles.weight) {
+    switch (weight ?? defaultStyles.fontWeight) {
       case FontWeight.w300:
         fontFamily = 'FontAwesomeLight';
         break;
@@ -36,8 +38,8 @@ class UIIcon extends StatelessWidget {
     }
 
     return Icon(
-      IconData(int.parse('0x$code'), fontFamily: fontFamily),
-      size: size ?? defaultStyles.size,
+      IconData(int.parse('0x$icon'), fontFamily: fontFamily),
+      size: size ?? defaultStyles.fontSize,
       color: color ?? defaultStyles.color,
     );
   }

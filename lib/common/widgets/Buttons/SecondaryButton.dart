@@ -10,6 +10,7 @@ class UISecondaryButton extends UIButton {
     super.isDisabled,
     super.textStyles,
     super.icon,
+    super.customIcon,
     super.iconStyles,
     super.spaceBetween,
     super.isRightIcon,

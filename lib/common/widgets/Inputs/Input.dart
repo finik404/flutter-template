@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
-import 'package:tproject/util/constants/colors.dart';
+import 'package:tproject/util/constants/options.dart';
 import 'package:tproject/util/theme/themes.dart';
 import 'package:tproject/util/validators/validator.dart';
+import 'package:tproject/util/constants/enums.dart';
 
-enum InputType { password, email, phone, address, textArea, number }
+export 'package:tproject/util/constants/enums.dart';
 
 class UIInput extends StatefulWidget {
   const UIInput(
@@ -12,110 +14,34 @@ class UIInput extends StatefulWidget {
     this.value, {
     super.key,
     this.validate,
+    this.styles,
     this.isPlaceholder = false,
     this.autofocus = false,
     this.padding,
     this.onSubmit,
     this.onChange,
-    this.type,
-
-    // this.type,
-    // this.onChange,
-    // this.iconStart,
-    // this.iconEnd,
-    // this.width,
-    // this.bg,
-    // this.placeholderColor,
-    // this.textColor,
-    // this.textSize,
-    // this.textWeight,
-    // this.iconSize,
-    // this.iconStartSize,
-    // this.iconEndSize,
-    // this.iconStartColor,
-    // this.iconEndColor,
-    // this.iconColor,
-    // this.isRightSideIcon,
-    // this.widthBetween,
-    // this.padding,
-    // this.radius,
-    // this.borderRadius,
-    // this.border,
-    // this.shadowColor,
-    // this.elevation,
-    // this.hasClear,
-    // this.borderWidth,
-    // this.noBorder,
-    // this.clearCallback,
-    // this.enabled,
-    // this.height,
-    // this.minLines,
-    // this.maxLines,
-    // this.focusNode,
-    // this.maxLength,
+    this.type = TextInputType.text,
+    this.prefixIcon,
+    this.prefixIconStyles,
+    this.maxLength,
+    this.counter = TOptions.inputHasCounter,
+    this.suffixIcon,
   });
 
   final String label;
   final TextEditingController value;
   final List<Function(String?)?>? validate;
   final bool autofocus, isPlaceholder;
+  final InputDecorationTheme? styles;
   final EdgeInsets? padding;
   final Function()? onSubmit;
   final Function(String)? onChange;
-  final InputType? type;
-
-  // final InputTypes? type;
-  // final bool? isPlaceholder;
-  // final bool? hasClear;
-  // final String? iconStart;
-  // final String? iconEnd;
-  // final double? width;
-  // final Color? bg;
-  // final Color? textColor;
-  // final Color? placeholderColor;
-  // final double? textSize;
-  // final FontWeight? textWeight;
-  // final double? iconSize;
-  // final double? iconStartSize;
-  // final double? iconEndSize;
-  // final Color? iconColor;
-  // final Color? iconStartColor;
-  // final Color? iconEndColor;
-  // final bool? isRightSideIcon;
-  // final EdgeInsets? padding;
-  // final double? radius;
-  // final BorderRadius? borderRadius;
-  // final BorderSide? border;
-  // final Color? shadowColor;
-  // final double? elevation;
-  // final double? widthBetween;
-  // final double? borderWidth;
-  // final bool? noBorder;
-  // final Function()? clearCallback;
-  // final bool? enabled;
-  // final double? height;
-  // final int? minLines;
-  // final int? maxLines;
-  // final FocusNode? focusNode;
-  // final int? maxLength;
-
-  // Variables ----------------
-  // bool isShowPassword = false;
-  // bool hasError = false;
-  // late FocusNode isFocus = FocusNode();
-  // bool isTextNotEmpty = false;
-  //
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   isTextNotEmpty = widget.value.text.isNotEmpty;
-  //
-  //   widget.value.addListener(() {
-  //     setState(() {
-  //       isTextNotEmpty = widget.value.text.isNotEmpty;
-  //     });
-  //   });
-  // }
+  final TextInputType type;
+  final String? prefixIcon;
+  final TextStyle? prefixIconStyles;
+  final int? maxLength;
+  final InputCounterOptions counter;
+  final Widget? suffixIcon;
 
   @override
   UIInputState createState() => UIInputState();
@@ -123,24 +49,18 @@ class UIInput extends StatefulWidget {
 
 class UIInputState extends State<UIInput> {
   String error = '';
+  String counter = '';
 
   @override
   Widget build(BuildContext context) {
     TextInputType type = TextInputType.text;
 
-    // Type
-    if (widget.type == InputType.email) {
-      type = TextInputType.emailAddress;
-    } else if (widget.type == InputType.phone) {
-      type == TextInputType.phone;
-    } else if (widget.type == InputType.address) {
-      type = TextInputType.streetAddress;
-    } else if (widget.type == InputType.number) {
-      type = TextInputType.number;
-    }
-
     // Default styles
-    InputDecorationTheme inputStyles = Themes.inputTheme(error.isNotEmpty);
+    InputDecorationTheme inputStyles = widget.styles ?? Themes.inputTheme(error.isNotEmpty);
+    TextStyle inputPrefixIconStyles = widget.prefixIconStyles ?? TextStyle();
+
+    print('counter ${counter}');
+    print('counter ${widget.maxLength != null && widget.counter != InputCounterOptions.hide}');
 
     // Input ----------------
     return Column(
@@ -164,6 +84,9 @@ class UIInputState extends State<UIInput> {
 
           // Type
           keyboardType: type,
+
+          // MaxLength
+          maxLength: widget.maxLength,
 
           // Styles
           decoration: InputDecoration(
@@ -194,44 +117,33 @@ class UIInputState extends State<UIInput> {
             // Errors styles
             errorStyle: inputStyles.errorStyle,
 
-            // counterText: '',
-            // suffixIcon: widget.iconEnd != null
-            //     ? CIcon(widget.iconEnd!, color: widget.iconEndColor ?? widget.iconColor, size: widget.iconEndSize ?? widget.iconSize ?? 16)
-            //     :
-            //     // Password type
-            //     widget.type == InputTypes.password && isTextNotEmpty
-            //         ? Container(
-            //             margin: const EdgeInsets.only(right: 5),
-            //             child: IconBtn(
-            //               isShowPassword ? TIcons.password_no : TIcons.password,
-            //               // Toggle show password
-            //               onTap: () => setState(() => isShowPassword = !isShowPassword),
-            //               size: 18,
-            //               color: TColors.black,
-            //             ))
-            //         :
-            //         // Search type
-            //         widget.hasClear == true && widget.clearCallback != null
-            //             ? IconBtn(
-            //                 TIcons.close,
-            //                 color: TColors.gray,
-            //                 margin: const EdgeInsets.only(right: 5),
-            //                 onTap: () {
-            //                   // Clear input
-            //                   widget.value.clear();
-            //                   widget.clearCallback!();
-            //                 },
-            //               )
-            //             : null,
+            // Icons
+            prefixIcon: widget.prefixIcon != null ? UIIcon(widget.prefixIcon!, styles: inputPrefixIconStyles) : null,
+            suffixIcon: widget.suffixIcon != null ? Padding(padding: const EdgeInsets.all(8.0), child: widget.suffixIcon) : null,
           ),
-          // focusNode: widget.focusNode,
-          // maxLength: widget.maxLength,
-          // minLines: widget.minLines ?? 1,
-          // maxLines: widget.type == InputTypes.textArea ? null : widget.maxLines ?? 1,
+
+          // Counter
+          buildCounter: widget.maxLength != null && widget.counter != InputCounterOptions.hide
+              ? (BuildContext context, {required int currentLength, required bool isFocused, required int? maxLength}) {
+                  int remaining = maxLength! - currentLength;
+                  print('remaining');
+
+                  // if (widget.counter == InputCounterOptions.show) {
+                  //   setState(() => counter = '$currentLength / $maxLength');
+                  // } else if (widget.counter == InputCounterOptions.showOnEnd) {
+                  //   if (remaining <= 5) setState(() => counter = '$currentLength / $maxLength');
+                  // }
+                }
+              : null,
         ),
 
         // Errors
-        if (error.isNotEmpty) UIText(error, styles: inputStyles.errorStyle, lineHeight: 2.5),
+
+        Row(children: [
+          if (error.isNotEmpty) UIText(error, styles: inputStyles.errorStyle, lineHeight: 2.5),
+          if (counter.isNotEmpty)
+            Container(margin: const EdgeInsets.only(left: 10), child: UIText(counter, styles: TOptions.inputCounterStyles, lineHeight: 2.5)),
+        ]),
       ],
     );
   }
