@@ -8,6 +8,7 @@ class LoginController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailInput = TextEditingController();
   final TextEditingController passwordInput = TextEditingController();
+  final TextEditingController phoneInput = TextEditingController();
 
   // Methods ----------------
   Future<void> onLogin() async {

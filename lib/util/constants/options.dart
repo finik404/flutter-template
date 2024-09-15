@@ -18,15 +18,40 @@ class TOptions {
 
   // --------------- BUTTON --------------- //
   static ButtonStyle buttonStyles = Themes.buttonTheme.style!;
-  static TextStyle buttonIconStyles =Themes.textTheme.bodyMedium!;
+  static TextStyle buttonIconStyles = Themes.textTheme.bodyMedium!;
   static const double buttonSpaceBetween = TSizes.spaceSm;
   static const bool buttonIsRightIcon = false;
   static const bool buttonIsFullWidth = true;
 
-  // --------------- INPUT --------------- //
-  // static InputDecorationTheme inputStyles = Themes.inputTheme;
+  // --------------- INPUTS --------------- //
+  static InputDecorationTheme Function(bool hasError) inputStyles = Themes.inputTheme;
+  static const bool inputIsPlaceholder = false;
+  static TextStyle inputIconStyles = TextStyle(fontSize: 18, color: TColors.primary.withOpacity(0.5));
   static const InputCounterOptions inputHasCounter = InputCounterOptions.show;
   static TextStyle inputCounterStyles = const TextStyle(fontSize: 12);
+
+  // Search input
+  static InputDecorationTheme Function(bool hasError)? inputSearchStyles;
+  static EdgeInsets? inputSearchPadding;
+  static const bool inputSearchIsPlaceholder = true;
+  static const bool inputSearchAutofocus = true;
+  static String? inputSearchPrefixIcon = TIcons.search;
+  static String? inputSearchSuffixIcon = TIcons.close;
+  static TextStyle? inputSearchPrefixIconStyles = TextStyle(fontSize: 16, color: TColors.primary.withOpacity(0.5));
+  static TextStyle? inputSearchSuffixIconStyles = TextStyle(fontSize: 18, color: TColors.primary.withOpacity(0.5));
+
+  // Textarea
+  static InputDecorationTheme Function(bool hasError)? textareaStyles;
+  static EdgeInsets? textareaPadding;
+  static const bool textareaIsPlaceholder = false;
+  static const int textareaMinLines = 2;
+  static int? textareaMaxLines;
+  static const bool textAreaIsInfinity = true;
+
+  // Phone input
+  static InputDecorationTheme Function(bool hasError)? inputPhoneStyles;
+  static EdgeInsets? inputPhonePadding;
+  static const bool inputPhoneIsPlaceholder = false;
 
   // --------------- SELECT --------------- //
 

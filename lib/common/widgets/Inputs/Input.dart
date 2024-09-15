@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/options.dart';
-import 'package:tproject/util/theme/themes.dart';
 import 'package:tproject/util/validators/validator.dart';
 import 'package:tproject/util/constants/enums.dart';
 
@@ -15,7 +15,7 @@ class UIInput extends StatefulWidget {
     super.key,
     this.validate,
     this.styles,
-    this.isPlaceholder = false,
+    this.isPlaceholder = TOptions.inputIsPlaceholder,
     this.autofocus = false,
     this.padding,
     this.onSubmit,
@@ -24,15 +24,19 @@ class UIInput extends StatefulWidget {
     this.prefixIcon,
     this.prefixIconStyles,
     this.maxLength,
-    this.counter = TOptions.inputHasCounter,
+    this.counterOptions = TOptions.inputHasCounter,
     this.suffixIcon,
+    this.minLines,
+    this.maxLines,
+    this.textAreaIsInfinity = false,
+    this.mask,
   });
 
   final String label;
   final TextEditingController value;
   final List<Function(String?)?>? validate;
   final bool autofocus, isPlaceholder;
-  final InputDecorationTheme? styles;
+  final Function(bool)? styles;
   final EdgeInsets? padding;
   final Function()? onSubmit;
   final Function(String)? onChange;
@@ -40,8 +44,11 @@ class UIInput extends StatefulWidget {
   final String? prefixIcon;
   final TextStyle? prefixIconStyles;
   final int? maxLength;
-  final InputCounterOptions counter;
+  final InputCounterOptions counterOptions;
   final Widget? suffixIcon;
+  final int? minLines, maxLines;
+  final bool textAreaIsInfinity;
+  final TextInputFormatter? mask;
 
   @override
   UIInputState createState() => UIInputState();
@@ -56,11 +63,8 @@ class UIInputState extends State<UIInput> {
     TextInputType type = TextInputType.text;
 
     // Default styles
-    InputDecorationTheme inputStyles = widget.styles ?? Themes.inputTheme(error.isNotEmpty);
-    TextStyle inputPrefixIconStyles = widget.prefixIconStyles ?? TextStyle();
-
-    print('counter ${counter}');
-    print('counter ${widget.maxLength != null && widget.counter != InputCounterOptions.hide}');
+    InputDecorationTheme inputStyles = widget.styles?.call(error.isNotEmpty) ?? TOptions.inputStyles(error.isNotEmpty);
+    TextStyle inputPrefixIconStyles = widget.prefixIconStyles ?? TOptions.inputIconStyles;
 
     // Input ----------------
     return Column(
@@ -87,6 +91,17 @@ class UIInputState extends State<UIInput> {
 
           // MaxLength
           maxLength: widget.maxLength,
+
+          // Textarea options
+          minLines: widget.minLines ?? 1,
+          maxLines: widget.textAreaIsInfinity
+              ? null
+              : widget.minLines != null && widget.maxLines == null
+                  ? widget.minLines
+                  : widget.maxLines ?? 1,
+
+          // Mask
+          inputFormatters: widget.mask != null ? [widget.mask!] : [],
 
           // Styles
           decoration: InputDecoration(
@@ -123,7 +138,7 @@ class UIInputState extends State<UIInput> {
           ),
 
           // Counter
-          buildCounter: widget.maxLength != null && widget.counter != InputCounterOptions.hide
+          buildCounter: widget.maxLength != null && widget.counterOptions != InputCounterOptions.hide
               ? (BuildContext context, {required int currentLength, required bool isFocused, required int? maxLength}) {
                   int remaining = maxLength! - currentLength;
                   print('remaining');
@@ -137,8 +152,7 @@ class UIInputState extends State<UIInput> {
               : null,
         ),
 
-        // Errors
-
+        // Errors and counter
         Row(children: [
           if (error.isNotEmpty) UIText(error, styles: inputStyles.errorStyle, lineHeight: 2.5),
           if (counter.isNotEmpty)

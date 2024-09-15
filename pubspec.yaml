@@ -61,6 +61,7 @@ dependencies:
 
   # Device info
   device_info_plus: ^10.1.2
+  mask_text_input_formatter: ^2.9.0
 
 
 # --------------- DEV PACKAGES --------------- #
