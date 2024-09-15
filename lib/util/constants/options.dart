@@ -136,12 +136,12 @@ class TOptions {
 // --------------- TOAST --------------- //
 
   // --------------- CONFIRM --------------- //
-  static Color confirmBarrierColor = TColors.black.withOpacity(0.5);
   static double confirmWidth = Get.context!.screenWidth * 0.7;
   static double confirmRadius = TSizes.radius;
   static String confirmButtonString = 'OK';
 
-// --------------- ACTIONMENU --------------- //
+  // --------------- ACTIONMENU --------------- //
+  static Color barrierColor = TColors.black.withOpacity(0.5);
 
   // --------------- SKELETON --------------- //
   static Color skeletonColor1 = Colors.grey[300]!;

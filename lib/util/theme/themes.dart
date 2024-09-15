@@ -29,6 +29,7 @@ class Themes {
       backgroundColor: TColors.secondary,
       shape: RoundedRectangleBorder(borderRadius: TStyles.br),
       textStyle: textTheme.bodyMedium,
+      shadowColor: Colors.transparent,
     ),
   );
 
@@ -39,6 +40,7 @@ class Themes {
       backgroundColor: TColors.primary.withOpacity(0.08),
       shape: RoundedRectangleBorder(borderRadius: TStyles.br),
       textStyle: textTheme.bodyMedium,
+      shadowColor: Colors.transparent,
     ),
   );
 

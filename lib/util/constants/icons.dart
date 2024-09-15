@@ -65,4 +65,5 @@ class TIcons {
   static String question = '3f';
   static String quote = 'f10e';
   static String flag = 'f024';
+  static String warning = 'f071';
 }

@@ -1,29 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tproject/common/widgets/Dialogs/ActionMenu.dart';
 import 'package:tproject/common/widgets/Dialogs/Confirm.dart';
-import 'package:tproject/util/constants/colors.dart';
+import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/util/constants/options.dart';
 
 class TDialog {
-  static void showSnackBar(String message) {
-    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(content: Text(message)));
+  static void showWarningSnackBar(String title, String message) {
+    Get.snackbar(
+      title,
+      message,
+      shouldIconPulse: true,
+      isDismissible: true,
+      colorText: Colors.white,
+      backgroundColor: Colors.orange,
+      snackPosition: SnackPosition.BOTTOM,
+      duration: const Duration(seconds: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      margin: const EdgeInsets.all(20),
+      icon: UIIcon(TIcons.warning, color: Colors.white, size: 20),
+    );
   }
 
-  static void showAlert(String title, String message) {
-    showDialog(
-      context: Get.context!,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(title),
-          content: Text(message),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
+  static void showErrorSnackBar(String title, String message) {
+    Get.snackbar(
+      title,
+      message,
+      shouldIconPulse: true,
+      isDismissible: true,
+      colorText: Colors.white,
+      backgroundColor: Colors.red,
+      snackPosition: SnackPosition.BOTTOM,
+      duration: const Duration(seconds: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      margin: const EdgeInsets.all(20),
+      icon: UIIcon(TIcons.warning, color: Colors.white, size: 20),
     );
   }
 
@@ -35,9 +46,31 @@ class TDialog {
   }) {
     showDialog(
       context: Get.context!,
-      barrierColor: TOptions.confirmBarrierColor,
+      barrierColor: TOptions.barrierColor,
       builder: (BuildContext context) {
         return UIConfirm(title, text: text, width: width, close: close);
+      },
+    );
+  }
+
+  static void showActionMenu({
+    List<ActionModel>? actions,
+    Widget? content,
+    String? label,
+    // bool? hasScroll,
+    // double? height,
+    // double? topMargin,
+    // EdgeInsets? padding,
+  }) {
+    showModalBottomSheet(
+      useSafeArea: true,
+      context: Get.context!,
+      barrierColor: TOptions.barrierColor,
+      backgroundColor: Colors.white,
+      elevation: 0,
+      // isScrollControlled: hasScroll ?? false,
+      builder: (BuildContext context) {
+        return UIActionMenu(actions: actions);
       },
     );
   }

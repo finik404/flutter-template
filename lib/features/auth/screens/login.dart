@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/common/widgets/Buttons/Button.dart';
+import 'package:tproject/common/widgets/Dialogs/ActionMenu.dart';
 import 'package:tproject/common/widgets/Inputs/Input.dart';
 import 'package:tproject/common/widgets/Inputs/PhoneInput.dart';
 import 'package:tproject/common/widgets/Inputs/SearchInput.dart';
@@ -9,6 +10,8 @@ import 'package:tproject/common/widgets/Text/TextLink.dart';
 import 'package:tproject/features/auth/controllers/login.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
 import 'package:tproject/features/auth/screens/password/password.dart';
+import 'package:tproject/generated/l10n.dart';
+import 'package:tproject/util/constants/icons.dart';
 import 'package:tproject/util/helpers/dialog.dart';
 import 'package:tproject/util/validators/rules.dart';
 
@@ -52,7 +55,10 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 30),
 
               // Submit button
-              UIButton('Войти', () => TDialog.showConfirm('Подтвердите действие', text: 'Декабрь — идеальное время для обновления вашей ванной комнаты или кухни с нашими')),
+              UIButton('Войти', () => TDialog.showActionMenu(actions:
+              [
+              ActionModel(label: 'Action 1', icon: TIcons.reset, onTap: () => null),
+              ]),),
 
               const SizedBox(height: 25),
               UITextArea(
