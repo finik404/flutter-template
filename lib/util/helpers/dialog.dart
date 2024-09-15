@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tproject/common/widgets/Dialogs/Confirm.dart';
+import 'package:tproject/util/constants/colors.dart';
+import 'package:tproject/util/constants/options.dart';
 
 class TDialog {
   static void showSnackBar(String message) {
@@ -20,6 +23,21 @@ class TDialog {
             ),
           ],
         );
+      },
+    );
+  }
+
+  static void showConfirm(
+    String title, {
+    String? text,
+    double? width,
+    Function()? close,
+  }) {
+    showDialog(
+      context: Get.context!,
+      barrierColor: TOptions.confirmBarrierColor,
+      builder: (BuildContext context) {
+        return UIConfirm(title, text: text, width: width, close: close);
       },
     );
   }

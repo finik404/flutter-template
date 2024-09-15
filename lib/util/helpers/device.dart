@@ -62,10 +62,6 @@ class TDevice {
     FocusScope.of(context).requestFocus(FocusNode());
   }
 
-  static bool isDartMode(BuildContext context) {
-    return Theme.of(context).brightness == Brightness.dark;
-  }
-
   static Future<void> setStatusBarBrightness(Brightness value) async {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarBrightness: value));
   }
@@ -86,10 +82,6 @@ class TDevice {
   static Future<bool> isKeyboardVisible() async {
     final viewInsets = View.of(Get.context!).viewInsets;
     return viewInsets.bottom > 0;
-  }
-
-  static Future<bool> isPhysicalDevice() async {
-    return defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS;
   }
 
   static void vibrate(Duration duration) {

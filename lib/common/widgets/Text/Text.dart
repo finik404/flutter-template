@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/constants/styles.dart';
 
 class UIText extends StatelessWidget {
   const UIText(
@@ -34,11 +35,12 @@ class UIText extends StatelessWidget {
 
     // Styles
     TextStyle textStyle = defaultStyles.copyWith(
+      fontFamily: TStyles.font,
       fontSize: size ?? defaultStyles.fontSize,
       fontWeight: weight ?? defaultStyles.fontWeight,
       color: color ?? defaultStyles.color,
       height: lineHeight ?? defaultStyles.height,
-      decoration: isDecoration == true ? TextDecoration.underline : null,
+      decoration: isDecoration == true ? TextDecoration.underline : TextDecoration.none,
       decorationColor: isDecoration == true ? (color ?? defaultStyles.color) : null,
     );
 

@@ -5,6 +5,7 @@ import 'package:tproject/util/constants/enums.dart';
 import 'package:tproject/util/constants/icons.dart';
 import 'package:tproject/util/constants/sizes.dart';
 import 'package:tproject/util/constants/styles.dart';
+import 'package:tproject/util/extensions/media.dart';
 import 'package:tproject/util/theme/themes.dart';
 
 class TOptions {
@@ -134,7 +135,11 @@ class TOptions {
 
 // --------------- TOAST --------------- //
 
-// --------------- ALERT --------------- //
+  // --------------- CONFIRM --------------- //
+  static Color confirmBarrierColor = TColors.black.withOpacity(0.5);
+  static double confirmWidth = Get.context!.screenWidth * 0.7;
+  static double confirmRadius = TSizes.radius;
+  static String confirmButtonString = 'OK';
 
 // --------------- ACTIONMENU --------------- //
 

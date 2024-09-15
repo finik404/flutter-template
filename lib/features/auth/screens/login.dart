@@ -9,6 +9,7 @@ import 'package:tproject/common/widgets/Text/TextLink.dart';
 import 'package:tproject/features/auth/controllers/login.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
 import 'package:tproject/features/auth/screens/password/password.dart';
+import 'package:tproject/util/helpers/dialog.dart';
 import 'package:tproject/util/validators/rules.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -51,7 +52,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 30),
 
               // Submit button
-              UIButton('Войти', controller.onLogin),
+              UIButton('Войти', () => TDialog.showConfirm('Подтвердите действие', text: 'Декабрь — идеальное время для обновления вашей ванной комнаты или кухни с нашими')),
 
               const SizedBox(height: 25),
               UITextArea(
