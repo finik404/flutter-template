@@ -30,6 +30,7 @@ class TOptions {
   static TextStyle inputIconStyles = TextStyle(fontSize: 18, color: TColors.primary.withOpacity(0.5));
   static const InputCounterOptions inputHasCounter = InputCounterOptions.show;
   static TextStyle inputCounterStyles = const TextStyle(fontSize: 12);
+  static TextStyle inputPasswordIconStyles = TextStyle(fontSize: 18, color: TColors.primary.withOpacity(0.5));
 
   // Search input
   static InputDecorationTheme Function(bool hasError)? inputSearchStyles;

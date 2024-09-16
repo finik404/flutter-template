@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
+import 'package:tproject/common/widgets/Icon/IconButton.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/constants/sizes.dart';
 import 'package:tproject/util/validators/validator.dart';
 import 'package:tproject/util/constants/enums.dart';
 
@@ -30,12 +32,13 @@ class UIInput extends StatefulWidget {
     this.maxLines,
     this.textAreaIsInfinity = false,
     this.mask,
+    this.isPassword = false,
   });
 
   final String label;
   final TextEditingController value;
   final List<Function(String?)?>? validate;
-  final bool autofocus, isPlaceholder;
+  final bool autofocus, isPlaceholder, isPassword;
   final Function(bool)? styles;
   final EdgeInsets? padding;
   final Function()? onSubmit;
@@ -57,6 +60,7 @@ class UIInput extends StatefulWidget {
 class UIInputState extends State<UIInput> {
   String error = '';
   String counter = '';
+  bool showPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +104,9 @@ class UIInputState extends State<UIInput> {
                   ? widget.minLines
                   : widget.maxLines ?? 1,
 
+          // Hide text
+          obscureText: widget.isPassword && !showPassword,
+
           // Mask
           inputFormatters: widget.mask != null ? [widget.mask!] : [],
 
@@ -134,7 +141,23 @@ class UIInputState extends State<UIInput> {
 
             // Icons
             prefixIcon: widget.prefixIcon != null ? UIIcon(widget.prefixIcon!, styles: inputPrefixIconStyles) : null,
-            suffixIcon: widget.suffixIcon != null ? Padding(padding: const EdgeInsets.all(8.0), child: widget.suffixIcon) : null,
+            suffixIcon:
+                // Password button
+                widget.isPassword
+                    ? Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: UIIconButton(
+                          TIcons.password,
+                          () => setState(() => showPassword = !showPassword),
+                          radius: TSizes.radius,
+                          styles: TOptions.inputPasswordIconStyles,
+                        ),
+                      )
+
+                    // SuffixIcon
+                    : widget.suffixIcon != null
+                        ? Padding(padding: const EdgeInsets.all(8.0), child: widget.suffixIcon)
+                        : null,
           ),
 
           // Counter

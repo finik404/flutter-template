@@ -4,7 +4,7 @@ import 'package:tproject/common/widgets/ClickArea.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/options.dart';
-import 'package:tproject/util/helpers/helper.dart';
+import 'package:tproject/util/helpers/external.dart';
 
 class UITextLink extends StatelessWidget {
   const UITextLink(
@@ -54,7 +54,7 @@ class UITextLink extends StatelessWidget {
       onTap: () {
         if (screen != null) Get.to(screen);
         if (onTap != null) onTap!();
-        if (webLink != null) THelper.launchUrl(webLink!);
+        if (webLink != null) TExternal.launchUrl(webLink!);
       },
 
       // Content
@@ -68,9 +68,9 @@ class UITextLink extends StatelessWidget {
               margin: EdgeInsets.only(right: spaceBetween),
               child: UIIcon(
                 icon!,
-                color: iconColor ?? defaultTextStyles.color,
-                size: iconSize ?? defaultTextStyles.fontSize,
-                weight: iconWeight ?? defaultTextStyles.fontWeight,
+                color: iconColor ?? defaultIconStyles.color,
+                size: iconSize ?? defaultIconStyles.fontSize,
+                weight: iconWeight ?? defaultIconStyles.fontWeight,
               ),
             ),
 
@@ -89,9 +89,9 @@ class UITextLink extends StatelessWidget {
               margin: EdgeInsets.only(left: spaceBetween),
               child: UIIcon(
                 icon!,
-                color: iconColor ?? defaultTextStyles.color,
-                size: iconSize ?? defaultTextStyles.fontSize,
-                weight: iconWeight ?? defaultTextStyles.fontWeight,
+                color: iconColor ?? defaultIconStyles.color,
+                size: iconSize ?? defaultIconStyles.fontSize,
+                weight: iconWeight ?? defaultIconStyles.fontWeight,
               ),
             ),
         ],
