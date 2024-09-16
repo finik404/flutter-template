@@ -10,10 +10,9 @@ class LoginController extends GetxController {
   final TextEditingController passwordInput = TextEditingController();
   final TextEditingController phoneInput = TextEditingController();
 
+
   // Methods ----------------
   Future<void> onLogin() async {
-    if (formKey.currentState!.validate()) {
-        
-     }
+    if (formKey.currentState!.validate()) {}
   }
 }

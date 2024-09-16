@@ -18,7 +18,7 @@ class TOptions {
   static TextStyle iconStyles = Themes.iconMdTheme;
 
   // --------------- BUTTON --------------- //
-  static ButtonStyle buttonStyles = Themes.buttonTheme.style!;
+  static ElevatedButtonThemeData Function({EdgeInsets? padding}) buttonStyles = Themes.buttonTheme;
   static TextStyle buttonIconStyles = Themes.textTheme.bodyMedium!;
   static const double buttonSpaceBetween = TSizes.spaceSm;
   static const bool buttonIsRightIcon = false;
@@ -145,6 +145,8 @@ class TOptions {
 
   // --------------- ACTIONMENU --------------- //
   static Color barrierColor = TColors.black.withOpacity(0.5);
+  static Color actionMenuBackground = Theme.of(Get.context!).scaffoldBackgroundColor;
+  static BorderRadius actionMenuBorderRadius = BorderRadius.circular(20);
 
   // --------------- SKELETON --------------- //
   static Color skeletonColor1 = Colors.grey[300]!;

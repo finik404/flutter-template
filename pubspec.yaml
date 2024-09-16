@@ -63,7 +63,7 @@ dependencies:
   device_info_plus: ^10.1.2
 
   # Mask for input
-  mask_text_input_formatter: ^2.9.0
+  easy_mask: ^2.0.1
 
   # Pick image
   image_picker: ^1.1.2

@@ -15,7 +15,8 @@ class UISecondaryButton extends UIButton {
     super.spaceBetween,
     super.isRightIcon,
     super.isFullWidth,
+    super.padding,
   }) : super(
-          styles: Themes.buttonSecondaryTheme.style,
+          styles: Themes.buttonSecondaryTheme(padding: padding).style,
         );
 }

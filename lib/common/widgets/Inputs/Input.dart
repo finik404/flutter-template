@@ -64,9 +64,6 @@ class UIInputState extends State<UIInput> {
 
   @override
   Widget build(BuildContext context) {
-    TextInputType type = TextInputType.text;
-
-    // Default styles
     InputDecorationTheme inputStyles = widget.styles?.call(error.isNotEmpty) ?? TOptions.inputStyles(error.isNotEmpty);
     TextStyle inputPrefixIconStyles = widget.prefixIconStyles ?? TOptions.inputIconStyles;
 
@@ -91,7 +88,7 @@ class UIInputState extends State<UIInput> {
           autofocus: widget.autofocus,
 
           // Type
-          keyboardType: type,
+          keyboardType: widget.type,
 
           // MaxLength
           maxLength: widget.maxLength,

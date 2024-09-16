@@ -21,7 +21,7 @@ class UIList extends StatelessWidget {
   final Axis direction;
   final bool hasScroll;
   final EdgeInsetsGeometry padding;
-  final Function(BuildContext)? separator;
+  final Widget? separator;
   final double spaceBetween;
   final double? height;
   final ScrollController? controller;
@@ -43,7 +43,7 @@ class UIList extends StatelessWidget {
       separatorBuilder: (context, index) {
         if (separator != null) {
           // Custom separator
-          return separator!(context);
+          return separator!;
         } else {
           // Spacing
           return SizedBox(

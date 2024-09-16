@@ -57,20 +57,32 @@ class TDialog {
     List<ActionModel>? actions,
     Widget? content,
     String? label,
-    // bool? hasScroll,
-    // double? height,
-    // double? topMargin,
-    // EdgeInsets? padding,
+    Color? bg,
+    EdgeInsets? padding,
+    bool hasScroll = false,
+    double? height,
+    BorderRadius? borderRadius,
   }) {
+    Color background = bg ?? TOptions.actionMenuBackground;
+
     showModalBottomSheet(
       useSafeArea: true,
       context: Get.context!,
       barrierColor: TOptions.barrierColor,
-      backgroundColor: Colors.white,
+      backgroundColor: background,
       elevation: 0,
-      // isScrollControlled: hasScroll ?? false,
+      isScrollControlled: hasScroll || height != null,
       builder: (BuildContext context) {
-        return UIActionMenu(actions: actions);
+        return UIActionMenu(
+          actions: actions,
+          content: content,
+          label: label,
+          padding: padding,
+          borderRadius: borderRadius,
+          hasScroll: hasScroll,
+          height: height,
+          bg: background,
+        );
       },
     );
   }

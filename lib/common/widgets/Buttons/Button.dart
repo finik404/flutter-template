@@ -10,6 +10,7 @@ class UIButton extends StatelessWidget {
     this.onTap, {
     super.key,
     this.styles,
+    this.padding,
     this.onLongTap,
     this.isDisabled,
     this.textStyles,
@@ -25,6 +26,7 @@ class UIButton extends StatelessWidget {
   final Function() onTap;
   final Function()? onLongTap;
   final ButtonStyle? styles;
+  final EdgeInsets? padding;
   final TextStyle? textStyles, iconStyles;
   final String? icon;
   final Widget? customIcon;
@@ -34,7 +36,7 @@ class UIButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ButtonStyle buttonStyles = TOptions.buttonStyles;
+    ButtonStyle buttonStyles = TOptions.buttonStyles(padding: padding).style!;
     TextStyle customIconStyles = TOptions.buttonIconStyles;
 
     Widget button = ElevatedButton(

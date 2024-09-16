@@ -6,6 +6,7 @@ class UITextArea extends UIInput {
     super.label,
     super.value, {
     super.key,
+    super.validate,
     super.isPlaceholder = TOptions.textareaIsPlaceholder,
     super.autofocus,
     super.onSubmit,
