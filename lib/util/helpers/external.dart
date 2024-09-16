@@ -46,7 +46,7 @@ Future<XFile?> pickFile({required ImageSource type, required Permission permissi
       int maxSizeBytes = maxSize * 1024 * 1024;
 
       if (fileSize > maxSizeBytes) {
-        TDialog.showErrorSnackBar('Размер файла не должен превышать ${maxSize} мб');
+        TDialog.showSnackBar('Размер файла не должен превышать ${maxSize} мб', isError: true);
       } else {
         return image;
       }

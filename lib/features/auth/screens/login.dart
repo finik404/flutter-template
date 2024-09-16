@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 30),
 
               // Submit button
-              UIButton('Войти', () => null),
+              UIButton('Войти', () => TDialog.showToast(context, 'success')),
 
               const SizedBox(height: 25),
 
