@@ -6,9 +6,9 @@ import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/util/constants/options.dart';
 
 class TDialog {
-  static void showWarningSnackBar(String title, String message) {
+  static void showWarningSnackBar(String message, {String? title}) {
     Get.snackbar(
-      title,
+      title ?? 'Ошибка',
       message,
       shouldIconPulse: true,
       isDismissible: true,
@@ -22,9 +22,9 @@ class TDialog {
     );
   }
 
-  static void showErrorSnackBar(String title, String message) {
+  static void showErrorSnackBar(String message, {String? title}) {
     Get.snackbar(
-      title,
+      title ?? 'Ошибка',
       message,
       shouldIconPulse: true,
       isDismissible: true,

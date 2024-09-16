@@ -45,12 +45,12 @@ dependencies:
   # Images caching
   cached_network_image: ^3.4.0
 
-  # Firebase and notifications
+  # Firebase, notifications, auth
   firebase_core: ^3.4.0
   firebase_messaging: 15.1.1
+  firebase_auth: ^5.2.1
 
   # Parse html
-  flutter_widget_from_html_core: ^0.15.2
   html: ^0.15.4
 
   # Share content
@@ -61,7 +61,11 @@ dependencies:
 
   # Device info
   device_info_plus: ^10.1.2
+
+  # Mask for input
   mask_text_input_formatter: ^2.9.0
+
+  # Pick image
   image_picker: ^1.1.2
 
 

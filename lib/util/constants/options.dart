@@ -70,6 +70,8 @@ class TOptions {
   static const EdgeInsets textLinkClickPadding = EdgeInsets.symmetric(horizontal: 5);
 
   // --------------- TEXTS --------------- //
+  static const Color textsLinkColor = TColors.primary;
+  static const bool textsLinkHasDecoration = false;
 
   // --------------- LIST --------------- //
   static const Axis listDirection = Axis.vertical;
@@ -149,8 +151,6 @@ class TOptions {
   static Color skeletonColor2 = Colors.grey[100]!;
   static const double skeletonHeight = 18;
   static const double skeletonRadius = TSizes.radius;
-
-// --------------- HTMLTOTEXT --------------- //
 
   // --------------- OTHERS --------------- //
   static const String dateFormat = 'dd.MM.yyyy';

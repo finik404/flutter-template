@@ -31,17 +31,17 @@ class UIText extends StatelessWidget {
     bool isCropped = isOverflow == true || lines != null;
 
     // Default styles
-    TextStyle defaultStyles = TOptions.textStyles;
+    TextStyle textStyles = TOptions.textStyles;
 
     // Styles
-    TextStyle textStyle = defaultStyles.copyWith(
+    TextStyle textStyle = textStyles.copyWith(
       fontFamily: TStyles.font,
-      fontSize: size ?? defaultStyles.fontSize,
-      fontWeight: weight ?? defaultStyles.fontWeight,
-      color: color ?? defaultStyles.color,
-      height: lineHeight ?? defaultStyles.height,
+      fontSize: size ?? textStyles.fontSize,
+      fontWeight: weight ?? textStyles.fontWeight,
+      color: color ?? textStyles.color,
+      height: lineHeight ?? textStyles.height,
       decoration: isDecoration == true ? TextDecoration.underline : TextDecoration.none,
-      decorationColor: isDecoration == true ? (color ?? defaultStyles.color) : null,
+      decorationColor: isDecoration == true ? (color ?? textStyles.color) : null,
     );
 
     return Text(
@@ -49,7 +49,7 @@ class UIText extends StatelessWidget {
       style: textStyle.merge(styles),
       textAlign: align,
       maxLines: lines,
-      overflow: isCropped ? TextOverflow.ellipsis : null,
+      overflow: isCropped ? TextOverflow.ellipsis : TextOverflow.clip,
     );
   }
 }
