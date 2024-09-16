@@ -28,7 +28,7 @@ class TOptions {
   static InputDecorationTheme Function(bool hasError) inputStyles = Themes.inputTheme;
   static const bool inputIsPlaceholder = false;
   static TextStyle inputIconStyles = TextStyle(fontSize: 18, color: TColors.primary.withOpacity(0.5));
-  static const InputCounterOptions inputHasCounter = InputCounterOptions.show;
+  static const InputCounterOptions inputHasCounter = InputCounterOptions.hide;
   static TextStyle inputCounterStyles = const TextStyle(fontSize: 12);
   static TextStyle inputPasswordIconStyles = TextStyle(fontSize: 18, color: TColors.primary.withOpacity(0.5));
 
@@ -133,6 +133,10 @@ class TOptions {
       border: Border.all(color: value ? Theme.of(Get.context!).primaryColor : Theme.of(Get.context!).primaryColor.withOpacity(0.5), width: 2),
     );
   };
+  static const double checkBoxSpaceBetween = 10;
+  static const double checkBoxClickRadiusWithLabel = 8.0;
+  static EdgeInsets checkBoxClickPaddingWithLabel = const EdgeInsets.symmetric(vertical: 5, horizontal: 10);
+  static TextStyle? checkBoxLabelStyles;
 
 // --------------- RADIOBUTTON --------------- //
 
@@ -140,7 +144,9 @@ class TOptions {
   static const double toastMaxWidth = 0.8;
   static const EdgeInsets toastPadding = EdgeInsets.symmetric(horizontal: 20, vertical: 10);
   static BorderRadius toastBorderRadius = BorderRadius.circular(30);
-  static List<BoxShadow>? toastBoxShadow = [BoxShadow(color: Colors.black.withOpacity(0.2), offset: const Offset(0, 3), blurRadius: 5, spreadRadius: 1)];
+  static List<BoxShadow>? toastBoxShadow = [
+    BoxShadow(color: Colors.black.withOpacity(0.2), offset: const Offset(0, 3), blurRadius: 5, spreadRadius: 1)
+  ];
   static Border? toastBorder;
 
   // --------------- SNACKBAR --------------- //

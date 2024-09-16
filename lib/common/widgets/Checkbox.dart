@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/common/widgets/ClickArea.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
+import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/constants/options.dart';
 
@@ -15,8 +16,11 @@ class UICheckbox extends StatelessWidget {
     this.radius = TOptions.checkBoxRadius,
     this.size = TOptions.checkBoxSize,
     this.paddingClick,
-    this.radiusClick = TOptions.checkBoxClickRadius,
+    this.radiusClick,
     this.icon,
+    this.label,
+    this.spaceBetween,
+    this.labelStyles,
   });
 
   final bool value;
@@ -24,9 +28,12 @@ class UICheckbox extends StatelessWidget {
   final Color activeColor;
   final Color checkColor;
   final Color borderColor;
-  final double size, radius, radiusClick;
+  final double size, radius;
+  final double? radiusClick;
   final EdgeInsets? paddingClick;
-  final String? icon;
+  final String? icon, label;
+  final TextStyle? labelStyles;
+  final double? spaceBetween;
 
   @override
   Widget build(BuildContext context) {
@@ -35,26 +42,38 @@ class UICheckbox extends StatelessWidget {
       onTap: onChange != null ? () => onChange!(!value) : null,
 
       // Click options
-      padding: paddingClick ?? TOptions.checkBoxClickPadding,
-      radius: radiusClick,
+      padding: paddingClick ?? (label != null ? TOptions.checkBoxClickPaddingWithLabel : TOptions.checkBoxClickPadding),
+      radius: radiusClick ?? (label != null ? TOptions.checkBoxClickRadiusWithLabel : TOptions.checkBoxClickRadius),
 
-      // Container
-      child: Container(
-        width: TOptions.checkBoxSize,
-        height: TOptions.checkBoxSize,
-        decoration: TOptions.checkBoxDecoration(value),
+      // Content
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // CheckBox
+          Container(
+            width: TOptions.checkBoxSize,
+            height: TOptions.checkBoxSize,
+            decoration: TOptions.checkBoxDecoration(value),
 
-        // Check icon
-        child: Center(
-          child: value
-              ? UIIcon(
-                  icon ?? TOptions.checkBoxIcon,
-                  color: TOptions.checkBoxIconStyles.color,
-                  weight: TOptions.checkBoxIconStyles.fontWeight,
-                  size: TOptions.checkBoxSize * TOptions.checkBoxIconSize,
-                )
-              : null,
-        ),
+            // Check icon
+            child: Center(
+              child: value
+                  ? UIIcon(
+                      icon ?? TOptions.checkBoxIcon,
+                      color: TOptions.checkBoxIconStyles.color,
+                      weight: TOptions.checkBoxIconStyles.fontWeight,
+                      size: TOptions.checkBoxSize * TOptions.checkBoxIconSize,
+                    )
+                  : null,
+            ),
+          ),
+
+          if (label != null)
+            Container(
+              margin: const EdgeInsets.only(left: TOptions.checkBoxSpaceBetween),
+              child: UIText(label!, styles: labelStyles ?? TOptions.checkBoxLabelStyles),
+            )
+        ],
       ),
     );
   }

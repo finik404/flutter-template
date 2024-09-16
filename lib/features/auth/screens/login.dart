@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/common/widgets/Buttons/Button.dart';
+import 'package:tproject/common/widgets/Checkbox.dart';
 import 'package:tproject/common/widgets/Dialogs/ActionMenu.dart';
 import 'package:tproject/common/widgets/Inputs/Input.dart';
 import 'package:tproject/common/widgets/Inputs/Textarea.dart';
@@ -53,7 +54,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 30),
 
               // Submit button
-              UIButton('Войти', () => TDialog.showToast(context, 'success')),
+              UIButton('Войти', controller.onLogin),
 
               const SizedBox(height: 25),
 

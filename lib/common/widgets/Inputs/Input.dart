@@ -63,6 +63,32 @@ class UIInputState extends State<UIInput> {
   bool showPassword = false;
 
   @override
+  void initState() {
+    super.initState();
+
+    // Counter
+    if (widget.maxLength != null && widget.counterOptions != InputCounterOptions.hide) {
+      widget.value.addListener(() {
+        final maxLength = widget.maxLength ?? 0;
+        final currentLength = widget.value.text.length;
+
+        setState(() {
+          int remaining = maxLength - currentLength;
+
+          // Show on end
+          if (widget.counterOptions == InputCounterOptions.showOnEnd && remaining <= 5) {
+            counter = '$currentLength / $maxLength';
+          }
+          // Always show
+          else if (widget.counterOptions == InputCounterOptions.show) {
+            counter = '$currentLength / $maxLength';
+          }
+        });
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     InputDecorationTheme inputStyles = widget.styles?.call(error.isNotEmpty) ?? TOptions.inputStyles(error.isNotEmpty);
     TextStyle inputPrefixIconStyles = widget.prefixIconStyles ?? TOptions.inputIconStyles;
@@ -77,6 +103,7 @@ class UIInputState extends State<UIInput> {
           // Validation
           validator: (value) {
             String? errors = TValidator.validate(value, widget.validate);
+            print('errors ${errors}');
             setState(() => error = errors ?? '');
           },
 
@@ -110,6 +137,7 @@ class UIInputState extends State<UIInput> {
           // Styles
           decoration: InputDecoration(
             isDense: true,
+            counterText: '',
 
             // Label
             labelText: widget.isPlaceholder ? null : widget.label,
@@ -156,28 +184,28 @@ class UIInputState extends State<UIInput> {
                         ? Padding(padding: const EdgeInsets.all(8.0), child: widget.suffixIcon)
                         : null,
           ),
-
-          // Counter
-          buildCounter: widget.maxLength != null && widget.counterOptions != InputCounterOptions.hide
-              ? (BuildContext context, {required int currentLength, required bool isFocused, required int? maxLength}) {
-                  int remaining = maxLength! - currentLength;
-                  print('remaining');
-
-                  // if (widget.counter == InputCounterOptions.show) {
-                  //   setState(() => counter = '$currentLength / $maxLength');
-                  // } else if (widget.counter == InputCounterOptions.showOnEnd) {
-                  //   if (remaining <= 5) setState(() => counter = '$currentLength / $maxLength');
-                  // }
-                }
-              : null,
         ),
 
         // Errors and counter
-        Row(children: [
-          if (error.isNotEmpty) UIText(error, styles: inputStyles.errorStyle, lineHeight: 2.5),
-          if (counter.isNotEmpty)
-            Container(margin: const EdgeInsets.only(left: 10), child: UIText(counter, styles: TOptions.inputCounterStyles, lineHeight: 2.5)),
-        ]),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Errors
+            error.isNotEmpty
+                ? Expanded(
+                    child: Container(
+                      padding: EdgeInsets.only(top: 6, right: counter.isNotEmpty ? 10 : 0),
+                      child: UIText(error, styles: inputStyles.errorStyle),
+                    ),
+                  )
+                : Container(),
+
+            // Counter
+            if (counter.isNotEmpty)
+              Container(margin: const EdgeInsets.only(top: 8, left: 10), child: UIText(counter, styles: TOptions.inputCounterStyles)),
+          ],
+        ),
       ],
     );
   }
