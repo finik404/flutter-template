@@ -1,9 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
     // --------------- PERMISSIONS --------------- //
     # Camera
     <!--    <uses-permission android:name="android.permission.CAMERA" />-->
-
     # Gallery
     <!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
 
@@ -11,7 +9,7 @@
     <application
         android:name="${applicationName}"
         android:icon="@mipmap/lc_launcher"
-        android:label="c">
+        android:label="tproject">
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:tproject/features/auth/screens/login.dart';
+import 'package:tproject/features/splash/screens/splash.dart';
 import 'package:tproject/util/theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -17,7 +17,7 @@ class App extends StatelessWidget {
       theme: AppTheme.lightTheme,
 
       // Home screen
-      home: const LoginScreen(),
+      home: const Splash(),
     );
   }
 }

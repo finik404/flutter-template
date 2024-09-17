@@ -1,9 +1,0 @@
-# Splash screen options
-flutter_native_splash:
-  android: true
-  ios: true
-  color: "#FFFFFF"
-  image: assets/icon.png
-
-
-# fr flutter_native_splash --path=splash.yaml
