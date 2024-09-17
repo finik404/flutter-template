@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:tproject/util/helpers/dialog.dart';
@@ -17,26 +18,33 @@ class TExternal {
     Share.shareUri(Uri.parse(url));
   }
 
-  static Future<void> getPermission() async {
-    // var status = await Permission.camera.request();
+  static Future<bool> getPermission(Permission permission, {Widget? permissionPopup}) async {
+    PermissionStatus status = await permission.request();
+
+    if (status.isGranted) {
+      return true;
+    } else {
+      if (permissionPopup != null) TDialog.showActionMenu(content: permissionPopup);
+      return false;
+    }
   }
 
-  static Future<XFile?> pickImageFromGallery({int maxSize = 20, bool hasPermissionPopup = true}) async {
-    XFile? file = await pickFile(type: ImageSource.gallery, permission: Permission.camera, maxSize: maxSize, hasPermissionPopup: hasPermissionPopup);
+  static Future<XFile?> pickImageFromGallery({int maxSize = 20, Widget? permissionPopup}) async {
+    XFile? file = await pickFile(type: ImageSource.gallery, permission: Permission.camera, maxSize: maxSize, permissionPopup: permissionPopup);
     return file;
   }
 
-  static Future<XFile?> pickPhoto({int maxSize = 20, bool hasPermissionPopup = true}) async {
-    XFile? file = await pickFile(type: ImageSource.camera, permission: Permission.camera, maxSize: maxSize, hasPermissionPopup: hasPermissionPopup);
+  static Future<XFile?> pickPhoto({int maxSize = 20, Widget? permissionPopup}) async {
+    XFile? file = await pickFile(type: ImageSource.camera, permission: Permission.camera, maxSize: maxSize, permissionPopup: permissionPopup);
     return file;
   }
 }
 
 // Pick file
-Future<XFile?> pickFile({required ImageSource type, required Permission permission, required int maxSize, required bool hasPermissionPopup}) async {
-  PermissionStatus status = await permission.request();
+Future<XFile?> pickFile({required ImageSource type, required Permission permission, required int maxSize, Widget? permissionPopup}) async {
+  bool hasPermission = await TExternal.getPermission(permission, permissionPopup: permissionPopup);
 
-  if (status.isGranted) {
+  if (hasPermission) {
     // Picker
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: type, imageQuality: 75);
@@ -51,7 +59,5 @@ Future<XFile?> pickFile({required ImageSource type, required Permission permissi
         return image;
       }
     }
-  } else {
-    if (hasPermissionPopup) {}
   }
 }
