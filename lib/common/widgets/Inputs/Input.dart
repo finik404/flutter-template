@@ -5,7 +5,7 @@ import 'package:tproject/common/widgets/Icon/IconButton.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/options.dart';
 import 'package:tproject/util/constants/sizes.dart';
-import 'package:tproject/util/validators/validator.dart';
+import 'package:tproject/util/validator/validator.dart';
 import 'package:tproject/util/constants/enums.dart';
 
 export 'package:tproject/util/constants/enums.dart';

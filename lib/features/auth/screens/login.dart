@@ -1,20 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tproject/common/widgets/Buttons/Button.dart';
-import 'package:tproject/common/widgets/Checkbox.dart';
-import 'package:tproject/common/widgets/Dialogs/ActionMenu.dart';
-import 'package:tproject/common/widgets/Dialogs/PermissionPopup.dart';
-import 'package:tproject/common/widgets/Inputs/Input.dart';
-import 'package:tproject/common/widgets/Inputs/Textarea.dart';
-import 'package:tproject/common/widgets/Text/TextLink.dart';
+import 'package:tproject/common/exports.dart';
 import 'package:tproject/features/auth/controllers/login.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
 import 'package:tproject/features/auth/screens/password/password.dart';
-import 'package:tproject/util/constants/icons.dart';
-import 'package:tproject/util/extensions/media.dart';
-import 'package:tproject/util/helpers/dialog.dart';
-import 'package:tproject/util/helpers/external.dart';
-import 'package:tproject/util/validators/rules.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -56,14 +45,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 30),
 
               // Submit button
-              UIButton('Войти', () => null),
-
-              const SizedBox(height: 25),
-
-              UITextArea(
-                'Сообщение',
-                controller.passwordInput,
-              ),
+              UIButton('Войти', controller.onLogin),
             ],
           ),
         ),

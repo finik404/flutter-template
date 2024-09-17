@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tproject/util/http/http.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
@@ -12,6 +13,7 @@ class LoginController extends GetxController {
 
   // Methods ----------------
   Future<void> onLogin() async {
-    if (formKey.currentState!.validate()) {}
+    final response = await THttp.fetch('/account');
+    // if (formKey.currentState!.validate()) {}
   }
 }

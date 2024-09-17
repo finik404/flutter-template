@@ -10,11 +10,11 @@ class UIText extends StatelessWidget {
     this.weight,
     this.color,
     this.styles,
-    this.align,
+    this.align = TextAlign.start,
     this.lineHeight,
-    this.isOverflow,
+    this.isOverflow = false,
     this.lines,
-    this.isDecoration,
+    this.isDecoration = false,
   });
 
   final String text;
@@ -22,13 +22,13 @@ class UIText extends StatelessWidget {
   final FontWeight? weight;
   final Color? color;
   final TextStyle? styles;
-  final TextAlign? align;
-  final bool? isOverflow, isDecoration;
+  final TextAlign align;
+  final bool isOverflow, isDecoration;
   final int? lines;
 
   @override
   Widget build(BuildContext context) {
-    bool isCropped = isOverflow == true || lines != null;
+    bool isCropped = isOverflow || lines != null;
 
     // Default styles
     TextStyle textStyles = TOptions.textStyles;
@@ -40,8 +40,8 @@ class UIText extends StatelessWidget {
       fontWeight: weight ?? textStyles.fontWeight,
       color: color ?? textStyles.color,
       height: lineHeight ?? textStyles.height,
-      decoration: isDecoration == true ? TextDecoration.underline : TextDecoration.none,
-      decorationColor: isDecoration == true ? (color ?? textStyles.color) : null,
+      decoration: isDecoration ? TextDecoration.underline : TextDecoration.none,
+      decorationColor: isDecoration ? (color ?? textStyles.color) : null,
     );
 
     return Text(
