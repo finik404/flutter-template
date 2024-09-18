@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/grid.dart';
 
 class UIGrid extends StatelessWidget {
   const UIGrid({
     super.key,
     required this.length,
     required this.child,
-    this.crossCount = TOptions.gridCrossCount,
-    this.spaceBetween = TOptions.gridSpaceBetween,
-    this.spaceBottom = TOptions.gridSpaceBottom,
-    this.hasScroll = TOptions.gridHasScroll,
-    this.padding = TOptions.gridPadding,
+    this.crossCount = TGridOptions.crossCount,
+    this.spaceBetween = TGridOptions.spaceBetween,
+    this.spaceBottom = TGridOptions.spaceBottom,
+    this.hasScroll = TGridOptions.hasScroll,
+    this.padding = TGridOptions.padding,
     this.controller,
     this.onRefresh,
   });
@@ -56,8 +56,8 @@ class UIGrid extends StatelessWidget {
     return onRefresh != null
         ? RefreshIndicator(
             onRefresh: onRefresh!,
-            color: TOptions.refreshColor,
-            backgroundColor: TOptions.refreshBackground,
+            color: Theme.of(context).primaryColor,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             child: grid,
           )
         : grid;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tproject/common/widgets/Disabled.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/button.dart';
 
 class UIButton extends StatelessWidget {
   const UIButton(
@@ -17,9 +17,9 @@ class UIButton extends StatelessWidget {
     this.icon,
     this.customIcon,
     this.iconStyles,
-    this.spaceBetween = TOptions.buttonSpaceBetween,
-    this.isRightIcon = TOptions.buttonIsRightIcon,
-    this.isFullWidth = TOptions.buttonIsFullWidth,
+    this.spaceBetween = TButtonOptions.spaceBetween,
+    this.isRightIcon = TButtonOptions.isRightIcon,
+    this.isFullWidth = TButtonOptions.isFullWidth,
   });
 
   final String label;
@@ -36,8 +36,8 @@ class UIButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ButtonStyle buttonStyles = TOptions.buttonStyles(padding: padding).style!;
-    TextStyle customIconStyles = TOptions.buttonIconStyles;
+    ButtonStyle buttonStyles = TButtonOptions.styles(padding: padding).style!;
+    TextStyle customIconStyles = TButtonOptions.iconStyles;
 
     Widget button = ElevatedButton(
       // onTap
@@ -56,12 +56,13 @@ class UIButton extends StatelessWidget {
           if (icon != null && !isRightIcon)
             Container(
               margin: EdgeInsets.only(right: spaceBetween),
-              child: customIcon ?? UIIcon(
-                icon!,
-                color: customIconStyles.color,
-                size: customIconStyles.fontSize,
-                weight: customIconStyles.fontWeight,
-              ),
+              child: customIcon ??
+                  UIIcon(
+                    icon!,
+                    color: customIconStyles.color,
+                    size: customIconStyles.fontSize,
+                    weight: customIconStyles.fontWeight,
+                  ),
             ),
 
           // Text
@@ -77,12 +78,13 @@ class UIButton extends StatelessWidget {
           if (icon != null && isRightIcon)
             Container(
               margin: EdgeInsets.only(left: spaceBetween),
-              child: customIcon ?? UIIcon(
-                icon!,
-                color: customIconStyles.color,
-                size: customIconStyles.fontSize,
-                weight: customIconStyles.fontWeight,
-              ),
+              child: customIcon ??
+                  UIIcon(
+                    icon!,
+                    color: customIconStyles.color,
+                    size: customIconStyles.fontSize,
+                    weight: customIconStyles.fontWeight,
+                  ),
             ),
         ],
       ),

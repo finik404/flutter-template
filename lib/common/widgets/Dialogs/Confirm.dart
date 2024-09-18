@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tproject/common/widgets/Buttons/Button.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/colors.dart';
-import 'package:tproject/util/constants/options.dart';
 import 'package:tproject/util/constants/styles.dart';
+import 'package:tproject/util/options/dialogs.dart';
 
 class UIConfirm extends StatelessWidget {
   const UIConfirm(
@@ -24,8 +24,8 @@ class UIConfirm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: width ?? TOptions.confirmWidth,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(TOptions.confirmRadius), color: TColors.white),
+        width: width ?? TDialogsOptions.confirmWidth,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(TDialogsOptions.confirmRadius), color: TColors.white),
         padding: TStyles.pd,
         child: Column(
           mainAxisSize: MainAxisSize.min,

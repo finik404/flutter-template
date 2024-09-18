@@ -1,5 +1,5 @@
 import 'package:tproject/common/widgets/Inputs/Input.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/input.dart';
 
 class UITextArea extends UIInput {
   UITextArea(
@@ -7,7 +7,7 @@ class UITextArea extends UIInput {
     super.value, {
     super.key,
     super.validate,
-    super.isPlaceholder = TOptions.textareaIsPlaceholder,
+    super.isPlaceholder = TInputOptions.textareaIsPlaceholder,
     super.autofocus,
     super.onSubmit,
     super.onChange,
@@ -17,10 +17,10 @@ class UITextArea extends UIInput {
     super.maxLength,
     super.counterOptions,
   }) : super(
-          styles: (bool hasError) => TOptions.textareaStyles,
-          padding: TOptions.textareaPadding,
-          minLines: TOptions.textareaMinLines,
-          maxLines: TOptions.textareaMaxLines,
-          textAreaIsInfinity: TOptions.textAreaIsInfinity,
+          styles: (bool hasError) => TInputOptions.textareaStyles,
+          padding: TInputOptions.textareaPadding,
+          minLines: TInputOptions.textareaMinLines,
+          maxLines: TInputOptions.textareaMaxLines,
+          textAreaIsInfinity: TInputOptions.textAreaIsInfinity,
         );
 }

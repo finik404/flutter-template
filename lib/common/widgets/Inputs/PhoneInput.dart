@@ -1,7 +1,6 @@
-import 'package:easy_mask/easy_mask.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:tproject/common/widgets/Inputs/Input.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/input.dart';
 
 class UIPhoneInput extends UIInput {
   UIPhoneInput(
@@ -9,7 +8,7 @@ class UIPhoneInput extends UIInput {
     super.value, {
     super.key,
     super.validate,
-    super.isPlaceholder = TOptions.inputPhoneIsPlaceholder,
+    super.isPlaceholder = TInputOptions.inputPhoneIsPlaceholder,
     super.autofocus,
     super.onSubmit,
     super.onChange,
@@ -17,9 +16,9 @@ class UIPhoneInput extends UIInput {
     super.prefixIconStyles,
     super.suffixIcon,
   }) : super(
-          styles: (bool hasError) => TOptions.inputPhoneStyles,
-          padding: TOptions.inputPhonePadding,
+          styles: (bool hasError) => TInputOptions.inputPhoneStyles,
+          padding: TInputOptions.inputPhonePadding,
           type: TextInputType.phone,
-          mask: TextInputMask(mask: '\\+7 999 999 99 99'),
+          mask: TInputOptions.inputPhoneMask,
         );
 }

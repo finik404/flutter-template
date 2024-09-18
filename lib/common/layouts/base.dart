@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tproject/util/logging/logger.dart';
+import 'package:tproject/util/options/base_layout.dart';
 
 class BaseLayout extends StatelessWidget {
   const BaseLayout({
@@ -8,9 +8,9 @@ class BaseLayout extends StatelessWidget {
     this.child,
     this.bg,
     this.padding,
-    this.isScrollable = false,
-    this.noSafeArea = false,
-    this.noTop = true,
+    this.isScrollable = TBaseLayoutOptions.isScrollable,
+    this.hasSafeArea = TBaseLayoutOptions.hasSafeArea,
+    this.hasTop = TBaseLayoutOptions.hasTop,
   });
 
   final List<Widget>? children;
@@ -18,30 +18,28 @@ class BaseLayout extends StatelessWidget {
   final Color? bg;
   final EdgeInsets? padding;
   final bool isScrollable;
-  final bool noSafeArea;
-  final bool noTop;
+  final bool hasSafeArea;
+  final bool hasTop;
 
   @override
   Widget build(BuildContext context) {
     Widget content = Container();
+    EdgeInsets? customPadding = padding ?? TBaseLayoutOptions.padding;
 
     if (child != null) {
       content = child!;
     } else if (children != null) {
       content = Column(children: children!);
-    } else {
-      TLogger.error('Base layout: the child or children argument was not passed!');
     }
 
-
-    if (padding != null) {
-      content = Padding(padding: padding!, child: content);
+    if (customPadding != null) {
+      content = Padding(padding: customPadding!, child: content);
     }
 
     if (isScrollable) {
       content = SingleChildScrollView(child: content);
     }
 
-    return noSafeArea ? content : Scaffold(backgroundColor: bg, body: SafeArea(top: !noTop, child: content));
+    return hasSafeArea ? Scaffold(backgroundColor: bg, body: SafeArea(top: hasTop, child: content)) : content;
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/clickarea.dart';
 
 class UIClickArea extends StatelessWidget {
   const UIClickArea({
@@ -27,11 +27,11 @@ class UIClickArea extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       onLongPress: onLongTap,
-      borderRadius: borderRadius ?? BorderRadius.circular(radius ?? TOptions.clickAreaRadius),
-      splashColor: color ?? TOptions.clickAreaColor,
-      highlightColor: color ?? TOptions.clickAreaColor,
+      borderRadius: borderRadius ?? BorderRadius.circular(radius ?? TClickAreaOptions.radius),
+      splashColor: color ?? TClickAreaOptions.color,
+      highlightColor: color ?? TClickAreaOptions.color,
       child: Padding(
-        padding: padding ?? TOptions.clickAreaPadding,
+        padding: padding ?? TClickAreaOptions.padding,
         child: child,
       ),
     );

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'package:tproject/util/constants/options.dart';
 import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/helpers/external.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:html/parser.dart' as html_parser;
 import 'package:html/dom.dart' as html_dom;
+import 'package:tproject/util/options/text.dart';
 
 class UIHtml extends StatelessWidget {
   const UIHtml(
@@ -16,7 +15,7 @@ class UIHtml extends StatelessWidget {
     this.color,
     this.weight,
     this.lineHeight,
-    this.linkColor = TOptions.textsLinkColor,
+    this.linkColor = TTextOptions.textsLinkColor,
     this.lines,
   });
 
@@ -30,7 +29,7 @@ class UIHtml extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Styles
-    TextStyle textStyles = styles ?? TOptions.textStyles;
+    TextStyle textStyles = styles ?? TTextOptions.styles;
 
     // Parsed text
     List<TextSpan> textSpans = parseHtml(text, textStyles);
@@ -112,8 +111,8 @@ class UIHtml extends StatelessWidget {
       text: linkText,
       style: TextStyle(
         color: linkColor,
-        decoration: TOptions.textsLinkHasDecoration ? TextDecoration.underline : TextDecoration.none,
-        decorationColor: TOptions.textsLinkHasDecoration ? (color ?? textStyles.color) : null,
+        decoration: TTextOptions.textsLinkHasDecoration ? TextDecoration.underline : TextDecoration.none,
+        decorationColor: TTextOptions.textsLinkHasDecoration ? (color ?? textStyles.color) : null,
       ),
       recognizer: TapGestureRecognizer()..onTap = () => TExternal.launchUrl(url),
     );

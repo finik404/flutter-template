@@ -4,18 +4,18 @@ import 'package:tproject/common/widgets/Dialogs/ActionMenu.dart';
 import 'package:tproject/common/widgets/Dialogs/Confirm.dart';
 import 'package:tproject/common/widgets/Dialogs/Toast.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/dialogs.dart';
 
 class TDialog {
   static void showSnackBar(String message, {String? title, bool isError = false}) {
     Get.snackbar(
-      title ?? TOptions.snackBarTitle,
+      title ?? TDialogsOptions.snackBarTitle,
       message,
       shouldIconPulse: true,
       isDismissible: true,
       colorText: Colors.white,
       backgroundColor: isError ? Colors.red : Colors.orange,
-      snackPosition: TOptions.snackBarPosition,
+      snackPosition: TDialogsOptions.snackBarPosition,
       duration: const Duration(seconds: 3),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       margin: const EdgeInsets.all(20),
@@ -31,7 +31,7 @@ class TDialog {
   }) {
     showDialog(
       context: Get.context!,
-      barrierColor: TOptions.barrierColor,
+      barrierColor: TDialogsOptions.barrierColor,
       builder: (BuildContext context) {
         return UIConfirm(title, text: text, width: width, close: close);
       },
@@ -48,12 +48,12 @@ class TDialog {
     double? height,
     BorderRadius? borderRadius,
   }) {
-    Color background = bg ?? TOptions.actionMenuBackground;
+    Color background = bg ?? TDialogsOptions.actionMenuBackground;
 
     showModalBottomSheet(
       useSafeArea: true,
       context: Get.context!,
-      barrierColor: TOptions.barrierColor,
+      barrierColor: TDialogsOptions.barrierColor,
       backgroundColor: background,
       elevation: 0,
       isScrollControlled: hasScroll || height != null,

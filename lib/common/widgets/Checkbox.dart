@@ -3,7 +3,7 @@ import 'package:tproject/common/widgets/ClickArea.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/colors.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/checkbox.dart';
 
 class UICheckbox extends StatelessWidget {
   const UICheckbox(
@@ -13,8 +13,8 @@ class UICheckbox extends StatelessWidget {
     this.activeColor = TColors.primary,
     this.checkColor = TColors.primary,
     this.borderColor = TColors.primary,
-    this.radius = TOptions.checkBoxRadius,
-    this.size = TOptions.checkBoxSize,
+    this.radius = TCheckBoxOptions.radius,
+    this.size = TCheckBoxOptions.size,
     this.paddingClick,
     this.radiusClick,
     this.icon,
@@ -42,8 +42,8 @@ class UICheckbox extends StatelessWidget {
       onTap: onChange != null ? () => onChange!(!value) : null,
 
       // Click options
-      padding: paddingClick ?? (label != null ? TOptions.checkBoxClickPaddingWithLabel : TOptions.checkBoxClickPadding),
-      radius: radiusClick ?? (label != null ? TOptions.checkBoxClickRadiusWithLabel : TOptions.checkBoxClickRadius),
+      padding: paddingClick ?? (label != null ? TCheckBoxOptions.clickPaddingWithLabel : TCheckBoxOptions.clickPadding),
+      radius: radiusClick ?? (label != null ? TCheckBoxOptions.clickRadiusWithLabel : TCheckBoxOptions.clickRadius),
 
       // Content
       child: Row(
@@ -51,18 +51,18 @@ class UICheckbox extends StatelessWidget {
         children: [
           // CheckBox
           Container(
-            width: TOptions.checkBoxSize,
-            height: TOptions.checkBoxSize,
-            decoration: TOptions.checkBoxDecoration(value),
+            width: TCheckBoxOptions.size,
+            height: TCheckBoxOptions.size,
+            decoration: TCheckBoxOptions.decoration(value),
 
             // Check icon
             child: Center(
               child: value
                   ? UIIcon(
-                      icon ?? TOptions.checkBoxIcon,
-                      color: TOptions.checkBoxIconStyles.color,
-                      weight: TOptions.checkBoxIconStyles.fontWeight,
-                      size: TOptions.checkBoxSize * TOptions.checkBoxIconSize,
+                      icon ?? TCheckBoxOptions.icon,
+                      color: TCheckBoxOptions.iconStyles.color,
+                      weight: TCheckBoxOptions.iconStyles.fontWeight,
+                      size: TCheckBoxOptions.size * TCheckBoxOptions.iconSize,
                     )
                   : null,
             ),
@@ -70,8 +70,8 @@ class UICheckbox extends StatelessWidget {
 
           if (label != null)
             Container(
-              margin: const EdgeInsets.only(left: TOptions.checkBoxSpaceBetween),
-              child: UIText(label!, styles: labelStyles ?? TOptions.checkBoxLabelStyles),
+              margin: const EdgeInsets.only(left: TCheckBoxOptions.spaceBetween),
+              child: UIText(label!, styles: labelStyles ?? TCheckBoxOptions.labelStyles),
             )
         ],
       ),

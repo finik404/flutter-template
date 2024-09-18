@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/text.dart';
 
 class UITexts extends StatelessWidget {
   const UITexts(
@@ -10,8 +10,8 @@ class UITexts extends StatelessWidget {
     this.size,
     this.color,
     this.weight,
-    this.linkColor = TOptions.textsLinkColor,
-    this.linkHasDecoration = TOptions.textsLinkHasDecoration,
+    this.linkColor = TTextOptions.textsLinkColor,
+    this.linkHasDecoration = TTextOptions.textsLinkHasDecoration,
     this.lineHeight,
     this.align = TextAlign.start,
   });
@@ -30,7 +30,7 @@ class UITexts extends StatelessWidget {
     List<InlineSpan> textSpans = [];
 
     // Default styles
-    TextStyle textStyles = styles ?? TOptions.textStyles;
+    TextStyle textStyles = styles ?? TTextOptions.styles;
 
     // Children
     for (var child in children) {

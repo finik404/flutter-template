@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:tproject/common/widgets/ClickArea.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
-import 'package:tproject/util/constants/options.dart';
 import 'package:tproject/util/helpers/external.dart';
+import 'package:tproject/util/options/text.dart';
 
 class UITextLink extends StatelessWidget {
   const UITextLink(
@@ -21,10 +21,10 @@ class UITextLink extends StatelessWidget {
     this.iconColor,
     this.iconSize,
     this.iconWeight,
-    this.spaceBetween = TOptions.textLinkSpaceBetween,
-    this.isRightIcon = TOptions.textLinkIsRightIcon,
-    this.radius = TOptions.textLinkClickRadius,
-    this.padding = TOptions.textLinkClickPadding,
+    this.spaceBetween = TTextOptions.linkSpaceBetween,
+    this.isRightIcon = TTextOptions.linkIsRightIcon,
+    this.radius = TTextOptions.linkClickRadius,
+    this.padding = TTextOptions.linkClickPadding,
   });
 
   final String text;
@@ -43,8 +43,8 @@ class UITextLink extends StatelessWidget {
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
-    TextStyle defaultTextStyles = TOptions.textLinkStyles;
-    TextStyle defaultIconStyles = TOptions.textLinkIconStyles;
+    TextStyle defaultTextStyles = TTextOptions.linkStyles;
+    TextStyle defaultIconStyles = TTextOptions.linkIconStyles;
 
     return UIClickArea(
       radius: radius,

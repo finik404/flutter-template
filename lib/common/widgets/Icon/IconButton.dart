@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/common/widgets/ClickArea.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/icon.dart';
 
 export 'package:tproject/util/constants/icons.dart';
 
@@ -16,7 +16,7 @@ class UIIconButton extends StatelessWidget {
     this.weight,
     this.onLongTap,
     this.padding,
-    this.radius = TOptions.iconButtonRadius,
+    this.radius = TIconOptions.clickRadius,
     this.borderRadius,
     this.splashColor,
   });
@@ -38,7 +38,7 @@ class UIIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return UIClickArea(
       // ClickArea options
-      padding: padding ?? TOptions.iconButtonPadding,
+      padding: padding ?? TIconOptions.clickPadding,
       borderRadius: borderRadius,
       radius: radius,
 

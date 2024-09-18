@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/models.dart';
-import 'package:tproject/util/constants/options.dart';
-import 'package:tproject/util/constants/options.dart';
 import 'package:tproject/util/extensions/media.dart';
-import 'package:tproject/util/theme/themes.dart';
+import 'package:tproject/util/options/select.dart';
 
 class UISelect extends StatelessWidget {
   const UISelect(
@@ -38,21 +36,21 @@ class UISelect extends StatelessWidget {
       initialSelection: value,
 
       // Label
-      label: UIText('label', styles: labelStyles ?? TOptions.selectLabelStyles),
+      label: UIText('label', styles: labelStyles ?? TSelectOptions.labelStyles),
 
       // Styles
-      inputDecorationTheme: styles ?? TOptions.selectStyles,
+      inputDecorationTheme: styles ?? TSelectOptions.styles,
 
       // Icon
-      trailingIcon: UIIcon(TIcons.down, styles: iconStyles ?? TOptions.selectIconStyles),
-      selectedTrailingIcon: UIIcon(TIcons.up, styles: iconStyles ?? TOptions.selectIconStyles),
+      trailingIcon: UIIcon(TIcons.down, styles: iconStyles ?? TSelectOptions.iconStyles),
+      selectedTrailingIcon: UIIcon(TIcons.up, styles: iconStyles ?? TSelectOptions.iconStyles),
 
       // Menu styles
-      menuStyle: menuStyles ?? TOptions.selectMenuStyles,
+      menuStyle: menuStyles ?? TSelectOptions.menuStyles,
 
       // Items
       dropdownMenuEntries: items.map((item) {
-        return DropdownMenuEntry(value: item.value, label: item.label, style: TOptions.selectMenuItemStyles);
+        return DropdownMenuEntry(value: item.value, label: item.label, style: TSelectOptions.menuItemStyles);
       }).toList(),
     );
   }

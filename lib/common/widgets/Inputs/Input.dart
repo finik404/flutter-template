@@ -3,12 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Icon/IconButton.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
-import 'package:tproject/util/constants/options.dart';
 import 'package:tproject/util/constants/sizes.dart';
+import 'package:tproject/util/options/input.dart';
 import 'package:tproject/util/validator/validator.dart';
-import 'package:tproject/util/constants/enums.dart';
-
-export 'package:tproject/util/constants/enums.dart';
 
 class UIInput extends StatefulWidget {
   const UIInput(
@@ -17,7 +14,7 @@ class UIInput extends StatefulWidget {
     super.key,
     this.validate,
     this.styles,
-    this.isPlaceholder = TOptions.inputIsPlaceholder,
+    this.isPlaceholder = TInputOptions.isPlaceholder,
     this.autofocus = false,
     this.padding,
     this.onSubmit,
@@ -26,7 +23,7 @@ class UIInput extends StatefulWidget {
     this.prefixIcon,
     this.prefixIconStyles,
     this.maxLength,
-    this.counterOptions = TOptions.inputHasCounter,
+    this.counterOptions = TInputOptions.hasCounter,
     this.suffixIcon,
     this.minLines,
     this.maxLines,
@@ -90,8 +87,8 @@ class UIInputState extends State<UIInput> {
 
   @override
   Widget build(BuildContext context) {
-    InputDecorationTheme inputStyles = widget.styles?.call(error.isNotEmpty) ?? TOptions.inputStyles(error.isNotEmpty);
-    TextStyle inputPrefixIconStyles = widget.prefixIconStyles ?? TOptions.inputIconStyles;
+    InputDecorationTheme inputStyles = widget.styles?.call(error.isNotEmpty) ?? TInputOptions.styles(error.isNotEmpty);
+    TextStyle inputPrefixIconStyles = widget.prefixIconStyles ?? TInputOptions.iconStyles;
 
     // Input ----------------
     return Column(
@@ -174,7 +171,7 @@ class UIInputState extends State<UIInput> {
                           TIcons.password,
                           () => setState(() => showPassword = !showPassword),
                           radius: TSizes.radius,
-                          styles: TOptions.inputPasswordIconStyles,
+                          styles: TInputOptions.inputPasswordIconStyles,
                         ),
                       )
 
@@ -202,7 +199,7 @@ class UIInputState extends State<UIInput> {
 
             // Counter
             if (counter.isNotEmpty)
-              Container(margin: const EdgeInsets.only(top: 8, left: 10), child: UIText(counter, styles: TOptions.inputCounterStyles)),
+              Container(margin: const EdgeInsets.only(top: 8, left: 10), child: UIText(counter, styles: TInputOptions.counterStyles)),
           ],
         ),
       ],

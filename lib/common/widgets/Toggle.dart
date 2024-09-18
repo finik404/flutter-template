@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/toggle.dart';
 
 class UIToggle extends StatelessWidget {
   const UIToggle(
     this.value, {
     super.key,
     this.onChange,
-    this.width = TOptions.toggleWidth,
-    this.height = TOptions.toggleHeight,
+    this.width = TToggleOptions.width,
+    this.height = TToggleOptions.height,
     this.color,
     this.activeColor,
-    this.thumbSize = TOptions.toggleThumbSize,
+    this.thumbSize = TToggleOptions.thumbSize,
     this.thumbColor,
     this.thumbActiveColor,
-    this.sideBetween = TOptions.toggleThumbSideBetween,
+    this.sideBetween = TToggleOptions.thumbSideBetween,
     this.decoration,
     this.thumbDecoration,
   });
@@ -29,8 +29,8 @@ class UIToggle extends StatelessWidget {
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
-    BoxDecoration toggleDecoration = decoration ?? TOptions.toggleDecoration;
-    BoxDecoration toggleThumbDecoration = thumbDecoration ?? TOptions.toggleThumbDecoration;
+    BoxDecoration toggleDecoration = decoration ?? TToggleOptions.decoration;
+    BoxDecoration toggleThumbDecoration = thumbDecoration ?? TToggleOptions.thumbDecoration;
 
     return GestureDetector(
       // onTap
@@ -38,12 +38,12 @@ class UIToggle extends StatelessWidget {
 
       // Toggle
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: TOptions.toggleDuration),
+        duration: const Duration(milliseconds: TToggleOptions.duration),
         width: width,
         height: height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          color: value ? activeColor ?? TOptions.toggleActiveColor : color ?? TOptions.toggleColor,
+          color: value ? activeColor ?? TToggleOptions.activeColor : color ?? TToggleOptions.color,
           boxShadow: toggleDecoration.boxShadow,
           border: toggleDecoration.border,
         ),
@@ -53,7 +53,7 @@ class UIToggle extends StatelessWidget {
           children: [
             AnimatedPositioned(
               curve: Curves.easeIn,
-              duration: const Duration(milliseconds: TOptions.toggleDuration),
+              duration: const Duration(milliseconds: TToggleOptions.duration),
               left: value ? null : sideBetween,
               right: value ? sideBetween : null,
               top: (height - thumbSize) / 2,
@@ -62,7 +62,7 @@ class UIToggle extends StatelessWidget {
                 width: thumbSize,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: value ? thumbActiveColor ?? TOptions.toggleThumbActiveColor : thumbColor ?? TOptions.toggleThumbColor,
+                  color: value ? thumbActiveColor ?? TToggleOptions.thumbActiveColor : thumbColor ?? TToggleOptions.thumbColor,
                   boxShadow: toggleThumbDecoration.boxShadow,
                   border: toggleThumbDecoration.border,
                 ),

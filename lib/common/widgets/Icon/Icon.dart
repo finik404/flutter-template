@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/icon.dart';
 
 export 'package:tproject/util/constants/icons.dart';
 
@@ -22,7 +22,7 @@ class UIIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Default styles
-    TextStyle defaultStyles = styles ?? TOptions.iconStyles;
+    TextStyle defaultStyles = styles ?? TIconOptions.styles;
 
     // Icon weight
     String? fontFamily;

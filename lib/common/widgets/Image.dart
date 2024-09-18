@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/image.dart';
 
 class UIImage extends StatelessWidget {
   const UIImage(
@@ -11,7 +11,7 @@ class UIImage extends StatelessWidget {
     this.label,
     required this.width,
     this.height,
-    this.fit = TOptions.imageFit,
+    this.fit = TImageOptions.fit,
     this.borderRadius,
     this.bg,
     this.letterSize,
@@ -35,16 +35,16 @@ class UIImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle letterStyles = TOptions.imageLetterStyles;
-    String? placeholderIcon = TOptions.imagePlaceholderIcon;
-    BoxDecoration imageDecoration = decoration ?? TOptions.imageDecoration;
+    TextStyle letterStyles = TImageOptions.letterStyles;
+    String? placeholderIcon = TImageOptions.placeholderIcon;
+    BoxDecoration imageDecoration = decoration ?? TImageOptions.decoration;
 
     return Container(
       width: width,
       height: height ?? width,
       decoration: BoxDecoration(
-        color: bg ?? TOptions.imagePlaceholderBg,
-        borderRadius: borderRadius ?? TOptions.imageRadius,
+        color: bg ?? TImageOptions.placeholderBg,
+        borderRadius: borderRadius ?? TImageOptions.radius,
         boxShadow: imageDecoration.boxShadow,
         border: imageDecoration.border,
       ),
@@ -52,7 +52,7 @@ class UIImage extends StatelessWidget {
           // Cached image
           ? Stack(
               children: [
-                Container(width: width, height: width, color: TOptions.imageBg),
+                Container(width: width, height: width, color: TImageOptions.bg),
                 CachedNetworkImage(
                   imageUrl: image!,
                   fit: fit,

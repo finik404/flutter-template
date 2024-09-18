@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:tproject/util/constants/options.dart';
+import 'package:tproject/util/options/list.dart';
 
 class UIList extends StatelessWidget {
   const UIList({
     super.key,
     required this.length,
     required this.child,
-    this.direction = TOptions.listDirection,
-    this.hasScroll = TOptions.listHasScroll,
-    this.padding = TOptions.listPadding,
-    this.spaceBetween = TOptions.listSpaceBetween,
+    this.direction = TListOptions.direction,
+    this.hasScroll = TListOptions.hasScroll,
+    this.padding = TListOptions.padding,
+    this.spaceBetween = TListOptions.spaceBetween,
     this.separator,
-    this.height = TOptions.listHeight,
+    this.height = TListOptions.height,
     this.controller,
     this.onRefresh,
   });
@@ -71,8 +71,8 @@ class UIList extends StatelessWidget {
     return onRefresh != null
         ? RefreshIndicator(
             onRefresh: onRefresh!,
-            color: TOptions.refreshColor,
-            backgroundColor: TOptions.refreshBackground,
+            color: Theme.of(context).primaryColor,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             child: list,
           )
         : list;
