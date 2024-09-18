@@ -103,7 +103,6 @@ class UIInputState extends State<UIInput> {
           // Validation
           validator: (value) {
             String? errors = TValidator.validate(value, widget.validate);
-            print('errors ${errors}');
             setState(() => error = errors ?? '');
           },
 

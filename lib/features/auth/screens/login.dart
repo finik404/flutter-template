@@ -36,7 +36,6 @@ class LoginScreen extends StatelessWidget {
                 'Пароль',
                 controller.passwordInput,
                 validate: [VRules.required, VRules.min(6)],
-                maxLength: 10,
               ),
               const SizedBox(height: 12),
 
@@ -46,6 +45,14 @@ class LoginScreen extends StatelessWidget {
 
               // Submit button
               UIButton('Войти', controller.onLogin),
+
+              const SizedBox(height: 25),
+
+              UISelect(
+                controller.select,
+                (value) => controller.select = value,
+                items: controller.selectItems,
+              ),
             ],
           ),
         ),

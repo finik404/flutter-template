@@ -56,6 +56,12 @@ class TOptions {
   static const bool inputPhoneIsPlaceholder = false;
 
   // --------------- SELECT --------------- //
+  static InputDecorationTheme selectStyles =  Themes.selectTheme;
+  static TextStyle selectLabelStyles = Themes.inputTheme(false).labelStyle!;
+  static TextStyle selectLabelActiveStyles = Themes.inputTheme(false).floatingLabelStyle!;
+  static TextStyle selectIconStyles = Themes.selectIconTheme;
+  static MenuStyle selectMenuStyles = Themes.selectMenuTheme;
+  static ButtonStyle selectMenuItemStyles = Themes.selectMenuItemTheme;
 
   // --------------- ICONBUTTON --------------- //
   static const double iconButtonRadius = 50;
