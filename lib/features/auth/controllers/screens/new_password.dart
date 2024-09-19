@@ -13,6 +13,26 @@ class NewPasswordController extends GetxController {
 
   // Methods ----------------
   Future<void> restore() async {
-    if (formKey.currentState!.validate()) {}
+    if (formKey.currentState!.validate()) {
+      // Request
+      final response = await THttp.fetch('/restore', method: HttpMethods.post, body: {
+        'password': passwordInput.text,
+      });
+
+      if (!response.isError) {
+        // Clear errors
+        errors = '';
+
+        // Navigate
+        // Get.offAll(HomeScreen());
+      }
+
+      // Save errors
+      else {
+        dynamic error = response.errors?['messages'];
+
+        errors = error;
+      }
+    }
   }
 }

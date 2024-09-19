@@ -14,7 +14,29 @@ class PasswordController extends GetxController {
   // Methods ----------------
   Future<void> receive() async {
     if (formKey.currentState!.validate()) {
-      Get.to(PasswordCodeScreen(email: emailInput.text));
+      // Request
+      final response = await THttp.fetch('/forgot', method: HttpMethods.post, body: {
+        'email': emailInput.text,
+      });
+
+      if (!response.isError) {
+        // Clear errors
+        errors = '';
+
+        // Navigate
+        Get.to(PasswordCodeScreen(email: emailInput.text));
+      }
+
+      // Save errors
+      else {
+        dynamic error = response.errors?['messages'];
+
+        if (response.errors?['messages']?['email']?[0] == 'The email has already been taken.') {
+          error = 'Данная почта уже используется';
+        }
+
+        errors = error;
+      }
     }
   }
 }

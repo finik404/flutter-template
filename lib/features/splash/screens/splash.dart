@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/common/layouts/base.dart';
+import 'package:tproject/features/auth/controllers/auth.dart';
 import 'package:tproject/features/splash/controllers/splash.dart';
 import 'package:tproject/util/constants/images.dart';
 import 'package:tproject/util/extensions/media.dart';
@@ -12,6 +13,9 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SplashController());
+
+    // AuthController
+    Get.put(AuthController());
 
     return BaseLayout(
       child: Center(

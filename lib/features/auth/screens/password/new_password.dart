@@ -5,7 +5,12 @@ import 'package:tproject/features/auth/controllers/screens/new_password.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
 
 class NewPasswordScreen extends StatelessWidget {
-  const NewPasswordScreen({super.key});
+  const NewPasswordScreen({
+    super.key,
+    required this.code,
+  });
+
+  final String code;
 
   @override
   Widget build(BuildContext context) {
