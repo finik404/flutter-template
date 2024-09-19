@@ -4,6 +4,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:tproject/util/constants/private.dart';
 import 'package:tproject/util/models/base.dart';
 
+export 'package:tproject/util/models/base.dart';
+
 class THttp {
   static final Dio dio = Dio();
 

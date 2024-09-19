@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/common/exports.dart';
-import 'package:tproject/features/auth/controllers/login.dart';
+import 'package:tproject/features/auth/controllers/screens/login.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
 import 'package:tproject/features/auth/screens/password/password.dart';
 import 'package:tproject/features/auth/screens/register.dart';
@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
             UIInput(
               'Email',
               controller.emailInput,
-              validate: const [VRules.required, VRules.email],
+              validate: [VRules.required(), VRules.email()],
               type: TextInputType.emailAddress,
             ),
             const SizedBox(height: 20),
@@ -50,7 +50,7 @@ class LoginScreen extends StatelessWidget {
               'Пароль',
               controller.passwordInput,
               isPassword: true,
-              validate: [VRules.required, VRules.min(6)],
+              validate: [VRules.required(), VRules.min(6)],
             ),
             const SizedBox(height: 12),
 
@@ -60,7 +60,6 @@ class LoginScreen extends StatelessWidget {
 
             // Submit button
             UIButton('Войти', controller.login),
-
             const SizedBox(height: 25),
 
             UISelect(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/common/exports.dart';
-import 'package:tproject/features/auth/controllers/new_password.dart';
+import 'package:tproject/features/auth/controllers/screens/new_password.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
 
 class NewPasswordScreen extends StatelessWidget {
@@ -31,7 +31,7 @@ class NewPasswordScreen extends StatelessWidget {
               controller.passwordInput,
               isPassword: true,
               validate: [
-                VRules.required,
+                VRules.required(),
                 VRules.min(6),
                 VRules.max(70),
               ],
@@ -44,8 +44,8 @@ class NewPasswordScreen extends StatelessWidget {
               controller.repeatPasswordInput,
               isPassword: true,
               validate: [
-                VRules.required,
-                VRules.repeatPassword(controller.passwordInput),
+                VRules.required(),
+                VRules.confirmPassword(controller.repeatPasswordInput),
               ],
             ),
             const SizedBox(height: 30),

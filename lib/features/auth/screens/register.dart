@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/common/exports.dart';
-import 'package:tproject/features/auth/controllers/register.dart';
+import 'package:tproject/features/auth/controllers/screens/register.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -29,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
             UIInput(
               'Имя',
               controller.nameInput,
-              validate: [VRules.required, VRules.max(25)],
+              validate: [VRules.required(), VRules.max(25)],
             ),
             const SizedBox(height: 20),
 
@@ -38,7 +38,7 @@ class RegisterScreen extends StatelessWidget {
               'Email',
               controller.emailInput,
               type: TextInputType.emailAddress,
-              validate: const [VRules.required, VRules.email],
+              validate: [VRules.required(), VRules.email()],
             ),
             const SizedBox(height: 20),
 
@@ -48,7 +48,7 @@ class RegisterScreen extends StatelessWidget {
               controller.passwordInput,
               isPassword: true,
               validate: [
-                VRules.required,
+                VRules.required(),
                 VRules.min(6),
                 VRules.max(70),
               ],

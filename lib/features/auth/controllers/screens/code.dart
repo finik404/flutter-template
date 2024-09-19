@@ -8,9 +8,10 @@ class CodeController extends GetxController {
   // Variables ----------------
   final TextEditingController codeInput = TextEditingController();
   final String codeErrors = '';
-  final String errors = '';
+  String errors = '';
 
   // Methods ----------------
   Future<void> check() async {
+
   }
 }

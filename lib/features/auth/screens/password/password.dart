@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/common/widgets/Buttons/Button.dart';
 import 'package:tproject/common/widgets/Inputs/Input.dart';
-import 'package:tproject/features/auth/controllers/password.dart';
+import 'package:tproject/features/auth/controllers/screens/password.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
 import 'package:tproject/util/validator/rules.dart';
 
@@ -31,7 +31,7 @@ class PasswordScreen extends StatelessWidget {
               'Email',
               controller.emailInput,
               type: TextInputType.emailAddress,
-              validate: const [VRules.required, VRules.email],
+              validate: [VRules.required(), VRules.email()],
               autofocus: true,
               onSubmit: controller.receive,
             ),

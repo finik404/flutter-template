@@ -9,7 +9,7 @@ class NewPasswordController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController passwordInput = TextEditingController();
   final TextEditingController repeatPasswordInput = TextEditingController();
-  final String errors = '';
+  String errors = '';
 
   // Methods ----------------
   Future<void> restore() async {

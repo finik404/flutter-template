@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/common/layouts/base.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
+import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/extensions/media.dart';
 
 class AuthLayout extends StatelessWidget {
@@ -10,12 +11,14 @@ class AuthLayout extends StatelessWidget {
     required this.title,
     this.text,
     this.textWidget,
+    required this.errors,
   });
 
   final Widget child;
   final String title;
   final String? text;
   final Widget? textWidget;
+  final String errors;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +40,13 @@ class AuthLayout extends StatelessWidget {
               margin: const EdgeInsets.only(bottom: 35),
               width: (context.screenWidth - 40) * 0.8,
               child: textWidget ?? UIText(text!, size: 18),
+            ),
+
+          // Errors
+          if (errors.isNotEmpty)
+            Container(
+              margin: const EdgeInsets.only(top: 10, bottom: 25),
+              child: UIText(errors, size: 14, color: TColors.error),
             ),
 
           // Content

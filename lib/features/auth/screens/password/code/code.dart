@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tproject/common/widgets/Buttons/Button.dart';
-import 'package:tproject/common/widgets/Text/Text.dart';
-import 'package:tproject/features/auth/controllers/code.dart';
+import 'package:tproject/common/exports.dart';
+import 'package:tproject/features/auth/controllers/screens/code.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
 import 'package:tproject/util/helpers/helper.dart';
 
@@ -35,12 +34,12 @@ class PasswordCodeScreen extends StatelessWidget {
           // InputCode(change: (value) => setState(() => code = value), submit: controller.check),
 
           // Errors
-          if (controller.error.isNotEmpty)
+          if (controller.codeErrors.isNotEmpty)
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 10),
-                Padding(padding: const EdgeInsets.symmetric(horizontal: 10), child: UIText(controller.error, color: Colors.redAccent, size: 12))
+                Padding(padding: const EdgeInsets.symmetric(horizontal: 10), child: UIText(controller.codeErrors, color: TColors.error, size: 12))
               ],
             ),
           const SizedBox(height: 30),
