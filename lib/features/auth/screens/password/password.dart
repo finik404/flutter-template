@@ -1,43 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tproject/common/widgets/Buttons/Button.dart';
+import 'package:tproject/common/widgets/Inputs/Input.dart';
+import 'package:tproject/features/auth/controllers/password.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
+import 'package:tproject/util/validator/rules.dart';
 
 class PasswordScreen extends StatelessWidget {
   const PasswordScreen({super.key});
 
-
-  // Builder ----------------
   @override
   Widget build(BuildContext context) {
-    return AuthLayout(
-        title: 'S.of(context).restore_password_title',
-        text: 'S.of(context).restore_password_text',
-        // Content
-        child: Container(),
-          // Form(
-          //   key: formKey,
-          //   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          //     // E-mail input
-          //     Input(
-          //       S.of(context).email,
-          //       emailInput,
-          //       type: InputTypes.email,
-          //       validator: Validator.validate(context, [Validator.required, Validator.email]),
-          //       autofocus: true,
-          //       onSubmit: () => submit(context),
-          //     ),
-          //     const SizedBox(height: 30),
-          //
-          //     // Btn
-          //     Btn(S.of(context).receive_code, () => submit(context)),
-          //   ]),
-          // ),
-        );
-  }
+    final controller = Get.put(PasswordController());
 
-  // Methods ----------------
-  // Future<void> submit(BuildContext context) async {
-  //   if (formKey.currentState!.validate()) {
-  //     navigate(context, ResetCodeScreen(email: emailInput.text));
-  //   }
-  // }
+    return AuthLayout(
+      // Header
+      title: 'Восстановление доступа',
+
+      // Errors
+      errors: controller.errors,
+
+      // Content
+      child: Form(
+        key: controller.formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Email input
+            UIInput(
+              'Email',
+              controller.emailInput,
+              type: TextInputType.emailAddress,
+              validate: const [VRules.required, VRules.email],
+              autofocus: true,
+              onSubmit: controller.receive,
+            ),
+            const SizedBox(height: 30),
+
+            // Submit button
+            UIButton('Сбросить пароль', controller.receive),
+          ],
+        ),
+      ),
+    );
+  }
 }

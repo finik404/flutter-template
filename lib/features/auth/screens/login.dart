@@ -14,6 +14,7 @@ class LoginScreen extends StatelessWidget {
     final controller = Get.put(LoginController());
 
     return AuthLayout(
+      // Header
       title: 'Войти в аккаунт',
       textWidget: UITexts(
         [
@@ -25,6 +26,9 @@ class LoginScreen extends StatelessWidget {
         ],
         size: 18,
       ),
+
+      // Errors
+      errors: controller.errors,
 
       // Content
       child: Form(
@@ -45,6 +49,7 @@ class LoginScreen extends StatelessWidget {
             UIInput(
               'Пароль',
               controller.passwordInput,
+              isPassword: true,
               validate: [VRules.required, VRules.min(6)],
             ),
             const SizedBox(height: 12),
@@ -54,7 +59,7 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 30),
 
             // Submit button
-            UIButton('Войти', controller.onLogin),
+            UIButton('Войти', controller.login),
 
             const SizedBox(height: 25),
 

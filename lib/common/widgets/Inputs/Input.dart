@@ -58,10 +58,20 @@ class UIInputState extends State<UIInput> {
   String error = '';
   String counter = '';
   bool showPassword = false;
+  bool isNotEmpty = false;
 
   @override
   void initState() {
     super.initState();
+
+    // isNotEmpty
+    if (widget.isPassword) {
+      widget.value.addListener(() {
+        setState(() {
+          isNotEmpty = widget.value.text.isNotEmpty;
+        });
+      });
+    }
 
     // Counter
     if (widget.maxLength != null && widget.counterOptions != InputCounterOptions.hide) {
@@ -164,7 +174,7 @@ class UIInputState extends State<UIInput> {
             prefixIcon: widget.prefixIcon != null ? UIIcon(widget.prefixIcon!, styles: inputPrefixIconStyles) : null,
             suffixIcon:
                 // Password button
-                widget.isPassword
+                widget.isPassword && isNotEmpty
                     ? Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: UIIconButton(

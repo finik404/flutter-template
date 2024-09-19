@@ -11,6 +11,8 @@ class LoginController extends GetxController {
   final TextEditingController emailInput = TextEditingController();
   final TextEditingController passwordInput = TextEditingController();
   final TextEditingController phoneInput = TextEditingController();
+  final String errors = '';
+
   final List<SelectItemModel> selectItems = [
     SelectItemModel('value1', 'label1'),
     SelectItemModel('value2', 'label2'),
@@ -25,7 +27,7 @@ class LoginController extends GetxController {
   }
 
   // Methods ----------------
-  Future<void> onLogin() async {
+  Future<void> login() async {
     if (formKey.currentState!.validate()) {}
   }
 }

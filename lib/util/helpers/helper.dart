@@ -51,4 +51,21 @@ class THelper {
       return '${text.substring(0, maxLength)}...';
     }
   }
+
+  static String hideEmail(String email) {
+    final parts = email.split('@');
+    if (parts.length != 2) {
+      return email;
+    }
+
+    final username = parts[0];
+    final domain = parts[1];
+
+    const visibleCharCount = 1;
+    final maskedUsername =
+    username.length > visibleCharCount ? username.substring(0, visibleCharCount) + '*' * (username.length - visibleCharCount) : username;
+
+    return '$maskedUsername@$domain';
+  }
+
 }

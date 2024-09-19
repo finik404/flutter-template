@@ -12,8 +12,12 @@ class RegisterScreen extends StatelessWidget {
     final controller = Get.put(RegisterController());
 
     return AuthLayout(
+      // Header
       title: 'Регистрация',
       text: 'Создайте аккаунт',
+
+      // Errors
+      errors: controller.errors,
 
       // Content
       child: Form(
@@ -29,7 +33,7 @@ class RegisterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // E-mail input
+            // Email input
             UIInput(
               'Email',
               controller.emailInput,
@@ -51,8 +55,8 @@ class RegisterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
 
-            // Btn
-            UIButton('Создать аккаунт', controller.onRegister),
+            // Submit button
+            UIButton('Создать аккаунт', controller.register),
           ],
         ),
       ),
