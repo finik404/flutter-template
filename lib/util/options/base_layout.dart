@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tproject/util/constants/styles.dart';
 
 class TBaseLayoutOptions {
   TBaseLayoutOptions._();
@@ -7,5 +8,5 @@ class TBaseLayoutOptions {
   static const bool isScrollable = false;
   static const bool hasSafeArea = true;
   static const bool hasTop = false;
-  static EdgeInsets? padding;
+  static EdgeInsets? padding = TStyles.pdBg;
 }

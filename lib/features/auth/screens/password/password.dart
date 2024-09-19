@@ -9,12 +9,10 @@ class PasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AuthLayout(
-        label: 'S.of(context).restore_password_title',
+        title: 'S.of(context).restore_password_title',
         text: 'S.of(context).restore_password_text',
-        textWidth: 1,
-
         // Content
-        children: [
+        child: Container(),
           // Form(
           //   key: formKey,
           //   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -33,7 +31,7 @@ class PasswordScreen extends StatelessWidget {
           //     Btn(S.of(context).receive_code, () => submit(context)),
           //   ]),
           // ),
-        ]);
+        );
   }
 
   // Methods ----------------

@@ -15,4 +15,5 @@ class TStyles {
   static const EdgeInsets pdLg =  EdgeInsets.symmetric(vertical: 32, horizontal: 27);
   static const EdgeInsets noPd =  EdgeInsets.all(0);
   static const EdgeInsets pdClick =  EdgeInsets.all(10);
+  static const EdgeInsets pdBg =  EdgeInsets.symmetric(vertical: 20, horizontal: 20);
 }

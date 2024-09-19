@@ -11,6 +11,7 @@ class BaseLayout extends StatelessWidget {
     this.isScrollable = TBaseLayoutOptions.isScrollable,
     this.hasSafeArea = TBaseLayoutOptions.hasSafeArea,
     this.hasTop = TBaseLayoutOptions.hasTop,
+    this.appBar,
   });
 
   final List<Widget>? children;
@@ -20,6 +21,7 @@ class BaseLayout extends StatelessWidget {
   final bool isScrollable;
   final bool hasSafeArea;
   final bool hasTop;
+  final PreferredSizeWidget? appBar;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +35,22 @@ class BaseLayout extends StatelessWidget {
     }
 
     if (customPadding != null) {
-      content = Padding(padding: customPadding!, child: content);
+      content = Padding(padding: customPadding, child: content);
     }
 
     if (isScrollable) {
       content = SingleChildScrollView(child: content);
     }
 
-    return hasSafeArea ? Scaffold(backgroundColor: bg, body: SafeArea(top: hasTop, child: content)) : content;
+    return hasSafeArea
+        ? Scaffold(
+            appBar: appBar ?? AppBar(toolbarHeight: 0),
+            backgroundColor: bg,
+            body: SafeArea(
+              top: hasTop,
+              child: content,
+            ),
+          )
+        : content;
   }
 }
