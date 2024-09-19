@@ -1,6 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:tproject/util/models/base.dart';
 import 'package:tproject/util/options/text.dart';
+
+export 'package:tproject/util/models/base.dart';
 
 class UITexts extends StatelessWidget {
   const UITexts(
@@ -81,25 +84,4 @@ class UITexts extends StatelessWidget {
       ),
     );
   }
-}
-
-class TextModel {
-  final String text;
-  final TextStyle? styles;
-  final Color? color;
-  final double? size, lineHeight;
-  final FontWeight? weight;
-  final Function()? onTap;
-  final bool isShow;
-
-  TextModel(
-    this.text, {
-    this.styles,
-    this.color,
-    this.size,
-    this.lineHeight,
-    this.weight,
-    this.onTap,
-    this.isShow = true,
-  });
 }

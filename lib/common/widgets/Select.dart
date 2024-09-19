@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
-import 'package:tproject/util/constants/models.dart';
+import 'package:tproject/util/models/base.dart';
 import 'package:tproject/util/extensions/media.dart';
 import 'package:tproject/util/options/select.dart';
 

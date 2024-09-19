@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:get/get.dart' as getx;
 import 'package:get_storage/get_storage.dart';
 import 'package:tproject/util/constants/private.dart';
+import 'package:tproject/util/models/base.dart';
 
 class THttp {
   static final Dio dio = Dio();
@@ -40,7 +40,7 @@ class THttp {
         return MapEntry(key, value.toString());
       }),
     );
-    
+
     try {
       Response response;
 
@@ -93,23 +93,4 @@ class THttp {
       }
     }
   }
-}
-
-// Types ----------------
-enum HttpMethods { get, post }
-
-class ResponseModel {
-  int status;
-  dynamic data;
-  dynamic errors;
-  String? message;
-  bool isError;
-
-  ResponseModel({
-    required this.status,
-    this.data,
-    this.errors,
-    this.message,
-    required this.isError,
-  });
 }

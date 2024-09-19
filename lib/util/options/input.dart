@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/constants/icons.dart';
 import 'package:tproject/util/constants/styles.dart';
+import 'package:tproject/util/models/base.dart';
 
-enum InputCounterOptions { show, hide, showOnEnd }
+export 'package:tproject/util/models/base.dart';
 
 class TInputOptions {
   TInputOptions._();

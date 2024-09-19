@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tproject/util/constants/models.dart';
+import 'package:tproject/util/models/base.dart';
 import 'package:tproject/util/http/http.dart';
 
 class LoginController extends GetxController {
