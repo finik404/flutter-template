@@ -1,18 +1,20 @@
 import 'package:get/get.dart';
+import 'package:tproject/features/auth/controllers/user.dart';
 import 'package:tproject/features/auth/models/user.dart';
 import 'package:tproject/features/auth/screens/login.dart';
+import 'package:tproject/features/home/screens/home/home.dart';
 import 'package:tproject/util/http/http.dart';
 
 class SplashController extends GetxController {
   static SplashController get instance => Get.find();
 
-  // Variables ----------------
-
-  // Init ----------------
+  // onReady ----------------
   @override
   void onReady() {
     super.onReady();
     // checkAuth();
+
+    Get.offAll(const LoginScreen());
   }
 
   // Methods ----------------
@@ -22,10 +24,10 @@ class SplashController extends GetxController {
 
     if (!response.isError) {
       // Save to store
-      UserModel data = UserModel.fromJson(response.data);
+      UserController.instance.setUser(UserModel.fromJson(response.data));
 
       // Navigate to home
-      // Get.offAll(const HomeScreen());
+      Get.offAll(const HomeScreen());
     } else {
       // Navigate to auth
       Get.offAll(const LoginScreen());

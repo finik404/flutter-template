@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tproject/features/auth/controllers/user.dart';
+import 'package:tproject/features/auth/models/user.dart';
+import 'package:tproject/features/home/screens/home/home.dart';
 import 'package:tproject/util/http/http.dart';
 
 class NewPasswordController extends GetxController {
@@ -23,8 +26,11 @@ class NewPasswordController extends GetxController {
         // Clear errors
         errors = '';
 
+        // Save to store
+        UserController.instance.setUser(UserModel.fromJson(response.data));
+
         // Navigate
-        // Get.offAll(HomeScreen());
+        Get.offAll(const HomeScreen());
       }
 
       // Save errors

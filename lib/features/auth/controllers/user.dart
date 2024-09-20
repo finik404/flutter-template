@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:tproject/features/auth/models/user.dart';
 
-class AuthController extends GetxController {
-  static AuthController get instance => Get.find();
+class UserController extends GetxController {
+  static UserController get instance => Get.find();
 
   // Variables ----------------
   UserModel? user;

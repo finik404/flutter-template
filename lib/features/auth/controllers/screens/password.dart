@@ -13,6 +13,8 @@ class PasswordController extends GetxController {
 
   // Methods ----------------
   Future<void> receive() async {
+    Get.to(PasswordCodeScreen(email: emailInput.text));
+
     if (formKey.currentState!.validate()) {
       // Request
       final response = await THttp.fetch('/forgot', method: HttpMethods.post, body: {

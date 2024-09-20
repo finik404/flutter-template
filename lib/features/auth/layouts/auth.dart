@@ -38,7 +38,6 @@ class AuthLayout extends StatelessWidget {
           if (text != null || textWidget != null)
             Container(
               margin: const EdgeInsets.only(bottom: 35),
-              width: (context.screenWidth - 40) * 0.8,
               child: textWidget ?? UIText(text!, size: 18),
             ),
 

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:tproject/common/exports.dart';
 import 'package:tproject/features/auth/controllers/screens/code.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
+import 'package:tproject/features/auth/screens/password/code/widgets/InputCode.dart';
 import 'package:tproject/util/helpers/helper.dart';
 
 class PasswordCodeScreen extends StatelessWidget {
@@ -31,16 +32,13 @@ class PasswordCodeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Code
-          // InputCode(change: (value) => setState(() => code = value), submit: controller.check),
+          const InputCode(),
 
           // Errors
           if (controller.codeErrors.isNotEmpty)
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 10),
-                Padding(padding: const EdgeInsets.symmetric(horizontal: 10), child: UIText(controller.codeErrors, color: TColors.error, size: 12))
-              ],
+            Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: UIText(controller.codeErrors, color: TColors.error, size: 12),
             ),
           const SizedBox(height: 30),
 

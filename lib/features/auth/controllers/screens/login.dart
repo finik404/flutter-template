@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:tproject/features/auth/controllers/user.dart';
 import 'package:tproject/features/auth/models/user.dart';
+import 'package:tproject/features/home/screens/home/home.dart';
 import 'package:tproject/util/http/http.dart';
 
 class LoginController extends GetxController {
@@ -41,17 +43,17 @@ class LoginController extends GetxController {
         errors = '';
 
         // Data
-        UserModel data = UserModel.fromJson(response.data);
+        UserModel user = UserModel.fromJson(response.data);
 
         // Save auth token
         final storage = GetStorage();
-        if (data.token != null) storage.write('auth_token', data.token!);
+        if (user.token != null) storage.write('auth_token', user.token!);
 
         // Save user to store
-
+        UserController.instance.setUser(user);
 
         // Navigate
-        // Get.offAll(HomeScreen());
+        Get.offAll(const HomeScreen());
       }
 
       // Save errors
