@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:tproject/util/helpers/device.dart';
 import 'package:tproject/util/options/base_layout.dart';
 
 class BaseLayout extends StatelessWidget {
@@ -48,7 +50,10 @@ class BaseLayout extends StatelessWidget {
             backgroundColor: bg,
             body: SafeArea(
               top: hasTop,
-              child: content,
+              child: Padding(
+                padding: EdgeInsets.only(top: TDevice.statusBarHeight()),
+                child: content,
+              ),
             ),
           )
         : content;

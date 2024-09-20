@@ -15,6 +15,7 @@ class LoginScreen extends StatelessWidget {
 
     return AuthLayout(
       // Header
+      hasArrow: false,
       title: 'Войти в аккаунт',
       textWidget: UITexts(
         [

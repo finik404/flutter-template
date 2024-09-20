@@ -47,8 +47,12 @@ dependencies:
 
   # Firebase, notifications, auth
   firebase_core: ^3.4.0
-  firebase_messaging: 15.1.1
-  firebase_auth: ^5.2.1
+  firebase_messaging: ^15.1.2
+  firebase_auth: ^5.3.0
+
+  # Localization
+  flutter_localizations:
+    sdk: flutter
 
   # Parse html
   html: ^0.15.4
@@ -74,6 +78,11 @@ dependencies:
 dev_dependencies:
   flutter_lints: ^4.0.0
   flutter_launcher_icons: ^0.13.1
+  flutter_gen: ^5.7.0
+
+# Localization
+flutter_intl:
+  enabled: true
 
 
 flutter:
