@@ -67,6 +67,7 @@ class LoginScreen extends StatelessWidget {
               controller.select,
               (value) => controller.select = value,
               items: controller.selectItems,
+              label: 'label',
             ),
           ],
         ),

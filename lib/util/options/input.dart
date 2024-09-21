@@ -43,7 +43,7 @@ class TInputOptions {
   static TextInputMask inputPhoneMask = TextInputMask(mask: '\\+7 999 999 99 99');
 
   // --------------- THEMES --------------- //
-  static InputDecorationTheme Function(bool) inputTheme = (hasError) {
+  static InputDecorationTheme Function(bool hasError) inputTheme = (hasError) {
     return InputDecorationTheme(
       fillColor: Colors.transparent,
       labelStyle: TextStyle(fontSize: 14, color: hasError ? TColors.error.withOpacity(0.5) : TColors.primary.withOpacity(0.5)),
