@@ -45,4 +45,4 @@ export '../util/models/base.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 
 // Lang
-// export 'package:troject/generated/l10n.dart';
+export 'package:tproject/languages/languages.dart';

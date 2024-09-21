@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:tproject/features/splash/screens/splash.dart';
-// import 'package:tproject/generated/l10n.dart';
+import 'package:tproject/languages/languages.dart';
 import 'package:tproject/util/theme/theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -20,18 +19,9 @@ class App extends StatelessWidget {
       theme: AppTheme.lightTheme,
 
       // Localization
-      locale: const Locale('en', 'US'),
-      localizationsDelegates: [
-        GlobalWidgetsLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      // Languages
-      supportedLocales: const [
-        Locale('en', 'US'),
-        // Locale('ru'),
-        // Locale('kz'),
-      ],
+      locale: const Locale('ru'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: Languages.all,
 
       // Home screen
       home: const Splash(),

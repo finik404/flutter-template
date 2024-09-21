@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
     return AuthLayout(
       // Header
       hasArrow: false,
-      title:' S.of(context).error',
+      title: 'Авторизация',
       textWidget: UITexts(
         [
           TextModel('Авторизуйтесь или '),

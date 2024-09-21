@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
-// import 'package:tproject/generated/l10n.dart';
+import 'package:tproject/languages/L.dart';
 import 'package:tproject/util/helpers/dialog.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:share_plus/share_plus.dart';
@@ -57,7 +57,7 @@ Future<XFile?> pickFile({required ImageSource type, required Permission permissi
       final fileExtension = image.path.split('.').last.toLowerCase();
 
       if (!allowedExtensions.contains(fileExtension)) {
-        // TDialog.showSnackBar(S.of(Get.context!).errors_image_type, isError: true);
+        TDialog.showSnackBar(L.of(Get.context!).errors_image_type, isError: true);
         return null;
       }
 
@@ -66,7 +66,7 @@ Future<XFile?> pickFile({required ImageSource type, required Permission permissi
       int maxSizeBytes = maxSize * 1024 * 1024;
 
       if (fileSize > maxSizeBytes) {
-        // TDialog.showSnackBar(S.of(Get.context!).errors_image_size(maxSize), isError: true);
+        TDialog.showSnackBar(L.of(Get.context!).errors_image_size(maxSize), isError: true);
         return null;
       } else {
         return image;
