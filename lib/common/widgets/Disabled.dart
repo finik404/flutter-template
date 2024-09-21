@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tproject/util/options/disabled.dart';
 
 class UIDisabled extends StatelessWidget {
   const UIDisabled({
@@ -18,7 +19,7 @@ class UIDisabled extends StatelessWidget {
       opacity: noOpacity == true
           ? 1.0
           : isDisabled
-              ? 0.5
+              ? TDisabledOptions.opacity
               : 1.0,
       child: IgnorePointer(
         ignoring: isDisabled,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+// import 'package:tproject/generated/l10n.dart';
 import 'package:tproject/util/helpers/dialog.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:share_plus/share_plus.dart';
@@ -50,11 +52,22 @@ Future<XFile?> pickFile({required ImageSource type, required Permission permissi
     final XFile? image = await picker.pickImage(source: type, imageQuality: 75);
 
     if (image != null) {
+      // Check type file
+      final allowedExtensions = ['png', 'jpeg', 'jpg'];
+      final fileExtension = image.path.split('.').last.toLowerCase();
+
+      if (!allowedExtensions.contains(fileExtension)) {
+        // TDialog.showSnackBar(S.of(Get.context!).errors_image_type, isError: true);
+        return null;
+      }
+
+      // Check size file
       final fileSize = await image.length();
       int maxSizeBytes = maxSize * 1024 * 1024;
 
       if (fileSize > maxSizeBytes) {
-        TDialog.showSnackBar('Размер файла не должен превышать ${maxSize} мб', isError: true);
+        // TDialog.showSnackBar(S.of(Get.context!).errors_image_size(maxSize), isError: true);
+        return null;
       } else {
         return image;
       }

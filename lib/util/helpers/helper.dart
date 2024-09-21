@@ -63,9 +63,8 @@ class THelper {
 
     const visibleCharCount = 1;
     final maskedUsername =
-    username.length > visibleCharCount ? username.substring(0, visibleCharCount) + '*' * (username.length - visibleCharCount) : username;
+        username.length > visibleCharCount ? username.substring(0, visibleCharCount) + '*' * (username.length - visibleCharCount) : username;
 
     return '$maskedUsername@$domain';
   }
-
 }

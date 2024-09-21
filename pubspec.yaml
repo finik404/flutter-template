@@ -80,13 +80,14 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_gen: ^5.7.0
 
-# Localization
-flutter_intl:
-  enabled: true
 
+# --------------- SETTINGS --------------- #
 
+# Flutter
 flutter:
+  generate: true
   uses-material-design: true
+
 
   # --------------- ASSETS --------------- #
 
