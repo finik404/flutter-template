@@ -20,5 +20,7 @@
   "errors_email_unique": "This email is already in use",
   "errors_auth": "Invalid email or password",
   "errors_image_size": "File size must not exceed {size} MB",
-  "errors_image_type": "Invalid image format. Acceptable formats: PNG, JPEG, JPG"
+  "errors_image_type": "Invalid image format. Acceptable formats: PNG, JPEG, JPG",
+  "errors_network": "No internet connection",
+  "errors_network_text": "Please check your internet connection and try again"
 }

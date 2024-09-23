@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/features/auth/screens/password/new_password.dart';
+import 'package:tproject/util/helpers/network/controller.dart';
 import 'package:tproject/util/http/http.dart';
 
 class CodeController extends GetxController {
@@ -48,6 +49,10 @@ class CodeController extends GetxController {
     validate();
 
     if (codeErrors.isNotEmpty) {
+      // Check network connection
+      bool isConnected = await NetworkController.instance.checkNetwork();
+      if (!isConnected) return;
+
       // Request
       final response = await THttp.fetch('/code', method: HttpMethods.post, body: {
         'code': codeInput.text,

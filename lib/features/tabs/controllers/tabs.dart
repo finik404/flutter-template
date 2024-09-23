@@ -7,7 +7,7 @@ class TabsController extends GetxController {
   static TabsController get instance => Get.find();
 
   // Variables ----------------
-  PersistentTabController controller = PersistentTabController();
+  final PersistentTabController controller = PersistentTabController();
   Rx<int> activeTab = 0.obs;
 
   // onReady ----------------

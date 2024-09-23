@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:tproject/features/auth/controllers/user.dart';
 import 'package:tproject/features/auth/models/user.dart';
 import 'package:tproject/features/home/screens/home/home.dart';
+import 'package:tproject/util/helpers/network/controller.dart';
 import 'package:tproject/util/http/http.dart';
 
 class RegisterController extends GetxController {
@@ -19,6 +20,10 @@ class RegisterController extends GetxController {
   // Methods ----------------
   Future<void> register() async {
     if (formKey.currentState!.validate()) {
+      // Check network connection
+      bool isConnected = await NetworkController.instance.checkNetwork();
+      if (!isConnected) return;
+
       // Request
       final response = await THttp.fetch('/register', method: HttpMethods.post, body: {
         'name': nameInput.text,

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:tproject/features/auth/controllers/user.dart';
 import 'package:tproject/features/auth/models/user.dart';
 import 'package:tproject/features/home/screens/home/home.dart';
+import 'package:tproject/util/helpers/network/controller.dart';
 import 'package:tproject/util/http/http.dart';
 
 class NewPasswordController extends GetxController {
@@ -17,6 +18,10 @@ class NewPasswordController extends GetxController {
   // Methods ----------------
   Future<void> restore() async {
     if (formKey.currentState!.validate()) {
+      // Check network connection
+      bool isConnected = await NetworkController.instance.checkNetwork();
+      if (!isConnected) return;
+
       // Request
       final response = await THttp.fetch('/restore', method: HttpMethods.post, body: {
         'password': passwordInput.text,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/features/auth/screens/password/code/code.dart';
+import 'package:tproject/util/helpers/network/controller.dart';
 import 'package:tproject/util/http/http.dart';
 
 class PasswordController extends GetxController {
@@ -16,6 +17,10 @@ class PasswordController extends GetxController {
     Get.to(PasswordCodeScreen(email: emailInput.text));
 
     if (formKey.currentState!.validate()) {
+      // Check network connection
+      bool isConnected = await NetworkController.instance.checkNetwork();
+      if (!isConnected) return;
+
       // Request
       final response = await THttp.fetch('/forgot', method: HttpMethods.post, body: {
         'email': emailInput.text,

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tproject/app.dart';
 import 'package:tproject/util/constants/colors.dart';
+import 'package:tproject/util/helpers/network/binding.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,4 +30,7 @@ void main() async {
 
   // runApp
   runApp(const App());
+
+  // Network checker
+  NetworkBinding.init();
 }
