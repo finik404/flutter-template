@@ -25,7 +25,6 @@ class TColors {
   // BottomSheet
   static const Color bottomSheet = Color(0xFFF8FBFE);
   static const Color bottomSheetBorder = Color.fromRGBO(14, 108, 221, 0.10);
-  static const Color bottomSheetShadow = Color.fromRGBO(0, 71, 156, 0.08);
 
   // Validation
   static const Color error = Color(0xFFBD081C);

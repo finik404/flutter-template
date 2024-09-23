@@ -7,7 +7,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const BaseLayout(
-      child: Center(child: Text('Home')),
+      hasSafeArea: false,
+      child: Center(
+        child: Text('Home'),
+      ),
     );
   }
 }

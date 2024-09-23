@@ -26,8 +26,6 @@ class CodeController extends GetxController {
     String otp = controllers.map((controller) => controller.text).join();
 
     if (value.isNotEmpty) {
-      print('value ${value}');
-      
       codeInput.text = otp;
 
       controllers[index].text = value;
