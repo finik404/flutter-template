@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/features/auth/screens/password/code/code.dart';
+import 'package:tproject/languages/L.dart';
 import 'package:tproject/util/helpers/network/controller.dart';
 import 'package:tproject/util/http/http.dart';
 
@@ -39,7 +40,7 @@ class PasswordController extends GetxController {
         dynamic error = response.errors?['messages'];
 
         if (response.errors?['messages']?['email']?[0] == 'The email has already been taken.') {
-          error = 'Данная почта уже используется';
+          error = L.of(Get.context!).errors_email_unique;
         }
 
         errors = error;

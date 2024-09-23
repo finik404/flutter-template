@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/features/auth/screens/password/new_password.dart';
+import 'package:tproject/languages/L.dart';
 import 'package:tproject/util/helpers/network/controller.dart';
 import 'package:tproject/util/http/http.dart';
 
@@ -70,7 +71,6 @@ class CodeController extends GetxController {
       // Save errors
       else {
         dynamic error = response.errors?['messages'];
-
         errors = error;
       }
     }
@@ -78,10 +78,10 @@ class CodeController extends GetxController {
 
   void validate() {
     if (codeInput.text.isEmpty) {
-      codeErrors = 'Введите код доступа';
+      codeErrors = L.of(Get.context!).errors_code;
     }
     if (codeInput.text.length != 4) {
-      codeErrors = 'Код должен быть 4-значным';
+      codeErrors = L.of(Get.context!).errors_code_lenght;
     }
   }
 

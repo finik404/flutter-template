@@ -15,9 +15,6 @@ class TSizes {
   // Divider
   static const double divider = 1.0;
 
-  // Loading
-  static const double loading = 76.0;
-
   // AppBar
   static const double appBar = 56.0;
 

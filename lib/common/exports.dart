@@ -26,6 +26,7 @@ export 'widgets/Image.dart';
 export '../util/constants/colors.dart';
 export '../util/constants/sizes.dart';
 export '../util/constants/styles.dart';
+export '../util/constants/images.dart';
 
 // Extensions
 export '../util/extensions/media.dart';
@@ -45,4 +46,4 @@ export '../util/models/base.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 
 // Lang
-export 'package:tproject/languages/languages.dart';
+export 'package:tproject/languages/L.dart';

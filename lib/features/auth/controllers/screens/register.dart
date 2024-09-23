@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:tproject/features/auth/controllers/user.dart';
 import 'package:tproject/features/auth/models/user.dart';
 import 'package:tproject/features/home/screens/home/home.dart';
+import 'package:tproject/languages/L.dart';
 import 'package:tproject/util/helpers/network/controller.dart';
 import 'package:tproject/util/http/http.dart';
 
@@ -54,10 +55,10 @@ class RegisterController extends GetxController {
         dynamic error = response.errors?['messages'];
 
         if (response.errors?['messages']?['credentials_incorrect']?[0] == 'The provided credentials are incorrect.') {
-          error = 'Неправельные данные';
+          error = L.of(Get.context!).errors_auth;
         }
         if (response.errors?['messages']?['email']?[0] == 'The email has already been taken.') {
-          error = 'Данная почта уже используется';
+          error = L.of(Get.context!).errors_email_unique;
         }
 
         errors = error;

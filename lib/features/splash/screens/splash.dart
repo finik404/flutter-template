@@ -24,7 +24,7 @@ class Splash extends StatelessWidget {
           children: [
             Image.asset(TImages.appIcon, width: context.screenWidth * 0.4),
             SizedBox(height: context.screenHeight * 0.07),
-            SizedBox(height: 30, width: 30, child: CircularProgressIndicator(color: context.primaryColor, strokeWidth: 2)),
+            SizedBox(height: 50.0, width: 50.0, child: CircularProgressIndicator(color: context.primaryColor, strokeWidth: 2)),
           ],
         ),
       ),

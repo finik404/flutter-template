@@ -41,7 +41,6 @@ class NewPasswordController extends GetxController {
       // Save errors
       else {
         dynamic error = response.errors?['messages'];
-
         errors = error;
       }
     }

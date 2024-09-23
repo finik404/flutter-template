@@ -22,5 +22,7 @@
   "errors_image_size": "File size must not exceed {size} MB",
   "errors_image_type": "Invalid image format. Acceptable formats: PNG, JPEG, JPG",
   "errors_network": "No internet connection",
-  "errors_network_text": "Please check your internet connection and try again"
+  "errors_network_text": "Please check your internet connection and try again",
+  "errors_code": "Enter the recovery code",
+  "errors_code_length": "The code must be 4-digit"
 }
