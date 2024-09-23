@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:tproject/util/constants/styles.dart';
+import 'package:tproject/util/helpers/device.dart';
 import 'package:tproject/util/models/base.dart';
 import 'package:tproject/util/options/text.dart';
 
@@ -17,6 +19,7 @@ class UITexts extends StatelessWidget {
     this.linkHasDecoration = TTextOptions.textsLinkHasDecoration,
     this.lineHeight,
     this.align = TextAlign.start,
+    this.hasParse = TTextOptions.hasParse,
   });
 
   final List<TextModel> children;
@@ -25,7 +28,7 @@ class UITexts extends StatelessWidget {
   final FontWeight? weight;
   final Color? color, linkColor;
   final TextAlign align;
-  final bool linkHasDecoration;
+  final bool linkHasDecoration, hasParse;
 
   // Builder ----------------
   @override
@@ -35,53 +38,79 @@ class UITexts extends StatelessWidget {
     // Default styles
     TextStyle textStyles = styles ?? TTextOptions.styles;
 
+    // Parse text
+    List<InlineSpan> parseText(String inputText, TextStyle childStyles, GestureRecognizer? recognizer) {
+      List<InlineSpan> spans = [];
+      StringBuffer buffer = StringBuffer();
+
+      // Styles for the ₸ symbol
+      TextStyle symbolStyle = childStyles.copyWith(
+        fontFamily: TDevice.isIOS() ? 'SF Pro' : 'Roboto',
+      );
+
+      for (int i = 0; i < inputText.length; i++) {
+        if (inputText[i] == '₸') {
+          // Add previous text (if any) with the base style
+          if (buffer.isNotEmpty) {
+            spans.add(TextSpan(text: buffer.toString(), style: childStyles, recognizer: recognizer));
+            buffer.clear();
+          }
+          // Add the ₸ symbol with the specific style
+          spans.add(TextSpan(text: '₸', style: symbolStyle, recognizer: recognizer));
+        } else {
+          buffer.write(inputText[i]);
+        }
+      }
+
+      // Add remaining text (if any)
+      if (buffer.isNotEmpty) {
+        spans.add(TextSpan(text: buffer.toString(), style: childStyles, recognizer: recognizer));
+      }
+
+      return spans;
+    }
+
     // Children
     for (var child in children) {
       // isShow
       if (!(child.isShow)) continue;
 
-      // Link text element
+      // Base text style
+      TextStyle childStyles = child.styles ??
+          TextStyle(
+            fontFamily: TStyles.font,
+            fontSize: child.size ?? size,
+            color: child.color ?? color ?? (child.onTap != null ? linkColor : textStyles.color),
+            fontWeight: child.weight ?? weight,
+            height: child.lineHeight ?? lineHeight,
+            decoration: child.onTap != null && linkHasDecoration ? TextDecoration.underline : TextDecoration.none,
+            decorationColor: child.onTap != null && linkHasDecoration ? (child.color ?? linkColor) : null,
+          );
+
+      // Link
       if (child.onTap != null) {
-        textSpans.add(
-          TextSpan(
-            text: child.text,
-            style: child.styles ??
-                TextStyle(
-                  fontSize: child.size,
-                  color: child.color ?? linkColor,
-                  fontWeight: child.weight,
-                  height: child.lineHeight,
-                  decoration: linkHasDecoration ? TextDecoration.underline : TextDecoration.none,
-                  decorationColor: linkHasDecoration ? (child.color ?? linkColor) : null,
-                ),
-            recognizer: TapGestureRecognizer()..onTap = () => child.onTap!(),
-          ),
-        );
+        TapGestureRecognizer recognizer = TapGestureRecognizer()..onTap = () => child.onTap!();
+        if (hasParse) {
+          textSpans.addAll(parseText(child.text, childStyles, recognizer));
+        } else {
+          textSpans.add(TextSpan(text: child.text, style: childStyles, recognizer: recognizer));
+        }
       }
 
-      // Default text element
+      // Default text
       else {
-        textSpans.add(
-          TextSpan(
-            text: child.text,
-            style: child.styles ?? TextStyle(fontSize: child.size, color: child.color, fontWeight: child.weight, height: child.lineHeight),
-          ),
-        );
+        if (hasParse) {
+          textSpans.addAll(parseText(child.text, childStyles, null));
+        } else {
+          textSpans.add(TextSpan(text: child.text, style: childStyles));
+        }
       }
     }
 
     // Texts
     return RichText(
       textAlign: align,
-      text: TextSpan(
-        style: TextStyle(
-          fontSize: size ?? textStyles.fontSize,
-          color: color ?? textStyles.color,
-          fontWeight: weight ?? textStyles.fontWeight,
-          height: lineHeight ?? textStyles.height,
-        ),
-        children: textSpans,
-      ),
+      text: TextSpan(children: textSpans),
     );
   }
 }

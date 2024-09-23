@@ -8,6 +8,7 @@ class TTextOptions {
 
   // --------------- OPTIONS --------------- //
   static TextStyle styles = textTheme.bodyMedium!;
+  static const bool hasParse = false;
 
   // TextLink
   static TextStyle linkStyles = linkTheme;
@@ -31,8 +32,7 @@ class TTextOptions {
   );
 
   // TextLink
-  static TextStyle linkTheme =
-      const TextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).primaryColor);
+  static TextStyle linkTheme = const TextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).primaryColor);
   static TextStyle linkIconTheme =
       const TextStyle().copyWith(fontSize: 18, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).primaryColor);
 }
