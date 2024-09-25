@@ -21,9 +21,6 @@ class NewPasswordScreen extends StatelessWidget {
       title: 'Восстановление',
       text: 'Введите новый пароль, он должен состоять минимум из 6 символов',
 
-      // Errors
-      errors: controller.errors,
-
       // Content
       child: Form(
         key: controller.formKey,
@@ -41,7 +38,7 @@ class NewPasswordScreen extends StatelessWidget {
                 VRules.max(70),
               ],
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: TSizes.spaceSm),
 
             // Repeat password input
             UIInput(
@@ -53,7 +50,7 @@ class NewPasswordScreen extends StatelessWidget {
                 VRules.confirmPassword(controller.repeatPasswordInput),
               ],
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: TSizes.spaceMd),
 
             // Submit button
             UIButton('Войти с новым паролем', controller.restore),

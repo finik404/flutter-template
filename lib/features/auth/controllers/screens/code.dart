@@ -11,7 +11,6 @@ class CodeController extends GetxController {
   // Variables ----------------
   final TextEditingController codeInput = TextEditingController();
   String codeErrors = '';
-  String errors = '';
   late List<TextEditingController> controllers;
   late List<FocusNode> focusNodes;
 
@@ -58,21 +57,13 @@ class CodeController extends GetxController {
       final response = await THttp.fetch('/code', method: HttpMethods.post, body: {
         'code': codeInput.text,
       });
+      if (response.isError) return;
 
-      if (!response.isError) {
-        // Clear errors
-        errors = '';
-        codeErrors = '';
+      // Clear errors
+      codeErrors = '';
 
-        // Navigate
-        Get.to(NewPasswordScreen(code: codeInput.text));
-      }
-
-      // Save errors
-      else {
-        dynamic error = response.errors?['messages'];
-        errors = error;
-      }
+      // Navigate
+      Get.to(NewPasswordScreen(code: codeInput.text));
     }
   }
 
@@ -81,19 +72,19 @@ class CodeController extends GetxController {
       codeErrors = L.of(Get.context!).errors_code;
     }
     if (codeInput.text.length != 4) {
-      codeErrors = L.of(Get.context!).errors_code_lenght;
+      codeErrors = L.of(Get.context!).errors_code_length;
     }
   }
 
   // onClose ----------------
-  // @override
-  // void onClose() {
-  //   super.onClose();
-  //   for (var controller in controllers) {
-  //     controller.dispose();
-  //   }
-  //   for (var node in focusNodes) {
-  //     node.dispose();
-  //   }
-  // }
+  @override
+  void onClose() {
+    super.onClose();
+    for (var controller in controllers) {
+      controller.dispose();
+    }
+    for (var node in focusNodes) {
+      node.dispose();
+    }
+  }
 }

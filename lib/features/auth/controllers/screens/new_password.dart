@@ -13,7 +13,6 @@ class NewPasswordController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController passwordInput = TextEditingController();
   final TextEditingController repeatPasswordInput = TextEditingController();
-  String errors = '';
 
   // Methods ----------------
   Future<void> restore() async {
@@ -26,23 +25,13 @@ class NewPasswordController extends GetxController {
       final response = await THttp.fetch('/restore', method: HttpMethods.post, body: {
         'password': passwordInput.text,
       });
+      if (response.isError) return;
 
-      if (!response.isError) {
-        // Clear errors
-        errors = '';
+      // Save to store
+      UserController.instance.setUser(UserModel.fromJson(response.data));
 
-        // Save to store
-        UserController.instance.setUser(UserModel.fromJson(response.data));
-
-        // Navigate
-        Get.offAll(const HomeScreen());
-      }
-
-      // Save errors
-      else {
-        dynamic error = response.errors?['messages'];
-        errors = error;
-      }
+      // Navigate
+      Get.offAll(const HomeScreen());
     }
   }
 }

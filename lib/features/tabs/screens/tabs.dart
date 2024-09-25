@@ -44,7 +44,7 @@ class Tabs extends StatelessWidget {
         );
 
     return BaseLayout(
-      padding: TStyles.noPd,
+      padding: EdgeInsets.zero,
       child: PersistentTabView(
         // Controller
         controller: controller.controller,

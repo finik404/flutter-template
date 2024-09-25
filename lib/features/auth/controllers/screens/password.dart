@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/features/auth/screens/password/code/code.dart';
-import 'package:tproject/languages/L.dart';
 import 'package:tproject/util/helpers/network/controller.dart';
 import 'package:tproject/util/http/http.dart';
 
@@ -11,7 +10,6 @@ class PasswordController extends GetxController {
   // Variables ----------------
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailInput = TextEditingController();
-  String errors = '';
 
   // Methods ----------------
   Future<void> receive() async {
@@ -26,25 +24,10 @@ class PasswordController extends GetxController {
       final response = await THttp.fetch('/forgot', method: HttpMethods.post, body: {
         'email': emailInput.text,
       });
+      if (response.isError) return;
 
-      if (!response.isError) {
-        // Clear errors
-        errors = '';
-
-        // Navigate
-        Get.to(PasswordCodeScreen(email: emailInput.text));
-      }
-
-      // Save errors
-      else {
-        dynamic error = response.errors?['messages'];
-
-        if (response.errors?['messages']?['email']?[0] == 'The email has already been taken.') {
-          error = L.of(Get.context!).errors_email_unique;
-        }
-
-        errors = error;
-      }
+      // Navigate
+      Get.to(PasswordCodeScreen(email: emailInput.text));
     }
   }
 }

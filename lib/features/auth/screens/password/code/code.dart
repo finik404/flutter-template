@@ -24,9 +24,6 @@ class PasswordCodeScreen extends StatelessWidget {
       title: 'Восстановление',
       text: 'В течение 10 минут вы получите письмо с кодом на почту ${THelper.hideEmail(email)}. Введите код в поле ниже для восстановления доступа',
 
-      // Errors
-      errors: controller.errors,
-
       // Content
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +37,7 @@ class PasswordCodeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 5),
               child: UIText(controller.codeErrors, color: TColors.error, size: 12),
             ),
-          const SizedBox(height: 30),
+          const SizedBox(height: TSizes.spaceMd),
 
           // Submit button
           UIButton('Продолжить', controller.check),

@@ -11,11 +11,6 @@ class TColors {
   // Background
   static const Color bg = white;
 
-  // Container
-  static Color container = const Color(0xFF0E6CDD).withOpacity(0.1);
-  static Color containerBorder = divider;
-  static const Color containerShadow = Color(0xFFF1F6FD);
-
   // Divider
   static Color divider = const Color(0xFF0E6CDD).withOpacity(0.1);
 

@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tproject/util/constants/private.dart';
+import 'package:tproject/util/helpers/dialog.dart';
+import 'package:tproject/util/http/parseErrors.dart';
 import 'package:tproject/util/models/base.dart';
 
 export 'package:tproject/util/models/base.dart';
@@ -16,6 +18,7 @@ class THttp {
     Map<String, dynamic>? body,
     Map<String, String>? form,
     HttpMethods method = HttpMethods.get,
+    bool hasWarning = true,
   }) async {
     // Base url
     String baseUrl = TPrivates.apiUrl;
@@ -84,6 +87,9 @@ class THttp {
     // Parse errors
     on DioException catch (e) {
       if (e.response != null) {
+        String? errors = parseErrors(e.response?.data);
+        if (hasWarning && errors != null) TDialog.showSnackBar(errors);
+
         return ResponseModel(
           status: e.response!.statusCode!,
           errors: e.response?.data,

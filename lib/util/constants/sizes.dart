@@ -20,9 +20,4 @@ class TSizes {
 
   // BottomSheet
   static const double bottomSheet = 84.0 - kBottomNavigationBarHeight;
-
-  // Icon
-  static const double iconSm = 16.0;
-  static const double iconMd = 18.0;
-  static const double iconLg = 20.0;
 }

@@ -53,15 +53,20 @@ class UIImage extends StatelessWidget {
           ? Stack(
               children: [
                 Container(width: width, height: width, color: TImageOptions.bg),
-                CachedNetworkImage(
-                  imageUrl: image!,
-                  fit: fit,
-                  maxHeightDiskCache: 300,
-                  maxWidthDiskCache: 300,
-                  fadeInCurve: Curves.easeIn,
-                  fadeInDuration: const Duration(milliseconds: 150),
-                  fadeOutCurve: Curves.easeOut,
-                  fadeOutDuration: const Duration(milliseconds: 200),
+                ClipRRect(
+                  borderRadius: borderRadius ?? TImageOptions.radius,
+                  child: CachedNetworkImage(
+                    imageUrl: image!,
+                    width: width,
+                    height: width,
+                    fit: fit,
+                    maxHeightDiskCache: 300,
+                    maxWidthDiskCache: 300,
+                    fadeInCurve: Curves.easeIn,
+                    fadeInDuration: const Duration(milliseconds: 150),
+                    fadeOutCurve: Curves.easeOut,
+                    fadeOutDuration: const Duration(milliseconds: 200),
+                  ),
                 ),
               ],
             )

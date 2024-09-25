@@ -16,9 +16,6 @@ class RegisterScreen extends StatelessWidget {
       title: 'Регистрация',
       text: 'Создайте аккаунт',
 
-      // Errors
-      errors: controller.errors,
-
       // Content
       child: Form(
         key: controller.formKey,
@@ -31,7 +28,7 @@ class RegisterScreen extends StatelessWidget {
               controller.nameInput,
               validate: [VRules.required(), VRules.max(25)],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: TSizes.spaceSm),
 
             // Email input
             UIInput(
@@ -40,7 +37,7 @@ class RegisterScreen extends StatelessWidget {
               type: TextInputType.emailAddress,
               validate: [VRules.required(), VRules.email()],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: TSizes.spaceSm),
 
             // Password input
             UIInput(
@@ -53,7 +50,7 @@ class RegisterScreen extends StatelessWidget {
                 VRules.max(70),
               ],
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: TSizes.spaceLg),
 
             // Submit button
             UIButton('Создать аккаунт', controller.register),

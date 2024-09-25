@@ -24,11 +24,7 @@ class TTextOptions {
 
   // --------------- THEMES --------------- //
   static TextTheme textTheme = TextTheme(
-    bodySmall: const TextStyle().copyWith(fontSize: 12, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary),
     bodyMedium: const TextStyle().copyWith(fontSize: 16, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary),
-    bodyLarge: const TextStyle().copyWith(fontSize: 18, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary),
-    titleSmall: const TextStyle().copyWith(fontSize: 18, fontWeight: FontWeight.bold, color: Theme.of(Get.context!).colorScheme.primary),
-    titleMedium: const TextStyle().copyWith(fontSize: 24, fontWeight: FontWeight.normal, color: Theme.of(Get.context!).colorScheme.primary),
   );
 
   // TextLink

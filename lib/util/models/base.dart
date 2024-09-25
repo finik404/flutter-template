@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class SelectItemModel {
+class ItemModel {
   final String label;
   final dynamic value;
 
-  SelectItemModel(this.label, this.value);
+  ItemModel(this.label, this.value);
 }
 
 class ActionModel {

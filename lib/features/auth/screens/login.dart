@@ -28,9 +28,6 @@ class LoginScreen extends StatelessWidget {
         size: 18,
       ),
 
-      // Errors
-      errors: controller.errors,
-
       // Content
       child: Form(
         key: controller.formKey,
@@ -44,7 +41,7 @@ class LoginScreen extends StatelessWidget {
               validate: [VRules.required(), VRules.email()],
               type: TextInputType.emailAddress,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: TSizes.spaceSm),
 
             // Password input
             UIInput(
@@ -53,15 +50,15 @@ class LoginScreen extends StatelessWidget {
               isPassword: true,
               validate: [VRules.required(), VRules.min(6)],
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: TSizes.spaceSm),
 
             // Forgot password link
             UITextLink('Забыли пароль?', onTap: () => Get.to(const PasswordScreen())),
-            const SizedBox(height: 30),
+            const SizedBox(height: TSizes.spaceMd),
 
             // Submit button
             UIButton('Войти', controller.login),
-            const SizedBox(height: 25),
+            const SizedBox(height: TSizes.spaceMd),
 
             UISelect(
               controller.select,

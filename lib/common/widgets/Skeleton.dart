@@ -5,14 +5,13 @@ import 'package:tproject/util/options/skeleton.dart';
 class UISkeleton extends StatelessWidget {
   const UISkeleton({
     super.key,
-    required this.width,
+    this.width,
     this.height = TSkeletonOptions.height,
     this.radius = TSkeletonOptions.radius,
   });
 
-  final double width;
-  final double height;
-  final double radius;
+  final double? width;
+  final double height, radius;
 
   @override
   Widget build(BuildContext context) {

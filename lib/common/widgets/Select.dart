@@ -22,9 +22,9 @@ class UISelect extends StatelessWidget {
     this.padding,
   });
 
-  final SelectItemModel value;
-  final Function(SelectItemModel value) onChange;
-  final List<SelectItemModel> items;
+  final ItemModel value;
+  final Function(ItemModel value) onChange;
+  final List<ItemModel> items;
   final String? label;
   final TextStyle? labelStyles, iconStyles;
   final InputDecorationTheme? styles;
