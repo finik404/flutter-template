@@ -43,7 +43,7 @@ class AuthLayout extends StatelessWidget {
             width: (context.screenWidth - 40) * 0.9,
             child: UIText(title, weight: FontWeight.bold, size: 24),
           ),
-          const SizedBox(height: TSizes.spaceSm),
+          const SizedBox(height: 12),
 
           // Text
           if (text != null || textWidget != null)

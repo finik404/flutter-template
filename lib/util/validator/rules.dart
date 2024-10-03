@@ -48,6 +48,18 @@ class VRules {
     };
   }
 
+  // Phone number
+  static Function(String?) phone({String? message}) {
+    return (String? value) {
+      Pattern pattern = r'^\+7\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$';
+      RegExp regex = RegExp(pattern.toString());
+      if (value == null || !regex.hasMatch(value)) {
+        return message ?? L.of(Get.context!).errors_phone;
+      }
+      return null;
+    };
+  }
+
   // Password
   static Function(String?) password({
     bool required = true,
@@ -61,7 +73,7 @@ class VRules {
     return (String? value) {
       if (value != null) {
         if (required || value.trim().isEmpty) {
-          // return L.of(Get.context!).errors_password_required;
+          return L.of(Get.context!).errors_password_required;
         }
         if (min != null && value.trim().length < min) {
           return L.of(Get.context!).errors_password_min(min);

@@ -21,7 +21,7 @@ class UISearchInput extends UIInput {
               ? UIIconButton(
                   TInputOptions.inputSearchSuffixIcon!,
                   () => value.text = '',
-                  radius: TSizes.radius,
+                  radius: TStyles.radius,
                   styles: TInputOptions.inputSearchSuffixIconStyles,
                 )
               : null,

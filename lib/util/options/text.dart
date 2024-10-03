@@ -14,7 +14,7 @@ class TTextOptions {
   static TextStyle linkStyles = linkTheme;
   static TextStyle linkIconStyles = linkIconTheme;
   static const bool linkIsRightIcon = false;
-  static const double linkSpaceBetween = TSizes.spaceSm;
+  static const double linkSpaceBetween = 12;
   static const double linkClickRadius = 5;
   static const EdgeInsets linkClickPadding = EdgeInsets.symmetric(horizontal: 5);
 

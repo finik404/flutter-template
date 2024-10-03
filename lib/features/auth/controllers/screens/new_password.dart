@@ -16,22 +16,23 @@ class NewPasswordController extends GetxController {
 
   // Methods ----------------
   Future<void> restore() async {
-    if (formKey.currentState!.validate()) {
-      // Check network connection
-      bool isConnected = await NetworkController.instance.checkNetwork();
-      if (!isConnected) return;
+    // Validate form
+    if (!formKey.currentState!.validate()) return;
 
-      // Request
-      final response = await THttp.fetch('/restore', method: HttpMethods.post, body: {
-        'password': passwordInput.text,
-      });
-      if (response.isError) return;
+    // Check network connection
+    bool isConnected = await NetworkController.instance.checkNetwork();
+    if (!isConnected) return;
 
-      // Save to store
-      UserController.instance.setUser(UserModel.fromJson(response.data));
+    // Request
+    final response = await THttp.fetch('/restore', method: HttpMethods.post, body: {
+      'password': passwordInput.text,
+    });
+    if (response.isError) return;
 
-      // Navigate
-      Get.offAll(const HomeScreen());
-    }
+    // Save to store
+    UserController.instance.setUser(UserModel.fromJson(response.data));
+
+    // Navigate
+    Get.offAll(const HomeScreen());
   }
 }

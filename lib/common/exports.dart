@@ -21,10 +21,14 @@ export 'widgets/RadioButton/RadioButton.dart';
 export 'widgets/Select.dart';
 export 'widgets/Text/Html.dart';
 export 'widgets/Image.dart';
+export 'widgets/Tag.dart';
+export 'widgets/Filters.dart';
+export 'widgets/Refresh.dart';
+export 'widgets/Divider.dart';
+export 'widgets/ClickItem.dart';
 
 // Constants
 export '../util/constants/colors.dart';
-export '../util/constants/sizes.dart';
 export '../util/constants/styles.dart';
 export '../util/constants/images.dart';
 
@@ -36,7 +40,7 @@ export '../util/extensions/text.dart';
 // Dialog helper
 export '../util/helpers/dialog.dart';
 
-// Logger
+// Validation rules
 export '../util/validator/rules.dart';
 
 // Models

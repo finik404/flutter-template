@@ -10,7 +10,7 @@ class TButtonOptions {
   // --------------- OPTIONS --------------- //
   static ElevatedButtonThemeData Function({EdgeInsets? padding}) styles = buttonTheme;
   static TextStyle iconStyles = TTextOptions.textTheme.bodyMedium!;
-  static const double spaceBetween = TSizes.spaceSm;
+  static const double spaceBetween = 12;
   static const bool isRightIcon = false;
   static const bool isFullWidth = true;
 

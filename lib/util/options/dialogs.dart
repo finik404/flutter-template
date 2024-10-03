@@ -22,7 +22,7 @@ class TDialogsOptions {
 
   // --------------- CONFIRM --------------- //
   static double confirmWidth = Get.context!.screenWidth * 0.7;
-  static double confirmRadius = TSizes.radius;
+  static double confirmRadius = TStyles.radius;
   static String confirmButtonString = 'OK';
 
   // --------------- ACTIONMENU --------------- //

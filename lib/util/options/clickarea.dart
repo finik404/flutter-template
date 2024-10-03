@@ -8,6 +8,6 @@ class TClickAreaOptions {
 
   // --------------- OPTIONS --------------- //
   static Color color = TColors.black.withOpacity(0.1);
-  static const double radius = TSizes.radius;
+  static const double radius = TStyles.radius;
   static EdgeInsets padding = EdgeInsets.zero;
 }

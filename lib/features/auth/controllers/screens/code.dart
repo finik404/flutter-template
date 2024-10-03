@@ -46,34 +46,33 @@ class CodeController extends GetxController {
 
   Future<void> check() async {
     // Validate
-    validate();
+    if (!validate()) return;
 
-    if (codeErrors.isNotEmpty) {
-      // Check network connection
-      bool isConnected = await NetworkController.instance.checkNetwork();
-      if (!isConnected) return;
+    // Check network connection
+    bool isConnected = await NetworkController.instance.checkNetwork();
+    if (!isConnected) return;
 
-      // Request
-      final response = await THttp.fetch('/code', method: HttpMethods.post, body: {
-        'code': codeInput.text,
-      });
-      if (response.isError) return;
+    // Request
+    final response = await THttp.fetch('/code', method: HttpMethods.post, body: {
+      'code': codeInput.text,
+    });
+    if (response.isError) return;
 
-      // Clear errors
-      codeErrors = '';
+    // Clear errors
+    codeErrors = '';
 
-      // Navigate
-      Get.to(NewPasswordScreen(code: codeInput.text));
-    }
+    // Navigate
+    Get.to(NewPasswordScreen(code: codeInput.text));
   }
 
-  void validate() {
+  bool validate() {
     if (codeInput.text.isEmpty) {
       codeErrors = L.of(Get.context!).errors_code;
     }
     if (codeInput.text.length != 4) {
       codeErrors = L.of(Get.context!).errors_code_length;
     }
+    return codeErrors.isEmpty;
   }
 
   // onClose ----------------

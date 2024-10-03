@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 extension TextExtension on String {
   String toCapitalize() {
     if (isEmpty) return this;

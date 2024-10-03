@@ -18,31 +18,32 @@ class RegisterController extends GetxController {
 
   // Methods ----------------
   Future<void> register() async {
-    if (formKey.currentState!.validate()) {
-      // Check network connection
-      bool isConnected = await NetworkController.instance.checkNetwork();
-      if (!isConnected) return;
+    // Validate form
+    if (!formKey.currentState!.validate()) return;
 
-      // Request
-      final response = await THttp.fetch('/register', method: HttpMethods.post, body: {
-        'name': nameInput.text,
-        'email': emailInput.text,
-        'password': passwordInput.text,
-      });
-      if (response.isError) return;
+    // Check network connection
+    bool isConnected = await NetworkController.instance.checkNetwork();
+    if (!isConnected) return;
 
-      // Data
-      UserModel user = UserModel.fromJson(response.data);
+    // Request
+    final response = await THttp.fetch('/register', method: HttpMethods.post, body: {
+      'name': nameInput.text,
+      'email': emailInput.text,
+      'password': passwordInput.text,
+    });
+    if (response.isError) return;
 
-      // Save auth token
-      final storage = GetStorage();
-      if (user.token != null) storage.write('auth_token', user.token!);
+    // Data
+    UserModel user = UserModel.fromJson(response.data);
 
-      // Save user to store
-      UserController.instance.setUser(user);
+    // Save auth token
+    final storage = GetStorage();
+    if (user.token != null) storage.write('auth_token', user.token!);
 
-      // Navigate
-      Get.offAll(const HomeScreen());
-    }
+    // Save user to store
+    UserController.instance.setUser(user);
+
+    // Navigate
+    Get.offAll(const HomeScreen());
   }
 }

@@ -33,7 +33,7 @@ class PasswordScreen extends StatelessWidget {
               autofocus: true,
               onSubmit: controller.receive,
             ),
-            const SizedBox(height: TSizes.spaceMd),
+            const SizedBox(height: 16),
 
             // Submit button
             UIButton('Сбросить пароль', controller.receive),

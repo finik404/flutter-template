@@ -52,6 +52,11 @@ class THelper {
     }
   }
 
+  static String formatNumber(double number) {
+    final formatter = NumberFormat('#,###', 'en_US');
+    return formatter.format(number).replaceAll(',', ' ');
+  }
+
   static String hideEmail(String email) {
     final parts = email.split('@');
     if (parts.length != 2) {

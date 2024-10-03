@@ -4,15 +4,34 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:tproject/languages/L.dart';
 import 'package:tproject/util/helpers/dialog.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TExternal {
-  static void launchUrl(String url) async {
-    if (await canLaunchUrlString(url)) {
-      await launchUrlString(url);
-    } else {
-      throw 'Could not launch $url';
+  static void launchMail(String mail) async {
+    final Uri uri = Uri(
+      scheme: 'mailto',
+      path: mail,
+    );
+    if (!await launchUrl(uri)) {
+      throw Exception('Could not move to $mail');
+    }
+  }
+
+  static void launchPhone(String phoneNumber) async {
+    final Uri uri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    if (!await launchUrl(uri)) {
+      throw Exception('Could not call to $phoneNumber');
+    }
+  }
+
+  static void launchWebUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri)) {
+      throw Exception('Could not launch $uri');
     }
   }
 

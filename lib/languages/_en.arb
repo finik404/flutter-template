@@ -25,5 +25,6 @@
   "errors_network_text": "Please check your internet connection and try again",
   "errors_code": "Enter the recovery code",
   "errors_code_length": "The code must be 4-digit",
-  "errors_auth_code": "Invalid recovery code"
+  "errors_auth_code": "Invalid recovery code",
+  "errors_phone": "Invalid phone number format"
 }

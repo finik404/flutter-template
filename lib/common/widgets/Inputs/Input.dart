@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Icon/IconButton.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
+import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/constants/sizes.dart';
 import 'package:tproject/util/options/input.dart';
 import 'package:tproject/util/validator/validator.dart';
@@ -124,7 +125,7 @@ class UIInputState extends State<UIInput> {
           keyboardType: widget.type,
 
           // MaxLength
-          maxLength: widget.maxLength,
+          maxLength: widget.maxLength ?? 255,
 
           // Textarea options
           minLines: widget.minLines ?? 1,
@@ -139,6 +140,8 @@ class UIInputState extends State<UIInput> {
 
           // Mask
           inputFormatters: widget.mask != null ? [widget.mask!] : [],
+
+          style: const TextStyle(fontSize: 16, color: TColors.black),
 
           // Styles
           decoration: InputDecoration(
@@ -180,7 +183,7 @@ class UIInputState extends State<UIInput> {
                         child: UIIconButton(
                           TIcons.password,
                           () => setState(() => showPassword = !showPassword),
-                          radius: TSizes.radius,
+                          radius: TStyles.radius,
                           styles: TInputOptions.inputPasswordIconStyles,
                         ),
                       )

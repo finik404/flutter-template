@@ -15,19 +15,20 @@ class PasswordController extends GetxController {
   Future<void> receive() async {
     Get.to(PasswordCodeScreen(email: emailInput.text));
 
-    if (formKey.currentState!.validate()) {
-      // Check network connection
-      bool isConnected = await NetworkController.instance.checkNetwork();
-      if (!isConnected) return;
+    // Validate form
+    if (!formKey.currentState!.validate()) return;
 
-      // Request
-      final response = await THttp.fetch('/forgot', method: HttpMethods.post, body: {
-        'email': emailInput.text,
-      });
-      if (response.isError) return;
+    // Check network connection
+    bool isConnected = await NetworkController.instance.checkNetwork();
+    if (!isConnected) return;
 
-      // Navigate
-      Get.to(PasswordCodeScreen(email: emailInput.text));
-    }
+    // Request
+    final response = await THttp.fetch('/forgot', method: HttpMethods.post, body: {
+      'email': emailInput.text,
+    });
+    if (response.isError) return;
+
+    // Navigate
+    Get.to(PasswordCodeScreen(email: emailInput.text));
   }
 }

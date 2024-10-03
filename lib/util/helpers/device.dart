@@ -6,14 +6,6 @@ import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class TDevice {
-  static double screenHeight() {
-    return MediaQuery.of(Get.context!).size.height;
-  }
-
-  static double screenWidth() {
-    return MediaQuery.of(Get.context!).size.width;
-  }
-
   static double statusBarHeight() {
     return MediaQuery.of(Get.context!).padding.top;
   }
@@ -94,14 +86,5 @@ class TDevice {
 
   static void showStatusBar() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
-  }
-
-  static Future<bool> hasInternetConnection() async {
-    try {
-      final result = await InternetAddress.lookup('example.com');
-      return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
-    } on SocketException catch (_) {
-      return false;
-    }
   }
 }

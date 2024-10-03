@@ -8,5 +8,5 @@ class TSkeletonOptions {
   static Color color1 = Colors.grey[300]!;
   static Color color2 = Colors.grey[100]!;
   static const double height = 18;
-  static const double radius = TSizes.radius;
+  static const double radius = TStyles.radius;
 }

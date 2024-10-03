@@ -38,7 +38,7 @@ class NewPasswordScreen extends StatelessWidget {
                 VRules.max(70),
               ],
             ),
-            const SizedBox(height: TSizes.spaceSm),
+            const SizedBox(height: 12),
 
             // Repeat password input
             UIInput(
@@ -50,7 +50,7 @@ class NewPasswordScreen extends StatelessWidget {
                 VRules.confirmPassword(controller.repeatPasswordInput),
               ],
             ),
-            const SizedBox(height: TSizes.spaceMd),
+            const SizedBox(height: 16),
 
             // Submit button
             UIButton('Войти с новым паролем', controller.restore),

@@ -37,7 +37,7 @@ class PasswordCodeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 5),
               child: UIText(controller.codeErrors, color: TColors.error, size: 12),
             ),
-          const SizedBox(height: TSizes.spaceMd),
+          const SizedBox(height: 16),
 
           // Submit button
           UIButton('Продолжить', controller.check),
