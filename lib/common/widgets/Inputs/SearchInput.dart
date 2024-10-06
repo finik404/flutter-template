@@ -1,6 +1,6 @@
 import 'package:tproject/common/widgets/Icon/IconButton.dart';
 import 'package:tproject/common/widgets/Inputs/Input.dart';
-import 'package:tproject/util/constants/sizes.dart';
+import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/options/input.dart';
 
 class UISearchInput extends UIInput {

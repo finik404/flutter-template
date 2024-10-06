@@ -38,6 +38,7 @@ class UIIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return UIClickArea(
       // ClickArea options
+      hasMaterial: true,
       padding: padding ?? TIconOptions.clickPadding,
       borderRadius: borderRadius,
       radius: radius,

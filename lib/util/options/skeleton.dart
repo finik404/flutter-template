@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tproject/util/constants/sizes.dart';
+import 'package:tproject/util/constants/styles.dart';
 
 class TSkeletonOptions {
   TSkeletonOptions._();

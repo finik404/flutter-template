@@ -114,7 +114,7 @@ class UIHtml extends StatelessWidget {
         decoration: TTextOptions.textsLinkHasDecoration ? TextDecoration.underline : TextDecoration.none,
         decorationColor: TTextOptions.textsLinkHasDecoration ? (color ?? textStyles.color) : null,
       ),
-      recognizer: TapGestureRecognizer()..onTap = () => TExternal.launchUrl(url),
+      recognizer: TapGestureRecognizer()..onTap = () => TExternal.launchWebUrl(url),
     );
   }
 }

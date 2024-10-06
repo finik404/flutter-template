@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:tproject/util/exports.dart';
 import 'package:tproject/features/auth/screens/password/code/code.dart';
-import 'package:tproject/util/helpers/network/controller.dart';
-import 'package:tproject/util/http/http.dart';
 
 class PasswordController extends GetxController {
   static PasswordController get instance => Get.find();
@@ -29,6 +27,6 @@ class PasswordController extends GetxController {
     if (response.isError) return;
 
     // Navigate
-    Get.to(PasswordCodeScreen(email: emailInput.text));
+   to(PasswordCodeScreen(email: emailInput.text));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:tproject/common/widgets/Refresh.dart';
 import 'package:tproject/util/options/grid.dart';
 
 class UIGrid extends StatelessWidget {
@@ -13,7 +14,7 @@ class UIGrid extends StatelessWidget {
     this.hasScroll = TGridOptions.hasScroll,
     this.padding = TGridOptions.padding,
     this.controller,
-    this.onRefresh,
+    this.refresh,
   });
 
   final int length;
@@ -23,7 +24,7 @@ class UIGrid extends StatelessWidget {
   final bool hasScroll;
   final EdgeInsetsGeometry padding;
   final ScrollController? controller;
-  final Future<void> Function()? onRefresh;
+  final Future<void> Function()? refresh;
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +54,6 @@ class UIGrid extends StatelessWidget {
     );
 
     // Grid with refresh indicator
-    return onRefresh != null
-        ? RefreshIndicator(
-            onRefresh: onRefresh!,
-            color: Theme.of(context).primaryColor,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            child: grid,
-          )
-        : grid;
+    return refresh != null ? UIRefresh(refresh: refresh!, child: grid) : grid;
   }
 }

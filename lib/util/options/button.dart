@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/util/constants/colors.dart';
-import 'package:tproject/util/constants/sizes.dart';
 import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/options/text.dart';
 

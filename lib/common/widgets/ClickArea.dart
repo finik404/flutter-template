@@ -11,6 +11,7 @@ class UIClickArea extends StatelessWidget {
     this.radius,
     this.color,
     this.padding,
+    this.hasMaterial = false,
   });
 
   final Function()? onTap;
@@ -20,11 +21,12 @@ class UIClickArea extends StatelessWidget {
   final Color? color;
   final EdgeInsets? padding;
   final Function()? onLongTap;
+  final bool hasMaterial;
 
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    Widget clickItem = InkWell(
       onTap: onTap,
       onLongPress: onLongTap,
       borderRadius: borderRadius ?? BorderRadius.circular(radius ?? TClickAreaOptions.radius),
@@ -35,5 +37,7 @@ class UIClickArea extends StatelessWidget {
         child: child,
       ),
     );
+
+    return hasMaterial ? Material(color: Colors.transparent, child: clickItem) : clickItem;
   }
 }

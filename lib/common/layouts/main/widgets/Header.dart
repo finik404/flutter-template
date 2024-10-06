@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gas/common/widgets/Icon/IconButton.dart';
-import 'package:gas/common/widgets/Text/Text.dart';
-import 'package:gas/util/constants/colors.dart';
+import 'package:tproject/common/widgets/Icon/IconButton.dart';
+import 'package:tproject/common/widgets/Text/Text.dart';
+import 'package:tproject/util/constants/colors.dart';
+import 'package:tproject/util/extensions/media.dart';
+import 'package:tproject/util/helpers/device.dart';
 
 class Header extends StatelessWidget {
   const Header(
@@ -23,13 +25,17 @@ class Header extends StatelessWidget {
         final scrolled = constraints.scrollOffset > 15;
 
         return SliverAppBar(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarBrightness: TDevice.isIOS() ? Brightness.light : Brightness.dark,
+            statusBarIconBrightness: TDevice.isIOS() ? Brightness.light : Brightness.dark,
+          ),
           floating: true,
           pinned: true,
           surfaceTintColor: Colors.transparent,
           backgroundColor: Colors.transparent,
           elevation: 0,
           leading: Container(),
-          toolbarHeight: 65,
+          toolbarHeight: 50,
 
           // Label
           flexibleSpace: AnimatedContainer(
@@ -60,32 +66,27 @@ class Header extends StatelessWidget {
                 children: [
                   // Back icon
                   if (hasArrow)
-                    Stack(
-                      children: [
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: const BoxDecoration(shape: BoxShape.circle, color: TColors.secondary),
-                        ),
-                        Center(
-                          child: UIIconButton(
-                            TIcons.left,
-                            () => Navigator.pop(context),
-                            color: TColors.primary,
-                            size: 16,
-                            padding: const EdgeInsets.all(12),
-                          ),
-                        ),
-                      ],
+                    UIIconButton(
+                      TIcons.left,
+                      () => Navigator.pop(context),
+                      color: TColors.primary,
+                      size: 16,
+                      padding: const EdgeInsets.all(12),
                     ),
 
                   // Label
-                  UIText(
-                    label,
-                    weight: FontWeight.bold,
-                    size: 20,
-                    align: TextAlign.center,
-                    isOverflow: true,
+                  SizedBox(
+                    width: context.screenWidth - (hasArrow ? 40 + 40 + 40 + 30 : 40),
+                    height: 25,
+                    child: Center(
+                      child: UIText(
+                        label,
+                        weight: FontWeight.bold,
+                        size: 20,
+                        align: TextAlign.center,
+                        isOverflow: true,
+                      ),
+                    ),
                   ),
 
                   // Empty space

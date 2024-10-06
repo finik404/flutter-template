@@ -4,7 +4,6 @@ import 'package:tproject/common/widgets/Buttons/Button.dart';
 import 'package:tproject/common/widgets/Inputs/Input.dart';
 import 'package:tproject/features/auth/controllers/screens/password.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
-import 'package:tproject/util/constants/sizes.dart';
 import 'package:tproject/util/validator/rules.dart';
 
 class PasswordScreen extends StatelessWidget {

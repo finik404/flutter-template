@@ -47,6 +47,7 @@ class UITextLink extends StatelessWidget {
     TextStyle defaultIconStyles = TTextOptions.linkIconStyles;
 
     return UIClickArea(
+      hasMaterial: true,
       radius: radius,
       padding: padding,
 
@@ -54,7 +55,7 @@ class UITextLink extends StatelessWidget {
       onTap: () {
         if (screen != null) Get.to(screen);
         if (onTap != null) onTap!();
-        if (webLink != null) TExternal.launchUrl(webLink!);
+        if (webLink != null) TExternal.launchWebUrl(webLink!);
       },
 
       // Content

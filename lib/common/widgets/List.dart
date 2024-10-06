@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tproject/common/widgets/Refresh.dart';
 import 'package:tproject/util/options/list.dart';
 
 class UIList extends StatelessWidget {
@@ -13,7 +14,7 @@ class UIList extends StatelessWidget {
     this.separator,
     this.height = TListOptions.height,
     this.controller,
-    this.onRefresh,
+    this.refresh,
   });
 
   final int length;
@@ -25,7 +26,7 @@ class UIList extends StatelessWidget {
   final double spaceBetween;
   final double? height;
   final ScrollController? controller;
-  final Future<void> Function()? onRefresh;
+  final Future<void> Function()? refresh;
 
   @override
   Widget build(BuildContext context) {
@@ -68,13 +69,6 @@ class UIList extends StatelessWidget {
     list = height != null ? SizedBox(height: height, child: list) : list;
 
     // List with refresh indicator
-    return onRefresh != null
-        ? RefreshIndicator(
-            onRefresh: onRefresh!,
-            color: Theme.of(context).primaryColor,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            child: list,
-          )
-        : list;
+    return refresh != null ? UIRefresh(refresh: refresh!, child: list) : list;
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/util/constants/colors.dart';
-import 'package:tproject/util/constants/sizes.dart';
 
 class TTextOptions {
   TTextOptions._();

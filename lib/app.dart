@@ -15,7 +15,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       // No Stretch Effect on Scroll
-      scrollBehavior: CustomScrollBehavior(),
+      scrollBehavior: const ScrollBehavior(),
 
       // Theme settings
       themeMode: ThemeMode.light,
@@ -29,12 +29,5 @@ class App extends StatelessWidget {
       // Home screen
       home: const Splash(),
     );
-  }
-}
-
-class CustomScrollBehavior extends ScrollBehavior {
-  @override
-  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
-    return child;
   }
 }

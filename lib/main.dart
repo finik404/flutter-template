@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tproject/app.dart';
 import 'package:tproject/util/constants/colors.dart';
+import 'package:tproject/util/helpers/device.dart';
 import 'package:tproject/util/helpers/network/binding.dart';
 
 void main() async {
@@ -19,10 +20,10 @@ void main() async {
 
   // StatusBar and navigationBar colors
   SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
+    SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: TDevice.isIOS() ? Brightness.light : Brightness.dark,
+      statusBarIconBrightness: TDevice.isIOS() ? Brightness.light : Brightness.dark,
       systemNavigationBarColor: TColors.white,
       systemNavigationBarIconBrightness: Brightness.dark,
     ),

@@ -37,8 +37,15 @@ export '../util/extensions/media.dart';
 export '../util/extensions/theme.dart';
 export '../util/extensions/text.dart';
 
-// Dialog helper
+// Helpers
 export '../util/helpers/dialog.dart';
+export '../util/helpers/device.dart';
+
+// Navigation
+export '../util/helpers/navigation/nav.dart';
+export '../util/helpers/navigation/navOff.dart';
+export '../util/helpers/navigation/to.dart';
+export '../util/helpers/navigation/toOff.dart';
 
 // Validation rules
 export '../util/validator/rules.dart';

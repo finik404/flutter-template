@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:tproject/features/tabs/screens/tabs.dart';
+import 'package:tproject/util/exports.dart';
 import 'package:tproject/features/auth/controllers/user.dart';
 import 'package:tproject/features/auth/models/user.dart';
-import 'package:tproject/features/home/screens/home/home.dart';
-import 'package:tproject/util/helpers/network/controller.dart';
-import 'package:tproject/util/http/http.dart';
 
 class NewPasswordController extends GetxController {
   static NewPasswordController get instance => Get.find();
@@ -33,6 +31,6 @@ class NewPasswordController extends GetxController {
     UserController.instance.setUser(UserModel.fromJson(response.data));
 
     // Navigate
-    Get.offAll(const HomeScreen());
+    toOff(const Tabs());
   }
 }

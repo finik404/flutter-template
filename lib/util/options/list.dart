@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tproject/util/constants/sizes.dart';
 
 class TListOptions {
   TListOptions._();

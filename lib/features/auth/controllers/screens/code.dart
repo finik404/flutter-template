@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:tproject/util/exports.dart';
 import 'package:tproject/features/auth/screens/password/new_password.dart';
-import 'package:tproject/languages/L.dart';
-import 'package:tproject/util/helpers/network/controller.dart';
-import 'package:tproject/util/http/http.dart';
 
 class CodeController extends GetxController {
   static CodeController get instance => Get.find();
@@ -62,7 +59,7 @@ class CodeController extends GetxController {
     codeErrors = '';
 
     // Navigate
-    Get.to(NewPasswordScreen(code: codeInput.text));
+    to(NewPasswordScreen(code: codeInput.text));
   }
 
   bool validate() {

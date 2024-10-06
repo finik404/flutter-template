@@ -16,6 +16,7 @@ class BaseLayout extends StatelessWidget {
     this.leading,
     this.actions,
     this.appHeight = 0,
+    this.hasAppBar = false,
   });
 
   final List<Widget>? children;
@@ -24,7 +25,7 @@ class BaseLayout extends StatelessWidget {
   final EdgeInsets? padding;
   final bool isScrollable;
   final bool hasSafeArea;
-  final bool hasTop;
+  final bool hasTop, hasAppBar;
   final Widget? leading, actions;
   final double appHeight;
 
@@ -49,20 +50,25 @@ class BaseLayout extends StatelessWidget {
 
     return hasSafeArea
         ? Scaffold(
-            appBar: AppBar(
-              toolbarHeight: appHeight,
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              surfaceTintColor: Colors.transparent,
-              shadowColor: Colors.transparent,
-              systemOverlayStyle: const SystemUiOverlayStyle(
-                statusBarBrightness: Brightness.dark,
-                statusBarIconBrightness: Brightness.dark,
-              ),
-              leading: leading,
-              actions: [actions ?? Container()],
-            ),
+            // AppBar
+            appBar: hasAppBar
+                ? AppBar(
+                    toolbarHeight: appHeight,
+                    elevation: 0,
+                    backgroundColor: Colors.transparent,
+                    surfaceTintColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                    systemOverlayStyle: SystemUiOverlayStyle(
+                      statusBarBrightness: TDevice.isIOS() ? Brightness.light : Brightness.dark,
+                      statusBarIconBrightness: TDevice.isIOS() ? Brightness.light : Brightness.dark,
+                    ),
+                    leading: leading,
+                    actions: [actions ?? Container()],
+                  )
+                : null,
             backgroundColor: bg,
+
+            // Body
             body: SafeArea(
               top: hasTop,
               child: content,

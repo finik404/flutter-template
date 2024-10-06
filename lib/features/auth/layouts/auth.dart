@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tproject/common/layouts/base.dart';
 import 'package:tproject/common/widgets/Icon/IconButton.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
-import 'package:tproject/util/constants/sizes.dart';
 import 'package:tproject/util/extensions/media.dart';
 
 class AuthLayout extends StatelessWidget {

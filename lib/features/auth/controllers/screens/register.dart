@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:tproject/features/tabs/screens/tabs.dart';
+import 'package:tproject/util/exports.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:tproject/features/auth/controllers/user.dart';
 import 'package:tproject/features/auth/models/user.dart';
-import 'package:tproject/features/home/screens/home/home.dart';
-import 'package:tproject/util/helpers/network/controller.dart';
-import 'package:tproject/util/http/http.dart';
 
 class RegisterController extends GetxController {
   static RegisterController get instance => Get.find();
@@ -44,6 +42,6 @@ class RegisterController extends GetxController {
     UserController.instance.setUser(user);
 
     // Navigate
-    Get.offAll(const HomeScreen());
+    toOff(const Tabs());
   }
 }

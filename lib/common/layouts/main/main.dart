@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gas/common/layouts/base.dart';
-import 'package:gas/common/widgets/Refresh.dart';
-import 'package:gas/util/constants/colors.dart';
-import 'package:gas/util/constants/styles.dart';
+import 'package:tproject/common/layouts/base.dart';
+import 'package:tproject/common/widgets/Refresh.dart';
+import 'package:tproject/util/constants/colors.dart';
+import 'package:tproject/util/constants/styles.dart';
 
 import 'widgets/Header.dart';
 
@@ -43,6 +43,7 @@ class MainLayout extends StatelessWidget {
     );
 
     return BaseLayout(
+      padding: EdgeInsets.zero,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

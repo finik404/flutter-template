@@ -4,7 +4,7 @@ import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Icon/IconButton.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/colors.dart';
-import 'package:tproject/util/constants/sizes.dart';
+import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/options/input.dart';
 import 'package:tproject/util/validator/validator.dart';
 
