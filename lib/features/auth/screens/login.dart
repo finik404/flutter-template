@@ -60,12 +60,12 @@ class LoginScreen extends StatelessWidget {
             UIButton('Войти', controller.login),
             const SizedBox(height: 16),
 
-            UISelect(
-              controller.select,
-              (value) => controller.select = value,
-              items: controller.selectItems,
-              label: 'label',
-            ),
+            // UISelect(
+            //   controller.select,
+            //   (value) => controller.select = value,
+            //   items: controller.selectItems,
+            //   label: 'label',
+            // ),
           ],
         ),
       ),

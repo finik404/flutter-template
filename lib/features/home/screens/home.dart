@@ -10,8 +10,7 @@ class HomeScreen extends StatelessWidget {
       label: 'Home',
       child: Center(
         child: Column(
-          children: [
-          ],
+          children: [],
         ),
       ),
     );

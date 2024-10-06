@@ -25,7 +25,7 @@ class UIRadioButton extends StatelessWidget {
     this.activeColor,
   });
 
-  final Rx<RadioItemModel> radio;
+  final Rx<RadioModel> radio;
   final double spaceBetween;
   final double clickRadius;
   final EdgeInsets? clickPadding;
@@ -56,7 +56,7 @@ class UIRadioButton extends StatelessWidget {
 
           // onTap
           onTap: () {
-            radio.value = RadioItemModel(
+            radio.value = RadioModel(
               label: radio.value.label,
               value: radio.value.value,
               isChecked: !radio.value.isChecked,

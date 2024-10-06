@@ -30,7 +30,7 @@ class TColors {
 
   // Other
   static const Color black = Color(0xFF333333);
-  static Color grey = black.withOpacity(0.5);
+  static Color gray = black.withOpacity(0.5);
   static Color darkenGrey = black.withOpacity(0.7);
   static const Color white = Color(0xFFFFFFFF);
 }

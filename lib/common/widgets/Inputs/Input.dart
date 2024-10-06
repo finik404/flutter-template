@@ -112,6 +112,7 @@ class UIInputState extends State<UIInput> {
           validator: (value) {
             String? errors = TValidator.validate(value, widget.validate);
             setState(() => error = errors ?? '');
+            return errors;
           },
 
           // onChange
@@ -169,9 +170,11 @@ class UIInputState extends State<UIInput> {
             // Borders
             enabledBorder: inputStyles.enabledBorder,
             focusedBorder: inputStyles.focusedBorder,
+            errorBorder: inputStyles.enabledBorder,
+            focusedErrorBorder: inputStyles.focusedBorder,
 
             // Errors styles
-            errorStyle: inputStyles.errorStyle,
+            errorStyle: const TextStyle(height: 0, fontSize: 0),
 
             // Icons
             prefixIcon: widget.prefixIcon != null ? UIIcon(widget.prefixIcon!, styles: inputPrefixIconStyles) : null,

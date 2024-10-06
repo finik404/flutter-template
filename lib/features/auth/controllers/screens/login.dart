@@ -30,29 +30,29 @@ class LoginController extends GetxController {
 
   // Methods ----------------
   Future<void> login() async {
-    // // Validate form
-    // if (!formKey.currentState!.validate()) return;
-    //
-    // // Check network connection
-    // bool isConnected = await NetworkController.instance.checkNetwork();
-    // if (!isConnected) return;
-    //
-    // // Request
-    // final response = await THttp.fetch('/login', method: HttpMethods.post, body: {
-    //   'email': emailInput.text,
-    //   'password': passwordInput.text,
-    // });
-    // if (response.isError) return;
-    //
-    // // Data
-    // UserModel user = UserModel.fromJson(response.data);
-    //
-    // // Save auth token
-    // final storage = GetStorage();
-    // if (user.token != null) storage.write('auth_token', user.token!);
-    //
-    // // Save user to store
-    // UserController.instance.setUser(user);
+    // Validate form
+    if (!formKey.currentState!.validate()) return;
+
+    // Check network connection
+    bool isConnected = await NetworkController.instance.checkNetwork();
+    if (!isConnected) return;
+
+    // Request
+    final response = await THttp.fetch('/login', method: HttpMethods.post, body: {
+      'email': emailInput.text,
+      'password': passwordInput.text,
+    });
+    if (response.isError) return;
+
+    // Data
+    UserModel user = UserModel.fromJson(response.data);
+
+    // Save auth token
+    final storage = GetStorage();
+    if (user.token != null) storage.write('auth_token', user.token!);
+
+    // Save user to store
+    UserController.instance.setUser(user);
 
     // Navigate
     toOff(const Tabs());

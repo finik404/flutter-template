@@ -7,6 +7,26 @@ class ItemModel {
   ItemModel(this.label, this.value);
 }
 
+class FilterModel {
+  final String label;
+  final String value;
+  final bool active;
+
+  FilterModel(
+    this.label,
+    this.value,
+    this.active,
+  );
+
+  FilterModel copyWith({String? label, String? value, bool? active}) {
+    return FilterModel(
+      label ?? this.label,
+      value ?? this.value,
+      active ?? this.active,
+    );
+  }
+}
+
 class ActionModel {
   final String label;
   final Function() onTap;
@@ -64,34 +84,14 @@ class TextModel {
   });
 }
 
-class RadioItemModel {
+class RadioModel {
   final String? label;
   dynamic value;
   bool isChecked;
 
-  RadioItemModel({
+  RadioModel({
     this.label,
     this.value,
     required this.isChecked,
   });
-}
-
-class FilterModel {
-  final String label;
-  final String value;
-  final bool active;
-
-  FilterModel(
-    this.label,
-    this.value,
-    this.active,
-  );
-
-  FilterModel copyWith({String? label, String? value, bool? active}) {
-    return FilterModel(
-      label ?? this.label,
-      value ?? this.value,
-      active ?? this.active,
-    );
-  }
 }

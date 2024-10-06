@@ -43,7 +43,7 @@ class UIConfirm extends StatelessWidget {
                   UIText(
                     text!,
                     align: TextAlign.center,
-                    styles: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: TColors.grey),
+                    styles: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: TColors.gray),
                   ),
                   const SizedBox(height: 20),
                 ],
