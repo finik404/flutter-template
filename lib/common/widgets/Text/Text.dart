@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/helpers/device.dart';
-import 'package:tproject/util/options/text.dart';
 
 class UIText extends StatelessWidget {
   const UIText(
@@ -16,7 +15,7 @@ class UIText extends StatelessWidget {
     this.isOverflow = false,
     this.lines,
     this.isDecoration = false,
-    this.hasParse = TTextOptions.hasParse,
+    this.hasParse = false,
   });
 
   final String text;
@@ -34,7 +33,7 @@ class UIText extends StatelessWidget {
     bool isCropped = isOverflow || lines != null;
 
     // Default styles
-    TextStyle textStyles = TTextOptions.styles;
+    TextStyle textStyles = TStyles.textStyles;
 
     // Styles
     TextStyle textStyle = textStyles.copyWith(

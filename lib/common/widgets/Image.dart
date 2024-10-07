@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
-import 'package:tproject/util/options/image.dart';
+import 'package:tproject/util/constants/colors.dart';
+import 'package:tproject/util/constants/styles.dart';
 
 class UIImage extends StatelessWidget {
   const UIImage(
@@ -11,12 +12,12 @@ class UIImage extends StatelessWidget {
     this.label,
     required this.width,
     this.height,
-    this.fit = TImageOptions.fit,
+    this.fit = BoxFit.cover,
     this.borderRadius,
-    this.bg,
-    this.letterSize,
+    this.bg = TColors.bg,
+    this.letterSize = 40,
     this.letterColor,
-    this.letterWeight,
+    this.letterWeight = FontWeight.bold,
     this.icon,
     this.decoration,
   });
@@ -26,7 +27,7 @@ class UIImage extends StatelessWidget {
   final double? height;
   final BoxFit fit;
   final BorderRadiusGeometry? borderRadius;
-  final Color? bg;
+  final Color bg;
   final double? letterSize;
   final Color? letterColor;
   final FontWeight? letterWeight;
@@ -35,26 +36,19 @@ class UIImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle letterStyles = TImageOptions.letterStyles;
-    String? placeholderIcon = TImageOptions.placeholderIcon;
-    BoxDecoration imageDecoration = decoration ?? TImageOptions.decoration;
+    String placeholderIcon = TIcons.camera;
 
     return Container(
       width: width,
       height: height ?? width,
-      decoration: BoxDecoration(
-        color: bg ?? TImageOptions.placeholderBg,
-        borderRadius: borderRadius ?? TImageOptions.radius,
-        boxShadow: imageDecoration.boxShadow,
-        border: imageDecoration.border,
-      ),
+      decoration: BoxDecoration(color: bg, borderRadius: borderRadius ?? TStyles.br),
       child: image != null
           // Cached image
           ? Stack(
               children: [
-                Container(width: width, height: width, color: TImageOptions.bg),
+                Container(width: width, height: width, color: bg),
                 ClipRRect(
-                  borderRadius: borderRadius ?? TImageOptions.radius,
+                  borderRadius: borderRadius ?? TStyles.br,
                   child: CachedNetworkImage(
                     imageUrl: image!,
                     width: width,
@@ -73,18 +67,18 @@ class UIImage extends StatelessWidget {
 
           // Placeholder
           : Center(
-              child: label != null && placeholderIcon == null
+              child: label != null
                   ? UIText(
                       label!.substring(0, 1).toUpperCase(),
-                      size: letterSize ?? letterStyles.fontSize,
-                      color: letterColor ?? letterStyles.color,
-                      weight: letterWeight ?? letterStyles.fontWeight,
+                      size: letterSize,
+                      color: letterColor,
+                      weight: letterWeight,
                     )
                   : UIIcon(
-                      placeholderIcon ?? TIcons.camera,
-                      size: letterSize ?? letterStyles.fontSize,
-                      color: letterColor ?? letterStyles.color,
-                      weight: letterWeight ?? letterStyles.fontWeight,
+                      placeholderIcon,
+                      size: letterSize,
+                      color: letterColor,
+                      weight: letterWeight,
                     ),
             ),
     );

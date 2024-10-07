@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tproject/util/constants/colors.dart';
 
 class UIRefresh extends StatelessWidget {
   const UIRefresh({
@@ -14,8 +15,8 @@ class UIRefresh extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: refresh,
-      color: Theme.of(context).primaryColor,
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      color: TColors.primary,
+      backgroundColor: TColors.bg,
       child: child,
     );
   }

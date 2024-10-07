@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/common/widgets/Refresh.dart';
-import 'package:tproject/util/options/list.dart';
 
 class UIList extends StatelessWidget {
   const UIList({
     super.key,
     required this.length,
     required this.child,
-    this.direction = TListOptions.direction,
-    this.hasScroll = TListOptions.hasScroll,
-    this.padding = TListOptions.padding,
-    this.spaceBetween = TListOptions.spaceBetween,
+    this.direction = Axis.vertical,
+    this.hasScroll = false,
+    this.padding = const EdgeInsets.symmetric(horizontal: 12),
+    this.spaceBetween = 12,
     this.separator,
-    this.height = TListOptions.height,
+    this.height,
     this.controller,
     this.refresh,
   });

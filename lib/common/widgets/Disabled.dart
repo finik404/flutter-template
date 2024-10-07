@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:tproject/util/options/disabled.dart';
 
 class UIDisabled extends StatelessWidget {
   const UIDisabled({
     super.key,
     required this.isDisabled,
     required this.child,
-    this.noOpacity,
+    this.hasOpacity = true,
   });
 
   final Widget child;
   final bool isDisabled;
-  final bool? noOpacity;
+  final bool hasOpacity;
 
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: noOpacity == true
+      opacity: !hasOpacity
           ? 1.0
           : isDisabled
-              ? TDisabledOptions.opacity
+              ? 0.5
               : 1.0,
       child: IgnorePointer(
         ignoring: isDisabled,

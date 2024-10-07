@@ -22,7 +22,7 @@ class UISearchInput extends UIInput {
                   TInputOptions.inputSearchSuffixIcon!,
                   () => value.text = '',
                   radius: TStyles.radius,
-                  styles: TInputOptions.inputSearchSuffixIconStyles,
+                  // styles: TInputOptions.inputSearchSuffixIconStyles,
                 )
               : null,
         );

@@ -177,7 +177,7 @@ class UIInputState extends State<UIInput> {
             errorStyle: const TextStyle(height: 0, fontSize: 0),
 
             // Icons
-            prefixIcon: widget.prefixIcon != null ? UIIcon(widget.prefixIcon!, styles: inputPrefixIconStyles) : null,
+            // prefixIcon: widget.prefixIcon != null ? UIIcon(widget.prefixIcon!, styles: inputPrefixIconStyles) : null,
             suffixIcon:
                 // Password button
                 widget.isPassword && isNotEmpty
@@ -187,7 +187,7 @@ class UIInputState extends State<UIInput> {
                           TIcons.password,
                           () => setState(() => showPassword = !showPassword),
                           radius: TStyles.radius,
-                          styles: TInputOptions.inputPasswordIconStyles,
+                          // styles: TInputOptions.inputPasswordIconStyles,
                         ),
                       )
 

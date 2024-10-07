@@ -56,8 +56,8 @@ class UISelect extends StatelessWidget {
           inputDecorationTheme: selectStyles,
 
           // Icon
-          trailingIcon: UIIcon(TIcons.down, styles: iconStyles ?? TSelectOptions.iconStyles),
-          selectedTrailingIcon: UIIcon(TIcons.up, styles: iconStyles ?? TSelectOptions.iconStyles),
+          // trailingIcon: UIIcon(TIcons.down, styles: iconStyles ?? TSelectOptions.iconStyles),
+          selectedTrailingIcon: UIIcon(TIcons.up),
 
           // Menu styles
           menuStyle: menuStyles ?? TSelectOptions.menuStyles,

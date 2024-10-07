@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/helpers/device.dart';
-import 'package:tproject/util/options/base_layout.dart';
 
 class BaseLayout extends StatelessWidget {
   const BaseLayout({
@@ -9,14 +9,16 @@ class BaseLayout extends StatelessWidget {
     this.children,
     this.child,
     this.bg,
-    this.padding,
-    this.isScrollable = TBaseLayoutOptions.isScrollable,
-    this.hasSafeArea = TBaseLayoutOptions.hasSafeArea,
-    this.hasTop = TBaseLayoutOptions.hasTop,
+    this.padding = TStyles.pdBg,
+    this.isScrollable = false,
+    this.hasSafeArea = true,
+    this.hasTop = false,
+    this.hasBottom = true,
+    this.hasAppBar = false,
     this.leading,
     this.actions,
     this.appHeight = 0,
-    this.hasAppBar = false,
+    this.leadingWidth = 0,
   });
 
   final List<Widget>? children;
@@ -25,14 +27,14 @@ class BaseLayout extends StatelessWidget {
   final EdgeInsets? padding;
   final bool isScrollable;
   final bool hasSafeArea;
-  final bool hasTop, hasAppBar;
+  final bool hasTop, hasBottom;
+  final bool hasAppBar;
   final Widget? leading, actions;
-  final double appHeight;
+  final double appHeight, leadingWidth;
 
   @override
   Widget build(BuildContext context) {
     Widget content = Container();
-    EdgeInsets? customPadding = padding ?? TBaseLayoutOptions.padding;
 
     if (child != null) {
       content = child!;
@@ -40,8 +42,8 @@ class BaseLayout extends StatelessWidget {
       content = Column(children: children!);
     }
 
-    if (customPadding != null) {
-      content = Padding(padding: customPadding, child: content);
+    if (padding != null) {
+      content = Padding(padding: padding!, child: content);
     }
 
     if (isScrollable) {
@@ -58,12 +60,13 @@ class BaseLayout extends StatelessWidget {
                     backgroundColor: Colors.transparent,
                     surfaceTintColor: Colors.transparent,
                     shadowColor: Colors.transparent,
+                    leading: leading,
+                    leadingWidth: leadingWidth,
+                    actions: [actions ?? Container()],
                     systemOverlayStyle: SystemUiOverlayStyle(
                       statusBarBrightness: TDevice.isIOS() ? Brightness.light : Brightness.dark,
                       statusBarIconBrightness: TDevice.isIOS() ? Brightness.light : Brightness.dark,
                     ),
-                    leading: leading,
-                    actions: [actions ?? Container()],
                   )
                 : null,
             backgroundColor: bg,
@@ -71,6 +74,7 @@ class BaseLayout extends StatelessWidget {
             // Body
             body: SafeArea(
               top: hasTop,
+              bottom: hasBottom,
               child: content,
             ),
           )

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/helpers/device.dart';
 import 'package:tproject/util/models/base.dart';
-import 'package:tproject/util/options/text.dart';
 
 export 'package:tproject/util/models/base.dart';
 
@@ -15,11 +14,11 @@ class UITexts extends StatelessWidget {
     this.size,
     this.color,
     this.weight,
-    this.linkColor = TTextOptions.textsLinkColor,
-    this.linkHasDecoration = TTextOptions.textsLinkHasDecoration,
+    this.linkColor = TStyles.linkColor,
+    this.linkHasDecoration = false,
     this.lineHeight,
     this.align = TextAlign.start,
-    this.hasParse = TTextOptions.hasParse,
+    this.hasParse = false,
   });
 
   final List<TextModel> children;
@@ -30,13 +29,12 @@ class UITexts extends StatelessWidget {
   final TextAlign align;
   final bool linkHasDecoration, hasParse;
 
-  // Builder ----------------
   @override
   Widget build(BuildContext context) {
     List<InlineSpan> textSpans = [];
 
     // Default styles
-    TextStyle textStyles = styles ?? TTextOptions.styles;
+    TextStyle textStyles = styles ?? TStyles.textStyles;
 
     // Parse text
     List<InlineSpan> parseText(String inputText, TextStyle childStyles, GestureRecognizer? recognizer) {
@@ -50,19 +48,16 @@ class UITexts extends StatelessWidget {
 
       for (int i = 0; i < inputText.length; i++) {
         if (inputText[i] == '₸') {
-          // Add previous text (if any) with the base style
           if (buffer.isNotEmpty) {
             spans.add(TextSpan(text: buffer.toString(), style: childStyles, recognizer: recognizer));
             buffer.clear();
           }
-          // Add the ₸ symbol with the specific style
           spans.add(TextSpan(text: '₸', style: symbolStyle, recognizer: recognizer));
         } else {
           buffer.write(inputText[i]);
         }
       }
 
-      // Add remaining text (if any)
       if (buffer.isNotEmpty) {
         spans.add(TextSpan(text: buffer.toString(), style: childStyles, recognizer: recognizer));
       }

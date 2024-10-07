@@ -11,10 +11,12 @@ class UIClickItem extends StatelessWidget {
     required this.label,
     required this.icon,
     required this.screen,
+    this.iconRight = TIcons.right,
   });
 
   final String label, icon;
   final Widget screen;
+  final String iconRight;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class UIClickItem extends StatelessWidget {
             ]),
 
             // Arrow
-            UIIcon(TIcons.right, size: 12, color: TColors.gray)
+            UIIcon(iconRight, size: 12, color: TColors.gray)
           ],
         ),
       ),

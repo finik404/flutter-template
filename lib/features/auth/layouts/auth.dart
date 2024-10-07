@@ -24,7 +24,9 @@ class AuthLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseLayout(
       // Header
-      appHeight: hasArrow ? 62 : 0,
+      appHeight: hasArrow ? 50 : 0,
+      hasAppBar: true,
+      leadingWidth: 70,
       leading: hasArrow
           ? Container(
               margin: const EdgeInsets.only(left: 20),

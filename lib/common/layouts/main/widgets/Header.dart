@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:tproject/common/widgets/Icon/IconButton.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/extensions/media.dart';
-import 'package:tproject/util/helpers/device.dart';
 
 class Header extends StatelessWidget {
   const Header(
@@ -25,10 +23,6 @@ class Header extends StatelessWidget {
         final scrolled = constraints.scrollOffset > 15;
 
         return SliverAppBar(
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarBrightness: TDevice.isIOS() ? Brightness.light : Brightness.dark,
-            statusBarIconBrightness: TDevice.isIOS() ? Brightness.light : Brightness.dark,
-          ),
           floating: true,
           pinned: true,
           surfaceTintColor: Colors.transparent,

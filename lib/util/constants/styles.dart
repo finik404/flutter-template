@@ -6,6 +6,8 @@ class TStyles {
 
   // FontFamily
   static const String font = 'Circe';
+  static const TextStyle textStyles = TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.black);
+  static const Color linkColor = TColors.primary;
 
   // BorderRadius
   static const double radius = 10;

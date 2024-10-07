@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/common/widgets/ClickArea.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
-import 'package:tproject/util/options/icon.dart';
-
+import 'package:tproject/util/constants/styles.dart';
 export 'package:tproject/util/constants/icons.dart';
 
 class UIIconButton extends StatelessWidget {
@@ -10,38 +9,36 @@ class UIIconButton extends StatelessWidget {
     this.icon,
     this.onTap, {
     super.key,
-    this.styles,
     this.size,
     this.color,
     this.weight,
     this.onLongTap,
-    this.padding,
-    this.radius = TIconOptions.clickRadius,
+    this.padding = TStyles.pdClick,
+    this.radius = 50,
     this.borderRadius,
     this.splashColor,
+    this.bg,
   });
 
   final String icon;
   final Function() onTap;
-  final TextStyle? styles;
   final double? size;
-  final Color? color;
   final FontWeight? weight;
   final Function()? onLongTap;
-  final EdgeInsets? padding;
+  final EdgeInsets padding;
   final BorderRadius? borderRadius;
   final double? radius;
-  final Color? splashColor;
+  final Color? color, splashColor, bg;
 
-  // Builder ----------------
   @override
   Widget build(BuildContext context) {
     return UIClickArea(
       // ClickArea options
       hasMaterial: true,
-      padding: padding ?? TIconOptions.clickPadding,
+      padding: padding,
       borderRadius: borderRadius,
       radius: radius,
+      bg: bg,
 
       // onTap
       onTap: onTap,
@@ -50,13 +47,7 @@ class UIIconButton extends StatelessWidget {
 
       // Icon
       child: IntrinsicWidth(
-        child: UIIcon(
-          icon,
-          styles: styles,
-          color: color,
-          size: size,
-          weight: weight,
-        ),
+        child: UIIcon(icon, color: color, size: size, weight: weight),
       ),
     );
   }

@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:tproject/common/widgets/Refresh.dart';
-import 'package:tproject/util/options/grid.dart';
 
 class UIGrid extends StatelessWidget {
   const UIGrid({
     super.key,
     required this.length,
     required this.child,
-    this.crossCount = TGridOptions.crossCount,
-    this.spaceBetween = TGridOptions.spaceBetween,
-    this.spaceBottom = TGridOptions.spaceBottom,
-    this.hasScroll = TGridOptions.hasScroll,
-    this.padding = TGridOptions.padding,
+    this.crossCount = 2,
+    this.spaceBetween = 12,
+    this.spaceBottom = 12,
+    this.hasScroll = false,
+    this.padding,
     this.controller,
     this.refresh,
   });
@@ -22,7 +21,7 @@ class UIGrid extends StatelessWidget {
   final int crossCount;
   final double spaceBetween, spaceBottom;
   final bool hasScroll;
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
   final ScrollController? controller;
   final Future<void> Function()? refresh;
 

@@ -4,7 +4,6 @@ import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/helpers/external.dart';
 import 'package:html/parser.dart' as html_parser;
 import 'package:html/dom.dart' as html_dom;
-import 'package:tproject/util/options/text.dart';
 
 class UIHtml extends StatelessWidget {
   const UIHtml(
@@ -15,8 +14,9 @@ class UIHtml extends StatelessWidget {
     this.color,
     this.weight,
     this.lineHeight,
-    this.linkColor = TTextOptions.textsLinkColor,
+    this.linkColor = TStyles.linkColor,
     this.lines,
+    this.hasDecoration = false,
   });
 
   final String text;
@@ -25,11 +25,12 @@ class UIHtml extends StatelessWidget {
   final Color? color, linkColor;
   final FontWeight? weight;
   final int? lines;
+  final bool hasDecoration;
 
   @override
   Widget build(BuildContext context) {
     // Styles
-    TextStyle textStyles = styles ?? TTextOptions.styles;
+    TextStyle textStyles = styles ?? TStyles.textStyles;
 
     // Parsed text
     List<TextSpan> textSpans = parseHtml(text, textStyles);
@@ -111,8 +112,8 @@ class UIHtml extends StatelessWidget {
       text: linkText,
       style: TextStyle(
         color: linkColor,
-        decoration: TTextOptions.textsLinkHasDecoration ? TextDecoration.underline : TextDecoration.none,
-        decorationColor: TTextOptions.textsLinkHasDecoration ? (color ?? textStyles.color) : null,
+        decoration: hasDecoration ? TextDecoration.underline : TextDecoration.none,
+        decorationColor: hasDecoration ? (color ?? textStyles.color) : null,
       ),
       recognizer: TapGestureRecognizer()..onTap = () => TExternal.launchWebUrl(url),
     );

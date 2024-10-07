@@ -1,10 +1,9 @@
 import 'package:intl/intl.dart';
-import 'package:tproject/util/options/other.dart';
 
 class THelper {
   static String formatDate(String date, {String? format}) {
     DateTime dateTime = DateTime.parse(date);
-    return DateFormat(format ?? TOtherOptions.dateFormat).format(dateTime);
+    return DateFormat(format ?? 'dd.MM.yyyy').format(dateTime);
   }
 
   static String formatPhoneNumber(String phoneNumber, {bool replace7 = false, bool replace8 = false}) {
