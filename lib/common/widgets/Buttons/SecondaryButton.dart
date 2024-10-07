@@ -1,5 +1,5 @@
 import 'package:tproject/common/widgets/Buttons/Button.dart';
-import 'package:tproject/util/options/button.dart';
+import 'package:tproject/util/theme/styles/buttons.dart';
 
 class UISecondaryButton extends UIButton {
   UISecondaryButton(
@@ -17,6 +17,6 @@ class UISecondaryButton extends UIButton {
     super.isFullWidth,
     super.padding,
   }) : super(
-          styles: TButtonOptions.buttonSecondaryTheme(padding: padding).style,
+          styles: TButtonsThemes.buttonSecondaryTheme(padding: padding).style,
         );
 }

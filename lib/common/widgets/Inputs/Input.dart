@@ -5,8 +5,10 @@ import 'package:tproject/common/widgets/Icon/IconButton.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/constants/styles.dart';
-import 'package:tproject/util/options/input.dart';
+import 'package:tproject/util/theme/styles/inputs.dart';
 import 'package:tproject/util/validator/validator.dart';
+
+enum InputCounterOptions { show, hide, showOnEnd }
 
 class UIInput extends StatefulWidget {
   const UIInput(
@@ -15,7 +17,7 @@ class UIInput extends StatefulWidget {
     super.key,
     this.validate,
     this.styles,
-    this.isPlaceholder = TInputOptions.isPlaceholder,
+    this.isPlaceholder = false,
     this.autofocus = false,
     this.padding,
     this.onSubmit,
@@ -24,7 +26,7 @@ class UIInput extends StatefulWidget {
     this.prefixIcon,
     this.prefixIconStyles,
     this.maxLength,
-    this.counterOptions = TInputOptions.hasCounter,
+    this.counterOptions = InputCounterOptions.hide,
     this.suffixIcon,
     this.minLines,
     this.maxLines,
@@ -98,8 +100,8 @@ class UIInputState extends State<UIInput> {
 
   @override
   Widget build(BuildContext context) {
-    InputDecorationTheme inputStyles = widget.styles?.call(error.isNotEmpty) ?? TInputOptions.styles(error.isNotEmpty);
-    TextStyle inputPrefixIconStyles = widget.prefixIconStyles ?? TInputOptions.iconStyles;
+    InputDecorationTheme inputStyles = widget.styles?.call(error.isNotEmpty) ?? TInputsThemes.inputTheme(error.isNotEmpty);
+    TextStyle inputPrefixIconStyles = widget.prefixIconStyles ?? TextStyle(fontSize: 18, color: TColors.primary.withOpacity(0.5));
 
     // Input ----------------
     return Column(
@@ -177,7 +179,7 @@ class UIInputState extends State<UIInput> {
             errorStyle: const TextStyle(height: 0, fontSize: 0),
 
             // Icons
-            // prefixIcon: widget.prefixIcon != null ? UIIcon(widget.prefixIcon!, styles: inputPrefixIconStyles) : null,
+            prefixIcon: widget.prefixIcon != null ? UIIcon(widget.prefixIcon!, styles: inputPrefixIconStyles) : null,
             suffixIcon:
                 // Password button
                 widget.isPassword && isNotEmpty
@@ -187,7 +189,7 @@ class UIInputState extends State<UIInput> {
                           TIcons.password,
                           () => setState(() => showPassword = !showPassword),
                           radius: TStyles.radius,
-                          // styles: TInputOptions.inputPasswordIconStyles,
+                          styles: TextStyle(fontSize: 18, color: TColors.primary.withOpacity(0.5)),
                         ),
                       )
 
@@ -215,7 +217,10 @@ class UIInputState extends State<UIInput> {
 
             // Counter
             if (counter.isNotEmpty)
-              Container(margin: const EdgeInsets.only(top: 8, left: 10), child: UIText(counter, styles: TInputOptions.counterStyles)),
+              Container(
+                margin: const EdgeInsets.only(top: 8, left: 10),
+                child: UIText(counter, styles: const TextStyle(fontSize: 12)),
+              ),
           ],
         ),
       ],

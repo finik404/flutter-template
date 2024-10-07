@@ -43,8 +43,6 @@ class ActionModel {
   });
 }
 
-enum InputCounterOptions { show, hide, showOnEnd }
-
 enum HttpMethods { get, post }
 
 class ResponseModel {

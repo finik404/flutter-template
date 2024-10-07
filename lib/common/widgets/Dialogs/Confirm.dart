@@ -3,7 +3,7 @@ import 'package:tproject/common/widgets/Buttons/Button.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/constants/styles.dart';
-import 'package:tproject/util/options/dialogs.dart';
+import 'package:tproject/util/extensions/media.dart';
 
 class UIConfirm extends StatelessWidget {
   const UIConfirm(
@@ -24,8 +24,8 @@ class UIConfirm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: width ?? TDialogsOptions.confirmWidth,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(TDialogsOptions.confirmRadius), color: TColors.white),
+        width: width ?? context.screenWidth * 0.7,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(TStyles.radius), color: TColors.white),
         padding: TStyles.pd,
         child: Column(
           mainAxisSize: MainAxisSize.min,

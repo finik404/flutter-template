@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:tproject/util/options/toggle.dart';
+import 'package:tproject/util/constants/colors.dart';
 
 class UIToggle extends StatelessWidget {
   const UIToggle(
     this.value, {
     super.key,
     this.onChange,
-    this.width = TToggleOptions.width,
-    this.height = TToggleOptions.height,
+    this.width = 48,
+    this.height = 24,
     this.color,
-    this.activeColor,
-    this.thumbSize = TToggleOptions.thumbSize,
-    this.thumbColor,
-    this.thumbActiveColor,
-    this.sideBetween = TToggleOptions.thumbSideBetween,
+    this.activeColor = TColors.primary,
+    this.thumbSize = 20,
+    this.thumbColor = TColors.bg,
+    this.thumbActiveColor = TColors.bg,
+    this.sideBetween = 2,
     this.decoration,
     this.thumbDecoration,
   });
@@ -29,23 +29,18 @@ class UIToggle extends StatelessWidget {
   // Builder ----------------
   @override
   Widget build(BuildContext context) {
-    BoxDecoration toggleDecoration = decoration ?? TToggleOptions.decoration;
-    BoxDecoration toggleThumbDecoration = thumbDecoration ?? TToggleOptions.thumbDecoration;
-
     return GestureDetector(
       // onTap
       onTap: onChange != null ? () => onChange!() : null,
 
       // Toggle
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: TToggleOptions.duration),
+        duration: const Duration(milliseconds: 200),
         width: width,
         height: height,
-        decoration: BoxDecoration(
+        decoration: decoration ?? BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          color: value ? activeColor ?? TToggleOptions.activeColor : color ?? TToggleOptions.color,
-          boxShadow: toggleDecoration.boxShadow,
-          border: toggleDecoration.border,
+          color: value ? activeColor : color ?? TColors.black.withOpacity(0.4),
         ),
 
         // Thumb
@@ -53,18 +48,16 @@ class UIToggle extends StatelessWidget {
           children: [
             AnimatedPositioned(
               curve: Curves.easeIn,
-              duration: const Duration(milliseconds: TToggleOptions.duration),
+              duration: const Duration(milliseconds: 200),
               left: value ? null : sideBetween,
               right: value ? sideBetween : null,
               top: (height - thumbSize) / 2,
               child: Container(
                 height: thumbSize,
                 width: thumbSize,
-                decoration: BoxDecoration(
+                decoration: thumbDecoration ?? BoxDecoration(
                   shape: BoxShape.circle,
-                  color: value ? thumbActiveColor ?? TToggleOptions.thumbActiveColor : thumbColor ?? TToggleOptions.thumbColor,
-                  boxShadow: toggleThumbDecoration.boxShadow,
-                  border: toggleThumbDecoration.border,
+                  color: value ? thumbActiveColor : thumbColor,
                 ),
               ),
             ),

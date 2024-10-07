@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/constants/styles.dart';
 
 class UISkeleton extends StatelessWidget {
@@ -22,7 +23,7 @@ class UISkeleton extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
+          color: TColors.bg,
           borderRadius: BorderRadius.circular(radius),
         ),
       ),

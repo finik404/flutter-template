@@ -1,21 +1,10 @@
-import 'package:get/get.dart';
-import 'package:tproject/util/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/constants/styles.dart';
-import 'package:tproject/util/extensions/media.dart';
 
-class TSelectOptions {
-  TSelectOptions._();
+class TSelectsThemes {
+  TSelectsThemes._();
 
-  // --------------- OPTIONS --------------- //
-  static InputDecorationTheme Function(bool hasError, {EdgeInsets? padding})? styles = selectTheme;
-  static TextStyle iconStyles = selectIconTheme;
-  static MenuStyle menuStyles = selectMenuTheme;
-  static ButtonStyle menuItemStyles = selectMenuItemTheme;
-  static const bool isPlaceholder = false;
-  static double width = Get.context!.screenWidth - 40;
-
-  // --------------- THEMES --------------- //
   static InputDecorationTheme Function(bool hasError, {EdgeInsets? padding}) selectTheme = (bool hasError, {EdgeInsets? padding}) {
     return InputDecorationTheme(
       fillColor: Colors.transparent,
@@ -41,6 +30,5 @@ class TSelectOptions {
     side: WidgetStatePropertyAll(BorderSide(color: TColors.primary2.withOpacity(0.2))),
     shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: TStyles.br)),
   );
-  static TextStyle selectIconTheme = const TextStyle(fontSize: 16, color: TColors.primary);
-  static ButtonStyle selectMenuItemTheme = ButtonStyle();
+  static ButtonStyle selectMenuItemTheme = const ButtonStyle();
 }

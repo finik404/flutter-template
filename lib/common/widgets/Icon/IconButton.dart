@@ -18,6 +18,7 @@ class UIIconButton extends StatelessWidget {
     this.borderRadius,
     this.splashColor,
     this.bg,
+    this.styles,
   });
 
   final String icon;
@@ -29,6 +30,7 @@ class UIIconButton extends StatelessWidget {
   final BorderRadius? borderRadius;
   final double? radius;
   final Color? color, splashColor, bg;
+  final TextStyle? styles;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class UIIconButton extends StatelessWidget {
 
       // Icon
       child: IntrinsicWidth(
-        child: UIIcon(icon, color: color, size: size, weight: weight),
+        child: UIIcon(icon, color: color, size: size, weight: weight, styles: styles),
       ),
     );
   }

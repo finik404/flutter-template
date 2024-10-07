@@ -6,7 +6,6 @@ import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/extensions/media.dart';
 import 'package:tproject/util/models/base.dart';
-import 'package:tproject/util/options/dialogs.dart';
 
 export 'package:tproject/util/models/base.dart';
 
@@ -80,7 +79,7 @@ class UIActionMenu extends StatelessWidget {
       children: [
         Container(
           width: context.screenWidth,
-          decoration: BoxDecoration(color: bg, borderRadius: borderRadius ?? TDialogsOptions.actionMenuBorderRadius),
+          decoration: BoxDecoration(color: bg, borderRadius: borderRadius ?? BorderRadius.circular(20)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -118,7 +117,7 @@ class UIActionMenu extends StatelessWidget {
           child: Container(
             width: 75,
             height: 4,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(6), color: TDialogsOptions.actionMenuBackground),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(6), color: TColors.bg),
           ),
         ),
       ],
@@ -128,4 +127,3 @@ class UIActionMenu extends StatelessWidget {
     return hasScroll || height != null ? FractionallySizedBox(heightFactor: height ?? 0.7, child: layout) : layout;
   }
 }
-

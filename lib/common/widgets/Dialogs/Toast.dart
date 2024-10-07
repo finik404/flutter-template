@@ -3,7 +3,6 @@ import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/extensions/media.dart';
-import 'package:tproject/util/options/dialogs.dart';
 
 class UIToast extends StatefulWidget {
   const UIToast(
@@ -70,13 +69,12 @@ class UIToastState extends State<UIToast> with SingleTickerProviderStateMixin {
             child: Material(
               color: Colors.transparent,
               child: Container(
-                constraints: BoxConstraints(maxWidth: context.screenWidth * TDialogsOptions.toastMaxWidth),
-                padding: TDialogsOptions.toastPadding,
+                constraints: BoxConstraints(maxWidth: context.screenWidth * 0.8),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(
                   color: widget.isWarning ? Colors.orange : Colors.green,
-                  borderRadius: TDialogsOptions.toastBorderRadius,
-                  boxShadow: TDialogsOptions.toastBoxShadow,
-                  border: TDialogsOptions.toastBorder,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.2), offset: const Offset(0, 3), blurRadius: 5, spreadRadius: 1)],
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,

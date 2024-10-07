@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/features/auth/controllers/screens/code.dart';
-import 'package:tproject/util/options/input.dart';
+import 'package:tproject/util/theme/styles/inputs.dart';
 
 class InputCode extends StatelessWidget {
   const InputCode({super.key});
@@ -8,7 +8,7 @@ class InputCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = CodeController.instance;
-    final styles = TInputOptions.inputTheme(controller.codeErrors.isNotEmpty);
+    final styles = TInputsThemes.inputTheme(controller.codeErrors.isNotEmpty);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

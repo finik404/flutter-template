@@ -1,29 +1,27 @@
+import 'package:flutter/material.dart';
 import 'package:tproject/common/widgets/Icon/IconButton.dart';
 import 'package:tproject/common/widgets/Inputs/Input.dart';
+import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/constants/styles.dart';
-import 'package:tproject/util/options/input.dart';
 
 class UISearchInput extends UIInput {
   UISearchInput(
     super.label,
     super.value, {
     super.key,
-    super.isPlaceholder = TInputOptions.inputSearchIsPlaceholder,
-    super.autofocus = TInputOptions.inputSearchAutofocus,
+    super.padding,
+    super.isPlaceholder = true,
+    super.autofocus = true,
     super.onSubmit,
     super.onChange,
   }) : super(
-          styles: (bool hasError) => TInputOptions.inputSearchStyles,
-          padding: TInputOptions.inputSearchPadding,
-          prefixIcon: TInputOptions.inputSearchPrefixIcon,
-          prefixIconStyles: TInputOptions.inputSearchPrefixIconStyles,
-          suffixIcon: TInputOptions.inputSearchSuffixIcon != null
-              ? UIIconButton(
-                  TInputOptions.inputSearchSuffixIcon!,
-                  () => value.text = '',
-                  radius: TStyles.radius,
-                  // styles: TInputOptions.inputSearchSuffixIconStyles,
-                )
-              : null,
+          prefixIcon: TIcons.search,
+          prefixIconStyles: TextStyle(fontSize: 16, color: TColors.primary.withOpacity(0.5)),
+          suffixIcon: UIIconButton(
+            TIcons.close,
+            () => value.text = '',
+            radius: TStyles.radius,
+            styles: TextStyle(fontSize: 18, color: TColors.primary.withOpacity(0.5)),
+          ),
         );
 }

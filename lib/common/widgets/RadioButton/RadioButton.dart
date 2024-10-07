@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:tproject/common/widgets/ClickArea.dart';
 import 'package:tproject/common/widgets/RadioButton/Radio.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
+import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/models/base.dart';
-import 'package:tproject/util/options/radiobutton.dart';
 
 export 'package:tproject/util/models/base.dart';
 
@@ -12,23 +12,23 @@ class UIRadioButton extends StatelessWidget {
   const UIRadioButton(
     this.radio, {
     super.key,
-    this.spaceBetween = TRadioButtonOptions.spaceBetween,
-    this.clickRadius = TRadioButtonOptions.clickRadius,
-    this.clickPadding,
-    this.isRightRadio = TRadioButtonOptions.isRightRadio,
-    this.isFullWidth = TRadioButtonOptions.isFullWidth,
+    this.spaceBetween = 15,
+    this.clickRadius = 5,
+    this.clickPadding = const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+    this.isRightRadio = false,
+    this.isFullWidth = false,
     this.labelStyles,
     this.size,
     this.thumbSize,
     this.borderWidth,
-    this.color,
+    this.color =  TColors.primary,
     this.activeColor,
   });
 
   final Rx<RadioModel> radio;
   final double spaceBetween;
   final double clickRadius;
-  final EdgeInsets? clickPadding;
+  final EdgeInsets clickPadding;
   final bool isRightRadio, isFullWidth;
   final TextStyle? labelStyles;
   final double? size, thumbSize, borderWidth;
@@ -52,7 +52,7 @@ class UIRadioButton extends StatelessWidget {
         return UIClickArea(
           // Click options
           radius: clickRadius,
-          padding: clickPadding ?? TRadioButtonOptions.clickPadding,
+          padding: clickPadding,
 
           // onTap
           onTap: () {
