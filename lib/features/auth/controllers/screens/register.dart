@@ -8,13 +8,17 @@ import 'package:tproject/features/auth/models/user.dart';
 class RegisterController extends GetxController {
   static RegisterController get instance => Get.find();
 
-  // Variables ----------------
+  // # --------------- Variables --------------- #
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController nameInput = TextEditingController();
   final TextEditingController emailInput = TextEditingController();
   final TextEditingController passwordInput = TextEditingController();
+  final RxBool isLoading = false.obs;
 
-  // Methods ----------------
+  // # --------------- Methods --------------- #
+
+  // register ----------------
   Future<void> register() async {
     // Validate form
     if (!formKey.currentState!.validate()) return;
@@ -23,25 +27,31 @@ class RegisterController extends GetxController {
     bool isConnected = await NetworkController.instance.checkNetwork();
     if (!isConnected) return;
 
+    // Set loading
+    isLoading.value = true;
+
     // Request
     final response = await THttp.fetch('/register', method: HttpMethods.post, body: {
       'name': nameInput.text,
       'email': emailInput.text,
       'password': passwordInput.text,
     });
-    if (response.isError) return;
+    if (!response.isError) {
+      // Data
+      UserModel user = UserModel.fromJson(response.data);
 
-    // Data
-    UserModel user = UserModel.fromJson(response.data);
+      // Save auth token
+      final storage = GetStorage();
+      if (user.token != null) storage.write('auth_token', user.token!);
 
-    // Save auth token
-    final storage = GetStorage();
-    if (user.token != null) storage.write('auth_token', user.token!);
+      // Save user to store
+      UserController.instance.setUser(user);
 
-    // Save user to store
-    UserController.instance.setUser(user);
+      // Navigate
+      toOff(const Tabs());
+    }
 
-    // Navigate
-    toOff(const Tabs());
+    // Remove loading
+    isLoading.value = false;
   }
 }

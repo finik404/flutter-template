@@ -1,46 +1,33 @@
 import 'package:tproject/util/exports.dart';
 import 'package:tproject/features/auth/models/user.dart';
-import 'package:tproject/features/auth/screens/login.dart';
-import 'package:tproject/features/home/screens/home.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find();
 
-  // Variables ----------------
-  UserModel? user;
+  // # --------------- Variables --------------- #
 
-  // onReady ----------------
-  @override
-  void onReady() {
-    super.onReady();
-    // checkAuth();
+  final Rxn<UserModel> user = Rxn<UserModel>();
 
-    Get.offAll(const LoginScreen());
-  }
+  // # --------------- Methods --------------- #
 
-  // Methods ----------------
-  Future<void> checkAuth() async {
-    // Check auth
-    final response = await THttp.fetch('/account');
-
-    if (!response.isError) {
-      // Save to store
-      UserController.instance.setUser(UserModel.fromJson(response.data));
-
-      // Navigate to home
-      Get.offAll(const HomeScreen());
-    } else {
-      // Navigate to auth
-      Get.offAll(const LoginScreen());
-    }
-  }
-
-  // Methods ----------------
+  // setUser ----------------
   void setUser(UserModel value) {
-    user = value;
+    user.value = value;
   }
 
+  // removeUser ----------------
   void removeUser() {
-    user = null;
+    user.value = null;
+  }
+
+  // updateUser ----------------
+  void updateUser({
+    required String name,
+    required String email,
+  }) {
+    user.value = user.value?.copyWith(
+      name: name,
+      email: email,
+    );
   }
 }

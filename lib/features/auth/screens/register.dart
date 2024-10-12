@@ -53,7 +53,12 @@ class RegisterScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             // Submit button
-            UIButton('Создать аккаунт', controller.register),
+            Obx(
+              () => UIDisabled(
+                controller.isLoading.value,
+                child: UIButton('Создать аккаунт', controller.register),
+              ),
+            ),
           ],
         ),
       ),

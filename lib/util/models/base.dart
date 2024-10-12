@@ -43,8 +43,6 @@ class ActionModel {
   });
 }
 
-enum HttpMethods { get, post }
-
 class ResponseModel {
   int status;
   dynamic data;

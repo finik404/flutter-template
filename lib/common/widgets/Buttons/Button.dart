@@ -78,6 +78,6 @@ class UIButton extends StatelessWidget {
     );
 
     // isDisabled
-    return isDisabled == true ? UIDisabled(isDisabled: isDisabled!, child: button) : button;
+    return isDisabled == true ? UIDisabled(isDisabled!, child: button) : button;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/common/widgets/Buttons/Button.dart';
+import 'package:tproject/common/widgets/Disabled.dart';
 import 'package:tproject/common/widgets/Inputs/Input.dart';
 import 'package:tproject/features/auth/controllers/screens/password.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
@@ -35,7 +36,12 @@ class PasswordScreen extends StatelessWidget {
             const SizedBox(height: 16),
 
             // Submit button
-            UIButton('Сбросить пароль', controller.receive),
+            Obx(
+              () => UIDisabled(
+                controller.isLoading.value,
+                child: UIButton('Сбросить пароль', controller.receive),
+              ),
+            ),
           ],
         ),
       ),

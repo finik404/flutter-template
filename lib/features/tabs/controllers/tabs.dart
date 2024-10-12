@@ -26,11 +26,14 @@ class TabsController extends GetxController {
     TDevice.setBottomNavigationColor(TColors.bottomSheet);
   }
 
-  // Methods ----------------
+
+
+  // changeTab ----------------
   void changeTab(int index) {
     activeTab.value = index;
   }
 
+  // navToTab ----------------
   void navToTab(int index) {
     activeTab.value = index;
     controller.jumpToTab(index);

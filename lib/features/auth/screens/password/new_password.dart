@@ -53,7 +53,12 @@ class NewPasswordScreen extends StatelessWidget {
             const SizedBox(height: 16),
 
             // Submit button
-            UIButton('Войти с новым паролем', controller.restore),
+            Obx(
+              () => UIDisabled(
+                controller.isLoading.value,
+                child: UIButton('Войти с новым паролем', controller.restore),
+              ),
+            ),
           ],
         ),
       ),

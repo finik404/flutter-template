@@ -6,7 +6,7 @@ import 'package:tproject/util/helpers/dialog.dart';
 import 'package:tproject/util/http/parseErrors.dart';
 import 'package:tproject/util/models/base.dart';
 
-export 'package:tproject/util/models/base.dart';
+enum HttpMethods { get, post, patch, delete }
 
 class THttp {
   static final Dio dio = Dio();
@@ -71,9 +71,13 @@ class THttp {
         response = await dio.post(fullUrl.toString(), data: formData, options: options);
       }
 
-      // POST request
+      // Requests
       else if (method == HttpMethods.post) {
         response = await dio.post(fullUrl.toString(), data: body != null ? jsonEncode(body) : null, options: options);
+      } else if (method == HttpMethods.patch) {
+        response = await dio.patch(fullUrl.toString(), data: body != null ? jsonEncode(body) : null, options: options);
+      } else if (method == HttpMethods.delete) {
+        response = await dio.delete(fullUrl.toString(), data: body != null ? jsonEncode(body) : null, options: options);
       }
 
       // GET request

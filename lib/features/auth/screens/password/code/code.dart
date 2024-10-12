@@ -40,7 +40,12 @@ class PasswordCodeScreen extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Submit button
-          UIButton('Продолжить', controller.check),
+          Obx(
+            () => UIDisabled(
+              controller.isLoading.value,
+              child: UIButton('Продолжить', controller.check),
+            ),
+          ),
         ],
       ),
     );

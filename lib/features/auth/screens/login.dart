@@ -57,7 +57,12 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 16),
 
             // Submit button
-            UIButton('Войти', controller.login),
+            Obx(
+              () => UIDisabled(
+                controller.isLoading.value,
+                child: UIButton('Войти', controller.login),
+              ),
+            ),
             const SizedBox(height: 16),
 
             // UISelect(
