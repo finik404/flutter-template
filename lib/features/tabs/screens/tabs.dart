@@ -60,7 +60,7 @@ class Tabs extends StatelessWidget {
         navBarBuilder: (navBarConfig) => Style1BottomNavBar(
           navBarConfig: navBarConfig,
           navBarDecoration: const NavBarDecoration(
-            color: TColors.bottomSheet,
+            color: TColors.bg,
             padding: EdgeInsets.all(12),
             border: Border(top: BorderSide(color: TColors.bottomSheetBorder)),
           ),

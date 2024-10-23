@@ -16,21 +16,6 @@ class LoginController extends GetxController {
   final TextEditingController phoneInput = TextEditingController();
   final RxBool isLoading = false.obs;
 
-  final List<ItemModel> selectItems = [
-    ItemModel('value1', 'label1'),
-    ItemModel('value2', 'label2'),
-    ItemModel('value3', 'label3'),
-  ];
-  late ItemModel select;
-
-  // # --------------- onInit --------------- #
-
-  @override
-  void onInit() {
-    super.onInit();
-    select = selectItems[0];
-  }
-
   // # --------------- Methods --------------- #
 
   // login ----------------

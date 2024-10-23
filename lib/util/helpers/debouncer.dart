@@ -3,9 +3,8 @@ import 'dart:async';
 class TDebouncer {
   static Timer? _timer;
 
-
   // Run timer
-  static void run(Future<void> Function() action, int milliseconds) {
+  void run(Future<void> Function() action, int milliseconds) {
     _timer?.cancel();
     _timer = Timer(Duration(milliseconds: milliseconds), () async => action());
   }
@@ -29,7 +28,7 @@ class TDebouncer {
   }
 
   // Clear timer
-  static void cancelTimer() {
+  void cancelTimer() {
     _timer?.cancel();
   }
 }

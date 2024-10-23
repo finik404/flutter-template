@@ -8,6 +8,8 @@ class CodeController extends GetxController {
   // # --------------- Variables --------------- #
 
   final TextEditingController codeInput = TextEditingController();
+  final int codeCount = 4;
+  Rx<String> codeErrors = ''.obs;
   final RxBool isLoading = false.obs;
 
   // # --------------- Methods --------------- #
@@ -15,22 +17,40 @@ class CodeController extends GetxController {
   // check ----------------
   Future<void> check() async {
     // Validate
-    // if (!validate()) return;
+    if (!validate()) return;
 
     // Check network connection
     bool isConnected = await NetworkController.instance.checkNetwork();
     if (!isConnected) return;
 
+    // Set loading
+    isLoading.value = true;
+
+    // Clear errors
+    codeErrors.value = '';
+
     // Request
     final response = await THttp.fetch('/code', method: HttpMethods.post, body: {
       'code': codeInput.text,
     });
-    if (response.isError) return;
+    if (!response.isError) {
+      // Navigate
+      to(NewPasswordScreen(code: codeInput.text));
+    }
 
-    // Clear errors
-    // codeErrors = '';
+    // Remove loading
+    isLoading.value = false;
+  }
 
-    // Navigate
-    to(NewPasswordScreen(code: codeInput.text));
+  bool validate() {
+    if (codeInput.text.isEmpty) {
+      codeErrors.value = L.of(Get.context!).errors_code;
+      return false;
+    }
+    if (codeInput.text.length != codeCount) {
+      codeErrors.value = L.of(Get.context!).errors_code_length;
+      return false;
+    }
+    return true;
   }
 }

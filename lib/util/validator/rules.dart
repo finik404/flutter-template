@@ -98,10 +98,24 @@ class VRules {
     };
   }
 
+  // confirmPassword
   static Function(String?) confirmPassword(TextEditingController password, {String? message}) {
     return (String? value) {
       if (value != null && value.trim() != password.text) {
         return message ?? L.of(Get.context!).errors_password_confirm;
+      }
+      return null;
+    };
+  }
+
+  // emails
+  static Function(String?) emails({String? message}) {
+    return (String? value) {
+      final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+      final emails = value?.split(',').map((e) => e.trim()).toList() ?? [];
+
+      if (emails.isEmpty || emails.any((email) => !emailRegex.hasMatch(email))) {
+        return message ?? L.of(Get.context!).errors_email;
       }
       return null;
     };

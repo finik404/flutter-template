@@ -5,9 +5,6 @@ import 'package:tproject/common/widgets/List.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/extensions/media.dart';
-import 'package:tproject/util/models/base.dart';
-
-export 'package:tproject/util/models/base.dart';
 
 class UIActionMenu extends StatelessWidget {
   const UIActionMenu({
@@ -126,4 +123,21 @@ class UIActionMenu extends StatelessWidget {
     // Limit height
     return hasScroll || height != null ? FractionallySizedBox(heightFactor: height ?? 0.7, child: layout) : layout;
   }
+}
+
+// Type
+class ActionModel {
+  final String label;
+  final Function() onTap;
+  final String? icon;
+  final bool noPop;
+  final bool isShow;
+
+  ActionModel({
+    required this.label,
+    required this.onTap,
+    this.icon,
+    this.noPop = false,
+    this.isShow = true,
+  });
 }

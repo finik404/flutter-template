@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tproject/common/exports.dart';
 import 'package:tproject/common/layouts/main/main.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,11 +9,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MainLayout(
       label: 'Home',
-      child: Center(
-        child: Column(
-          children: [],
-        ),
-      ),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: []),
     );
   }
 }

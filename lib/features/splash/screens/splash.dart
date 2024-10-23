@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tproject/common/layouts/base.dart';
 import 'package:tproject/features/auth/controllers/user.dart';
+import 'package:tproject/features/splash/controllers/splash.dart';
 import 'package:tproject/util/constants/images.dart';
 import 'package:tproject/util/extensions/media.dart';
 import 'package:tproject/util/extensions/theme.dart';
@@ -11,6 +12,7 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(SplashController());
     Get.put(UserController());
 
     return BaseLayout(

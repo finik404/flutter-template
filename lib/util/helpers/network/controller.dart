@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tproject/common/exports.dart';
 import 'package:tproject/languages/L.dart';
+import 'package:tproject/util/helpers/dialog.dart';
 
 class NetworkController extends GetxController {
   static NetworkController get instance => Get.find();

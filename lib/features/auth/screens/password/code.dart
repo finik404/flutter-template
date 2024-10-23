@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:tproject/common/exports.dart';
 import 'package:tproject/features/auth/controllers/screens/code.dart';
 import 'package:tproject/features/auth/layouts/auth.dart';
-import 'package:tproject/features/auth/screens/password/code/widgets/InputCode.dart';
+import 'package:tproject/features/auth/widgets/InputCode.dart';
 import 'package:tproject/util/helpers/helper.dart';
 
 class PasswordCodeScreen extends StatelessWidget {
@@ -32,11 +32,14 @@ class PasswordCodeScreen extends StatelessWidget {
           const InputCode(),
 
           // Errors
-          if (controller.codeErrors.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.only(top: 5),
-              child: UIText(controller.codeErrors, color: TColors.error, size: 12),
-            ),
+          Obx(() {
+            return controller.codeErrors.isNotEmpty
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: UIText(controller.codeErrors.value, color: TColors.error, size: 12),
+                  )
+                : Container();
+          }),
           const SizedBox(height: 16),
 
           // Submit button

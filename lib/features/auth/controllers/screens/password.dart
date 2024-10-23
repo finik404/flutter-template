@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/util/exports.dart';
-import 'package:tproject/features/auth/screens/password/code/code.dart';
+import 'package:tproject/features/auth/screens/password/code.dart';
 
 class PasswordController extends GetxController {
   static PasswordController get instance => Get.find();

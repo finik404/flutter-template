@@ -14,9 +14,6 @@ class App extends StatelessWidget {
       // No debug banner
       debugShowCheckedModeBanner: false,
 
-      // No Stretch Effect on Scroll
-      scrollBehavior: const ScrollBehavior(),
-
       // Theme settings
       themeMode: ThemeMode.light,
       theme: AppTheme.lightTheme,

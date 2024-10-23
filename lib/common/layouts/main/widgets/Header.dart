@@ -51,6 +51,7 @@ class Header extends StatelessWidget {
             ),
             child: FlexibleSpaceBar(
               expandedTitleScale: 1.0,
+
               collapseMode: CollapseMode.parallax,
               centerTitle: false,
               titlePadding: hasArrow ? const EdgeInsets.symmetric(vertical: 12, horizontal: 20) : const EdgeInsets.all(20),

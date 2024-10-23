@@ -2,14 +2,13 @@ import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:tproject/features/home/screens/home.dart';
 import 'package:tproject/features/tabs/models/item.dart';
-import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/constants/icons.dart';
-import 'package:tproject/util/helpers/device.dart';
 
 class TabsController extends GetxController {
   static TabsController get instance => Get.find();
 
-  // Variables ----------------
+  // # --------------- Variables --------------- #
+
   final PersistentTabController controller = PersistentTabController();
   Rx<int> activeTab = 0.obs;
   List<TabNavModel> navItems = [
@@ -19,14 +18,7 @@ class TabsController extends GetxController {
     TabNavModel('Меню', TIcons.menu, const HomeScreen()),
   ];
 
-  // onReady ----------------
-  @override
-  void onReady() {
-    super.onReady();
-    TDevice.setBottomNavigationColor(TColors.bottomSheet);
-  }
-
-
+  // # --------------- Methods --------------- #
 
   // changeTab ----------------
   void changeTab(int index) {

@@ -4,9 +4,6 @@ import 'package:tproject/common/widgets/ClickArea.dart';
 import 'package:tproject/common/widgets/RadioButton/Radio.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
 import 'package:tproject/util/constants/colors.dart';
-import 'package:tproject/util/models/base.dart';
-
-export 'package:tproject/util/models/base.dart';
 
 class UIRadioButton extends StatelessWidget {
   const UIRadioButton(
@@ -21,7 +18,7 @@ class UIRadioButton extends StatelessWidget {
     this.size,
     this.thumbSize,
     this.borderWidth,
-    this.color =  TColors.primary,
+    this.color = TColors.primary,
     this.activeColor,
   });
 
@@ -88,4 +85,17 @@ class UIRadioButton extends StatelessWidget {
       },
     );
   }
+}
+
+// Type
+class RadioModel {
+  final String? label;
+  dynamic value;
+  bool isChecked;
+
+  RadioModel({
+    this.label,
+    this.value,
+    required this.isChecked,
+  });
 }

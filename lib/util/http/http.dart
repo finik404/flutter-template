@@ -4,9 +4,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:tproject/util/constants/private.dart';
 import 'package:tproject/util/helpers/dialog.dart';
 import 'package:tproject/util/http/parseErrors.dart';
-import 'package:tproject/util/models/base.dart';
-
-enum HttpMethods { get, post, patch, delete }
 
 class THttp {
   static final Dio dio = Dio();
@@ -105,4 +102,23 @@ class THttp {
       }
     }
   }
+}
+
+// Types
+enum HttpMethods { get, post, patch, delete }
+
+class ResponseModel {
+  int status;
+  dynamic data;
+  dynamic errors;
+  String? message;
+  bool isError;
+
+  ResponseModel({
+    required this.status,
+    this.data,
+    this.errors,
+    this.message,
+    required this.isError,
+  });
 }
