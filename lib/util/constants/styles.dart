@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tproject/util/constants/colors.dart';
+import 'package:tproject/util/helpers/device.dart';
 
 class TStyles {
   TStyles._();
 
-  // FontFamily
+  // Text
   static const String font = 'Circe';
   static const TextStyle textStyles = TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.black);
   static const Color linkColor = TColors.primary;
@@ -43,10 +45,16 @@ class TStyles {
   // BoxShadow
   static List<BoxShadow> shadow = [
     BoxShadow(
-      color: Colors.black.withOpacity(0.3),
+      color: TColors.black.withOpacity(0.1),
       spreadRadius: 0,
-      blurRadius: 15,
+      blurRadius: 42,
       offset: const Offset(0, 4),
     ),
   ];
+
+  // Overlay styles
+  static SystemUiOverlayStyle overlayStyles = SystemUiOverlayStyle(
+    statusBarBrightness: TDevice.isIOS() ? Brightness.light : Brightness.dark,
+    statusBarIconBrightness: TDevice.isIOS() ? Brightness.light : Brightness.dark,
+  );
 }

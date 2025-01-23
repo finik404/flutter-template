@@ -10,13 +10,14 @@ class THttp {
 
   // Fetch ----------------
   static Future<ResponseModel> fetch(
-    String url, {
-    Map<String, dynamic>? query,
-    Map<String, dynamic>? body,
-    Map<String, String>? form,
-    HttpMethods method = HttpMethods.get,
-    bool hasWarning = true,
-  }) async {
+      String url, {
+        Map<String, dynamic>? query,
+        Map<String, dynamic>? body,
+        Map<String, String>? form,
+        HttpMethods method = HttpMethods.get,
+        bool hasWarning = true,
+        bool hasData = true,
+      }) async {
     // Base url
     String baseUrl = TPrivates.apiUrl;
 
@@ -82,7 +83,11 @@ class THttp {
         response = await dio.get(fullUrl.toString(), options: options);
       }
 
-      return ResponseModel(status: response.statusCode!, data: response.data?['data'], isError: false);
+      return ResponseModel(
+        status: response.statusCode!,
+        data: hasData ? response.data['data'] : response.data,
+        isError: false,
+      );
     }
 
     // Parse errors

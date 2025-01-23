@@ -3,8 +3,6 @@ export 'widgets/Buttons/Button.dart';
 export 'widgets/Buttons/SecondaryButton.dart';
 export 'widgets/Inputs/Input.dart';
 export 'widgets/Inputs/PhoneInput.dart';
-export 'widgets/Inputs/SearchInput.dart';
-export 'widgets/Inputs/Textarea.dart';
 export 'widgets/Text/Text.dart';
 export 'widgets/Text/TextLink.dart';
 export 'widgets/Text/Texts.dart';
@@ -21,10 +19,10 @@ export 'widgets/Select.dart';
 export 'widgets/Text/Html.dart';
 export 'widgets/Image.dart';
 export 'widgets/Tag.dart';
-export 'widgets/Filters.dart';
 export 'widgets/Refresh.dart';
 export 'widgets/Divider.dart';
 export 'widgets/ClickItem.dart';
+export 'widgets/Pop.dart';
 
 // Constants
 export '../util/constants/colors.dart';
@@ -41,6 +39,9 @@ export '../util/helpers/navigation/to.dart';
 
 // Validation rules
 export '../util/validator/rules.dart';
+
+// Helpers
+export '../util/helpers/device.dart';
 
 // Svg
 export 'package:flutter_svg/flutter_svg.dart';

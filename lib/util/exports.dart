@@ -4,9 +4,6 @@ export 'helpers/network/controller.dart';
 export 'helpers/dialog.dart';
 export 'helpers/debouncer.dart';
 
-// Models
-export 'models/base.dart';
-
 // Navigation
 export 'helpers/navigation/to.dart';
 export 'helpers/navigation/toOff.dart';
