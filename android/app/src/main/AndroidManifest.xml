@@ -1,14 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    // --------------- PERMISSIONS --------------- //
-    # Camera
+    <!-- Internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Camera -->
     <!--    <uses-permission android:name="android.permission.CAMERA" />-->
-    # Gallery
+    <!-- Gallery -->
     <!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
 
-    // --------------- APP --------------- //
     <application
         android:name="${applicationName}"
-        android:icon="@mipmap/lc_launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="tproject">
         <activity
             android:name=".MainActivity"
