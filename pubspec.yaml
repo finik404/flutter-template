@@ -12,25 +12,25 @@ dependencies:
     sdk: flutter
 
   # Http
-  dio: ^5.7.0
+  dio: ^5.8.0+1
 
   # State management
-  get: ^4.6.6
+  get: ^4.7.2
 
   # Local storage
   get_storage: ^2.1.1
 
   # Svg
-  flutter_svg: ^2.0.11
+  flutter_svg: ^2.1.0
+
+  # FontAwesome
+  font_awesome_flutter: ^10.8.0
 
   # Formatting data
   intl: ^0.19.0
 
   # Permissions
-  permission_handler: ^11.3.1
-
-  # Logging code
-  logger: ^2.4.0
+  permission_handler: ^12.0.0+1
 
   # Web links
   url_launcher: ^6.3.1
@@ -44,26 +44,28 @@ dependencies:
   # Images caching
   cached_network_image: ^3.4.1
 
-  # Firebase, notifications, auth
-  firebase_core: ^3.6.0
-  firebase_messaging: ^15.1.3
-  firebase_auth: ^5.3.1
+  # Firebase
+  firebase_core: ^3.13.1
+
+  # Notifications
+  firebase_messaging: ^15.2.6
+  flutter_local_notifications: ^19.2.1
 
   # Localization
   flutter_localizations:
     sdk: flutter
 
   # Parse html
-  html: ^0.15.5
+  flutter_widget_from_html_core: ^0.16.0
 
   # Share content
-  share_plus: ^10.1.1
+  share_plus: ^11.0.0
 
   # App info
-  package_info_plus: ^8.1.0
+  package_info_plus: ^8.3.0
 
   # Device info
-  device_info_plus: ^11.1.0
+  device_info_plus: ^11.4.0
 
   # Mask for input
   easy_mask: ^2.0.1
@@ -72,20 +74,33 @@ dependencies:
   image_picker: ^1.1.2
 
   # Bottom navigation menu
-  persistent_bottom_nav_bar_v2: ^5.3.1
+  persistent_bottom_nav_bar_v2: ^6.0.1
 
   # Network connection
-  connectivity_plus: ^6.1.0
+  connectivity_plus: ^6.1.4
 
   # FTP
   pin_code_fields: ^8.0.1
+
+  # App version checker
+  in_app_update: ^4.2.3
+
+  # AppMetrica
+  appmetrica_plugin: ^3.2.0
+
+  # Bug tracker
+  sentry_flutter: ^8.14.2
+
+  # FCM for dev
+  googleapis_auth: ^1.6.0
+  http: ^1.3.0
 
 
 # --------------- DEV PACKAGES --------------- #
 
 dev_dependencies:
   flutter_lints: ^5.0.0
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.14.3
 
 
 # --------------- SETTINGS --------------- #
@@ -113,18 +128,4 @@ flutter:
         - asset: assets/fonts/Circe-Regular.ttf
           weight: 400
         - asset: assets/fonts/Circe-Bold.ttf
-          weight: 700
-
-    # Icons fontAwesome
-    - family: FontAwesomeLight
-      fonts:
-        - asset: assets/fonts/FontAwesome-Light.ttf
-          weight: 300
-    - family: FontAwesomeRegular
-      fonts:
-        - asset: assets/fonts/FontAwesome-Regular.ttf
-          weight: 400
-    - family: FontAwesomeBold
-      fonts:
-        - asset: assets/fonts/FontAwesome-Bold.ttf
           weight: 700

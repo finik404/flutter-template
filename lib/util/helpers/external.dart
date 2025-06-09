@@ -8,11 +8,17 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class TExternal {
-  static void launchMail(String mail) async {
-    final Uri uri = Uri(
-      scheme: 'mailto',
-      path: mail,
-    );
+  static void launchMail(String mail, {String? subject, String? body}) async {
+    final subjectEncoded = subject != null ? Uri.encodeComponent(subject) : null;
+    final bodyEncoded = body != null ? Uri.encodeComponent(body) : null;
+
+    final query = [
+      if (subjectEncoded != null) 'subject=$subjectEncoded',
+      if (bodyEncoded != null) 'body=$bodyEncoded',
+    ].join('&');
+
+    final uri = Uri.parse('mailto:$mail?$query');
+
     if (!await launchUrl(uri)) {
       throw Exception('Could not move to $mail');
     }

@@ -11,4 +11,5 @@ This project is a ready-made template for mobile applications on Flutter. It inc
 - Various constants and options files
 - Validation, network checker 
 - Localization of the application
+- FCM Notifications, AppMetrica, Sentry
 - All the necessary dependencies

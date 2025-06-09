@@ -10,6 +10,14 @@ class SplashController extends GetxController {
 
   // # --------------- Variables --------------- #
 
+  // # --------------- onInit --------------- #
+
+  @override
+  void onInit() {
+    super.onInit();
+    Get.put(UserController());
+  }
+
   // # --------------- onReady --------------- #
 
   @override

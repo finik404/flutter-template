@@ -32,6 +32,29 @@ class TDevice {
     return Platform.isAndroid;
   }
 
+  static Future<bool> isSimulator() async {
+    final deviceInfo = DeviceInfoPlugin();
+    late bool isSimulator;
+    if (Platform.isIOS) {
+      final iosInfo = await deviceInfo.iosInfo;
+      isSimulator = iosInfo.isPhysicalDevice == false;
+    } else {
+      isSimulator = false;
+    }
+
+    return isSimulator;
+  }
+
+  static Future<bool> isIOSSimulator() async {
+    if (Platform.isIOS) {
+      final deviceInfo = DeviceInfoPlugin();
+      final iosInfo = await deviceInfo.iosInfo;
+
+      return !iosInfo.isPhysicalDevice;
+    }
+    return false;
+  }
+
   static Future<String> androidVersion() async {
     final deviceInfo = DeviceInfoPlugin();
     final androidInfo = await deviceInfo.androidInfo;
