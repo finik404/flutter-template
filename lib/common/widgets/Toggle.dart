@@ -40,7 +40,7 @@ class UIToggle extends StatelessWidget {
         height: height,
         decoration: decoration ?? BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          color: value ? activeColor : color ?? TColors.black.withOpacity(0.4),
+          color: value ? activeColor : color ?? TColors.black.withValues(alpha: 0.4),
         ),
 
         // Thumb

@@ -9,7 +9,7 @@ class CodeController extends GetxController {
 
   final TextEditingController codeInput = TextEditingController();
   final int codeCount = 4;
-  Rx<String> codeErrors = ''.obs;
+  RxString codeErrors = ''.obs;
   final RxBool isLoading = false.obs;
 
   // # --------------- Methods --------------- #

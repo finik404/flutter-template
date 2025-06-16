@@ -90,7 +90,7 @@ class UIActionMenu extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       border: Border(
-                        bottom: BorderSide(color: TColors.black.withOpacity(0.2)),
+                        bottom: BorderSide(color: TColors.black.withValues(alpha: 0.2)),
                       ),
                     ),
                     child: UIText(

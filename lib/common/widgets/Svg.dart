@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-export 'package:wondary/util/constants/images.dart';
+export 'package:tproject/util/constants/images.dart';
 
 class UISvg extends StatelessWidget {
   const UISvg(

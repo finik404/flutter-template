@@ -9,13 +9,13 @@ class TSelectsThemes {
     return InputDecorationTheme(
       fillColor: Colors.transparent,
       contentPadding: padding ?? const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-      labelStyle: TextStyle(fontSize: 14, color: hasError ? TColors.error.withOpacity(0.5) : TColors.primary.withOpacity(0.5)),
-      floatingLabelStyle: TextStyle(fontSize: 18, color: hasError ? TColors.error : TColors.primary.withOpacity(0.5)),
+      labelStyle: TextStyle(fontSize: 14, color: hasError ? TColors.error.withValues(alpha: 0.5) : TColors.primary.withValues(alpha: 0.5)),
+      floatingLabelStyle: TextStyle(fontSize: 18, color: hasError ? TColors.error : TColors.primary.withValues(alpha: 0.5)),
       // labelStyle.fontSize +4
-      hintStyle: TextStyle(fontSize: 14, color: hasError ? TColors.error.withOpacity(0.5) : TColors.primary.withOpacity(0.5)),
+      hintStyle: TextStyle(fontSize: 14, color: hasError ? TColors.error.withValues(alpha: 0.5) : TColors.primary.withValues(alpha: 0.5)),
       enabledBorder: OutlineInputBorder(
         borderRadius: TStyles.br,
-        borderSide: BorderSide(width: 1, color: hasError ? TColors.lightenError : TColors.primary2.withOpacity(0.2)),
+        borderSide: BorderSide(width: 1, color: hasError ? TColors.lightenError : TColors.primary2.withValues(alpha: 0.2)),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: TStyles.br,
@@ -27,7 +27,7 @@ class TSelectsThemes {
   static MenuStyle selectMenuTheme = MenuStyle(
     backgroundColor: const WidgetStatePropertyAll(TColors.white),
     elevation: const WidgetStatePropertyAll(0),
-    side: WidgetStatePropertyAll(BorderSide(color: TColors.primary2.withOpacity(0.2))),
+    side: WidgetStatePropertyAll(BorderSide(color: TColors.primary2.withValues(alpha: 0.2))),
     shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: TStyles.br)),
   );
   static ButtonStyle selectMenuItemTheme = const ButtonStyle();

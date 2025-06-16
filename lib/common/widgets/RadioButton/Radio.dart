@@ -19,7 +19,7 @@ class UIRadio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color customColor = color ?? TColors.primary;
-    Color customActiveColor = activeColor ?? TColors.primary.withOpacity(0.3);
+    Color customActiveColor = activeColor ?? TColors.primary.withValues(alpha: 0.3);
 
     return Stack(
       children: [

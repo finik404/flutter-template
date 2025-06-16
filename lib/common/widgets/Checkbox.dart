@@ -56,7 +56,7 @@ class UICheckbox extends StatelessWidget {
             height: size,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(radius),
-              border: Border.all(color: value ? TColors.primary : TColors.primary.withOpacity(0.5), width: 2),
+              border: Border.all(color: value ? TColors.primary : TColors.primary.withValues(alpha: 0.5), width: 2),
             ),
 
             // Check icon

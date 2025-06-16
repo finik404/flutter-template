@@ -6,7 +6,7 @@ class UserController extends GetxController {
 
   // # --------------- Variables --------------- #
 
-  final Rxn<UserModel> user = Rxn<UserModel>();
+  final Rxn<UserModel> user = Rxn();
 
   // # --------------- Methods --------------- #
 

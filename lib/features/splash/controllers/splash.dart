@@ -3,6 +3,7 @@ import 'package:tproject/features/auth/controllers/user.dart';
 import 'package:tproject/features/auth/models/user.dart';
 import 'package:tproject/features/auth/screens/login.dart';
 import 'package:tproject/features/tabs/screens/tabs.dart';
+import 'package:tproject/util/exports.dart';
 import 'package:tproject/util/http/http.dart';
 
 class SplashController extends GetxController {
@@ -23,7 +24,7 @@ class SplashController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    Get.offAll(const Tabs());
+    toOff(const Tabs());
     // checkAuth();
   }
 
@@ -67,10 +68,10 @@ class SplashController extends GetxController {
       UserController.instance.setUser(UserModel.fromJson(response.data));
 
       // Navigate to home
-      Get.offAll(const Tabs());
+      toOff(const Tabs());
     } else {
       // Navigate to auth
-      Get.offAll(const LoginScreen());
+      toOff(const LoginScreen());
     }
   }
 }

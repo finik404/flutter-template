@@ -101,7 +101,7 @@ class UIInputState extends State<UIInput> {
   @override
   Widget build(BuildContext context) {
     InputDecorationTheme inputStyles = widget.styles?.call(error.isNotEmpty) ?? TInputsThemes.inputTheme(error.isNotEmpty);
-    TextStyle inputPrefixIconStyles = widget.prefixIconStyles ?? TextStyle(fontSize: 18, color: TColors.primary.withOpacity(0.5));
+    TextStyle inputPrefixIconStyles = widget.prefixIconStyles ?? TextStyle(fontSize: 18, color: TColors.primary.withValues(alpha: 0.5));
 
     // Input ----------------
     return Column(
@@ -189,7 +189,7 @@ class UIInputState extends State<UIInput> {
                           TIcons.password,
                           () => setState(() => showPassword = !showPassword),
                           radius: TStyles.radius,
-                          styles: TextStyle(fontSize: 18, color: TColors.primary.withOpacity(0.5)),
+                          styles: TextStyle(fontSize: 18, color: TColors.primary.withValues(alpha: 0.5)),
                         ),
                       )
 

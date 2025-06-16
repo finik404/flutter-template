@@ -8,7 +8,7 @@ class TStyles {
 
   // Text
   static const String font = 'Circe';
-  static const TextStyle textStyles = TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.black);
+  static const TextStyle textStyles = TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.black, height: 1.25);
   static const Color linkColor = TColors.primary;
 
   // BorderRadius
@@ -45,7 +45,7 @@ class TStyles {
   // BoxShadow
   static List<BoxShadow> shadow = [
     BoxShadow(
-      color: TColors.black.withOpacity(0.1),
+      color: TColors.black.withValues(alpha: 0.1),
       spreadRadius: 0,
       blurRadius: 42,
       offset: const Offset(0, 4),

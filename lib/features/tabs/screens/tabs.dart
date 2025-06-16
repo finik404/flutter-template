@@ -48,16 +48,14 @@ class Tabs extends StatelessWidget {
         onTabChanged: (index) => controller.changeTab(index),
 
         // Options
-        navBarHeight: 65,
         handleAndroidBackButtonPress: true,
         resizeToAvoidBottomInset: false,
         stateManagement: true,
-        popAllScreensOnTapOfSelectedTab: true,
-        popActionScreens: PopActionScreensType.all,
         screenTransitionAnimation: const ScreenTransitionAnimation(curve: Curves.ease, duration: Duration(milliseconds: 200)),
 
         // Styles
         navBarBuilder: (navBarConfig) => Style1BottomNavBar(
+          height: 67,
           navBarConfig: navBarConfig,
           navBarDecoration: const NavBarDecoration(
             color: TColors.bg,

@@ -32,7 +32,7 @@ class TDialog {
   }) {
     showDialog(
       context: Get.context!,
-      barrierColor: TColors.black.withOpacity(0.5),
+      barrierColor: TColors.black.withValues(alpha: 0.5),
       builder: (BuildContext context) {
         return UIConfirm(title, text: text, width: width, close: close);
       },
@@ -54,7 +54,7 @@ class TDialog {
     showModalBottomSheet(
       useSafeArea: true,
       context: Get.context!,
-      barrierColor: TColors.black.withOpacity(0.5),
+      barrierColor: TColors.black.withValues(alpha: 0.5),
       backgroundColor: background,
       elevation: 0,
       isScrollControlled: hasScroll || height != null,
@@ -91,7 +91,7 @@ class TDialog {
             color: isWarning ? Colors.orange : Colors.green,
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
-              BoxShadow(color: Colors.black.withOpacity(0.2), offset: const Offset(0, 3), blurRadius: 5, spreadRadius: 1),
+              BoxShadow(color: Colors.black.withValues(alpha: 0.2), offset: const Offset(0, 3), blurRadius: 5, spreadRadius: 1),
             ],
           ),
           child: Row(

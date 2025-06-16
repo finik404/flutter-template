@@ -37,7 +37,7 @@ class Header extends StatelessWidget {
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color: scrolled ? Colors.black.withOpacity(0.35) : Colors.transparent,
+                  color: scrolled ? Colors.black.withValues(alpha: 0.35) : Colors.transparent,
                   spreadRadius: 0,
                   blurRadius: 15,
                   offset: const Offset(0, 4),

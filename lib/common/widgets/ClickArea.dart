@@ -31,8 +31,8 @@ class UIClickArea extends StatelessWidget {
       onTap: onTap,
       onLongPress: onLongTap,
       borderRadius: borderRadius ?? BorderRadius.circular(radius ?? TStyles.radius),
-      splashColor: color ?? TColors.black.withOpacity(0.1),
-      highlightColor: color ?? TColors.black.withOpacity(0.1),
+      splashColor: color ?? TColors.black.withValues(alpha: 0.1),
+      highlightColor: color ?? TColors.black.withValues(alpha: 0.1),
       child: Container(
         padding: padding,
         decoration: BoxDecoration(
