@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class TabNavModel {
   final String label;
-  final String icon;
+  final dynamic icon;
   final Widget screen;
 
   TabNavModel(

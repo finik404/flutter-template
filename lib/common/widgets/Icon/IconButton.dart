@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tproject/common/widgets/ClickArea.dart';
 import 'package:tproject/common/widgets/Icon/Icon.dart';
 import 'package:tproject/util/constants/styles.dart';
-export 'package:tproject/util/constants/icons.dart';
+
+export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class UIIconButton extends StatelessWidget {
   const UIIconButton(
@@ -21,7 +22,7 @@ class UIIconButton extends StatelessWidget {
     this.styles,
   });
 
-  final String icon;
+  final dynamic icon;
   final Function() onTap;
   final double? size;
   final FontWeight? weight;

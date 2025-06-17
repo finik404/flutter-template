@@ -44,7 +44,7 @@ class UIInput extends StatefulWidget {
   final Function()? onSubmit;
   final Function(String)? onChange;
   final TextInputType type;
-  final String? prefixIcon;
+  final dynamic prefixIcon;
   final TextStyle? prefixIconStyles;
   final int? maxLength;
   final InputCounterOptions counterOptions;
@@ -110,6 +110,9 @@ class UIInputState extends State<UIInput> {
         TextFormField(
           controller: widget.value,
 
+          // Focus
+          onTapOutside: (e) => FocusScope.of(context).unfocus(),
+
           // Validation
           validator: (value) {
             String? errors = TValidator.validate(value, widget.validate);
@@ -144,7 +147,7 @@ class UIInputState extends State<UIInput> {
           // Mask
           inputFormatters: widget.mask != null ? [widget.mask!] : [],
 
-          style: const TextStyle(fontSize: 16, color: TColors.black),
+          style: const TextStyle(fontSize: 16, color: TColors.black, height: 1.25),
 
           // Styles
           decoration: InputDecoration(
@@ -186,7 +189,7 @@ class UIInputState extends State<UIInput> {
                     ? Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: UIIconButton(
-                          TIcons.password,
+                          !showPassword ? FontAwesomeIcons.eye : FontAwesomeIcons.eyeSlash,
                           () => setState(() => showPassword = !showPassword),
                           radius: TStyles.radius,
                           styles: TextStyle(fontSize: 18, color: TColors.primary.withValues(alpha: 0.5)),

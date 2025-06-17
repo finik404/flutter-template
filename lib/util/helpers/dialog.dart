@@ -20,7 +20,7 @@ class TDialog {
       duration: const Duration(seconds: 3),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       margin: const EdgeInsets.all(20),
-      icon: const UIIcon(TIcons.warning, color: Colors.white, size: 20),
+      icon: const UIIcon(FontAwesomeIcons.triangleExclamation, color: Colors.white, size: 20),
     );
   }
 
@@ -97,7 +97,7 @@ class TDialog {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              UIIcon(isWarning ? TIcons.warning : 'f336', color: TColors.white, size: 18, weight: FontWeight.bold),
+              UIIcon(isWarning ? FontAwesomeIcons.triangleExclamation : FontAwesomeIcons.check, color: TColors.white, size: 18, weight: FontWeight.bold),
               const SizedBox(width: 10),
               UIText(message, align: TextAlign.center, color: TColors.white, size: 12, weight: FontWeight.bold),
             ],

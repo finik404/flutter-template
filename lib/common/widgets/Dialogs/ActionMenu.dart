@@ -75,7 +75,7 @@ class UIActionMenu extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Container(
-          width: context.screenWidth,
+          width: context.sWidth,
           decoration: BoxDecoration(color: bg, borderRadius: borderRadius ?? BorderRadius.circular(20)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +86,7 @@ class UIActionMenu extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Container(
-                    width: context.screenWidth,
+                    width: context.sWidth,
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       border: Border(
@@ -110,7 +110,7 @@ class UIActionMenu extends StatelessWidget {
         // Indicator
         Positioned(
           top: -10,
-          left: context.screenWidth / 2 - 75 / 2,
+          left: context.sWidth / 2 - 75 / 2,
           child: Container(
             width: 75,
             height: 4,

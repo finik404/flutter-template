@@ -30,7 +30,7 @@ class AuthLayout extends StatelessWidget {
       leading: hasArrow
           ? Container(
               margin: const EdgeInsets.only(left: 20),
-              child: UIIconButton(TIcons.left, () => Navigator.pop(context)),
+              child: UIIconButton(FontAwesomeIcons.chevronLeft, () => Navigator.pop(context)),
             )
           : null,
 
@@ -41,7 +41,7 @@ class AuthLayout extends StatelessWidget {
         children: [
           // Title
           SizedBox(
-            width: (context.screenWidth - 40) * 0.9,
+            width: (context.sWidth - 40) * 0.9,
             child: UIText(title, weight: FontWeight.bold, size: 24),
           ),
           const SizedBox(height: 12),

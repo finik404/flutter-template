@@ -36,7 +36,7 @@ class UIImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String placeholderIcon = TIcons.camera;
+    final placeholderIcon = FontAwesomeIcons.camera;
 
     return Container(
       width: width,

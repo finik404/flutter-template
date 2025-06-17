@@ -11,12 +11,12 @@ class UIClickItem extends StatelessWidget {
     required this.label,
     required this.icon,
     required this.screen,
-    this.iconRight = TIcons.right,
+    this.iconRight = FontAwesomeIcons.chevronRight,
   });
 
   final String label, icon;
   final Widget screen;
-  final String iconRight;
+  final dynamic iconRight;
 
   @override
   Widget build(BuildContext context) {

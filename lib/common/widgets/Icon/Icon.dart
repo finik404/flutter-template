@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tproject/util/constants/colors.dart';
+import 'package:tproject/util/constants/styles.dart';
 
-export 'package:tproject/util/constants/icons.dart';
+export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class UIIcon extends StatelessWidget {
   const UIIcon(
@@ -13,7 +13,7 @@ class UIIcon extends StatelessWidget {
     this.weight,
   });
 
-  final String icon;
+  final dynamic icon;
   final double? size;
   final TextStyle? styles;
   final Color? color;
@@ -22,23 +22,10 @@ class UIIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Default styles
-    TextStyle defaultStyles = styles ?? const TextStyle(fontSize: 18, fontWeight: FontWeight.normal, color: TColors.black);
-
-    // Icon weight
-    String? fontFamily;
-    switch (weight ?? defaultStyles.fontWeight) {
-      case FontWeight.w300:
-        fontFamily = 'FontAwesomeLight';
-        break;
-      case FontWeight.bold:
-        fontFamily = 'FontAwesomeBold';
-        break;
-      default:
-        fontFamily = 'FontAwesomeRegular';
-    }
+    TextStyle defaultStyles = styles ?? TStyles.iconStyles;
 
     return Icon(
-      IconData(int.parse('0x$icon'), fontFamily: fontFamily),
+      icon,
       size: size ?? defaultStyles.fontSize,
       color: color ?? defaultStyles.color,
     );

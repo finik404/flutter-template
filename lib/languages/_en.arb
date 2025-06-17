@@ -1,10 +1,20 @@
 {
   "@": "Main ==============================================================",
 
-  "error": "Error",
+  "action": "Select an action",
+  "continue_": "Continue",
+  "actions": "Select items",
+  "ok": "OK",
+  "close": "Close",
+  "prev": "Back",
+  "select": "Select",
+  "name": "Name",
+  "confirmation": "Confirmation",
+  "confirm": "Confirm",
 
   "@": "Errors ==============================================================",
 
+  "error": "Error",
   "errors_required": "This field cannot be empty",
   "errors_email": "Invalid email address",
   "errors_min": "The field must be at least {length} characters",

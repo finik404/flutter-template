@@ -15,7 +15,6 @@ export 'widgets/Icon/IconButton.dart';
 export 'widgets/Toggle.dart';
 export 'widgets/Checkbox.dart';
 export 'widgets/RadioButton/RadioButton.dart';
-export 'widgets/Select.dart';
 export 'widgets/Text/Html.dart';
 export 'widgets/Image.dart';
 export 'widgets/Tag.dart';

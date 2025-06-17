@@ -13,13 +13,13 @@ class UITexts extends StatelessWidget {
     this.weight,
     this.linkColor = TStyles.linkColor,
     this.linkHasDecoration = false,
-    this.lineHeight,
+    this.height,
     this.align = TextAlign.start,
     this.hasParse = false,
   });
 
   final List<TextModel> children;
-  final double? size, lineHeight;
+  final double? size, height;
   final TextStyle? styles;
   final FontWeight? weight;
   final Color? color, linkColor;
@@ -74,7 +74,7 @@ class UITexts extends StatelessWidget {
             fontSize: child.size ?? size,
             color: child.color ?? color ?? (child.onTap != null ? linkColor : textStyles.color),
             fontWeight: child.weight ?? weight,
-            height: child.lineHeight ?? lineHeight,
+            height: child.height ?? height,
             decoration: child.onTap != null && linkHasDecoration ? TextDecoration.underline : TextDecoration.none,
             decorationColor: child.onTap != null && linkHasDecoration ? (child.color ?? linkColor) : null,
           );
@@ -112,7 +112,7 @@ class TextModel {
   final String text;
   final TextStyle? styles;
   final Color? color;
-  final double? size, lineHeight;
+  final double? size, height;
   final FontWeight? weight;
   final Function()? onTap;
   final bool isShow;
@@ -122,7 +122,7 @@ class TextModel {
     this.styles,
     this.color,
     this.size,
-    this.lineHeight,
+    this.height,
     this.weight,
     this.onTap,
     this.isShow = true,

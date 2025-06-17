@@ -18,8 +18,8 @@ class Splash extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(TImages.appIcon, width: context.screenWidth * 0.4),
-            SizedBox(height: context.screenHeight * 0.07),
+            Image.asset(TImages.appIcon, width: context.sWidth * 0.4),
+            SizedBox(height: context.sHeight * 0.07),
             SizedBox(height: 50.0, width: 50.0, child: CircularProgressIndicator(color: context.primaryColor, strokeWidth: 2)),
           ],
         ),

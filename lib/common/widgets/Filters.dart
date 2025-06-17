@@ -40,7 +40,7 @@ class UIFilters extends StatelessWidget {
                 border: Border.all(color: list.value[index].active ? TColors.primary : TColors.black, width: 1),
                 color: list.value[index].active ? TColors.primary : TColors.bg,
               ),
-              child: UIText(list.value[index].label, lineHeight: 1.5, color: list.value[index].active ? TColors.white : TColors.black, size: 12),
+              child: UIText(list.value[index].label, height: 1.5, color: list.value[index].active ? TColors.white : TColors.black, size: 12),
             ),
           );
         },

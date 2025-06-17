@@ -15,10 +15,10 @@ class UISearchInput extends UIInput {
     super.onSubmit,
     super.onChange,
   }) : super(
-          prefixIcon: TIcons.search,
+          prefixIcon: FontAwesomeIcons.magnifyingGlass,
           prefixIconStyles: TextStyle(fontSize: 16, color: TColors.primary.withValues(alpha: 0.5)),
           suffixIcon: UIIconButton(
-            TIcons.close,
+            FontAwesomeIcons.xmark,
             () => value.text = '',
             radius: TStyles.radius,
             styles: TextStyle(fontSize: 18, color: TColors.primary.withValues(alpha: 0.5)),

@@ -17,7 +17,7 @@ class UICheckbox extends StatelessWidget {
     this.size = 20,
     this.paddingClick = TStyles.pdClick,
     this.radiusClick = 20,
-    this.icon = TIcons.check,
+    this.icon = FontAwesomeIcons.check,
     this.label,
     this.spaceBetween = 10,
     this.labelStyles,
@@ -31,7 +31,7 @@ class UICheckbox extends StatelessWidget {
   final double size, radius;
   final double? radiusClick;
   final EdgeInsets? paddingClick;
-  final String icon;
+  final dynamic icon;
   final String? label;
   final TextStyle? labelStyles;
   final double? spaceBetween;

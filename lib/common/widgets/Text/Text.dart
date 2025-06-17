@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:tproject/util/constants/styles.dart';
 import 'package:tproject/util/helpers/device.dart';
@@ -11,22 +12,23 @@ class UIText extends StatelessWidget {
     this.color,
     this.styles,
     this.align = TextAlign.start,
-    this.lineHeight,
+    this.height,
     this.isOverflow = false,
     this.lines,
     this.isDecoration = false,
     this.hasParse = false,
+    this.autoSize = false,
   });
 
   final String text;
-  final double? size, lineHeight;
+  final double? size, height;
   final FontWeight? weight;
   final Color? color;
   final TextStyle? styles;
   final TextAlign align;
   final bool isOverflow, isDecoration;
   final int? lines;
-  final bool hasParse;
+  final bool hasParse, autoSize;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class UIText extends StatelessWidget {
       fontSize: size ?? textStyles.fontSize,
       fontWeight: weight ?? textStyles.fontWeight,
       color: color ?? textStyles.color,
-      height: lineHeight ?? textStyles.height,
+      height: height ?? textStyles.height,
       decoration: isDecoration ? TextDecoration.underline : TextDecoration.none,
       decorationColor: isDecoration ? (color ?? textStyles.color) : null,
     );
@@ -87,6 +89,14 @@ class UIText extends StatelessWidget {
         overflow: isCropped ? TextOverflow.ellipsis : TextOverflow.clip,
       );
     } else {
+      if (autoSize) {
+        return AutoSizeText(
+          text,
+          style: textStyle.merge(styles),
+          textAlign: align,
+          maxLines: lines,
+        );
+      }
       // Text
       return Text(
         text,

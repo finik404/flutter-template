@@ -11,6 +11,9 @@ class TStyles {
   static const TextStyle textStyles = TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: TColors.black, height: 1.25);
   static const Color linkColor = TColors.primary;
 
+  // Icon
+  static const TextStyle iconStyles = TextStyle(fontSize: 18, fontWeight: FontWeight.normal, color: TColors.black);
+
   // BorderRadius
   static const double radius = 10;
   static BorderRadius br = BorderRadius.circular(radius);

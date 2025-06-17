@@ -62,7 +62,7 @@ class Header extends StatelessWidget {
                   // Back icon
                   if (hasArrow)
                     UIIconButton(
-                      TIcons.left,
+                      FontAwesomeIcons.chevronLeft,
                       () => Navigator.pop(context),
                       color: TColors.primary,
                       size: 16,
@@ -71,7 +71,7 @@ class Header extends StatelessWidget {
 
                   // Label
                   SizedBox(
-                    width: context.screenWidth - (hasArrow ? 40 + 40 + 40 + 30 : 40),
+                    width: context.sWidth - (hasArrow ? 40 + 40 + 40 + 30 : 40),
                     height: 25,
                     child: Center(
                       child: UIText(
