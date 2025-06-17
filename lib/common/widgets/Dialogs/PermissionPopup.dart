@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:tproject/common/widgets/Buttons/Button.dart';
 import 'package:tproject/common/widgets/Text/Text.dart';
+import 'package:tproject/languages/L.dart';
 import 'package:tproject/util/constants/colors.dart';
 
 class UIPermissionPopup extends StatelessWidget {
@@ -29,7 +30,7 @@ class UIPermissionPopup extends StatelessWidget {
             const SizedBox(height: 25),
 
             // Btn
-            UIButton('Открыть настройки', () => openAppSettings()),
+            UIButton(L.of(context).open_settings, () => openAppSettings()),
           ],
         ),
       ),

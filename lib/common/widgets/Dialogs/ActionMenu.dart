@@ -13,8 +13,6 @@ class UIActionMenu extends StatelessWidget {
     this.content,
     this.label,
     this.padding,
-    this.hasScroll = false,
-    this.height,
     this.borderRadius,
     this.bg,
   });
@@ -23,8 +21,6 @@ class UIActionMenu extends StatelessWidget {
   final Widget? content;
   final String? label;
   final EdgeInsets? padding;
-  final bool hasScroll;
-  final double? height;
   final BorderRadius? borderRadius;
   final Color? bg;
 
@@ -102,7 +98,8 @@ class UIActionMenu extends StatelessWidget {
                 ),
 
               // With scroll
-              hasScroll || height != null ? Expanded(child: SingleChildScrollView(child: contentWidget)) : contentWidget,
+              Flexible(child: SingleChildScrollView(child: contentWidget)),
+              // contentWidget,
             ],
           ),
         ),
@@ -121,7 +118,19 @@ class UIActionMenu extends StatelessWidget {
     );
 
     // Limit height
-    return hasScroll || height != null ? FractionallySizedBox(heightFactor: height ?? 0.7, child: layout) : layout;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final maxHeight = MediaQuery.of(context).size.height * 0.9;
+        return ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: maxHeight,
+          ),
+          child: IntrinsicHeight(
+            child: layout,
+          ),
+        );
+      },
+    );
   }
 }
 

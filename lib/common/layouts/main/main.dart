@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:tproject/common/layouts/base.dart';
+import 'package:tproject/common/layouts/main/widgets/Header.dart';
 import 'package:tproject/common/widgets/Refresh.dart';
 import 'package:tproject/util/constants/colors.dart';
 import 'package:tproject/util/constants/styles.dart';
 
-import 'widgets/Header.dart';
-
 class MainLayout extends StatelessWidget {
   const MainLayout({
     super.key,
-    required this.label,
+    this.label,
     required this.child,
     this.padding,
     this.bottom,
     this.hasArrow = false,
     this.hasBottomContainer = true,
     this.refresh,
+    this.header,
   });
 
   final Widget child;
-  final String label;
+  final String? label;
+  final Widget? header;
   final EdgeInsets? padding;
   final Widget? bottom;
   final Future<void> Function()? refresh;
@@ -42,7 +43,11 @@ class MainLayout extends StatelessWidget {
           // Scrollable content
           Expanded(
             child: NestedScrollView(
-              headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) => [Header(label, hasArrow: hasArrow)],
+              headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+                return [
+                  if (header != null) header! else if (label != null) Header(label!, hasArrow: hasArrow),
+                ];
+              },
               body: refresh != null ? UIRefresh(refresh: refresh!, child: scrollContent) : scrollContent,
             ),
           ),
