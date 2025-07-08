@@ -51,7 +51,7 @@ class Tabs extends StatelessWidget {
         handleAndroidBackButtonPress: true,
         resizeToAvoidBottomInset: false,
         stateManagement: true,
-        screenTransitionAnimation: const ScreenTransitionAnimation(curve: Curves.ease, duration: Duration(milliseconds: 200)),
+        screenTransitionAnimation: const ScreenTransitionAnimation(curve: Curves.linear, duration: Duration(milliseconds: 0)),
 
         // Styles
         navBarBuilder: (navBarConfig) => Style1BottomNavBar(

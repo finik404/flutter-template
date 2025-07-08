@@ -18,6 +18,7 @@ class UIText extends StatelessWidget {
     this.isDecoration = false,
     this.hasParse = false,
     this.autoSize = false,
+    this.wrapWords = false,
   });
 
   final String text;
@@ -28,7 +29,7 @@ class UIText extends StatelessWidget {
   final TextAlign align;
   final bool isOverflow, isDecoration;
   final int? lines;
-  final bool hasParse, autoSize;
+  final bool hasParse, autoSize, wrapWords;
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +96,7 @@ class UIText extends StatelessWidget {
           style: textStyle.merge(styles),
           textAlign: align,
           maxLines: lines,
+          wrapWords: wrapWords,
         );
       }
       // Text

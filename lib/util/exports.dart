@@ -8,6 +8,9 @@ export 'helpers/debouncer.dart';
 export 'helpers/navigation/to.dart';
 export 'helpers/navigation/toOff.dart';
 
+// Extensions
+export 'extensions/text.dart';
+
 // Packages
 export 'package:get/get.dart';
 

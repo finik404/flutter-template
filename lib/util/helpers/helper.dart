@@ -71,4 +71,9 @@ class THelper {
 
     return '$maskedUsername@$domain';
   }
+
+  static String clearStroke(String text) {
+    String normalized = text.replaceAll(RegExp(r'\s+'), ' ');
+    return normalized.trim();
+  }
 }
